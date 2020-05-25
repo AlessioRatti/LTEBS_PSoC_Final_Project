@@ -11,6 +11,8 @@
 */
 #include "project.h"
 
+#include "25LC256.h"
+
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
