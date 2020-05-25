@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
   28:Generated_Source\PSoC5/PWM_BLINK.c ****     #error PWM_v3_30 detected with a constant 0 for the enable or \
   29:Generated_Source\PSoC5/PWM_BLINK.c ****          constant 1 for reset. This will prevent the component from operating.
   30:Generated_Source\PSoC5/PWM_BLINK.c **** #endif /* PWM_BLINK_PWMUDB_genblk1_ctrlreg__REMOVED */
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 2
 
 
   31:Generated_Source\PSoC5/PWM_BLINK.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
   85:Generated_Source\PSoC5/PWM_BLINK.c **** {
   86:Generated_Source\PSoC5/PWM_BLINK.c ****     #if (PWM_BLINK_UsingFixedFunction || PWM_BLINK_UseControl)
   87:Generated_Source\PSoC5/PWM_BLINK.c ****         uint8 ctrl;
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 3
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 3
 
 
   88:Generated_Source\PSoC5/PWM_BLINK.c ****     #endif /* (PWM_BLINK_UsingFixedFunction || PWM_BLINK_UseControl) */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  142:Generated_Source\PSoC5/PWM_BLINK.c ****             PWM_BLINK_WriteCompare2(PWM_BLINK_INIT_COMPARE_VALUE2);
  143:Generated_Source\PSoC5/PWM_BLINK.c ****         #endif /* (PWM_BLINK_UseOneCompareMode) */
  144:Generated_Source\PSoC5/PWM_BLINK.c **** 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 4
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 4
 
 
  145:Generated_Source\PSoC5/PWM_BLINK.c ****         #if (PWM_BLINK_KillModeMinTime)
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  199:Generated_Source\PSoC5/PWM_BLINK.c **** void PWM_BLINK_Enable(void) 
  200:Generated_Source\PSoC5/PWM_BLINK.c **** {
   28              		.loc 1 200 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 5
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 5
 
 
   29              		.cfi_startproc
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  230:Generated_Source\PSoC5/PWM_BLINK.c **** *  has no effect on the operation of the PWM
  231:Generated_Source\PSoC5/PWM_BLINK.c **** *
  232:Generated_Source\PSoC5/PWM_BLINK.c **** *******************************************************************************/
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 6
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 6
 
 
  233:Generated_Source\PSoC5/PWM_BLINK.c **** void PWM_BLINK_Stop(void) 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  261:Generated_Source\PSoC5/PWM_BLINK.c ****         *
  262:Generated_Source\PSoC5/PWM_BLINK.c ****         * Return:
  263:Generated_Source\PSoC5/PWM_BLINK.c ****         *  None
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 7
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 7
 
 
  264:Generated_Source\PSoC5/PWM_BLINK.c ****         *
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  318:Generated_Source\PSoC5/PWM_BLINK.c ****         * Parameters:
  319:Generated_Source\PSoC5/PWM_BLINK.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
  320:Generated_Source\PSoC5/PWM_BLINK.c ****         *                defined in the H file as input arguments.
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 8
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 8
 
 
  321:Generated_Source\PSoC5/PWM_BLINK.c ****         *
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  375:Generated_Source\PSoC5/PWM_BLINK.c ****     #endif /*PWM_BLINK_CompareMode2SW */
  376:Generated_Source\PSoC5/PWM_BLINK.c **** 
  377:Generated_Source\PSoC5/PWM_BLINK.c **** #endif /* UseOneCompareMode */
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 9
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 9
 
 
  378:Generated_Source\PSoC5/PWM_BLINK.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  407:Generated_Source\PSoC5/PWM_BLINK.c ****     }
  408:Generated_Source\PSoC5/PWM_BLINK.c **** 
  409:Generated_Source\PSoC5/PWM_BLINK.c **** 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 10
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 10
 
 
  410:Generated_Source\PSoC5/PWM_BLINK.c ****     /*******************************************************************************
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  134              	.LFB7:
  435:Generated_Source\PSoC5/PWM_BLINK.c **** 
  436:Generated_Source\PSoC5/PWM_BLINK.c ****     #if (PWM_BLINK_UseStatus)
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 11
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 11
 
 
  437:Generated_Source\PSoC5/PWM_BLINK.c **** 
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  485:Generated_Source\PSoC5/PWM_BLINK.c ****         CY_SET_REG16(PWM_BLINK_PERIOD_LSB_PTR, (uint16)period);
  486:Generated_Source\PSoC5/PWM_BLINK.c ****     #else
  487:Generated_Source\PSoC5/PWM_BLINK.c ****         CY_SET_REG16(PWM_BLINK_PERIOD_LSB_PTR, period);
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 12
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 12
 
 
  141              		.loc 1 487 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  164              		@ link register save eliminated.
  165              	.LVL2:
  519:Generated_Source\PSoC5/PWM_BLINK.c ****         #if(PWM_BLINK_UsingFixedFunction)
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 13
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 13
 
 
  520:Generated_Source\PSoC5/PWM_BLINK.c ****             CY_SET_REG16(PWM_BLINK_COMPARE1_LSB_PTR, (uint16)compare);
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  555:Generated_Source\PSoC5/PWM_BLINK.c ****     void PWM_BLINK_WriteCompare1(uint16 compare) \
  556:Generated_Source\PSoC5/PWM_BLINK.c ****                                         
  557:Generated_Source\PSoC5/PWM_BLINK.c ****     {
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 14
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 14
 
 
  558:Generated_Source\PSoC5/PWM_BLINK.c ****         #if(PWM_BLINK_UsingFixedFunction)
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  612:Generated_Source\PSoC5/PWM_BLINK.c ****     void PWM_BLINK_WriteDeadTime(uint8 deadtime) 
  613:Generated_Source\PSoC5/PWM_BLINK.c ****     {
  614:Generated_Source\PSoC5/PWM_BLINK.c ****         /* If using the Dead Band 1-255 mode then just write the register */
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 15
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 15
 
 
  615:Generated_Source\PSoC5/PWM_BLINK.c ****         #if(!PWM_BLINK_DeadBand2_4)
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  669:Generated_Source\PSoC5/PWM_BLINK.c ****     /*******************************************************************************
  670:Generated_Source\PSoC5/PWM_BLINK.c ****     * Function Name: PWM_BLINK_SetInterruptMode
  671:Generated_Source\PSoC5/PWM_BLINK.c ****     ********************************************************************************
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 16
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 16
 
 
  672:Generated_Source\PSoC5/PWM_BLINK.c ****     *
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  701:Generated_Source\PSoC5/PWM_BLINK.c ****     *  uint8 : Current status register value. The status register bits are:
  702:Generated_Source\PSoC5/PWM_BLINK.c ****     *  [7:6] : Unused(0)
  703:Generated_Source\PSoC5/PWM_BLINK.c ****     *  [5]   : Kill event output
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 17
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 17
 
 
  704:Generated_Source\PSoC5/PWM_BLINK.c ****     *  [4]   : FIFO not empty
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  733:Generated_Source\PSoC5/PWM_BLINK.c ****     * Return:
  734:Generated_Source\PSoC5/PWM_BLINK.c ****     *  uint8 : Current control register value
  735:Generated_Source\PSoC5/PWM_BLINK.c ****     *
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 18
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 18
 
 
  736:Generated_Source\PSoC5/PWM_BLINK.c ****     *******************************************************************************/
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  764:Generated_Source\PSoC5/PWM_BLINK.c ****     *******************************************************************************/
  765:Generated_Source\PSoC5/PWM_BLINK.c ****     void PWM_BLINK_WriteControlRegister(uint8 control) 
  766:Generated_Source\PSoC5/PWM_BLINK.c ****     {
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 19
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 19
 
 
  261              		.loc 1 766 0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  290              		@ link register save eliminated.
  792:Generated_Source\PSoC5/PWM_BLINK.c ****         return (CY_GET_REG16(PWM_BLINK_CAPTURE_LSB_PTR));
  291              		.loc 1 792 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 20
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 20
 
 
  292 0000 014B     		ldr	r3, .L32
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  340              		.thumb
  341              		.thumb_func
  342              		.type	PWM_BLINK_Init, %function
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 21
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 21
 
 
  343              	PWM_BLINK_Init:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  167:Generated_Source\PSoC5/PWM_BLINK.c ****             /* Use the interrupt output of the status register for IRQ output */
  388              		.loc 1 167 0
  389 0040 FFF7FEFF 		bl	CyEnterCriticalSection
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 22
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 22
 
 
  390              	.LVL14:
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  437              	.L43:
   63:Generated_Source\PSoC5/PWM_BLINK.c **** 
  438              		.loc 1 63 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 23
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 23
 
 
  439 0012 FFF7FEFF 		bl	PWM_BLINK_Enable
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  822:Generated_Source\PSoC5/PWM_BLINK.c ****         #endif /* (PWM_BLINK_UsingFixedFunction) */
  823:Generated_Source\PSoC5/PWM_BLINK.c ****     }
  465              		.loc 1 823 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 24
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 24
 
 
  466 0004 80B2     		uxth	r0, r0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  861:Generated_Source\PSoC5/PWM_BLINK.c ****     *******************************************************************************/
  862:Generated_Source\PSoC5/PWM_BLINK.c ****     uint16 PWM_BLINK_ReadCompare2(void) 
  863:Generated_Source\PSoC5/PWM_BLINK.c ****     {
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 25
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 25
 
 
  864:Generated_Source\PSoC5/PWM_BLINK.c ****         return (CY_GET_REG16(PWM_BLINK_COMPARE2_LSB_PTR));
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  509              	.Letext0:
  510              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
  511              		.file 3 "Generated_Source\\PSoC5\\CyLib.h"
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 26
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 26
 
 
  512              		.section	.debug_info,"",%progbits
@@ -1510,43 +1510,43 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  518 000b 01       		.uleb128 0x1
  519 000c 1B000000 		.4byte	.LASF43
  520 0010 0C       		.byte	0xc
- 521 0011 39030000 		.4byte	.LASF44
- 522 0015 DD000000 		.4byte	.LASF45
+ 521 0011 2C030000 		.4byte	.LASF44
+ 522 0015 A6020000 		.4byte	.LASF45
  523 0019 00000000 		.4byte	.Ldebug_ranges0+0
  524 001d 00000000 		.4byte	0
  525 0021 00000000 		.4byte	.Ldebug_line0
  526 0025 02       		.uleb128 0x2
  527 0026 01       		.byte	0x1
  528 0027 06       		.byte	0x6
- 529 0028 A5030000 		.4byte	.LASF0
+ 529 0028 A6030000 		.4byte	.LASF0
  530 002c 02       		.uleb128 0x2
  531 002d 01       		.byte	0x1
  532 002e 08       		.byte	0x8
- 533 002f D1010000 		.4byte	.LASF1
+ 533 002f 6A010000 		.4byte	.LASF1
  534 0033 02       		.uleb128 0x2
  535 0034 02       		.byte	0x2
  536 0035 05       		.byte	0x5
- 537 0036 5C030000 		.4byte	.LASF2
+ 537 0036 4F030000 		.4byte	.LASF2
  538 003a 02       		.uleb128 0x2
  539 003b 02       		.byte	0x2
  540 003c 07       		.byte	0x7
- 541 003d 5D010000 		.4byte	.LASF3
+ 541 003d F6000000 		.4byte	.LASF3
  542 0041 02       		.uleb128 0x2
  543 0042 04       		.byte	0x4
  544 0043 05       		.byte	0x5
- 545 0044 7A030000 		.4byte	.LASF4
+ 545 0044 7B030000 		.4byte	.LASF4
  546 0048 02       		.uleb128 0x2
  547 0049 04       		.byte	0x4
  548 004a 07       		.byte	0x7
- 549 004b FA010000 		.4byte	.LASF5
+ 549 004b 93010000 		.4byte	.LASF5
  550 004f 02       		.uleb128 0x2
  551 0050 08       		.byte	0x8
  552 0051 05       		.byte	0x5
- 553 0052 FF020000 		.4byte	.LASF6
+ 553 0052 98020000 		.4byte	.LASF6
  554 0056 02       		.uleb128 0x2
  555 0057 08       		.byte	0x8
  556 0058 07       		.byte	0x7
- 557 0059 BA010000 		.4byte	.LASF7
+ 557 0059 53010000 		.4byte	.LASF7
  558 005d 03       		.uleb128 0x3
  559 005e 04       		.byte	0x4
  560 005f 05       		.byte	0x5
@@ -1554,34 +1554,34 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  562 0064 02       		.uleb128 0x2
  563 0065 04       		.byte	0x4
  564 0066 07       		.byte	0x7
- 565 0067 A8020000 		.4byte	.LASF8
+ 565 0067 41020000 		.4byte	.LASF8
  566 006b 04       		.uleb128 0x4
- 567 006c 0C020000 		.4byte	.LASF9
+ 567 006c A5010000 		.4byte	.LASF9
  568 0070 02       		.byte	0x2
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 27
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 27
 
 
  569 0071 E401     		.2byte	0x1e4
  570 0073 2C000000 		.4byte	0x2c
  571 0077 04       		.uleb128 0x4
- 572 0078 54020000 		.4byte	.LASF10
+ 572 0078 ED010000 		.4byte	.LASF10
  573 007c 02       		.byte	0x2
  574 007d E501     		.2byte	0x1e5
  575 007f 3A000000 		.4byte	0x3a
  576 0083 02       		.uleb128 0x2
  577 0084 04       		.byte	0x4
  578 0085 04       		.byte	0x4
- 579 0086 AC010000 		.4byte	.LASF11
+ 579 0086 45010000 		.4byte	.LASF11
  580 008a 02       		.uleb128 0x2
  581 008b 08       		.byte	0x8
  582 008c 04       		.byte	0x4
- 583 008d 30020000 		.4byte	.LASF12
+ 583 008d C9010000 		.4byte	.LASF12
  584 0091 02       		.uleb128 0x2
  585 0092 01       		.byte	0x1
  586 0093 08       		.byte	0x8
- 587 0094 83030000 		.4byte	.LASF13
+ 587 0094 84030000 		.4byte	.LASF13
  588 0098 04       		.uleb128 0x4
- 589 0099 F5010000 		.4byte	.LASF14
+ 589 0099 8E010000 		.4byte	.LASF14
  590 009d 02       		.byte	0x2
  591 009e 8E02     		.2byte	0x28e
  592 00a0 A4000000 		.4byte	0xa4
@@ -1597,13 +1597,13 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  602 00ba 02       		.uleb128 0x2
  603 00bb 08       		.byte	0x8
  604 00bc 04       		.byte	0x4
- 605 00bd 88030000 		.4byte	.LASF16
+ 605 00bd 89030000 		.4byte	.LASF16
  606 00c1 02       		.uleb128 0x2
  607 00c2 04       		.byte	0x4
  608 00c3 07       		.byte	0x7
- 609 00c4 F6020000 		.4byte	.LASF17
+ 609 00c4 8F020000 		.4byte	.LASF17
  610 00c8 06       		.uleb128 0x6
- 611 00c9 94030000 		.4byte	.LASF18
+ 611 00c9 95030000 		.4byte	.LASF18
  612 00cd 01       		.byte	0x1
  613 00ce C7       		.byte	0xc7
  614 00cf 00000000 		.4byte	.LFB2
@@ -1611,18 +1611,18 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  616 00d7 01       		.uleb128 0x1
  617 00d8 9C       		.byte	0x9c
  618 00d9 06       		.uleb128 0x6
- 619 00da 87010000 		.4byte	.LASF19
+ 619 00da 20010000 		.4byte	.LASF19
  620 00de 01       		.byte	0x1
  621 00df E9       		.byte	0xe9
  622 00e0 00000000 		.4byte	.LFB3
  623 00e4 10000000 		.4byte	.LFE3-.LFB3
  624 00e8 01       		.uleb128 0x1
  625 00e9 9C       		.byte	0x9c
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 28
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 28
 
 
  626 00ea 07       		.uleb128 0x7
- 627 00eb 5B020000 		.4byte	.LASF20
+ 627 00eb F4010000 		.4byte	.LASF20
  628 00ef 01       		.byte	0x1
  629 00f0 9301     		.2byte	0x193
  630 00f2 00000000 		.4byte	.LFB4
@@ -1631,7 +1631,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  633 00fb 9C       		.byte	0x9c
  634 00fc 0F010000 		.4byte	0x10f
  635 0100 08       		.uleb128 0x8
- 636 0101 B2010000 		.4byte	.LASF22
+ 636 0101 4B010000 		.4byte	.LASF22
  637 0105 01       		.byte	0x1
  638 0106 9301     		.2byte	0x193
  639 0108 77000000 		.4byte	0x77
@@ -1639,7 +1639,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  641 010d 50       		.byte	0x50
  642 010e 00       		.byte	0
  643 010f 09       		.uleb128 0x9
- 644 0110 96010000 		.4byte	.LASF28
+ 644 0110 2F010000 		.4byte	.LASF28
  645 0114 01       		.byte	0x1
  646 0115 A901     		.2byte	0x1a9
  647 0117 77000000 		.4byte	0x77
@@ -1648,7 +1648,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  650 0123 01       		.uleb128 0x1
  651 0124 9C       		.byte	0x9c
  652 0125 07       		.uleb128 0x7
- 653 0126 1A020000 		.4byte	.LASF21
+ 653 0126 B3010000 		.4byte	.LASF21
  654 012a 01       		.byte	0x1
  655 012b E201     		.2byte	0x1e2
  656 012d 00000000 		.4byte	.LFB7
@@ -1657,7 +1657,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  659 0136 9C       		.byte	0x9c
  660 0137 4A010000 		.4byte	0x14a
  661 013b 08       		.uleb128 0x8
- 662 013c 56010000 		.4byte	.LASF23
+ 662 013c EF000000 		.4byte	.LASF23
  663 0140 01       		.byte	0x1
  664 0141 E201     		.2byte	0x1e2
  665 0143 77000000 		.4byte	0x77
@@ -1665,7 +1665,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  667 0148 50       		.byte	0x50
  668 0149 00       		.byte	0
  669 014a 07       		.uleb128 0x7
- 670 014b 70010000 		.4byte	.LASF24
+ 670 014b 09010000 		.4byte	.LASF24
  671 014f 01       		.byte	0x1
  672 0150 0402     		.2byte	0x204
  673 0152 00000000 		.4byte	.LFB8
@@ -1674,11 +1674,11 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  676 015b 9C       		.byte	0x9c
  677 015c 6F010000 		.4byte	0x16f
  678 0160 08       		.uleb128 0x8
- 679 0161 B1030000 		.4byte	.LASF25
+ 679 0161 B2030000 		.4byte	.LASF25
  680 0165 01       		.byte	0x1
  681 0166 0402     		.2byte	0x204
  682 0168 77000000 		.4byte	0x77
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 29
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 29
 
 
  683 016c 01       		.uleb128 0x1
@@ -1694,7 +1694,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  693 0180 9C       		.byte	0x9c
  694 0181 94010000 		.4byte	0x194
  695 0185 08       		.uleb128 0x8
- 696 0186 0D030000 		.4byte	.LASF27
+ 696 0186 5E030000 		.4byte	.LASF27
  697 018a 01       		.byte	0x1
  698 018b AC02     		.2byte	0x2ac
  699 018d 6B000000 		.4byte	0x6b
@@ -1702,7 +1702,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  701 0192 50       		.byte	0x50
  702 0193 00       		.byte	0
  703 0194 09       		.uleb128 0x9
- 704 0195 37020000 		.4byte	.LASF29
+ 704 0195 D0010000 		.4byte	.LASF29
  705 0199 01       		.byte	0x1
  706 019a C702     		.2byte	0x2c7
  707 019c 6B000000 		.4byte	0x6b
@@ -1711,7 +1711,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  710 01a8 01       		.uleb128 0x1
  711 01a9 9C       		.byte	0x9c
  712 01aa 0A       		.uleb128 0xa
- 713 01ab 1B030000 		.4byte	.LASF46
+ 713 01ab 0E030000 		.4byte	.LASF46
  714 01af 01       		.byte	0x1
  715 01b0 E102     		.2byte	0x2e1
  716 01b2 6B000000 		.4byte	0x6b
@@ -1721,7 +1721,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  720 01bf 9C       		.byte	0x9c
  721 01c0 D3010000 		.4byte	0x1d3
  722 01c4 0B       		.uleb128 0xb
- 723 01c5 CB020000 		.4byte	.LASF35
+ 723 01c5 64020000 		.4byte	.LASF35
  724 01c9 01       		.byte	0x1
  725 01ca E302     		.2byte	0x2e3
  726 01cc 6B000000 		.4byte	0x6b
@@ -1729,7 +1729,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  728 01d1 50       		.byte	0x50
  729 01d2 00       		.byte	0
  730 01d3 07       		.uleb128 0x7
- 731 01d4 72020000 		.4byte	.LASF30
+ 731 01d4 0B020000 		.4byte	.LASF30
  732 01d8 01       		.byte	0x1
  733 01d9 FD02     		.2byte	0x2fd
  734 01db 00000000 		.4byte	.LFB12
@@ -1738,10 +1738,10 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  737 01e4 9C       		.byte	0x9c
  738 01e5 F8010000 		.4byte	0x1f8
  739 01e9 08       		.uleb128 0x8
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 30
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 30
 
 
- 740 01ea 12020000 		.4byte	.LASF31
+ 740 01ea AB010000 		.4byte	.LASF31
  741 01ee 01       		.byte	0x1
  742 01ef FD02     		.2byte	0x2fd
  743 01f1 6B000000 		.4byte	0x6b
@@ -1749,7 +1749,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  745 01f6 50       		.byte	0x50
  746 01f7 00       		.byte	0
  747 01f8 09       		.uleb128 0x9
- 748 01f9 B9030000 		.4byte	.LASF32
+ 748 01f9 BA030000 		.4byte	.LASF32
  749 01fd 01       		.byte	0x1
  750 01fe 1603     		.2byte	0x316
  751 0200 77000000 		.4byte	0x77
@@ -1758,7 +1758,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  754 020c 01       		.uleb128 0x1
  755 020d 9C       		.byte	0x9c
  756 020e 07       		.uleb128 0x7
- 757 020f D2020000 		.4byte	.LASF33
+ 757 020f 6B020000 		.4byte	.LASF33
  758 0213 01       		.byte	0x1
  759 0214 C501     		.2byte	0x1c5
  760 0216 00000000 		.4byte	.LFB6
@@ -1774,7 +1774,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  770 0232 94010000 		.4byte	0x194
  771 0236 00       		.byte	0
  772 0237 0D       		.uleb128 0xd
- 773 0238 6B030000 		.4byte	.LASF34
+ 773 0238 6C030000 		.4byte	.LASF34
  774 023c 01       		.byte	0x1
  775 023d 54       		.byte	0x54
  776 023e 00000000 		.4byte	.LFB1
@@ -1783,7 +1783,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  779 0247 9C       		.byte	0x9c
  780 0248 D7020000 		.4byte	0x2d7
  781 024c 0E       		.uleb128 0xe
- 782 024d 66030000 		.4byte	.LASF36
+ 782 024d 59030000 		.4byte	.LASF36
  783 0251 01       		.byte	0x1
  784 0252 57       		.byte	0x57
  785 0253 6B000000 		.4byte	0x6b
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  794 026b 2C000000 		.4byte	.LVL10
  795 026f EA000000 		.4byte	0xea
  796 0273 7F020000 		.4byte	0x27f
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 31
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 31
 
 
  797 0277 10       		.uleb128 0x10
@@ -1851,14 +1851,14 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  844 02d2 0E020000 		.4byte	0x20e
  845 02d6 00       		.byte	0
  846 02d7 0D       		.uleb128 0xd
- 847 02d8 E6020000 		.4byte	.LASF38
+ 847 02d8 7F020000 		.4byte	.LASF38
  848 02dc 01       		.byte	0x1
  849 02dd 37       		.byte	0x37
  850 02de 00000000 		.4byte	.LFB0
  851 02e2 1C000000 		.4byte	.LFE0-.LFB0
  852 02e6 01       		.uleb128 0x1
  853 02e7 9C       		.byte	0x9c
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 32
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 32
 
 
  854 02e8 FF020000 		.4byte	0x2ff
@@ -1870,7 +1870,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  860 02fa C8000000 		.4byte	0xc8
  861 02fe 00       		.byte	0
  862 02ff 09       		.uleb128 0x9
- 863 0300 DF010000 		.4byte	.LASF39
+ 863 0300 78010000 		.4byte	.LASF39
  864 0304 01       		.byte	0x1
  865 0305 3003     		.2byte	0x330
  866 0307 77000000 		.4byte	0x77
@@ -1888,7 +1888,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  878 0329 01       		.uleb128 0x1
  879 032a 9C       		.byte	0x9c
  880 032b 11       		.uleb128 0x11
- 881 032c 44010000 		.4byte	.LASF47
+ 881 032c DD000000 		.4byte	.LASF47
  882 0330 01       		.byte	0x1
  883 0331 20       		.byte	0x20
  884 0332 6B000000 		.4byte	0x6b
@@ -1896,13 +1896,13 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  886 0337 03       		.byte	0x3
  887 0338 00000000 		.4byte	PWM_BLINK_initVar
  888 033c 12       		.uleb128 0x12
- 889 033d 91020000 		.4byte	.LASF41
- 890 0341 91020000 		.4byte	.LASF41
+ 889 033d 2A020000 		.4byte	.LASF41
+ 890 0341 2A020000 		.4byte	.LASF41
  891 0345 03       		.byte	0x3
  892 0346 7D       		.byte	0x7d
  893 0347 12       		.uleb128 0x12
- 894 0348 B5020000 		.4byte	.LASF42
- 895 034c B5020000 		.4byte	.LASF42
+ 894 0348 4E020000 		.4byte	.LASF42
+ 895 034c 4E020000 		.4byte	.LASF42
  896 0350 03       		.byte	0x3
  897 0351 7E       		.byte	0x7e
  898 0352 00       		.byte	0
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  908 0007 03       		.uleb128 0x3
  909 0008 0E       		.uleb128 0xe
  910 0009 1B       		.uleb128 0x1b
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 33
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 33
 
 
  911 000a 0E       		.uleb128 0xe
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  965 0040 3F       		.uleb128 0x3f
  966 0041 19       		.uleb128 0x19
  967 0042 03       		.uleb128 0x3
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 34
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 34
 
 
  968 0043 0E       		.uleb128 0xe
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  1022 007b 18       		.uleb128 0x18
  1023 007c 00       		.byte	0
  1024 007d 00       		.byte	0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 35
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 35
 
 
  1025 007e 09       		.uleb128 0x9
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  1079 00b6 00       		.byte	0
  1080 00b7 03       		.uleb128 0x3
  1081 00b8 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 36
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 36
 
 
  1082 00b9 3A       		.uleb128 0x3a
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  1136 00f2 13       		.uleb128 0x13
  1137 00f3 02       		.uleb128 0x2
  1138 00f4 17       		.uleb128 0x17
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 37
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 37
 
 
  1139 00f5 00       		.byte	0
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  1193 0130 00       		.byte	0
  1194 0131 00       		.byte	0
  1195 0132 00       		.byte	0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 38
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 38
 
 
  1196              		.section	.debug_loc,"",%progbits
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  1250 0088 00000000 		.4byte	.LFB15
  1251 008c 0C000000 		.4byte	.LFE15-.LFB15
  1252 0090 00000000 		.4byte	0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 39
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 39
 
 
  1253 0094 00000000 		.4byte	0
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  1298 001b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  1298      43313120 
  1298      352E342E 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 40
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 40
 
 
  1298      31203230 
@@ -2365,226 +2365,226 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 1
  1304      4B5F5365 
  1304      74496E74 
  1304      65727275 
- 1305              	.LASF45:
- 1306 00dd 433A5C55 		.ascii	"C:\\Users\\Mattia40\\Desktop\\AY1920_II_FINAL_PROJE"
- 1306      73657273 
- 1306      5C4D6174 
- 1306      74696134 
- 1306      305C4465 
- 1307 010c 43545C47 		.ascii	"CT\\Group_02_Final_Project\\AY1920_II_FINAL_PROJECT"
- 1307      726F7570 
- 1307      5F30325F 
- 1307      46696E61 
- 1307      6C5F5072 
- 1308 013d 2E637964 		.ascii	".cydsn\000"
- 1308      736E00
- 1309              	.LASF47:
- 1310 0144 50574D5F 		.ascii	"PWM_BLINK_initVar\000"
- 1310      424C494E 
- 1310      4B5F696E 
- 1310      69745661 
- 1310      7200
- 1311              	.LASF23:
- 1312 0156 70657269 		.ascii	"period\000"
- 1312      6F6400
- 1313              	.LASF3:
- 1314 015d 73686F72 		.ascii	"short unsigned int\000"
- 1314      7420756E 
- 1314      7369676E 
- 1314      65642069 
- 1314      6E7400
- 1315              	.LASF24:
- 1316 0170 50574D5F 		.ascii	"PWM_BLINK_WriteCompare\000"
+ 1305              	.LASF47:
+ 1306 00dd 50574D5F 		.ascii	"PWM_BLINK_initVar\000"
+ 1306      424C494E 
+ 1306      4B5F696E 
+ 1306      69745661 
+ 1306      7200
+ 1307              	.LASF23:
+ 1308 00ef 70657269 		.ascii	"period\000"
+ 1308      6F6400
+ 1309              	.LASF3:
+ 1310 00f6 73686F72 		.ascii	"short unsigned int\000"
+ 1310      7420756E 
+ 1310      7369676E 
+ 1310      65642069 
+ 1310      6E7400
+ 1311              	.LASF24:
+ 1312 0109 50574D5F 		.ascii	"PWM_BLINK_WriteCompare\000"
+ 1312      424C494E 
+ 1312      4B5F5772 
+ 1312      69746543 
+ 1312      6F6D7061 
+ 1313              	.LASF19:
+ 1314 0120 50574D5F 		.ascii	"PWM_BLINK_Stop\000"
+ 1314      424C494E 
+ 1314      4B5F5374 
+ 1314      6F7000
+ 1315              	.LASF28:
+ 1316 012f 50574D5F 		.ascii	"PWM_BLINK_ReadCounter\000"
  1316      424C494E 
- 1316      4B5F5772 
- 1316      69746543 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 41
+ 1316      4B5F5265 
+ 1316      6164436F 
+ 1316      756E7465 
+ 1317              	.LASF11:
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 41
 
 
- 1316      6F6D7061 
- 1317              	.LASF19:
- 1318 0187 50574D5F 		.ascii	"PWM_BLINK_Stop\000"
- 1318      424C494E 
- 1318      4B5F5374 
- 1318      6F7000
- 1319              	.LASF28:
- 1320 0196 50574D5F 		.ascii	"PWM_BLINK_ReadCounter\000"
- 1320      424C494E 
- 1320      4B5F5265 
- 1320      6164436F 
- 1320      756E7465 
- 1321              	.LASF11:
- 1322 01ac 666C6F61 		.ascii	"float\000"
- 1322      7400
- 1323              	.LASF22:
- 1324 01b2 636F756E 		.ascii	"counter\000"
- 1324      74657200 
- 1325              	.LASF7:
- 1326 01ba 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1326      206C6F6E 
- 1326      6720756E 
- 1326      7369676E 
- 1326      65642069 
- 1327              	.LASF1:
- 1328 01d1 756E7369 		.ascii	"unsigned char\000"
- 1328      676E6564 
- 1328      20636861 
- 1328      7200
- 1329              	.LASF39:
- 1330 01df 50574D5F 		.ascii	"PWM_BLINK_ReadCompare\000"
- 1330      424C494E 
- 1330      4B5F5265 
- 1330      6164436F 
- 1330      6D706172 
- 1331              	.LASF14:
- 1332 01f5 72656738 		.ascii	"reg8\000"
- 1332      00
- 1333              	.LASF5:
- 1334 01fa 6C6F6E67 		.ascii	"long unsigned int\000"
- 1334      20756E73 
- 1334      69676E65 
- 1334      6420696E 
- 1334      7400
- 1335              	.LASF9:
- 1336 020c 75696E74 		.ascii	"uint8\000"
- 1336      3800
- 1337              	.LASF31:
- 1338 0212 636F6E74 		.ascii	"control\000"
- 1338      726F6C00 
- 1339              	.LASF21:
- 1340 021a 50574D5F 		.ascii	"PWM_BLINK_WritePeriod\000"
+ 1318 0145 666C6F61 		.ascii	"float\000"
+ 1318      7400
+ 1319              	.LASF22:
+ 1320 014b 636F756E 		.ascii	"counter\000"
+ 1320      74657200 
+ 1321              	.LASF7:
+ 1322 0153 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1322      206C6F6E 
+ 1322      6720756E 
+ 1322      7369676E 
+ 1322      65642069 
+ 1323              	.LASF1:
+ 1324 016a 756E7369 		.ascii	"unsigned char\000"
+ 1324      676E6564 
+ 1324      20636861 
+ 1324      7200
+ 1325              	.LASF39:
+ 1326 0178 50574D5F 		.ascii	"PWM_BLINK_ReadCompare\000"
+ 1326      424C494E 
+ 1326      4B5F5265 
+ 1326      6164436F 
+ 1326      6D706172 
+ 1327              	.LASF14:
+ 1328 018e 72656738 		.ascii	"reg8\000"
+ 1328      00
+ 1329              	.LASF5:
+ 1330 0193 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1330      20756E73 
+ 1330      69676E65 
+ 1330      6420696E 
+ 1330      7400
+ 1331              	.LASF9:
+ 1332 01a5 75696E74 		.ascii	"uint8\000"
+ 1332      3800
+ 1333              	.LASF31:
+ 1334 01ab 636F6E74 		.ascii	"control\000"
+ 1334      726F6C00 
+ 1335              	.LASF21:
+ 1336 01b3 50574D5F 		.ascii	"PWM_BLINK_WritePeriod\000"
+ 1336      424C494E 
+ 1336      4B5F5772 
+ 1336      69746550 
+ 1336      6572696F 
+ 1337              	.LASF12:
+ 1338 01c9 646F7562 		.ascii	"double\000"
+ 1338      6C6500
+ 1339              	.LASF29:
+ 1340 01d0 50574D5F 		.ascii	"PWM_BLINK_ReadStatusRegister\000"
  1340      424C494E 
- 1340      4B5F5772 
- 1340      69746550 
- 1340      6572696F 
- 1341              	.LASF12:
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 42
+ 1340      4B5F5265 
+ 1340      61645374 
+ 1340      61747573 
+ 1341              	.LASF10:
+ 1342 01ed 75696E74 		.ascii	"uint16\000"
+ 1342      313600
+ 1343              	.LASF20:
+ 1344 01f4 50574D5F 		.ascii	"PWM_BLINK_WriteCounter\000"
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 42
 
 
- 1342 0230 646F7562 		.ascii	"double\000"
- 1342      6C6500
- 1343              	.LASF29:
- 1344 0237 50574D5F 		.ascii	"PWM_BLINK_ReadStatusRegister\000"
  1344      424C494E 
- 1344      4B5F5265 
- 1344      61645374 
- 1344      61747573 
- 1345              	.LASF10:
- 1346 0254 75696E74 		.ascii	"uint16\000"
- 1346      313600
- 1347              	.LASF20:
- 1348 025b 50574D5F 		.ascii	"PWM_BLINK_WriteCounter\000"
- 1348      424C494E 
- 1348      4B5F5772 
- 1348      69746543 
- 1348      6F756E74 
- 1349              	.LASF30:
- 1350 0272 50574D5F 		.ascii	"PWM_BLINK_WriteControlRegister\000"
- 1350      424C494E 
- 1350      4B5F5772 
- 1350      69746543 
- 1350      6F6E7472 
- 1351              	.LASF41:
- 1352 0291 4379456E 		.ascii	"CyEnterCriticalSection\000"
- 1352      74657243 
- 1352      72697469 
- 1352      63616C53 
- 1352      65637469 
- 1353              	.LASF8:
- 1354 02a8 756E7369 		.ascii	"unsigned int\000"
- 1354      676E6564 
- 1354      20696E74 
- 1354      00
- 1355              	.LASF42:
- 1356 02b5 43794578 		.ascii	"CyExitCriticalSection\000"
- 1356      69744372 
- 1356      69746963 
- 1356      616C5365 
- 1356      6374696F 
- 1357              	.LASF35:
- 1358 02cb 72657375 		.ascii	"result\000"
- 1358      6C7400
- 1359              	.LASF33:
- 1360 02d2 50574D5F 		.ascii	"PWM_BLINK_ClearFIFO\000"
- 1360      424C494E 
- 1360      4B5F436C 
- 1360      65617246 
- 1360      49464F00 
- 1361              	.LASF38:
- 1362 02e6 50574D5F 		.ascii	"PWM_BLINK_Start\000"
- 1362      424C494E 
- 1362      4B5F5374 
- 1362      61727400 
- 1363              	.LASF17:
- 1364 02f6 73697A65 		.ascii	"sizetype\000"
- 1364      74797065 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 43
+ 1344      4B5F5772 
+ 1344      69746543 
+ 1344      6F756E74 
+ 1345              	.LASF30:
+ 1346 020b 50574D5F 		.ascii	"PWM_BLINK_WriteControlRegister\000"
+ 1346      424C494E 
+ 1346      4B5F5772 
+ 1346      69746543 
+ 1346      6F6E7472 
+ 1347              	.LASF41:
+ 1348 022a 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1348      74657243 
+ 1348      72697469 
+ 1348      63616C53 
+ 1348      65637469 
+ 1349              	.LASF8:
+ 1350 0241 756E7369 		.ascii	"unsigned int\000"
+ 1350      676E6564 
+ 1350      20696E74 
+ 1350      00
+ 1351              	.LASF42:
+ 1352 024e 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1352      69744372 
+ 1352      69746963 
+ 1352      616C5365 
+ 1352      6374696F 
+ 1353              	.LASF35:
+ 1354 0264 72657375 		.ascii	"result\000"
+ 1354      6C7400
+ 1355              	.LASF33:
+ 1356 026b 50574D5F 		.ascii	"PWM_BLINK_ClearFIFO\000"
+ 1356      424C494E 
+ 1356      4B5F436C 
+ 1356      65617246 
+ 1356      49464F00 
+ 1357              	.LASF38:
+ 1358 027f 50574D5F 		.ascii	"PWM_BLINK_Start\000"
+ 1358      424C494E 
+ 1358      4B5F5374 
+ 1358      61727400 
+ 1359              	.LASF17:
+ 1360 028f 73697A65 		.ascii	"sizetype\000"
+ 1360      74797065 
+ 1360      00
+ 1361              	.LASF6:
+ 1362 0298 6C6F6E67 		.ascii	"long long int\000"
+ 1362      206C6F6E 
+ 1362      6720696E 
+ 1362      7400
+ 1363              	.LASF45:
+ 1364 02a6 433A5C55 		.ascii	"C:\\Users\\aless\\Documents\\PSoC_Creator\\AY1920_I"
+ 1364      73657273 
+ 1364      5C616C65 
+ 1364      73735C44 
+ 1364      6F63756D 
+ 1365 02d4 495F3032 		.ascii	"I_02_RATTI_SINATRA_QUARANTA\\AY1920_II_FINAL_PROJEC"
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 43
 
 
- 1364      00
- 1365              	.LASF6:
- 1366 02ff 6C6F6E67 		.ascii	"long long int\000"
- 1366      206C6F6E 
- 1366      6720696E 
- 1366      7400
- 1367              	.LASF27:
- 1368 030d 696E7465 		.ascii	"interruptMode\000"
- 1368      72727570 
- 1368      744D6F64 
- 1368      6500
- 1369              	.LASF46:
- 1370 031b 50574D5F 		.ascii	"PWM_BLINK_ReadControlRegister\000"
- 1370      424C494E 
- 1370      4B5F5265 
- 1370      6164436F 
- 1370      6E74726F 
- 1371              	.LASF44:
- 1372 0339 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_BLINK.c\000"
- 1372      72617465 
- 1372      645F536F 
- 1372      75726365 
- 1372      5C50536F 
- 1373              	.LASF2:
- 1374 035c 73686F72 		.ascii	"short int\000"
- 1374      7420696E 
- 1374      7400
- 1375              	.LASF36:
- 1376 0366 6374726C 		.ascii	"ctrl\000"
- 1376      00
+ 1365      5F524154 
+ 1365      54495F53 
+ 1365      494E4154 
+ 1365      52415F51 
+ 1366 0306 542E6379 		.ascii	"T.cydsn\000"
+ 1366      64736E00 
+ 1367              	.LASF46:
+ 1368 030e 50574D5F 		.ascii	"PWM_BLINK_ReadControlRegister\000"
+ 1368      424C494E 
+ 1368      4B5F5265 
+ 1368      6164436F 
+ 1368      6E74726F 
+ 1369              	.LASF44:
+ 1370 032c 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_BLINK.c\000"
+ 1370      72617465 
+ 1370      645F536F 
+ 1370      75726365 
+ 1370      5C50536F 
+ 1371              	.LASF2:
+ 1372 034f 73686F72 		.ascii	"short int\000"
+ 1372      7420696E 
+ 1372      7400
+ 1373              	.LASF36:
+ 1374 0359 6374726C 		.ascii	"ctrl\000"
+ 1374      00
+ 1375              	.LASF27:
+ 1376 035e 696E7465 		.ascii	"interruptMode\000"
+ 1376      72727570 
+ 1376      744D6F64 
+ 1376      6500
  1377              	.LASF34:
- 1378 036b 50574D5F 		.ascii	"PWM_BLINK_Init\000"
+ 1378 036c 50574D5F 		.ascii	"PWM_BLINK_Init\000"
  1378      424C494E 
  1378      4B5F496E 
  1378      697400
  1379              	.LASF4:
- 1380 037a 6C6F6E67 		.ascii	"long int\000"
+ 1380 037b 6C6F6E67 		.ascii	"long int\000"
  1380      20696E74 
  1380      00
  1381              	.LASF13:
- 1382 0383 63686172 		.ascii	"char\000"
+ 1382 0384 63686172 		.ascii	"char\000"
  1382      00
  1383              	.LASF16:
- 1384 0388 6C6F6E67 		.ascii	"long double\000"
+ 1384 0389 6C6F6E67 		.ascii	"long double\000"
  1384      20646F75 
  1384      626C6500 
  1385              	.LASF18:
- 1386 0394 50574D5F 		.ascii	"PWM_BLINK_Enable\000"
+ 1386 0395 50574D5F 		.ascii	"PWM_BLINK_Enable\000"
  1386      424C494E 
  1386      4B5F456E 
  1386      61626C65 
  1386      00
  1387              	.LASF0:
- 1388 03a5 7369676E 		.ascii	"signed char\000"
+ 1388 03a6 7369676E 		.ascii	"signed char\000"
  1388      65642063 
  1388      68617200 
  1389              	.LASF25:
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccBRx3be.s 			page 44
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccBpokgA.s 			page 44
 
 
- 1390 03b1 636F6D70 		.ascii	"compare\000"
+ 1390 03b2 636F6D70 		.ascii	"compare\000"
  1390      61726500 
  1391              	.LASF32:
- 1392 03b9 50574D5F 		.ascii	"PWM_BLINK_ReadCapture\000"
+ 1392 03ba 50574D5F 		.ascii	"PWM_BLINK_ReadCapture\000"
  1392      424C494E 
  1392      4B5F5265 
  1392      61644361 

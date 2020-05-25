@@ -11,7 +11,11 @@
 */
 #include "project.h"
 
+/* EEPROM */
 #include "25LC256.h"
+#include "LIS3DH.h"
+/* LIS3DH */
+#include "LIS3DH_Regs.h"
 
 int main(void)
 {
