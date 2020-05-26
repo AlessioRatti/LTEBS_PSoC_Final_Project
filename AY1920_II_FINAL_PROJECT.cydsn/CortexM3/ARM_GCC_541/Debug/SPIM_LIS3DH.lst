@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
   28:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     volatile uint8 SPIM_LIS3DH_rxBuffer[SPIM_LIS3DH_RX_BUFFER_SIZE];
   29:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     volatile uint8 SPIM_LIS3DH_rxBufferFull;
   30:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     volatile uint8 SPIM_LIS3DH_rxBufferRead;
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 2
 
 
   31:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     volatile uint8 SPIM_LIS3DH_rxBufferWrite;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
   85:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #if(SPIM_LIS3DH_RX_SOFTWARE_BUF_ENABLED)
   86:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_rxBufferFull  = 0u;
   87:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_rxBufferRead  = 0u;
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 3
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 3
 
 
   88:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_rxBufferWrite = 0u;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  142:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
  143:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Summary:
  144:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  Initialize and Enable the SPI Master component.
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 4
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 4
 
 
  145:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  199:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     CyExitCriticalSection(enableInterrupts);
  200:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
  201:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #if(0u != SPIM_LIS3DH_INTERNAL_CLOCK)
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 5
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 5
 
 
  202:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_IntClock_Disable();
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  231:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #endif /* (0u != SPIM_LIS3DH_INTERNAL_TX_INT_ENABLED) */
  232:Generated_Source\PSoC5/SPIM_LIS3DH.c **** }
  233:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 6
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 6
 
 
  234:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
   84              		.cfi_offset 3, -8
   85              		.cfi_offset 14, -4
  124:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_COUNTER_CONTROL_REG |= SPIM_LIS3DH_CNTR_ENABLE;
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 7
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 7
 
 
   86              		.loc 1 124 0
@@ -372,13 +372,13 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
   93 000e 1370     		strb	r3, [r2]
  126:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_RX_STATUS_ACTL_REG  |= SPIM_LIS3DH_INT_ENABLE;
   94              		.loc 1 126 0
-  95 0010 0132     		adds	r2, r2, #1
+  95 0010 0232     		adds	r2, r2, #2
   96 0012 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
   97 0014 43F01003 		orr	r3, r3, #16
   98 0018 1370     		strb	r3, [r2]
  127:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     CyExitCriticalSection(enableInterrupts);
   99              		.loc 1 127 0
- 100 001a FA32     		adds	r2, r2, #250
+ 100 001a 043A     		subs	r2, r2, #4
  101 001c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  102 001e 43F01003 		orr	r3, r3, #16
  103 0022 1370     		strb	r3, [r2]
@@ -402,7 +402,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  117              	.L10:
  118 0036 00BF     		.align	2
  119              	.L9:
- 120 0038 9C640040 		.word	1073767580
+ 120 0038 9B640040 		.word	1073767579
  121              		.cfi_endproc
  122              	.LFE1:
  123              		.size	SPIM_LIS3DH_Enable, .-SPIM_LIS3DH_Enable
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  257:Generated_Source\PSoC5/SPIM_LIS3DH.c **** }
  258:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
  259:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 8
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 8
 
 
  260:Generated_Source\PSoC5/SPIM_LIS3DH.c **** /*******************************************************************************
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  289:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Summary:
  290:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  Disable internal Rx interrupt generation.
  291:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 9
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 9
 
 
  292:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Parameters:
@@ -538,13 +538,13 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  194 0006 094A     		ldr	r2, .L19
  195 0008 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  196 000a 03F0EF03 		and	r3, r3, #239
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 10
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 10
 
 
  197 000e 1370     		strb	r3, [r2]
  198:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     CyExitCriticalSection(enableInterrupts);
  198              		.loc 1 198 0
- 199 0010 FA32     		adds	r2, r2, #250
+ 199 0010 043A     		subs	r2, r2, #4
  200 0012 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  201 0014 03F0EF03 		and	r3, r3, #239
  202 0018 1370     		strb	r3, [r2]
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  321:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Return:
  322:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  None.
  323:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 11
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 11
 
 
  324:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Theory:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  353:Generated_Source\PSoC5/SPIM_LIS3DH.c **** {
  256              		.loc 1 353 0
  257              		.cfi_startproc
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 12
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 12
 
 
  258              		@ args = 0, pretend = 0, frame = 0
@@ -673,7 +673,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  266              	.L26:
  267 0006 00BF     		.align	2
  268              	.L25:
- 269 0008 87650040 		.word	1073767815
+ 269 0008 89640040 		.word	1073767561
  270              		.cfi_endproc
  271              	.LFE9:
  272              		.size	SPIM_LIS3DH_SetRxInterruptMode, .-SPIM_LIS3DH_SetRxInterruptMode
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  385:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *******************************************************************************/
  386:Generated_Source\PSoC5/SPIM_LIS3DH.c **** uint8 SPIM_LIS3DH_ReadTxStatus(void) 
  387:Generated_Source\PSoC5/SPIM_LIS3DH.c **** {
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 13
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 13
 
 
  281              		.loc 1 387 0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  316              	.LFE10:
  317              		.size	SPIM_LIS3DH_ReadTxStatus, .-SPIM_LIS3DH_ReadTxStatus
  318              		.section	.text.SPIM_LIS3DH_ReadRxStatus,"ax",%progbits
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 14
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 14
 
 
  319              		.align	2
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  336              	.LVL16:
  444:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
  445:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         tmpStatus = SPIM_LIS3DH_GET_STATUS_RX(SPIM_LIS3DH_swStatusRx);
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 15
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 15
 
 
  337              		.loc 1 445 0
@@ -874,7 +874,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  355              	.L34:
  356              		.align	2
  357              	.L33:
- 358 0020 67650040 		.word	1073767783
+ 358 0020 69640040 		.word	1073767529
  359 0024 00000000 		.word	SPIM_LIS3DH_swStatusRx
  360              		.cfi_endproc
  361              	.LFE11:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  466:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
  467:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Parameters:
  468:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  txDataByte: The data value to send across the SPI.
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 16
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 16
 
 
  469:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  388 000c 12B1     		cbz	r2, .L43
  506:Generated_Source\PSoC5/SPIM_LIS3DH.c ****             {
  507:Generated_Source\PSoC5/SPIM_LIS3DH.c ****                 tmpTxBufferRead = (SPIM_LIS3DH_TX_BUFFER_SIZE - 1u);
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 17
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 17
 
 
  508:Generated_Source\PSoC5/SPIM_LIS3DH.c ****             }
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  426 003e DBB2     		uxtb	r3, r3
  427 0040 9A42     		cmp	r2, r3
  428 0042 07D1     		bne	.L38
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 18
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 18
 
 
  524:Generated_Source\PSoC5/SPIM_LIS3DH.c ****            (0u != (SPIM_LIS3DH_swStatusTx & SPIM_LIS3DH_STS_TX_FIFO_NOT_FULL)))
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  467 007a 0ED1     		bne	.L41
  539:Generated_Source\PSoC5/SPIM_LIS3DH.c ****             {
  540:Generated_Source\PSoC5/SPIM_LIS3DH.c ****                 SPIM_LIS3DH_txBufferRead++;
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 19
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 19
 
 
  468              		.loc 1 540 0
@@ -1138,10 +1138,10 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  509 00b8 00000000 		.word	SPIM_LIS3DH_txBufferWrite
  510 00bc 6D640040 		.word	1073767533
  511 00c0 00000000 		.word	SPIM_LIS3DH_swStatusTx
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 20
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 20
 
 
- 512 00c4 4A640040 		.word	1073767498
+ 512 00c4 4D640040 		.word	1073767501
  513 00c8 00000000 		.word	SPIM_LIS3DH_txBufferFull
  514 00cc 00000000 		.word	SPIM_LIS3DH_txBuffer
  515 00d0 8D640040 		.word	1073767565
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  593:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Side Effects:
  594:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  Will return invalid data if the FIFO is empty. The user should Call
  595:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  GetRxBufferSize() and if it returns a non-zero value then it is safe to call
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 21
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 21
 
 
  596:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  ReadByte() function.
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  560 002c DBB2     		uxtb	r3, r3
  561 002e 072B     		cmp	r3, #7
  562 0030 06D9     		bls	.L48
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 22
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 22
 
 
  617:Generated_Source\PSoC5/SPIM_LIS3DH.c ****                 {
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  595 0060 00000000 		.word	SPIM_LIS3DH_rxBuffer
  596              		.cfi_endproc
  597              	.LFE13:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 23
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 23
 
 
  598              		.size	SPIM_LIS3DH_ReadRxData, .-SPIM_LIS3DH_ReadRxData
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  617              	.LVL36:
  674:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
  675:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         if(SPIM_LIS3DH_rxBufferRead == SPIM_LIS3DH_rxBufferWrite)
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 24
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 24
 
 
  618              		.loc 1 675 0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  661              	.L54:
  662              	.LVL41:
  686:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         }
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 25
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 25
 
 
  687:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  718:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  SPIM_LIS3DH_txBufferWrite - used for the account of the bytes which
  719:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  have been written down in the TX software buffer.
  720:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  SPIM_LIS3DH_txBufferRead - used for the account of the bytes which
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 26
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 26
 
 
  721:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  have been read from the TX software buffer.
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  719 002c 1478     		ldrb	r4, [r2]	@ zero_extendqisi2
  720 002e 1C1B     		subs	r4, r3, r4
  721 0030 E4B2     		uxtb	r4, r4
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 27
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 27
 
 
  722              	.LVL45:
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  746 004a 2046     		mov	r0, r4
  747 004c 10BD     		pop	{r4, pc}
  748              	.LVL51:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 28
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 28
 
 
  749              	.L66:
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  766              		.cfi_startproc
  767              		@ args = 0, pretend = 0, frame = 0
  768              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 29
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 29
 
 
  769 0000 08B5     		push	{r3, lr}
@@ -1733,12 +1733,12 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  802              	.L72:
  803 002a 00BF     		.align	2
  804              	.L71:
- 805 002c 5A640040 		.word	1073767514
- 806 0030 67650040 		.word	1073767783
+ 805 002c 5D640040 		.word	1073767517
+ 806 0030 69640040 		.word	1073767529
  807 0034 00000000 		.word	SPIM_LIS3DH_rxBufferFull
  808 0038 00000000 		.word	SPIM_LIS3DH_rxBufferRead
  809 003c 00000000 		.word	SPIM_LIS3DH_rxBufferWrite
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 30
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 30
 
 
  810              		.cfi_endproc
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  824              		@ frame_needed = 0, uses_anonymous_args = 0
  825 0000 08B5     		push	{r3, lr}
  826              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 31
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 31
 
 
  827              		.cfi_offset 3, -8
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  857              		.loc 1 886 0
  858 002e 084A     		ldr	r2, .L75+16
  859 0030 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 32
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 32
 
 
  860 0032 03F0FB03 		and	r3, r3, #251
@@ -1872,7 +1872,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  866              	.L76:
  867 003e 00BF     		.align	2
  868              	.L75:
- 869 0040 9A640040 		.word	1073767578
+ 869 0040 9D640040 		.word	1073767581
  870 0044 00000000 		.word	SPIM_LIS3DH_txBufferFull
  871 0048 00000000 		.word	SPIM_LIS3DH_txBufferRead
  872 004c 00000000 		.word	SPIM_LIS3DH_txBufferWrite
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  916:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     * Function Name: SPIM_LIS3DH_TxDisable
  917:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     ********************************************************************************
  918:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     *
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 33
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 33
 
 
  919:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     * Summary:
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  893              		.cfi_offset 5, -12
  894              		.cfi_offset 6, -8
  895              		.cfi_offset 14, -4
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 34
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 34
 
 
  896 0002 0646     		mov	r6, r0
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  978:Generated_Source\PSoC5/SPIM_LIS3DH.c **** /*******************************************************************************
  979:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Function Name: SPIM_LIS3DH_ClearFIFO
  980:Generated_Source\PSoC5/SPIM_LIS3DH.c **** ********************************************************************************
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 35
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 35
 
 
  981:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  962 001a 42F00102 		orr	r2, r2, #1
  963 001e 1A70     		strb	r2, [r3]
 1008:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_AUX_CONTROL_DP0_REG &= ((uint8) ~SPIM_LIS3DH_TX_FIFO_CLR);
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 36
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 36
 
 
  964              		.loc 1 1008 0
@@ -2119,9 +2119,9 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  972              	.L86:
  973 002e 00BF     		.align	2
  974              	.L85:
- 975 0030 5A640040 		.word	1073767514
- 976 0034 67650040 		.word	1073767783
- 977 0038 9A640040 		.word	1073767578
+ 975 0030 5D640040 		.word	1073767517
+ 976 0034 69640040 		.word	1073767529
+ 977 0038 9D640040 		.word	1073767581
  978              		.cfi_endproc
  979              	.LFE19:
  980              		.size	SPIM_LIS3DH_ClearFIFO, .-SPIM_LIS3DH_ClearFIFO
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1007              		.loc 1 71 0
  1008 000e 0721     		movs	r1, #7
  1009 0010 0520     		movs	r0, #5
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 37
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 37
 
 
  1010 0012 FFF7FEFF 		bl	CyIntSetPriority
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1052              		.loc 1 97 0
  1053 0050 FFF7FEFF 		bl	SPIM_LIS3DH_ReadTxStatus
  1054              	.LVL73:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 38
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 38
 
 
   98:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
@@ -2231,13 +2231,13 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1060 005a 1C70     		strb	r4, [r3]
  102:Generated_Source\PSoC5/SPIM_LIS3DH.c **** }
  1061              		.loc 1 102 0
- 1062 005c FA33     		adds	r3, r3, #250
+ 1062 005c 043B     		subs	r3, r3, #4
  1063 005e 1D70     		strb	r5, [r3]
  1064 0060 38BD     		pop	{r3, r4, r5, pc}
  1065              	.L90:
  1066 0062 00BF     		.align	2
  1067              	.L89:
- 1068 0064 8C640040 		.word	1073767564
+ 1068 0064 8B640040 		.word	1073767563
  1069 0068 80E100E0 		.word	-536813184
  1070 006c 00000000 		.word	SPIM_LIS3DH_TX_ISR
  1071 0070 00000000 		.word	SPIM_LIS3DH_RX_ISR
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1103 0008 FFF7FEFF 		bl	SPIM_LIS3DH_Init
  1104              	.LVL75:
  168:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     }
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 39
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 39
 
 
  1105              		.loc 1 168 0
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1131              		@ args = 0, pretend = 0, frame = 0
  1132              		@ frame_needed = 0, uses_anonymous_args = 0
  1133 0000 08B5     		push	{r3, lr}
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 40
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 40
 
 
  1134              		.cfi_def_cfa_offset 8
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1163              		.loc 1 1067 0
  1164 0002 FFF7FEFF 		bl	SPIM_LIS3DH_DisableTxInt
  1165              	.LVL79:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 41
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 41
 
 
 1068:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_DisableRxInt();
@@ -2453,12 +2453,12 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1190 0006 1A70     		strb	r2, [r3]
 1093:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_RX_STATUS_MASK_REG  =  intSrc;
  1191              		.loc 1 1093 0
- 1192 0008 FA33     		adds	r3, r3, #250
+ 1192 0008 043B     		subs	r3, r3, #4
  1193 000a 1870     		strb	r0, [r3]
  1194 000c 7047     		bx	lr
  1195              	.L102:
  1196 000e 00BF     		.align	2
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 42
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 42
 
 
  1197              	.L101:
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
 1127:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     uint8 tmpStatus;
 1128:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
 1129:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #if(SPIM_LIS3DH_TX_SOFTWARE_BUF_ENABLED || SPIM_LIS3DH_RX_SOFTWARE_BUF_ENABLED)
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 43
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 43
 
 
 1130:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
@@ -2578,13 +2578,13 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1250 0032 2046     		mov	r0, r4
  1251 0034 10BD     		pop	{r4, pc}
  1252              	.LVL87:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 44
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 44
 
 
  1253              	.L106:
  1254 0036 00BF     		.align	2
  1255              	.L105:
- 1256 0038 67650040 		.word	1073767783
+ 1256 0038 69640040 		.word	1073767529
  1257 003c 00000000 		.word	SPIM_LIS3DH_swStatusRx
  1258 0040 6D640040 		.word	1073767533
  1259 0044 00000000 		.word	SPIM_LIS3DH_swStatusTx
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1307 0033 02       		.uleb128 0x2
  1308 0034 02       		.byte	0x2
  1309 0035 05       		.byte	0x5
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 45
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 45
 
 
  1310 0036 D4030000 		.4byte	.LASF2
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1364 009e 8E02     		.2byte	0x28e
  1365 00a0 A4000000 		.4byte	0xa4
  1366 00a4 05       		.uleb128 0x5
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 46
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 46
 
 
  1367 00a5 6B000000 		.4byte	0x6b
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1421 0121 2C000000 		.4byte	.LVL2
  1422 0125 DC060000 		.4byte	0x6dc
  1423 0129 09       		.uleb128 0x9
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 47
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 47
 
 
  1424 012a 30000000 		.4byte	.LVL3
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1478 01b3 A1020000 		.4byte	.LASF25
  1479 01b7 01       		.byte	0x1
  1480 01b8 4801     		.2byte	0x148
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 48
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 48
 
 
  1481 01ba 00000000 		.4byte	.LFB8
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1535 023a BB030000 		.4byte	.LASF30
  1536 023e 01       		.byte	0x1
  1537 023f B501     		.2byte	0x1b5
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 49
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 49
 
 
  1538 0241 6B000000 		.4byte	0x6b
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1592 02d0 DE010000 		.4byte	.LASF35
  1593 02d4 01       		.byte	0x1
  1594 02d5 5A02     		.2byte	0x25a
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 50
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 50
 
 
  1595 02d7 6B000000 		.4byte	0x6b
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1649 0368 01       		.byte	0x1
  1650 0369 D902     		.2byte	0x2d9
  1651 036b 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 51
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 51
 
 
  1652 036f 2F010000 		.4byte	.LLST9
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1706 03ff 01       		.byte	0x1
  1707 0400 C203     		.2byte	0x3c2
  1708 0402 00000000 		.4byte	.LFB18
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 52
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 52
 
 
  1709 0406 1E000000 		.4byte	.LFE18-.LFB18
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1763 048f B8050000 		.4byte	.LASF47
  1764 0493 01       		.byte	0x1
  1765 0494 3F       		.byte	0x3f
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 53
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 53
 
 
  1766 0495 00000000 		.4byte	.LFB0
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1820 04f8 00       		.byte	0
  1821 04f9 09       		.uleb128 0x9
  1822 04fa 36000000 		.4byte	.LVL72
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 54
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 54
 
 
  1823 04fe 55040000 		.4byte	0x455
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1877 058a 4E010000 		.4byte	0x14e
  1878 058e 00       		.byte	0
  1879 058f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 55
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 55
 
 
  1880 0590 70050000 		.4byte	.LASF51
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1934 060f 00000000 		.4byte	SPIM_LIS3DH_swStatusTx
  1935 0613 14       		.uleb128 0x14
  1936 0614 0E050000 		.4byte	.LASF55
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 56
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 56
 
 
  1937 0618 01       		.byte	0x1
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  1991 068a 00000000 		.4byte	SPIM_LIS3DH_rxBuffer
  1992 068e 05       		.uleb128 0x5
  1993 068f 24060000 		.4byte	0x624
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 57
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 57
 
 
  1994 0693 14       		.uleb128 0x14
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2048 0708 00       		.byte	0
  2049              		.section	.debug_abbrev,"",%progbits
  2050              	.Ldebug_abbrev0:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 58
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 58
 
 
  2051 0000 01       		.uleb128 0x1
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2105 0036 05       		.uleb128 0x5
  2106 0037 35       		.uleb128 0x35
  2107 0038 00       		.byte	0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 59
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 59
 
 
  2108 0039 49       		.uleb128 0x49
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2162 0071 00       		.byte	0
  2163 0072 03       		.uleb128 0x3
  2164 0073 0E       		.uleb128 0xe
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 60
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 60
 
 
  2165 0074 3A       		.uleb128 0x3a
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2219 00ad 19       		.uleb128 0x19
  2220 00ae 11       		.uleb128 0x11
  2221 00af 01       		.uleb128 0x1
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 61
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 61
 
 
  2222 00b0 12       		.uleb128 0x12
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2276 00e8 00       		.byte	0
  2277 00e9 03       		.uleb128 0x3
  2278 00ea 0E       		.uleb128 0xe
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 62
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 62
 
 
  2279 00eb 3A       		.uleb128 0x3a
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2333 0125 00       		.byte	0
  2334 0126 02       		.uleb128 0x2
  2335 0127 18       		.uleb128 0x18
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 63
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 63
 
 
  2336 0128 9142     		.uleb128 0x2111
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2390 015f 00       		.byte	0
  2391 0160 00       		.byte	0
  2392 0161 00       		.byte	0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 64
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 64
 
 
  2393              		.section	.debug_loc,"",%progbits
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2447 0087 36000000 		.4byte	.LVL27
  2448 008b 0100     		.2byte	0x1
  2449 008d 53       		.byte	0x53
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 65
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 65
 
 
  2450 008e 36000000 		.4byte	.LVL27
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2504 0126 54       		.byte	0x54
  2505 0127 00000000 		.4byte	0
  2506 012b 00000000 		.4byte	0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 66
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 66
 
 
  2507              	.LLST9:
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2561 01be 0A000000 		.4byte	.LVL60
  2562 01c2 12000000 		.4byte	.LVL62
  2563 01c6 0100     		.2byte	0x1
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 67
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 67
 
 
  2564 01c8 55       		.byte	0x55
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2618 0064 D4000000 		.4byte	.LFE12-.LFB12
  2619 0068 00000000 		.4byte	.LFB13
  2620 006c 64000000 		.4byte	.LFE13-.LFB13
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 68
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 68
 
 
  2621 0070 00000000 		.4byte	.LFB14
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2675 0068 00000000 		.4byte	.LFB15
  2676 006c 58000000 		.4byte	.LFE15
  2677 0070 00000000 		.4byte	.LFB16
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 69
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 69
 
 
  2678 0074 40000000 		.4byte	.LFE16
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2711      74617475 
  2711      7300
  2712              	.LASF52:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 70
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 70
 
 
  2713 0069 5350494D 		.ascii	"SPIM_LIS3DH_ReadStatus\000"
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2731      3344485F 
  2731      436C6561 
  2731      72547842 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 71
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 71
 
 
  2732              	.LASF4:
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2755 0233 5350494D 		.ascii	"SPIM_LIS3DH_PutArray\000"
  2755      5F4C4953 
  2755      3344485F 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 72
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 72
 
 
  2755      50757441 
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2777 02fd 72656733 		.ascii	"reg32\000"
  2777      3200
  2778              	.LASF17:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 73
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 73
 
 
  2779 0303 73697A65 		.ascii	"sizetype\000"
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2801 03ad 756E7369 		.ascii	"unsigned char\000"
  2801      676E6564 
  2801      20636861 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 74
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 74
 
 
  2801      7200
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2821      5F4C4953 
  2821      3344485F 
  2821      496E7443 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 75
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 75
 
 
  2821      6C6F636B 
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 1
  2841      72464946 
  2842              	.LASF47:
  2843 05b8 5350494D 		.ascii	"SPIM_LIS3DH_Init\000"
-ARM GAS  C:\Users\aless\AppData\Local\Temp\cczqPshY.s 			page 76
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cczIpvfV.s 			page 76
 
 
  2843      5F4C4953 

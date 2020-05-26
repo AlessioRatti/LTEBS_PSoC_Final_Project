@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 2
 
 
   32 0000 08B5     		push	{r3, lr}
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
   77              		.loc 1 35 0
   78              		.cfi_startproc
   79              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 3
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 3
 
 
   80              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
   49:25LC256.c     **** 	
   50:25LC256.c     **** 	/* Read 1 byte from addr */
   51:25LC256.c     **** 	SPI_Interface_Multi_RW_EEPROM(dataTX, 3, &dataRX, 1);
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 4
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 4
 
 
  121              		.loc 1 51 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  165 0014 8DF80530 		strb	r3, [sp, #5]
  166 0018 8DF80640 		strb	r4, [sp, #6]
  167 001c 8DF80750 		strb	r5, [sp, #7]
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 5
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 5
 
 
   62:25LC256.c     **** 	/* Nothing to RX... */
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
   80:25LC256.c     **** 	uint8_t dataTX[3] = {SPI_EEPROM_READ, ((addr & 0xFF00) >> 8), (addr & 0x00FF)};
  204              		.loc 1 80 0
  205 0004 0324     		movs	r4, #3
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 6
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 6
 
 
  206 0006 8DF80440 		strb	r4, [sp, #4]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  252 0008 FFF7FEFF 		bl	EEPROM_readByte
  253              	.LVL16:
  254 000c 2870     		strb	r0, [r5]
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 7
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 7
 
 
   20:25LC256.c     ****     
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  300              		.syntax unified
  301 0010 FFF7FEFF 		bl	EEPROM_writeEnable
  302              	.LVL19:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 8
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 8
 
 
   95:25LC256.c     **** 	
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  337              		.loc 1 114 0
  338              		.syntax unified
  339              	@ 114 "25LC256.c" 1
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 9
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 9
 
 
  340 0056 62B6     		CPSIE   i
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  386              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
  387              		.file 4 "SPI_Interface.h"
  388              		.file 5 "Generated_Source\\PSoC5/CyLib.h"
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 10
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 10
 
 
  389              		.section	.debug_info,"",%progbits
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  443 006e 07       		.byte	0x7
  444 006f E0010000 		.4byte	.LASF9
  445 0073 04       		.uleb128 0x4
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 11
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 11
 
 
  446 0074 04       		.byte	0x4
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  500 00e0 35       		.byte	0x35
  501 00e1 00       		.byte	0
  502 00e2 00       		.byte	0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 12
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 12
 
 
  503 00e3 08       		.uleb128 0x8
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  557 0155 0A       		.uleb128 0xa
  558 0156 1A030000 		.4byte	.LASF22
  559 015a 01       		.byte	0x1
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 13
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 13
 
 
  560 015b 2D       		.byte	0x2d
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  614 01b2 9C       		.byte	0x9c
  615 01b3 1B020000 		.4byte	0x21b
  616 01b7 09       		.uleb128 0x9
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 14
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 14
 
 
  617 01b8 50010000 		.4byte	.LASF25
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  671 0218 30       		.byte	0x30
  672 0219 00       		.byte	0
  673 021a 00       		.byte	0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 15
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 15
 
 
  674 021b 0B       		.uleb128 0xb
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  728 028d 02       		.uleb128 0x2
  729 028e 74       		.byte	0x74
  730 028f 00       		.sleb128 0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 16
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 16
 
 
  731 0290 07       		.uleb128 0x7
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  785 02f6 02       		.uleb128 0x2
  786 02f7 74       		.byte	0x74
  787 02f8 00       		.sleb128 0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 17
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 17
 
 
  788 02f9 07       		.uleb128 0x7
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  842 036e 0F       		.uleb128 0xf
  843 036f 1A000000 		.4byte	.LVL20
  844 0373 2B040000 		.4byte	0x42b
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 18
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 18
 
 
  845 0377 81030000 		.4byte	0x381
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  899 03bf 01       		.uleb128 0x1
  900 03c0 30       		.byte	0x30
  901 03c1 00       		.byte	0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 19
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 19
 
 
  902 03c2 00       		.byte	0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  956 0434 05       		.byte	0x5
  957 0435 77       		.byte	0x77
  958 0436 14       		.uleb128 0x14
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 20
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 20
 
 
  959 0437 AB020000 		.4byte	.LASF44
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  1013 0031 0B       		.uleb128 0xb
  1014 0032 03       		.uleb128 0x3
  1015 0033 08       		.uleb128 0x8
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 21
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 21
 
 
  1016 0034 00       		.byte	0
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  1070 0070 3A       		.uleb128 0x3a
  1071 0071 0B       		.uleb128 0xb
  1072 0072 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 22
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 22
 
 
  1073 0073 0B       		.uleb128 0xb
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  1127 00aa 0C       		.uleb128 0xc
  1128 00ab 21       		.uleb128 0x21
  1129 00ac 00       		.byte	0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 23
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 23
 
 
  1130 00ad 49       		.uleb128 0x49
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  1184 00e7 13       		.uleb128 0x13
  1185 00e8 2F       		.uleb128 0x2f
  1186 00e9 18       		.uleb128 0x18
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 24
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 24
 
 
  1187 00ea 00       		.byte	0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  1241 0004 20000000 		.4byte	.LVL4
  1242 0008 0100     		.2byte	0x1
  1243 000a 50       		.byte	0x50
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 25
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 25
 
 
  1244 000b 20000000 		.4byte	.LVL4
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  1298 008c 0100     		.2byte	0x1
  1299 008e 51       		.byte	0x51
  1300 008f 1A000000 		.4byte	.LVL11
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 26
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 26
 
 
  1301 0093 1F000000 		.4byte	.LVL13-1
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  1355 011c 60000000 		.4byte	.LFE7
  1356 0120 0400     		.2byte	0x4
  1357 0122 F3       		.byte	0xf3
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 27
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 27
 
 
  1358 0123 01       		.uleb128 0x1
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  1412 0004 0200     		.2byte	0x2
  1413 0006 00000000 		.4byte	.Ldebug_info0
  1414 000a 04       		.byte	0x4
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 28
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 28
 
 
  1415 000b 00       		.byte	0
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  1464      4F4D5F77 
  1464      72697465 
  1464      42797465 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 29
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 29
 
 
  1464      00
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  1488      20636861 
  1488      7200
  1489              	.LASF40:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 30
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 30
 
 
  1490 00ab 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  1510      655F5265 
  1510      61644279 
  1511              	.LASF20:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 31
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 31
 
 
  1512 01c1 45455052 		.ascii	"EEPROM_readStatus\000"
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 1
  1533              	.LASF44:
  1534 02ab 6D656D63 		.ascii	"memcpy\000"
  1534      707900
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccePM7af.s 			page 32
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccq8q7Xz.s 			page 32
 
 
  1535              	.LASF2:
