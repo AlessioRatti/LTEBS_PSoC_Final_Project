@@ -17,6 +17,9 @@
 /* LIS3DH */
 #include "LIS3DH_Regs.h"
 
+/* INTERRUPT */
+#include "InterruptRoutines.h"
+
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
