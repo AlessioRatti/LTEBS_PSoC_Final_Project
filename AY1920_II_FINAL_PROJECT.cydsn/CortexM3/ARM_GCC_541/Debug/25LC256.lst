@@ -1,0 +1,1911 @@
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"25LC256.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.EEPROM_readStatus,"ax",%progbits
+  20              		.align	2
+  21              		.global	EEPROM_readStatus
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	EEPROM_readStatus, %function
+  25              	EEPROM_readStatus:
+  26              	.LFB1:
+  27              		.file 1 "25LC256.c"
+   1:25LC256.c     **** /* ========================================
+   2:25LC256.c     ****  *
+   3:25LC256.c     ****  * Copyright YOUR COMPANY, THE YEAR
+   4:25LC256.c     ****  * All Rights Reserved
+   5:25LC256.c     ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:25LC256.c     ****  *
+   7:25LC256.c     ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:25LC256.c     ****  * WHICH IS THE PROPERTY OF your company.
+   9:25LC256.c     ****  *
+  10:25LC256.c     ****  * ========================================
+  11:25LC256.c     **** */
+  12:25LC256.c     **** 
+  13:25LC256.c     **** #include "25LC256.h"
+  14:25LC256.c     **** 
+  15:25LC256.c     **** uint8_t eeprom_Status;
+  16:25LC256.c     **** 
+  17:25LC256.c     **** void EEPROM_loadSettings(uint8_t* config_reg, uint16_t* index_eeprom) {
+  18:25LC256.c     ****     
+  19:25LC256.c     ****     *config_reg = EEPROM_readByte(0x0002);
+  20:25LC256.c     ****     EEPROM_readPage(0x0000, (uint8_t*) index_eeprom, 2);
+  21:25LC256.c     ****     
+  22:25LC256.c     **** }
+  23:25LC256.c     **** 
+  24:25LC256.c     **** /** ====== Helper Functions ====== **/
+  25:25LC256.c     **** 
+  26:25LC256.c     **** uint8_t EEPROM_readStatus() {
+  28              		.loc 1 26 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 2
+
+
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  27:25LC256.c     **** 	return SPI_Interface_ReadByte_EEPROM(SPI_EEPROM_RDSR);
+  36              		.loc 1 27 0
+  37 0002 0520     		movs	r0, #5
+  38 0004 FFF7FEFF 		bl	SPI_Interface_ReadByte_EEPROM
+  39              	.LVL0:
+  28:25LC256.c     **** }
+  40              		.loc 1 28 0
+  41 0008 08BD     		pop	{r3, pc}
+  42              		.cfi_endproc
+  43              	.LFE1:
+  44              		.size	EEPROM_readStatus, .-EEPROM_readStatus
+  45 000a 00BF     		.section	.text.EEPROM_writeEnable,"ax",%progbits
+  46              		.align	2
+  47              		.global	EEPROM_writeEnable
+  48              		.thumb
+  49              		.thumb_func
+  50              		.type	EEPROM_writeEnable, %function
+  51              	EEPROM_writeEnable:
+  52              	.LFB2:
+  29:25LC256.c     **** 
+  30:25LC256.c     **** void EEPROM_writeEnable() {
+  53              		.loc 1 30 0
+  54              		.cfi_startproc
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57 0000 08B5     		push	{r3, lr}
+  58              		.cfi_def_cfa_offset 8
+  59              		.cfi_offset 3, -8
+  60              		.cfi_offset 14, -4
+  31:25LC256.c     **** 	/* Send 1-byte Instruction */
+  32:25LC256.c     **** 	SPI_Interface_tradeByte_EEPROM(SPI_EEPROM_WREN);
+  61              		.loc 1 32 0
+  62 0002 0620     		movs	r0, #6
+  63 0004 FFF7FEFF 		bl	SPI_Interface_tradeByte_EEPROM
+  64              	.LVL1:
+  65 0008 08BD     		pop	{r3, pc}
+  66              		.cfi_endproc
+  67              	.LFE2:
+  68              		.size	EEPROM_writeEnable, .-EEPROM_writeEnable
+  69 000a 00BF     		.section	.text.EEPROM_writeDisable,"ax",%progbits
+  70              		.align	2
+  71              		.global	EEPROM_writeDisable
+  72              		.thumb
+  73              		.thumb_func
+  74              		.type	EEPROM_writeDisable, %function
+  75              	EEPROM_writeDisable:
+  76              	.LFB3:
+  33:25LC256.c     **** }
+  34:25LC256.c     **** 
+  35:25LC256.c     **** void EEPROM_writeDisable() {
+  77              		.loc 1 35 0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 3
+
+
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81 0000 08B5     		push	{r3, lr}
+  82              		.cfi_def_cfa_offset 8
+  83              		.cfi_offset 3, -8
+  84              		.cfi_offset 14, -4
+  36:25LC256.c     **** 	/* Send 1-byte Instruction */
+  37:25LC256.c     **** 	SPI_Interface_tradeByte_EEPROM(SPI_EEPROM_WRDI);
+  85              		.loc 1 37 0
+  86 0002 0420     		movs	r0, #4
+  87 0004 FFF7FEFF 		bl	SPI_Interface_tradeByte_EEPROM
+  88              	.LVL2:
+  89 0008 08BD     		pop	{r3, pc}
+  90              		.cfi_endproc
+  91              	.LFE3:
+  92              		.size	EEPROM_writeDisable, .-EEPROM_writeDisable
+  93 000a 00BF     		.section	.text.EEPROM_readByte,"ax",%progbits
+  94              		.align	2
+  95              		.global	EEPROM_readByte
+  96              		.thumb
+  97              		.thumb_func
+  98              		.type	EEPROM_readByte, %function
+  99              	EEPROM_readByte:
+ 100              	.LFB4:
+  38:25LC256.c     **** }
+  39:25LC256.c     **** 
+  40:25LC256.c     **** /** ====== User-level Functions ====== **/
+  41:25LC256.c     **** 
+  42:25LC256.c     **** uint8_t EEPROM_readByte(uint16_t addr) {
+ 101              		.loc 1 42 0
+ 102              		.cfi_startproc
+ 103              		@ args = 0, pretend = 0, frame = 8
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105              	.LVL3:
+ 106 0000 00B5     		push	{lr}
+ 107              		.cfi_def_cfa_offset 4
+ 108              		.cfi_offset 14, -4
+ 109 0002 83B0     		sub	sp, sp, #12
+ 110              		.cfi_def_cfa_offset 16
+  43:25LC256.c     ****     
+  44:25LC256.c     **** 	/* Prepare the TX data packet: instruction + address */
+  45:25LC256.c     **** 	uint8_t dataTX[3] = {SPI_EEPROM_READ, ((addr & 0xFF00) >> 8), (addr & 0x00FF)};
+ 111              		.loc 1 45 0
+ 112 0004 0321     		movs	r1, #3
+ 113 0006 8DF80410 		strb	r1, [sp, #4]
+ 114 000a 030A     		lsrs	r3, r0, #8
+ 115 000c 8DF80530 		strb	r3, [sp, #5]
+ 116 0010 8DF80600 		strb	r0, [sp, #6]
+  46:25LC256.c     **** 	
+  47:25LC256.c     **** 	/* Prepare the RX byte */
+  48:25LC256.c     **** 	uint8_t dataRX = 0;
+ 117              		.loc 1 48 0
+ 118 0014 02AA     		add	r2, sp, #8
+ 119 0016 0023     		movs	r3, #0
+ 120 0018 02F8053D 		strb	r3, [r2, #-5]!
+  49:25LC256.c     **** 	
+  50:25LC256.c     **** 	/* Read 1 byte from addr */
+  51:25LC256.c     **** 	SPI_Interface_Multi_RW_EEPROM(dataTX, 3, &dataRX, 1);
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 4
+
+
+ 121              		.loc 1 51 0
+ 122 001c 0123     		movs	r3, #1
+ 123 001e 01A8     		add	r0, sp, #4
+ 124              	.LVL4:
+ 125 0020 FFF7FEFF 		bl	SPI_Interface_Multi_RW_EEPROM
+ 126              	.LVL5:
+  52:25LC256.c     **** 	
+  53:25LC256.c     **** 	return dataRX;
+  54:25LC256.c     **** }
+ 127              		.loc 1 54 0
+ 128 0024 9DF80300 		ldrb	r0, [sp, #3]	@ zero_extendqisi2
+ 129 0028 03B0     		add	sp, sp, #12
+ 130              		.cfi_def_cfa_offset 4
+ 131              		@ sp needed
+ 132 002a 5DF804FB 		ldr	pc, [sp], #4
+ 133              		.cfi_endproc
+ 134              	.LFE4:
+ 135              		.size	EEPROM_readByte, .-EEPROM_readByte
+ 136 002e 00BF     		.section	.text.EEPROM_writeByte,"ax",%progbits
+ 137              		.align	2
+ 138              		.global	EEPROM_writeByte
+ 139              		.thumb
+ 140              		.thumb_func
+ 141              		.type	EEPROM_writeByte, %function
+ 142              	EEPROM_writeByte:
+ 143              	.LFB5:
+  55:25LC256.c     **** 
+  56:25LC256.c     **** void EEPROM_writeByte(uint16_t addr, uint8_t dataByte) {
+ 144              		.loc 1 56 0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 8
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              	.LVL6:
+ 149 0000 30B5     		push	{r4, r5, lr}
+ 150              		.cfi_def_cfa_offset 12
+ 151              		.cfi_offset 4, -12
+ 152              		.cfi_offset 5, -8
+ 153              		.cfi_offset 14, -4
+ 154 0002 83B0     		sub	sp, sp, #12
+ 155              		.cfi_def_cfa_offset 24
+ 156 0004 0446     		mov	r4, r0
+ 157 0006 0D46     		mov	r5, r1
+  57:25LC256.c     ****     /* Enable WRITE operations */
+  58:25LC256.c     ****     EEPROM_writeEnable();
+ 158              		.loc 1 58 0
+ 159 0008 FFF7FEFF 		bl	EEPROM_writeEnable
+ 160              	.LVL7:
+  59:25LC256.c     **** 	
+  60:25LC256.c     **** 	/* Prepare the TX packet */
+  61:25LC256.c     ****     uint8_t dataTX[4] = {SPI_EEPROM_WRITE, ((addr & 0xFF00) >> 8), (addr & 0x00FF), dataByte};
+ 161              		.loc 1 61 0
+ 162 000c 0223     		movs	r3, #2
+ 163 000e 8DF80430 		strb	r3, [sp, #4]
+ 164 0012 230A     		lsrs	r3, r4, #8
+ 165 0014 8DF80530 		strb	r3, [sp, #5]
+ 166 0018 8DF80640 		strb	r4, [sp, #6]
+ 167 001c 8DF80750 		strb	r5, [sp, #7]
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 5
+
+
+  62:25LC256.c     **** 	/* Nothing to RX... */
+  63:25LC256.c     **** 	uint8_t temp = 0;
+ 168              		.loc 1 63 0
+ 169 0020 0023     		movs	r3, #0
+ 170 0022 02AA     		add	r2, sp, #8
+ 171 0024 02F8053D 		strb	r3, [r2, #-5]!
+  64:25LC256.c     **** 	
+  65:25LC256.c     **** 	/* Write 1 byte to addr */
+  66:25LC256.c     **** 	SPI_Interface_Multi_RW_EEPROM(dataTX, 4, &temp, 0);
+ 172              		.loc 1 66 0
+ 173 0028 0421     		movs	r1, #4
+ 174 002a 0DEB0100 		add	r0, sp, r1
+ 175 002e FFF7FEFF 		bl	SPI_Interface_Multi_RW_EEPROM
+ 176              	.LVL8:
+  67:25LC256.c     ****     
+  68:25LC256.c     ****     /* Disable WRITE operations */
+  69:25LC256.c     ****     //EEPROM_writeDisable();
+  70:25LC256.c     ****     
+  71:25LC256.c     ****     // Wait for write complete
+  72:25LC256.c     ****     //EEPROM_waitForWriteComplete();
+  73:25LC256.c     **** 	
+  74:25LC256.c     **** }
+ 177              		.loc 1 74 0
+ 178 0032 03B0     		add	sp, sp, #12
+ 179              		.cfi_def_cfa_offset 12
+ 180              		@ sp needed
+ 181 0034 30BD     		pop	{r4, r5, pc}
+ 182              		.cfi_endproc
+ 183              	.LFE5:
+ 184              		.size	EEPROM_writeByte, .-EEPROM_writeByte
+ 185 0036 00BF     		.section	.text.EEPROM_readPage,"ax",%progbits
+ 186              		.align	2
+ 187              		.global	EEPROM_readPage
+ 188              		.thumb
+ 189              		.thumb_func
+ 190              		.type	EEPROM_readPage, %function
+ 191              	EEPROM_readPage:
+ 192              	.LFB6:
+  75:25LC256.c     **** 
+  76:25LC256.c     **** void EEPROM_readPage(uint16_t addr, uint8_t* dataRX, uint8_t nBytes) {
+ 193              		.loc 1 76 0
+ 194              		.cfi_startproc
+ 195              		@ args = 0, pretend = 0, frame = 8
+ 196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197              	.LVL9:
+ 198 0000 10B5     		push	{r4, lr}
+ 199              		.cfi_def_cfa_offset 8
+ 200              		.cfi_offset 4, -8
+ 201              		.cfi_offset 14, -4
+ 202 0002 82B0     		sub	sp, sp, #8
+ 203              		.cfi_def_cfa_offset 16
+  77:25LC256.c     ****     
+  78:25LC256.c     ****     //CyGlobalIntDisable;
+  79:25LC256.c     **** 	/* Prepare the TX data packet: instruction + address */
+  80:25LC256.c     **** 	uint8_t dataTX[3] = {SPI_EEPROM_READ, ((addr & 0xFF00) >> 8), (addr & 0x00FF)};
+ 204              		.loc 1 80 0
+ 205 0004 0324     		movs	r4, #3
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 6
+
+
+ 206 0006 8DF80440 		strb	r4, [sp, #4]
+ 207 000a 030A     		lsrs	r3, r0, #8
+ 208 000c 8DF80530 		strb	r3, [sp, #5]
+ 209 0010 8DF80600 		strb	r0, [sp, #6]
+  81:25LC256.c     **** 	
+  82:25LC256.c     **** 	/* Read the nBytes */
+  83:25LC256.c     **** 	SPI_Interface_Multi_RW_EEPROM(dataTX, 3, dataRX, nBytes);
+ 210              		.loc 1 83 0
+ 211 0014 1346     		mov	r3, r2
+ 212 0016 0A46     		mov	r2, r1
+ 213              	.LVL10:
+ 214 0018 2146     		mov	r1, r4
+ 215              	.LVL11:
+ 216 001a 01A8     		add	r0, sp, #4
+ 217              	.LVL12:
+ 218 001c FFF7FEFF 		bl	SPI_Interface_Multi_RW_EEPROM
+ 219              	.LVL13:
+  84:25LC256.c     ****     
+  85:25LC256.c     ****     //CyGlobalIntEnable;
+  86:25LC256.c     **** }
+ 220              		.loc 1 86 0
+ 221 0020 02B0     		add	sp, sp, #8
+ 222              		.cfi_def_cfa_offset 8
+ 223              		@ sp needed
+ 224 0022 10BD     		pop	{r4, pc}
+ 225              		.cfi_endproc
+ 226              	.LFE6:
+ 227              		.size	EEPROM_readPage, .-EEPROM_readPage
+ 228              		.section	.text.EEPROM_loadSettings,"ax",%progbits
+ 229              		.align	2
+ 230              		.global	EEPROM_loadSettings
+ 231              		.thumb
+ 232              		.thumb_func
+ 233              		.type	EEPROM_loadSettings, %function
+ 234              	EEPROM_loadSettings:
+ 235              	.LFB0:
+  17:25LC256.c     ****     
+ 236              		.loc 1 17 0
+ 237              		.cfi_startproc
+ 238              		@ args = 0, pretend = 0, frame = 0
+ 239              		@ frame_needed = 0, uses_anonymous_args = 0
+ 240              	.LVL14:
+ 241 0000 38B5     		push	{r3, r4, r5, lr}
+ 242              		.cfi_def_cfa_offset 16
+ 243              		.cfi_offset 3, -16
+ 244              		.cfi_offset 4, -12
+ 245              		.cfi_offset 5, -8
+ 246              		.cfi_offset 14, -4
+ 247 0002 0546     		mov	r5, r0
+ 248 0004 0C46     		mov	r4, r1
+  19:25LC256.c     ****     EEPROM_readPage(0x0000, (uint8_t*) index_eeprom, 2);
+ 249              		.loc 1 19 0
+ 250 0006 0220     		movs	r0, #2
+ 251              	.LVL15:
+ 252 0008 FFF7FEFF 		bl	EEPROM_readByte
+ 253              	.LVL16:
+ 254 000c 2870     		strb	r0, [r5]
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 7
+
+
+  20:25LC256.c     ****     
+ 255              		.loc 1 20 0
+ 256 000e 0222     		movs	r2, #2
+ 257 0010 2146     		mov	r1, r4
+ 258 0012 0020     		movs	r0, #0
+ 259 0014 FFF7FEFF 		bl	EEPROM_readPage
+ 260              	.LVL17:
+ 261 0018 38BD     		pop	{r3, r4, r5, pc}
+ 262              		.cfi_endproc
+ 263              	.LFE0:
+ 264              		.size	EEPROM_loadSettings, .-EEPROM_loadSettings
+ 265 001a 00BF     		.section	.text.EEPROM_writePage,"ax",%progbits
+ 266              		.align	2
+ 267              		.global	EEPROM_writePage
+ 268              		.thumb
+ 269              		.thumb_func
+ 270              		.type	EEPROM_writePage, %function
+ 271              	EEPROM_writePage:
+ 272              	.LFB7:
+  87:25LC256.c     **** 
+  88:25LC256.c     **** 
+  89:25LC256.c     **** void EEPROM_writePage(uint16_t addr, uint8_t* data, uint8_t nBytes) {
+ 273              		.loc 1 89 0
+ 274              		.cfi_startproc
+ 275              		@ args = 0, pretend = 0, frame = 8
+ 276              		@ frame_needed = 1, uses_anonymous_args = 0
+ 277              	.LVL18:
+ 278 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 279              		.cfi_def_cfa_offset 24
+ 280              		.cfi_offset 4, -24
+ 281              		.cfi_offset 5, -20
+ 282              		.cfi_offset 6, -16
+ 283              		.cfi_offset 7, -12
+ 284              		.cfi_offset 8, -8
+ 285              		.cfi_offset 14, -4
+ 286 0004 82B0     		sub	sp, sp, #8
+ 287              		.cfi_def_cfa_offset 32
+ 288 0006 00AF     		add	r7, sp, #0
+ 289              		.cfi_def_cfa_register 7
+ 290 0008 0546     		mov	r5, r0
+ 291 000a 8846     		mov	r8, r1
+ 292 000c 1446     		mov	r4, r2
+  90:25LC256.c     **** 	
+  91:25LC256.c     ****     CyGlobalIntDisable;
+ 293              		.loc 1 91 0
+ 294              		.syntax unified
+ 295              	@ 91 "25LC256.c" 1
+ 296 000e 72B6     		CPSID   i
+ 297              	@ 0 "" 2
+  92:25LC256.c     ****     
+  93:25LC256.c     ****     /* Enable WRITE operations */
+  94:25LC256.c     ****     EEPROM_writeEnable();
+ 298              		.loc 1 94 0
+ 299              		.thumb
+ 300              		.syntax unified
+ 301 0010 FFF7FEFF 		bl	EEPROM_writeEnable
+ 302              	.LVL19:
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 8
+
+
+  95:25LC256.c     **** 	
+  96:25LC256.c     ****     CyDelayUs(1);
+ 303              		.loc 1 96 0
+ 304 0014 0120     		movs	r0, #1
+ 305 0016 FFF7FEFF 		bl	CyDelayUs
+ 306              	.LVL20:
+  97:25LC256.c     ****     
+  98:25LC256.c     **** 	/* Prepare the TX packet of size nBytes+3 
+  99:25LC256.c     ****        [ Write Instruction - Address MSB - Address LSB - +++data+++ ]
+ 100:25LC256.c     ****     */
+ 101:25LC256.c     ****     
+ 102:25LC256.c     **** 	uint8_t dataTX[3+nBytes];
+ 307              		.loc 1 102 0
+ 308 001a E61C     		adds	r6, r4, #3
+ 309              	.LVL21:
+ 310 001c 04F10A03 		add	r3, r4, #10
+ 311 0020 23F00703 		bic	r3, r3, #7
+ 312 0024 ADEB030D 		sub	sp, sp, r3
+ 313              	.LVL22:
+ 103:25LC256.c     ****     dataTX[0] = SPI_EEPROM_WRITE;
+ 314              		.loc 1 103 0
+ 315 0028 0223     		movs	r3, #2
+ 316 002a 8DF80030 		strb	r3, [sp]
+ 104:25LC256.c     ****     dataTX[1] = (addr & 0xFF00) >> 8;
+ 317              		.loc 1 104 0
+ 318 002e 2B0A     		lsrs	r3, r5, #8
+ 319 0030 8DF80130 		strb	r3, [sp, #1]
+ 105:25LC256.c     ****     dataTX[2] = addr & 0x00FF;
+ 320              		.loc 1 105 0
+ 321 0034 8DF80250 		strb	r5, [sp, #2]
+ 106:25LC256.c     ****     /* Copy the input data in the memory */
+ 107:25LC256.c     **** 	memcpy(&dataTX[3], data, nBytes);
+ 322              		.loc 1 107 0
+ 323 0038 2246     		mov	r2, r4
+ 324 003a 4146     		mov	r1, r8
+ 325 003c 0DF10300 		add	r0, sp, #3
+ 326 0040 FFF7FEFF 		bl	memcpy
+ 327              	.LVL23:
+ 108:25LC256.c     **** 	
+ 109:25LC256.c     **** 	/* Nothing to RX: point to a dummy variable */
+ 110:25LC256.c     **** 	uint8_t temp = 0;
+ 328              		.loc 1 110 0
+ 329 0044 0023     		movs	r3, #0
+ 330 0046 07F10802 		add	r2, r7, #8
+ 331 004a 02F8013D 		strb	r3, [r2, #-1]!
+ 111:25LC256.c     **** 	
+ 112:25LC256.c     **** 	SPI_Interface_Multi_RW_EEPROM(dataTX, 3+nBytes, &temp, 0);
+ 332              		.loc 1 112 0
+ 333 004e F1B2     		uxtb	r1, r6
+ 334 0050 6846     		mov	r0, sp
+ 335 0052 FFF7FEFF 		bl	SPI_Interface_Multi_RW_EEPROM
+ 336              	.LVL24:
+ 113:25LC256.c     ****     
+ 114:25LC256.c     ****     CyGlobalIntEnable;
+ 337              		.loc 1 114 0
+ 338              		.syntax unified
+ 339              	@ 114 "25LC256.c" 1
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 9
+
+
+ 340 0056 62B6     		CPSIE   i
+ 341              	@ 0 "" 2
+ 115:25LC256.c     **** 	
+ 116:25LC256.c     **** }
+ 342              		.loc 1 116 0
+ 343              		.thumb
+ 344              		.syntax unified
+ 345 0058 0837     		adds	r7, r7, #8
+ 346              		.cfi_def_cfa_offset 24
+ 347 005a BD46     		mov	sp, r7
+ 348              		.cfi_def_cfa_register 13
+ 349              	.LVL25:
+ 350              		@ sp needed
+ 351 005c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 352              		.cfi_endproc
+ 353              	.LFE7:
+ 354              		.size	EEPROM_writePage, .-EEPROM_writePage
+ 355              		.section	.text.EEPROM_waitForWriteComplete,"ax",%progbits
+ 356              		.align	2
+ 357              		.global	EEPROM_waitForWriteComplete
+ 358              		.thumb
+ 359              		.thumb_func
+ 360              		.type	EEPROM_waitForWriteComplete, %function
+ 361              	EEPROM_waitForWriteComplete:
+ 362              	.LFB8:
+ 117:25LC256.c     **** 
+ 118:25LC256.c     **** void EEPROM_waitForWriteComplete() {
+ 363              		.loc 1 118 0
+ 364              		.cfi_startproc
+ 365              		@ args = 0, pretend = 0, frame = 0
+ 366              		@ frame_needed = 0, uses_anonymous_args = 0
+ 367 0000 08B5     		push	{r3, lr}
+ 368              		.cfi_def_cfa_offset 8
+ 369              		.cfi_offset 3, -8
+ 370              		.cfi_offset 14, -4
+ 371              	.L18:
+ 119:25LC256.c     ****     
+ 120:25LC256.c     ****     while( EEPROM_readStatus() & SPI_EEPROM_WRITE_IN_PROGRESS );
+ 372              		.loc 1 120 0 discriminator 1
+ 373 0002 FFF7FEFF 		bl	EEPROM_readStatus
+ 374              	.LVL26:
+ 375 0006 10F0010F 		tst	r0, #1
+ 376 000a FAD1     		bne	.L18
+ 121:25LC256.c     ****     
+ 122:25LC256.c     **** }
+ 377              		.loc 1 122 0
+ 378 000c 08BD     		pop	{r3, pc}
+ 379              		.cfi_endproc
+ 380              	.LFE8:
+ 381              		.size	EEPROM_waitForWriteComplete, .-EEPROM_waitForWriteComplete
+ 382              		.comm	eeprom_Status,1,1
+ 383 000e 00BF     		.text
+ 384              	.Letext0:
+ 385              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 386              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 387              		.file 4 "SPI_Interface.h"
+ 388              		.file 5 "Generated_Source\\PSoC5/CyLib.h"
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 10
+
+
+ 389              		.section	.debug_info,"",%progbits
+ 390              	.Ldebug_info0:
+ 391 0000 3C040000 		.4byte	0x43c
+ 392 0004 0400     		.2byte	0x4
+ 393 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 394 000a 04       		.byte	0x4
+ 395 000b 01       		.uleb128 0x1
+ 396 000c 12010000 		.4byte	.LASF40
+ 397 0010 0C       		.byte	0xc
+ 398 0011 B0000000 		.4byte	.LASF41
+ 399 0015 3C000000 		.4byte	.LASF42
+ 400 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 401 001d 00000000 		.4byte	0
+ 402 0021 00000000 		.4byte	.Ldebug_line0
+ 403 0025 02       		.uleb128 0x2
+ 404 0026 01       		.byte	0x1
+ 405 0027 06       		.byte	0x6
+ 406 0028 0D030000 		.4byte	.LASF0
+ 407 002c 03       		.uleb128 0x3
+ 408 002d 1C000000 		.4byte	.LASF3
+ 409 0031 02       		.byte	0x2
+ 410 0032 1D       		.byte	0x1d
+ 411 0033 37000000 		.4byte	0x37
+ 412 0037 02       		.uleb128 0x2
+ 413 0038 01       		.byte	0x1
+ 414 0039 08       		.byte	0x8
+ 415 003a 04010000 		.4byte	.LASF1
+ 416 003e 02       		.uleb128 0x2
+ 417 003f 02       		.byte	0x2
+ 418 0040 05       		.byte	0x5
+ 419 0041 B6020000 		.4byte	.LASF2
+ 420 0045 03       		.uleb128 0x3
+ 421 0046 F8010000 		.4byte	.LASF4
+ 422 004a 02       		.byte	0x2
+ 423 004b 2B       		.byte	0x2b
+ 424 004c 50000000 		.4byte	0x50
+ 425 0050 02       		.uleb128 0x2
+ 426 0051 02       		.byte	0x2
+ 427 0052 07       		.byte	0x7
+ 428 0053 BA000000 		.4byte	.LASF5
+ 429 0057 02       		.uleb128 0x2
+ 430 0058 04       		.byte	0x4
+ 431 0059 05       		.byte	0x5
+ 432 005a F8020000 		.4byte	.LASF6
+ 433 005e 02       		.uleb128 0x2
+ 434 005f 04       		.byte	0x4
+ 435 0060 07       		.byte	0x7
+ 436 0061 A0010000 		.4byte	.LASF7
+ 437 0065 02       		.uleb128 0x2
+ 438 0066 08       		.byte	0x8
+ 439 0067 05       		.byte	0x5
+ 440 0068 92020000 		.4byte	.LASF8
+ 441 006c 02       		.uleb128 0x2
+ 442 006d 08       		.byte	0x8
+ 443 006e 07       		.byte	0x7
+ 444 006f 47020000 		.4byte	.LASF9
+ 445 0073 04       		.uleb128 0x4
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 11
+
+
+ 446 0074 04       		.byte	0x4
+ 447 0075 05       		.byte	0x5
+ 448 0076 696E7400 		.ascii	"int\000"
+ 449 007a 02       		.uleb128 0x2
+ 450 007b 04       		.byte	0x4
+ 451 007c 07       		.byte	0x7
+ 452 007d 3A020000 		.4byte	.LASF10
+ 453 0081 03       		.uleb128 0x3
+ 454 0082 5E020000 		.4byte	.LASF11
+ 455 0086 03       		.byte	0x3
+ 456 0087 18       		.byte	0x18
+ 457 0088 2C000000 		.4byte	0x2c
+ 458 008c 03       		.uleb128 0x3
+ 459 008d EF020000 		.4byte	.LASF12
+ 460 0091 03       		.byte	0x3
+ 461 0092 24       		.byte	0x24
+ 462 0093 45000000 		.4byte	0x45
+ 463 0097 02       		.uleb128 0x2
+ 464 0098 04       		.byte	0x4
+ 465 0099 04       		.byte	0x4
+ 466 009a 36000000 		.4byte	.LASF13
+ 467 009e 02       		.uleb128 0x2
+ 468 009f 08       		.byte	0x8
+ 469 00a0 04       		.byte	0x4
+ 470 00a1 03020000 		.4byte	.LASF14
+ 471 00a5 02       		.uleb128 0x2
+ 472 00a6 01       		.byte	0x1
+ 473 00a7 08       		.byte	0x8
+ 474 00a8 AA020000 		.4byte	.LASF15
+ 475 00ac 02       		.uleb128 0x2
+ 476 00ad 08       		.byte	0x8
+ 477 00ae 04       		.byte	0x4
+ 478 00af 01030000 		.4byte	.LASF16
+ 479 00b3 02       		.uleb128 0x2
+ 480 00b4 04       		.byte	0x4
+ 481 00b5 07       		.byte	0x7
+ 482 00b6 89020000 		.4byte	.LASF17
+ 483 00ba 05       		.uleb128 0x5
+ 484 00bb 28020000 		.4byte	.LASF20
+ 485 00bf 01       		.byte	0x1
+ 486 00c0 1A       		.byte	0x1a
+ 487 00c1 81000000 		.4byte	0x81
+ 488 00c5 00000000 		.4byte	.LFB1
+ 489 00c9 0A000000 		.4byte	.LFE1-.LFB1
+ 490 00cd 01       		.uleb128 0x1
+ 491 00ce 9C       		.byte	0x9c
+ 492 00cf E3000000 		.4byte	0xe3
+ 493 00d3 06       		.uleb128 0x6
+ 494 00d4 08000000 		.4byte	.LVL0
+ 495 00d8 0A040000 		.4byte	0x40a
+ 496 00dc 07       		.uleb128 0x7
+ 497 00dd 01       		.uleb128 0x1
+ 498 00de 50       		.byte	0x50
+ 499 00df 01       		.uleb128 0x1
+ 500 00e0 35       		.byte	0x35
+ 501 00e1 00       		.byte	0
+ 502 00e2 00       		.byte	0
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 12
+
+
+ 503 00e3 08       		.uleb128 0x8
+ 504 00e4 27030000 		.4byte	.LASF18
+ 505 00e8 01       		.byte	0x1
+ 506 00e9 1E       		.byte	0x1e
+ 507 00ea 00000000 		.4byte	.LFB2
+ 508 00ee 0A000000 		.4byte	.LFE2-.LFB2
+ 509 00f2 01       		.uleb128 0x1
+ 510 00f3 9C       		.byte	0x9c
+ 511 00f4 08010000 		.4byte	0x108
+ 512 00f8 06       		.uleb128 0x6
+ 513 00f9 08000000 		.4byte	.LVL1
+ 514 00fd 15040000 		.4byte	0x415
+ 515 0101 07       		.uleb128 0x7
+ 516 0102 01       		.uleb128 0x1
+ 517 0103 50       		.byte	0x50
+ 518 0104 01       		.uleb128 0x1
+ 519 0105 36       		.byte	0x36
+ 520 0106 00       		.byte	0
+ 521 0107 00       		.byte	0
+ 522 0108 08       		.uleb128 0x8
+ 523 0109 DD000000 		.4byte	.LASF19
+ 524 010d 01       		.byte	0x1
+ 525 010e 23       		.byte	0x23
+ 526 010f 00000000 		.4byte	.LFB3
+ 527 0113 0A000000 		.4byte	.LFE3-.LFB3
+ 528 0117 01       		.uleb128 0x1
+ 529 0118 9C       		.byte	0x9c
+ 530 0119 2D010000 		.4byte	0x12d
+ 531 011d 06       		.uleb128 0x6
+ 532 011e 08000000 		.4byte	.LVL2
+ 533 0122 15040000 		.4byte	0x415
+ 534 0126 07       		.uleb128 0x7
+ 535 0127 01       		.uleb128 0x1
+ 536 0128 50       		.byte	0x50
+ 537 0129 01       		.uleb128 0x1
+ 538 012a 34       		.byte	0x34
+ 539 012b 00       		.byte	0
+ 540 012c 00       		.byte	0
+ 541 012d 05       		.uleb128 0x5
+ 542 012e 26000000 		.4byte	.LASF21
+ 543 0132 01       		.byte	0x1
+ 544 0133 2A       		.byte	0x2a
+ 545 0134 81000000 		.4byte	0x81
+ 546 0138 00000000 		.4byte	.LFB4
+ 547 013c 2E000000 		.4byte	.LFE4-.LFB4
+ 548 0140 01       		.uleb128 0x1
+ 549 0141 9C       		.byte	0x9c
+ 550 0142 92010000 		.4byte	0x192
+ 551 0146 09       		.uleb128 0x9
+ 552 0147 B7010000 		.4byte	.LASF25
+ 553 014b 01       		.byte	0x1
+ 554 014c 2A       		.byte	0x2a
+ 555 014d 8C000000 		.4byte	0x8c
+ 556 0151 00000000 		.4byte	.LLST0
+ 557 0155 0A       		.uleb128 0xa
+ 558 0156 19030000 		.4byte	.LASF22
+ 559 015a 01       		.byte	0x1
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 13
+
+
+ 560 015b 2D       		.byte	0x2d
+ 561 015c 92010000 		.4byte	0x192
+ 562 0160 02       		.uleb128 0x2
+ 563 0161 91       		.byte	0x91
+ 564 0162 74       		.sleb128 -12
+ 565 0163 0A       		.uleb128 0xa
+ 566 0164 66020000 		.4byte	.LASF23
+ 567 0168 01       		.byte	0x1
+ 568 0169 30       		.byte	0x30
+ 569 016a 81000000 		.4byte	0x81
+ 570 016e 02       		.uleb128 0x2
+ 571 016f 91       		.byte	0x91
+ 572 0170 73       		.sleb128 -13
+ 573 0171 06       		.uleb128 0x6
+ 574 0172 24000000 		.4byte	.LVL5
+ 575 0176 20040000 		.4byte	0x420
+ 576 017a 07       		.uleb128 0x7
+ 577 017b 01       		.uleb128 0x1
+ 578 017c 50       		.byte	0x50
+ 579 017d 02       		.uleb128 0x2
+ 580 017e 91       		.byte	0x91
+ 581 017f 74       		.sleb128 -12
+ 582 0180 07       		.uleb128 0x7
+ 583 0181 01       		.uleb128 0x1
+ 584 0182 51       		.byte	0x51
+ 585 0183 01       		.uleb128 0x1
+ 586 0184 33       		.byte	0x33
+ 587 0185 07       		.uleb128 0x7
+ 588 0186 01       		.uleb128 0x1
+ 589 0187 52       		.byte	0x52
+ 590 0188 02       		.uleb128 0x2
+ 591 0189 91       		.byte	0x91
+ 592 018a 73       		.sleb128 -13
+ 593 018b 07       		.uleb128 0x7
+ 594 018c 01       		.uleb128 0x1
+ 595 018d 53       		.byte	0x53
+ 596 018e 01       		.uleb128 0x1
+ 597 018f 31       		.byte	0x31
+ 598 0190 00       		.byte	0
+ 599 0191 00       		.byte	0
+ 600 0192 0B       		.uleb128 0xb
+ 601 0193 81000000 		.4byte	0x81
+ 602 0197 A2010000 		.4byte	0x1a2
+ 603 019b 0C       		.uleb128 0xc
+ 604 019c B3000000 		.4byte	0xb3
+ 605 01a0 02       		.byte	0x2
+ 606 01a1 00       		.byte	0
+ 607 01a2 08       		.uleb128 0x8
+ 608 01a3 00000000 		.4byte	.LASF24
+ 609 01a7 01       		.byte	0x1
+ 610 01a8 38       		.byte	0x38
+ 611 01a9 00000000 		.4byte	.LFB5
+ 612 01ad 36000000 		.4byte	.LFE5-.LFB5
+ 613 01b1 01       		.uleb128 0x1
+ 614 01b2 9C       		.byte	0x9c
+ 615 01b3 1B020000 		.4byte	0x21b
+ 616 01b7 09       		.uleb128 0x9
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 14
+
+
+ 617 01b8 B7010000 		.4byte	.LASF25
+ 618 01bc 01       		.byte	0x1
+ 619 01bd 38       		.byte	0x38
+ 620 01be 8C000000 		.4byte	0x8c
+ 621 01c2 21000000 		.4byte	.LLST1
+ 622 01c6 09       		.uleb128 0x9
+ 623 01c7 EF010000 		.4byte	.LASF26
+ 624 01cb 01       		.byte	0x1
+ 625 01cc 38       		.byte	0x38
+ 626 01cd 81000000 		.4byte	0x81
+ 627 01d1 42000000 		.4byte	.LLST2
+ 628 01d5 0A       		.uleb128 0xa
+ 629 01d6 19030000 		.4byte	.LASF22
+ 630 01da 01       		.byte	0x1
+ 631 01db 3D       		.byte	0x3d
+ 632 01dc 1B020000 		.4byte	0x21b
+ 633 01e0 02       		.uleb128 0x2
+ 634 01e1 91       		.byte	0x91
+ 635 01e2 6C       		.sleb128 -20
+ 636 01e3 0A       		.uleb128 0xa
+ 637 01e4 B2010000 		.4byte	.LASF27
+ 638 01e8 01       		.byte	0x1
+ 639 01e9 3F       		.byte	0x3f
+ 640 01ea 81000000 		.4byte	0x81
+ 641 01ee 02       		.uleb128 0x2
+ 642 01ef 91       		.byte	0x91
+ 643 01f0 6B       		.sleb128 -21
+ 644 01f1 0D       		.uleb128 0xd
+ 645 01f2 0C000000 		.4byte	.LVL7
+ 646 01f6 E3000000 		.4byte	0xe3
+ 647 01fa 06       		.uleb128 0x6
+ 648 01fb 32000000 		.4byte	.LVL8
+ 649 01ff 20040000 		.4byte	0x420
+ 650 0203 07       		.uleb128 0x7
+ 651 0204 01       		.uleb128 0x1
+ 652 0205 50       		.byte	0x50
+ 653 0206 02       		.uleb128 0x2
+ 654 0207 91       		.byte	0x91
+ 655 0208 6C       		.sleb128 -20
+ 656 0209 07       		.uleb128 0x7
+ 657 020a 01       		.uleb128 0x1
+ 658 020b 51       		.byte	0x51
+ 659 020c 01       		.uleb128 0x1
+ 660 020d 34       		.byte	0x34
+ 661 020e 07       		.uleb128 0x7
+ 662 020f 01       		.uleb128 0x1
+ 663 0210 52       		.byte	0x52
+ 664 0211 02       		.uleb128 0x2
+ 665 0212 91       		.byte	0x91
+ 666 0213 6B       		.sleb128 -21
+ 667 0214 07       		.uleb128 0x7
+ 668 0215 01       		.uleb128 0x1
+ 669 0216 53       		.byte	0x53
+ 670 0217 01       		.uleb128 0x1
+ 671 0218 30       		.byte	0x30
+ 672 0219 00       		.byte	0
+ 673 021a 00       		.byte	0
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 15
+
+
+ 674 021b 0B       		.uleb128 0xb
+ 675 021c 81000000 		.4byte	0x81
+ 676 0220 2B020000 		.4byte	0x22b
+ 677 0224 0C       		.uleb128 0xc
+ 678 0225 B3000000 		.4byte	0xb3
+ 679 0229 03       		.byte	0x3
+ 680 022a 00       		.byte	0
+ 681 022b 08       		.uleb128 0x8
+ 682 022c CD000000 		.4byte	.LASF28
+ 683 0230 01       		.byte	0x1
+ 684 0231 4C       		.byte	0x4c
+ 685 0232 00000000 		.4byte	.LFB6
+ 686 0236 24000000 		.4byte	.LFE6-.LFB6
+ 687 023a 01       		.uleb128 0x1
+ 688 023b 9C       		.byte	0x9c
+ 689 023c 99020000 		.4byte	0x299
+ 690 0240 09       		.uleb128 0x9
+ 691 0241 B7010000 		.4byte	.LASF25
+ 692 0245 01       		.byte	0x1
+ 693 0246 4C       		.byte	0x4c
+ 694 0247 8C000000 		.4byte	0x8c
+ 695 024b 63000000 		.4byte	.LLST3
+ 696 024f 09       		.uleb128 0x9
+ 697 0250 66020000 		.4byte	.LASF23
+ 698 0254 01       		.byte	0x1
+ 699 0255 4C       		.byte	0x4c
+ 700 0256 99020000 		.4byte	0x299
+ 701 025a 84000000 		.4byte	.LLST4
+ 702 025e 09       		.uleb128 0x9
+ 703 025f 20030000 		.4byte	.LASF29
+ 704 0263 01       		.byte	0x1
+ 705 0264 4C       		.byte	0x4c
+ 706 0265 81000000 		.4byte	0x81
+ 707 0269 B0000000 		.4byte	.LLST5
+ 708 026d 0A       		.uleb128 0xa
+ 709 026e 19030000 		.4byte	.LASF22
+ 710 0272 01       		.byte	0x1
+ 711 0273 50       		.byte	0x50
+ 712 0274 92010000 		.4byte	0x192
+ 713 0278 02       		.uleb128 0x2
+ 714 0279 91       		.byte	0x91
+ 715 027a 74       		.sleb128 -12
+ 716 027b 06       		.uleb128 0x6
+ 717 027c 20000000 		.4byte	.LVL13
+ 718 0280 20040000 		.4byte	0x420
+ 719 0284 07       		.uleb128 0x7
+ 720 0285 01       		.uleb128 0x1
+ 721 0286 50       		.byte	0x50
+ 722 0287 02       		.uleb128 0x2
+ 723 0288 91       		.byte	0x91
+ 724 0289 74       		.sleb128 -12
+ 725 028a 07       		.uleb128 0x7
+ 726 028b 01       		.uleb128 0x1
+ 727 028c 51       		.byte	0x51
+ 728 028d 02       		.uleb128 0x2
+ 729 028e 74       		.byte	0x74
+ 730 028f 00       		.sleb128 0
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 16
+
+
+ 731 0290 07       		.uleb128 0x7
+ 732 0291 01       		.uleb128 0x1
+ 733 0292 52       		.byte	0x52
+ 734 0293 03       		.uleb128 0x3
+ 735 0294 F3       		.byte	0xf3
+ 736 0295 01       		.uleb128 0x1
+ 737 0296 51       		.byte	0x51
+ 738 0297 00       		.byte	0
+ 739 0298 00       		.byte	0
+ 740 0299 0E       		.uleb128 0xe
+ 741 029a 04       		.byte	0x4
+ 742 029b 81000000 		.4byte	0x81
+ 743 029f 08       		.uleb128 0x8
+ 744 02a0 DB010000 		.4byte	.LASF30
+ 745 02a4 01       		.byte	0x1
+ 746 02a5 11       		.byte	0x11
+ 747 02a6 00000000 		.4byte	.LFB0
+ 748 02aa 1A000000 		.4byte	.LFE0-.LFB0
+ 749 02ae 01       		.uleb128 0x1
+ 750 02af 9C       		.byte	0x9c
+ 751 02b0 00030000 		.4byte	0x300
+ 752 02b4 09       		.uleb128 0x9
+ 753 02b5 11000000 		.4byte	.LASF31
+ 754 02b9 01       		.byte	0x1
+ 755 02ba 11       		.byte	0x11
+ 756 02bb 99020000 		.4byte	0x299
+ 757 02bf D1000000 		.4byte	.LLST6
+ 758 02c3 09       		.uleb128 0x9
+ 759 02c4 A3000000 		.4byte	.LASF32
+ 760 02c8 01       		.byte	0x1
+ 761 02c9 11       		.byte	0x11
+ 762 02ca 00030000 		.4byte	0x300
+ 763 02ce EF000000 		.4byte	.LLST7
+ 764 02d2 0F       		.uleb128 0xf
+ 765 02d3 0C000000 		.4byte	.LVL16
+ 766 02d7 2D010000 		.4byte	0x12d
+ 767 02db E5020000 		.4byte	0x2e5
+ 768 02df 07       		.uleb128 0x7
+ 769 02e0 01       		.uleb128 0x1
+ 770 02e1 50       		.byte	0x50
+ 771 02e2 01       		.uleb128 0x1
+ 772 02e3 32       		.byte	0x32
+ 773 02e4 00       		.byte	0
+ 774 02e5 06       		.uleb128 0x6
+ 775 02e6 18000000 		.4byte	.LVL17
+ 776 02ea 2B020000 		.4byte	0x22b
+ 777 02ee 07       		.uleb128 0x7
+ 778 02ef 01       		.uleb128 0x1
+ 779 02f0 50       		.byte	0x50
+ 780 02f1 01       		.uleb128 0x1
+ 781 02f2 30       		.byte	0x30
+ 782 02f3 07       		.uleb128 0x7
+ 783 02f4 01       		.uleb128 0x1
+ 784 02f5 51       		.byte	0x51
+ 785 02f6 02       		.uleb128 0x2
+ 786 02f7 74       		.byte	0x74
+ 787 02f8 00       		.sleb128 0
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 17
+
+
+ 788 02f9 07       		.uleb128 0x7
+ 789 02fa 01       		.uleb128 0x1
+ 790 02fb 52       		.byte	0x52
+ 791 02fc 01       		.uleb128 0x1
+ 792 02fd 32       		.byte	0x32
+ 793 02fe 00       		.byte	0
+ 794 02ff 00       		.byte	0
+ 795 0300 0E       		.uleb128 0xe
+ 796 0301 04       		.byte	0x4
+ 797 0302 8C000000 		.4byte	0x8c
+ 798 0306 08       		.uleb128 0x8
+ 799 0307 C0020000 		.4byte	.LASF33
+ 800 030b 01       		.byte	0x1
+ 801 030c 59       		.byte	0x59
+ 802 030d 00000000 		.4byte	.LFB7
+ 803 0311 60000000 		.4byte	.LFE7-.LFB7
+ 804 0315 01       		.uleb128 0x1
+ 805 0316 9C       		.byte	0x9c
+ 806 0317 C3030000 		.4byte	0x3c3
+ 807 031b 09       		.uleb128 0x9
+ 808 031c B7010000 		.4byte	.LASF25
+ 809 0320 01       		.byte	0x1
+ 810 0321 59       		.byte	0x59
+ 811 0322 8C000000 		.4byte	0x8c
+ 812 0326 0D010000 		.4byte	.LLST8
+ 813 032a 09       		.uleb128 0x9
+ 814 032b FF000000 		.4byte	.LASF34
+ 815 032f 01       		.byte	0x1
+ 816 0330 59       		.byte	0x59
+ 817 0331 99020000 		.4byte	0x299
+ 818 0335 2E010000 		.4byte	.LLST9
+ 819 0339 09       		.uleb128 0x9
+ 820 033a 20030000 		.4byte	.LASF29
+ 821 033e 01       		.byte	0x1
+ 822 033f 59       		.byte	0x59
+ 823 0340 81000000 		.4byte	0x81
+ 824 0344 4C010000 		.4byte	.LLST10
+ 825 0348 10       		.uleb128 0x10
+ 826 0349 19030000 		.4byte	.LASF22
+ 827 034d 01       		.byte	0x1
+ 828 034e 66       		.byte	0x66
+ 829 034f C3030000 		.4byte	0x3c3
+ 830 0353 6D010000 		.4byte	.LLST11
+ 831 0357 0A       		.uleb128 0xa
+ 832 0358 B2010000 		.4byte	.LASF27
+ 833 035c 01       		.byte	0x1
+ 834 035d 6E       		.byte	0x6e
+ 835 035e 81000000 		.4byte	0x81
+ 836 0362 02       		.uleb128 0x2
+ 837 0363 91       		.byte	0x91
+ 838 0364 67       		.sleb128 -25
+ 839 0365 0D       		.uleb128 0xd
+ 840 0366 14000000 		.4byte	.LVL19
+ 841 036a E3000000 		.4byte	0xe3
+ 842 036e 0F       		.uleb128 0xf
+ 843 036f 1A000000 		.4byte	.LVL20
+ 844 0373 2B040000 		.4byte	0x42b
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 18
+
+
+ 845 0377 81030000 		.4byte	0x381
+ 846 037b 07       		.uleb128 0x7
+ 847 037c 01       		.uleb128 0x1
+ 848 037d 50       		.byte	0x50
+ 849 037e 01       		.uleb128 0x1
+ 850 037f 31       		.byte	0x31
+ 851 0380 00       		.byte	0
+ 852 0381 0F       		.uleb128 0xf
+ 853 0382 44000000 		.4byte	.LVL23
+ 854 0386 36040000 		.4byte	0x436
+ 855 038a A1030000 		.4byte	0x3a1
+ 856 038e 07       		.uleb128 0x7
+ 857 038f 01       		.uleb128 0x1
+ 858 0390 50       		.byte	0x50
+ 859 0391 02       		.uleb128 0x2
+ 860 0392 7D       		.byte	0x7d
+ 861 0393 03       		.sleb128 3
+ 862 0394 07       		.uleb128 0x7
+ 863 0395 01       		.uleb128 0x1
+ 864 0396 51       		.byte	0x51
+ 865 0397 02       		.uleb128 0x2
+ 866 0398 78       		.byte	0x78
+ 867 0399 00       		.sleb128 0
+ 868 039a 07       		.uleb128 0x7
+ 869 039b 01       		.uleb128 0x1
+ 870 039c 52       		.byte	0x52
+ 871 039d 02       		.uleb128 0x2
+ 872 039e 74       		.byte	0x74
+ 873 039f 00       		.sleb128 0
+ 874 03a0 00       		.byte	0
+ 875 03a1 06       		.uleb128 0x6
+ 876 03a2 56000000 		.4byte	.LVL24
+ 877 03a6 20040000 		.4byte	0x420
+ 878 03aa 07       		.uleb128 0x7
+ 879 03ab 01       		.uleb128 0x1
+ 880 03ac 50       		.byte	0x50
+ 881 03ad 02       		.uleb128 0x2
+ 882 03ae 7D       		.byte	0x7d
+ 883 03af 00       		.sleb128 0
+ 884 03b0 07       		.uleb128 0x7
+ 885 03b1 01       		.uleb128 0x1
+ 886 03b2 51       		.byte	0x51
+ 887 03b3 02       		.uleb128 0x2
+ 888 03b4 76       		.byte	0x76
+ 889 03b5 00       		.sleb128 0
+ 890 03b6 07       		.uleb128 0x7
+ 891 03b7 01       		.uleb128 0x1
+ 892 03b8 52       		.byte	0x52
+ 893 03b9 02       		.uleb128 0x2
+ 894 03ba 77       		.byte	0x77
+ 895 03bb 17       		.sleb128 23
+ 896 03bc 07       		.uleb128 0x7
+ 897 03bd 01       		.uleb128 0x1
+ 898 03be 53       		.byte	0x53
+ 899 03bf 01       		.uleb128 0x1
+ 900 03c0 30       		.byte	0x30
+ 901 03c1 00       		.byte	0
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 19
+
+
+ 902 03c2 00       		.byte	0
+ 903 03c3 0B       		.uleb128 0xb
+ 904 03c4 81000000 		.4byte	0x81
+ 905 03c8 DA030000 		.4byte	0x3da
+ 906 03cc 11       		.uleb128 0x11
+ 907 03cd B3000000 		.4byte	0xb3
+ 908 03d1 07       		.uleb128 0x7
+ 909 03d2 74       		.byte	0x74
+ 910 03d3 00       		.sleb128 0
+ 911 03d4 08       		.byte	0x8
+ 912 03d5 FF       		.byte	0xff
+ 913 03d6 1A       		.byte	0x1a
+ 914 03d7 23       		.byte	0x23
+ 915 03d8 02       		.uleb128 0x2
+ 916 03d9 00       		.byte	0
+ 917 03da 08       		.uleb128 0x8
+ 918 03db 6D020000 		.4byte	.LASF35
+ 919 03df 01       		.byte	0x1
+ 920 03e0 76       		.byte	0x76
+ 921 03e1 00000000 		.4byte	.LFB8
+ 922 03e5 0E000000 		.4byte	.LFE8-.LFB8
+ 923 03e9 01       		.uleb128 0x1
+ 924 03ea 9C       		.byte	0x9c
+ 925 03eb F9030000 		.4byte	0x3f9
+ 926 03ef 0D       		.uleb128 0xd
+ 927 03f0 06000000 		.4byte	.LVL26
+ 928 03f4 BA000000 		.4byte	0xba
+ 929 03f8 00       		.byte	0
+ 930 03f9 12       		.uleb128 0x12
+ 931 03fa F1000000 		.4byte	.LASF43
+ 932 03fe 01       		.byte	0x1
+ 933 03ff 0F       		.byte	0xf
+ 934 0400 81000000 		.4byte	0x81
+ 935 0404 05       		.uleb128 0x5
+ 936 0405 03       		.byte	0x3
+ 937 0406 00000000 		.4byte	eeprom_Status
+ 938 040a 13       		.uleb128 0x13
+ 939 040b 0A020000 		.4byte	.LASF36
+ 940 040f 0A020000 		.4byte	.LASF36
+ 941 0413 04       		.byte	0x4
+ 942 0414 41       		.byte	0x41
+ 943 0415 13       		.uleb128 0x13
+ 944 0416 BC010000 		.4byte	.LASF37
+ 945 041a BC010000 		.4byte	.LASF37
+ 946 041e 04       		.byte	0x4
+ 947 041f 2F       		.byte	0x2f
+ 948 0420 13       		.uleb128 0x13
+ 949 0421 D1020000 		.4byte	.LASF38
+ 950 0425 D1020000 		.4byte	.LASF38
+ 951 0429 04       		.byte	0x4
+ 952 042a 61       		.byte	0x61
+ 953 042b 13       		.uleb128 0x13
+ 954 042c A0020000 		.4byte	.LASF39
+ 955 0430 A0020000 		.4byte	.LASF39
+ 956 0434 05       		.byte	0x5
+ 957 0435 77       		.byte	0x77
+ 958 0436 14       		.uleb128 0x14
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 20
+
+
+ 959 0437 AF020000 		.4byte	.LASF44
+ 960 043b AF020000 		.4byte	.LASF44
+ 961 043f 00       		.byte	0
+ 962              		.section	.debug_abbrev,"",%progbits
+ 963              	.Ldebug_abbrev0:
+ 964 0000 01       		.uleb128 0x1
+ 965 0001 11       		.uleb128 0x11
+ 966 0002 01       		.byte	0x1
+ 967 0003 25       		.uleb128 0x25
+ 968 0004 0E       		.uleb128 0xe
+ 969 0005 13       		.uleb128 0x13
+ 970 0006 0B       		.uleb128 0xb
+ 971 0007 03       		.uleb128 0x3
+ 972 0008 0E       		.uleb128 0xe
+ 973 0009 1B       		.uleb128 0x1b
+ 974 000a 0E       		.uleb128 0xe
+ 975 000b 55       		.uleb128 0x55
+ 976 000c 17       		.uleb128 0x17
+ 977 000d 11       		.uleb128 0x11
+ 978 000e 01       		.uleb128 0x1
+ 979 000f 10       		.uleb128 0x10
+ 980 0010 17       		.uleb128 0x17
+ 981 0011 00       		.byte	0
+ 982 0012 00       		.byte	0
+ 983 0013 02       		.uleb128 0x2
+ 984 0014 24       		.uleb128 0x24
+ 985 0015 00       		.byte	0
+ 986 0016 0B       		.uleb128 0xb
+ 987 0017 0B       		.uleb128 0xb
+ 988 0018 3E       		.uleb128 0x3e
+ 989 0019 0B       		.uleb128 0xb
+ 990 001a 03       		.uleb128 0x3
+ 991 001b 0E       		.uleb128 0xe
+ 992 001c 00       		.byte	0
+ 993 001d 00       		.byte	0
+ 994 001e 03       		.uleb128 0x3
+ 995 001f 16       		.uleb128 0x16
+ 996 0020 00       		.byte	0
+ 997 0021 03       		.uleb128 0x3
+ 998 0022 0E       		.uleb128 0xe
+ 999 0023 3A       		.uleb128 0x3a
+ 1000 0024 0B       		.uleb128 0xb
+ 1001 0025 3B       		.uleb128 0x3b
+ 1002 0026 0B       		.uleb128 0xb
+ 1003 0027 49       		.uleb128 0x49
+ 1004 0028 13       		.uleb128 0x13
+ 1005 0029 00       		.byte	0
+ 1006 002a 00       		.byte	0
+ 1007 002b 04       		.uleb128 0x4
+ 1008 002c 24       		.uleb128 0x24
+ 1009 002d 00       		.byte	0
+ 1010 002e 0B       		.uleb128 0xb
+ 1011 002f 0B       		.uleb128 0xb
+ 1012 0030 3E       		.uleb128 0x3e
+ 1013 0031 0B       		.uleb128 0xb
+ 1014 0032 03       		.uleb128 0x3
+ 1015 0033 08       		.uleb128 0x8
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 21
+
+
+ 1016 0034 00       		.byte	0
+ 1017 0035 00       		.byte	0
+ 1018 0036 05       		.uleb128 0x5
+ 1019 0037 2E       		.uleb128 0x2e
+ 1020 0038 01       		.byte	0x1
+ 1021 0039 3F       		.uleb128 0x3f
+ 1022 003a 19       		.uleb128 0x19
+ 1023 003b 03       		.uleb128 0x3
+ 1024 003c 0E       		.uleb128 0xe
+ 1025 003d 3A       		.uleb128 0x3a
+ 1026 003e 0B       		.uleb128 0xb
+ 1027 003f 3B       		.uleb128 0x3b
+ 1028 0040 0B       		.uleb128 0xb
+ 1029 0041 27       		.uleb128 0x27
+ 1030 0042 19       		.uleb128 0x19
+ 1031 0043 49       		.uleb128 0x49
+ 1032 0044 13       		.uleb128 0x13
+ 1033 0045 11       		.uleb128 0x11
+ 1034 0046 01       		.uleb128 0x1
+ 1035 0047 12       		.uleb128 0x12
+ 1036 0048 06       		.uleb128 0x6
+ 1037 0049 40       		.uleb128 0x40
+ 1038 004a 18       		.uleb128 0x18
+ 1039 004b 9742     		.uleb128 0x2117
+ 1040 004d 19       		.uleb128 0x19
+ 1041 004e 01       		.uleb128 0x1
+ 1042 004f 13       		.uleb128 0x13
+ 1043 0050 00       		.byte	0
+ 1044 0051 00       		.byte	0
+ 1045 0052 06       		.uleb128 0x6
+ 1046 0053 898201   		.uleb128 0x4109
+ 1047 0056 01       		.byte	0x1
+ 1048 0057 11       		.uleb128 0x11
+ 1049 0058 01       		.uleb128 0x1
+ 1050 0059 31       		.uleb128 0x31
+ 1051 005a 13       		.uleb128 0x13
+ 1052 005b 00       		.byte	0
+ 1053 005c 00       		.byte	0
+ 1054 005d 07       		.uleb128 0x7
+ 1055 005e 8A8201   		.uleb128 0x410a
+ 1056 0061 00       		.byte	0
+ 1057 0062 02       		.uleb128 0x2
+ 1058 0063 18       		.uleb128 0x18
+ 1059 0064 9142     		.uleb128 0x2111
+ 1060 0066 18       		.uleb128 0x18
+ 1061 0067 00       		.byte	0
+ 1062 0068 00       		.byte	0
+ 1063 0069 08       		.uleb128 0x8
+ 1064 006a 2E       		.uleb128 0x2e
+ 1065 006b 01       		.byte	0x1
+ 1066 006c 3F       		.uleb128 0x3f
+ 1067 006d 19       		.uleb128 0x19
+ 1068 006e 03       		.uleb128 0x3
+ 1069 006f 0E       		.uleb128 0xe
+ 1070 0070 3A       		.uleb128 0x3a
+ 1071 0071 0B       		.uleb128 0xb
+ 1072 0072 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 22
+
+
+ 1073 0073 0B       		.uleb128 0xb
+ 1074 0074 27       		.uleb128 0x27
+ 1075 0075 19       		.uleb128 0x19
+ 1076 0076 11       		.uleb128 0x11
+ 1077 0077 01       		.uleb128 0x1
+ 1078 0078 12       		.uleb128 0x12
+ 1079 0079 06       		.uleb128 0x6
+ 1080 007a 40       		.uleb128 0x40
+ 1081 007b 18       		.uleb128 0x18
+ 1082 007c 9742     		.uleb128 0x2117
+ 1083 007e 19       		.uleb128 0x19
+ 1084 007f 01       		.uleb128 0x1
+ 1085 0080 13       		.uleb128 0x13
+ 1086 0081 00       		.byte	0
+ 1087 0082 00       		.byte	0
+ 1088 0083 09       		.uleb128 0x9
+ 1089 0084 05       		.uleb128 0x5
+ 1090 0085 00       		.byte	0
+ 1091 0086 03       		.uleb128 0x3
+ 1092 0087 0E       		.uleb128 0xe
+ 1093 0088 3A       		.uleb128 0x3a
+ 1094 0089 0B       		.uleb128 0xb
+ 1095 008a 3B       		.uleb128 0x3b
+ 1096 008b 0B       		.uleb128 0xb
+ 1097 008c 49       		.uleb128 0x49
+ 1098 008d 13       		.uleb128 0x13
+ 1099 008e 02       		.uleb128 0x2
+ 1100 008f 17       		.uleb128 0x17
+ 1101 0090 00       		.byte	0
+ 1102 0091 00       		.byte	0
+ 1103 0092 0A       		.uleb128 0xa
+ 1104 0093 34       		.uleb128 0x34
+ 1105 0094 00       		.byte	0
+ 1106 0095 03       		.uleb128 0x3
+ 1107 0096 0E       		.uleb128 0xe
+ 1108 0097 3A       		.uleb128 0x3a
+ 1109 0098 0B       		.uleb128 0xb
+ 1110 0099 3B       		.uleb128 0x3b
+ 1111 009a 0B       		.uleb128 0xb
+ 1112 009b 49       		.uleb128 0x49
+ 1113 009c 13       		.uleb128 0x13
+ 1114 009d 02       		.uleb128 0x2
+ 1115 009e 18       		.uleb128 0x18
+ 1116 009f 00       		.byte	0
+ 1117 00a0 00       		.byte	0
+ 1118 00a1 0B       		.uleb128 0xb
+ 1119 00a2 01       		.uleb128 0x1
+ 1120 00a3 01       		.byte	0x1
+ 1121 00a4 49       		.uleb128 0x49
+ 1122 00a5 13       		.uleb128 0x13
+ 1123 00a6 01       		.uleb128 0x1
+ 1124 00a7 13       		.uleb128 0x13
+ 1125 00a8 00       		.byte	0
+ 1126 00a9 00       		.byte	0
+ 1127 00aa 0C       		.uleb128 0xc
+ 1128 00ab 21       		.uleb128 0x21
+ 1129 00ac 00       		.byte	0
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 23
+
+
+ 1130 00ad 49       		.uleb128 0x49
+ 1131 00ae 13       		.uleb128 0x13
+ 1132 00af 2F       		.uleb128 0x2f
+ 1133 00b0 0B       		.uleb128 0xb
+ 1134 00b1 00       		.byte	0
+ 1135 00b2 00       		.byte	0
+ 1136 00b3 0D       		.uleb128 0xd
+ 1137 00b4 898201   		.uleb128 0x4109
+ 1138 00b7 00       		.byte	0
+ 1139 00b8 11       		.uleb128 0x11
+ 1140 00b9 01       		.uleb128 0x1
+ 1141 00ba 31       		.uleb128 0x31
+ 1142 00bb 13       		.uleb128 0x13
+ 1143 00bc 00       		.byte	0
+ 1144 00bd 00       		.byte	0
+ 1145 00be 0E       		.uleb128 0xe
+ 1146 00bf 0F       		.uleb128 0xf
+ 1147 00c0 00       		.byte	0
+ 1148 00c1 0B       		.uleb128 0xb
+ 1149 00c2 0B       		.uleb128 0xb
+ 1150 00c3 49       		.uleb128 0x49
+ 1151 00c4 13       		.uleb128 0x13
+ 1152 00c5 00       		.byte	0
+ 1153 00c6 00       		.byte	0
+ 1154 00c7 0F       		.uleb128 0xf
+ 1155 00c8 898201   		.uleb128 0x4109
+ 1156 00cb 01       		.byte	0x1
+ 1157 00cc 11       		.uleb128 0x11
+ 1158 00cd 01       		.uleb128 0x1
+ 1159 00ce 31       		.uleb128 0x31
+ 1160 00cf 13       		.uleb128 0x13
+ 1161 00d0 01       		.uleb128 0x1
+ 1162 00d1 13       		.uleb128 0x13
+ 1163 00d2 00       		.byte	0
+ 1164 00d3 00       		.byte	0
+ 1165 00d4 10       		.uleb128 0x10
+ 1166 00d5 34       		.uleb128 0x34
+ 1167 00d6 00       		.byte	0
+ 1168 00d7 03       		.uleb128 0x3
+ 1169 00d8 0E       		.uleb128 0xe
+ 1170 00d9 3A       		.uleb128 0x3a
+ 1171 00da 0B       		.uleb128 0xb
+ 1172 00db 3B       		.uleb128 0x3b
+ 1173 00dc 0B       		.uleb128 0xb
+ 1174 00dd 49       		.uleb128 0x49
+ 1175 00de 13       		.uleb128 0x13
+ 1176 00df 02       		.uleb128 0x2
+ 1177 00e0 17       		.uleb128 0x17
+ 1178 00e1 00       		.byte	0
+ 1179 00e2 00       		.byte	0
+ 1180 00e3 11       		.uleb128 0x11
+ 1181 00e4 21       		.uleb128 0x21
+ 1182 00e5 00       		.byte	0
+ 1183 00e6 49       		.uleb128 0x49
+ 1184 00e7 13       		.uleb128 0x13
+ 1185 00e8 2F       		.uleb128 0x2f
+ 1186 00e9 18       		.uleb128 0x18
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 24
+
+
+ 1187 00ea 00       		.byte	0
+ 1188 00eb 00       		.byte	0
+ 1189 00ec 12       		.uleb128 0x12
+ 1190 00ed 34       		.uleb128 0x34
+ 1191 00ee 00       		.byte	0
+ 1192 00ef 03       		.uleb128 0x3
+ 1193 00f0 0E       		.uleb128 0xe
+ 1194 00f1 3A       		.uleb128 0x3a
+ 1195 00f2 0B       		.uleb128 0xb
+ 1196 00f3 3B       		.uleb128 0x3b
+ 1197 00f4 0B       		.uleb128 0xb
+ 1198 00f5 49       		.uleb128 0x49
+ 1199 00f6 13       		.uleb128 0x13
+ 1200 00f7 3F       		.uleb128 0x3f
+ 1201 00f8 19       		.uleb128 0x19
+ 1202 00f9 02       		.uleb128 0x2
+ 1203 00fa 18       		.uleb128 0x18
+ 1204 00fb 00       		.byte	0
+ 1205 00fc 00       		.byte	0
+ 1206 00fd 13       		.uleb128 0x13
+ 1207 00fe 2E       		.uleb128 0x2e
+ 1208 00ff 00       		.byte	0
+ 1209 0100 3F       		.uleb128 0x3f
+ 1210 0101 19       		.uleb128 0x19
+ 1211 0102 3C       		.uleb128 0x3c
+ 1212 0103 19       		.uleb128 0x19
+ 1213 0104 6E       		.uleb128 0x6e
+ 1214 0105 0E       		.uleb128 0xe
+ 1215 0106 03       		.uleb128 0x3
+ 1216 0107 0E       		.uleb128 0xe
+ 1217 0108 3A       		.uleb128 0x3a
+ 1218 0109 0B       		.uleb128 0xb
+ 1219 010a 3B       		.uleb128 0x3b
+ 1220 010b 0B       		.uleb128 0xb
+ 1221 010c 00       		.byte	0
+ 1222 010d 00       		.byte	0
+ 1223 010e 14       		.uleb128 0x14
+ 1224 010f 2E       		.uleb128 0x2e
+ 1225 0110 00       		.byte	0
+ 1226 0111 3F       		.uleb128 0x3f
+ 1227 0112 19       		.uleb128 0x19
+ 1228 0113 3C       		.uleb128 0x3c
+ 1229 0114 19       		.uleb128 0x19
+ 1230 0115 6E       		.uleb128 0x6e
+ 1231 0116 0E       		.uleb128 0xe
+ 1232 0117 03       		.uleb128 0x3
+ 1233 0118 0E       		.uleb128 0xe
+ 1234 0119 00       		.byte	0
+ 1235 011a 00       		.byte	0
+ 1236 011b 00       		.byte	0
+ 1237              		.section	.debug_loc,"",%progbits
+ 1238              	.Ldebug_loc0:
+ 1239              	.LLST0:
+ 1240 0000 00000000 		.4byte	.LVL3
+ 1241 0004 20000000 		.4byte	.LVL4
+ 1242 0008 0100     		.2byte	0x1
+ 1243 000a 50       		.byte	0x50
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 25
+
+
+ 1244 000b 20000000 		.4byte	.LVL4
+ 1245 000f 2E000000 		.4byte	.LFE4
+ 1246 0013 0400     		.2byte	0x4
+ 1247 0015 F3       		.byte	0xf3
+ 1248 0016 01       		.uleb128 0x1
+ 1249 0017 50       		.byte	0x50
+ 1250 0018 9F       		.byte	0x9f
+ 1251 0019 00000000 		.4byte	0
+ 1252 001d 00000000 		.4byte	0
+ 1253              	.LLST1:
+ 1254 0021 00000000 		.4byte	.LVL6
+ 1255 0025 0B000000 		.4byte	.LVL7-1
+ 1256 0029 0100     		.2byte	0x1
+ 1257 002b 50       		.byte	0x50
+ 1258 002c 0B000000 		.4byte	.LVL7-1
+ 1259 0030 36000000 		.4byte	.LFE5
+ 1260 0034 0400     		.2byte	0x4
+ 1261 0036 F3       		.byte	0xf3
+ 1262 0037 01       		.uleb128 0x1
+ 1263 0038 50       		.byte	0x50
+ 1264 0039 9F       		.byte	0x9f
+ 1265 003a 00000000 		.4byte	0
+ 1266 003e 00000000 		.4byte	0
+ 1267              	.LLST2:
+ 1268 0042 00000000 		.4byte	.LVL6
+ 1269 0046 0B000000 		.4byte	.LVL7-1
+ 1270 004a 0100     		.2byte	0x1
+ 1271 004c 51       		.byte	0x51
+ 1272 004d 0B000000 		.4byte	.LVL7-1
+ 1273 0051 36000000 		.4byte	.LFE5
+ 1274 0055 0400     		.2byte	0x4
+ 1275 0057 F3       		.byte	0xf3
+ 1276 0058 01       		.uleb128 0x1
+ 1277 0059 51       		.byte	0x51
+ 1278 005a 9F       		.byte	0x9f
+ 1279 005b 00000000 		.4byte	0
+ 1280 005f 00000000 		.4byte	0
+ 1281              	.LLST3:
+ 1282 0063 00000000 		.4byte	.LVL9
+ 1283 0067 1C000000 		.4byte	.LVL12
+ 1284 006b 0100     		.2byte	0x1
+ 1285 006d 50       		.byte	0x50
+ 1286 006e 1C000000 		.4byte	.LVL12
+ 1287 0072 24000000 		.4byte	.LFE6
+ 1288 0076 0400     		.2byte	0x4
+ 1289 0078 F3       		.byte	0xf3
+ 1290 0079 01       		.uleb128 0x1
+ 1291 007a 50       		.byte	0x50
+ 1292 007b 9F       		.byte	0x9f
+ 1293 007c 00000000 		.4byte	0
+ 1294 0080 00000000 		.4byte	0
+ 1295              	.LLST4:
+ 1296 0084 00000000 		.4byte	.LVL9
+ 1297 0088 1A000000 		.4byte	.LVL11
+ 1298 008c 0100     		.2byte	0x1
+ 1299 008e 51       		.byte	0x51
+ 1300 008f 1A000000 		.4byte	.LVL11
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 26
+
+
+ 1301 0093 1F000000 		.4byte	.LVL13-1
+ 1302 0097 0100     		.2byte	0x1
+ 1303 0099 52       		.byte	0x52
+ 1304 009a 1F000000 		.4byte	.LVL13-1
+ 1305 009e 24000000 		.4byte	.LFE6
+ 1306 00a2 0400     		.2byte	0x4
+ 1307 00a4 F3       		.byte	0xf3
+ 1308 00a5 01       		.uleb128 0x1
+ 1309 00a6 51       		.byte	0x51
+ 1310 00a7 9F       		.byte	0x9f
+ 1311 00a8 00000000 		.4byte	0
+ 1312 00ac 00000000 		.4byte	0
+ 1313              	.LLST5:
+ 1314 00b0 00000000 		.4byte	.LVL9
+ 1315 00b4 18000000 		.4byte	.LVL10
+ 1316 00b8 0100     		.2byte	0x1
+ 1317 00ba 52       		.byte	0x52
+ 1318 00bb 18000000 		.4byte	.LVL10
+ 1319 00bf 24000000 		.4byte	.LFE6
+ 1320 00c3 0400     		.2byte	0x4
+ 1321 00c5 F3       		.byte	0xf3
+ 1322 00c6 01       		.uleb128 0x1
+ 1323 00c7 52       		.byte	0x52
+ 1324 00c8 9F       		.byte	0x9f
+ 1325 00c9 00000000 		.4byte	0
+ 1326 00cd 00000000 		.4byte	0
+ 1327              	.LLST6:
+ 1328 00d1 00000000 		.4byte	.LVL14
+ 1329 00d5 08000000 		.4byte	.LVL15
+ 1330 00d9 0100     		.2byte	0x1
+ 1331 00db 50       		.byte	0x50
+ 1332 00dc 08000000 		.4byte	.LVL15
+ 1333 00e0 1A000000 		.4byte	.LFE0
+ 1334 00e4 0100     		.2byte	0x1
+ 1335 00e6 55       		.byte	0x55
+ 1336 00e7 00000000 		.4byte	0
+ 1337 00eb 00000000 		.4byte	0
+ 1338              	.LLST7:
+ 1339 00ef 00000000 		.4byte	.LVL14
+ 1340 00f3 0B000000 		.4byte	.LVL16-1
+ 1341 00f7 0100     		.2byte	0x1
+ 1342 00f9 51       		.byte	0x51
+ 1343 00fa 0B000000 		.4byte	.LVL16-1
+ 1344 00fe 1A000000 		.4byte	.LFE0
+ 1345 0102 0100     		.2byte	0x1
+ 1346 0104 54       		.byte	0x54
+ 1347 0105 00000000 		.4byte	0
+ 1348 0109 00000000 		.4byte	0
+ 1349              	.LLST8:
+ 1350 010d 00000000 		.4byte	.LVL18
+ 1351 0111 13000000 		.4byte	.LVL19-1
+ 1352 0115 0100     		.2byte	0x1
+ 1353 0117 50       		.byte	0x50
+ 1354 0118 13000000 		.4byte	.LVL19-1
+ 1355 011c 60000000 		.4byte	.LFE7
+ 1356 0120 0400     		.2byte	0x4
+ 1357 0122 F3       		.byte	0xf3
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 27
+
+
+ 1358 0123 01       		.uleb128 0x1
+ 1359 0124 50       		.byte	0x50
+ 1360 0125 9F       		.byte	0x9f
+ 1361 0126 00000000 		.4byte	0
+ 1362 012a 00000000 		.4byte	0
+ 1363              	.LLST9:
+ 1364 012e 00000000 		.4byte	.LVL18
+ 1365 0132 13000000 		.4byte	.LVL19-1
+ 1366 0136 0100     		.2byte	0x1
+ 1367 0138 51       		.byte	0x51
+ 1368 0139 13000000 		.4byte	.LVL19-1
+ 1369 013d 60000000 		.4byte	.LFE7
+ 1370 0141 0100     		.2byte	0x1
+ 1371 0143 58       		.byte	0x58
+ 1372 0144 00000000 		.4byte	0
+ 1373 0148 00000000 		.4byte	0
+ 1374              	.LLST10:
+ 1375 014c 00000000 		.4byte	.LVL18
+ 1376 0150 13000000 		.4byte	.LVL19-1
+ 1377 0154 0100     		.2byte	0x1
+ 1378 0156 52       		.byte	0x52
+ 1379 0157 13000000 		.4byte	.LVL19-1
+ 1380 015b 60000000 		.4byte	.LFE7
+ 1381 015f 0400     		.2byte	0x4
+ 1382 0161 F3       		.byte	0xf3
+ 1383 0162 01       		.uleb128 0x1
+ 1384 0163 52       		.byte	0x52
+ 1385 0164 9F       		.byte	0x9f
+ 1386 0165 00000000 		.4byte	0
+ 1387 0169 00000000 		.4byte	0
+ 1388              	.LLST11:
+ 1389 016d 28000000 		.4byte	.LVL22
+ 1390 0171 5C000000 		.4byte	.LVL25
+ 1391 0175 0200     		.2byte	0x2
+ 1392 0177 7D       		.byte	0x7d
+ 1393 0178 00       		.sleb128 0
+ 1394 0179 5C000000 		.4byte	.LVL25
+ 1395 017d 60000000 		.4byte	.LFE7
+ 1396 0181 0B00     		.2byte	0xb
+ 1397 0183 91       		.byte	0x91
+ 1398 0184 00       		.sleb128 0
+ 1399 0185 74       		.byte	0x74
+ 1400 0186 0A       		.sleb128 10
+ 1401 0187 09       		.byte	0x9
+ 1402 0188 F8       		.byte	0xf8
+ 1403 0189 1A       		.byte	0x1a
+ 1404 018a 1C       		.byte	0x1c
+ 1405 018b 08       		.byte	0x8
+ 1406 018c 20       		.byte	0x20
+ 1407 018d 1C       		.byte	0x1c
+ 1408 018e 00000000 		.4byte	0
+ 1409 0192 00000000 		.4byte	0
+ 1410              		.section	.debug_aranges,"",%progbits
+ 1411 0000 5C000000 		.4byte	0x5c
+ 1412 0004 0200     		.2byte	0x2
+ 1413 0006 00000000 		.4byte	.Ldebug_info0
+ 1414 000a 04       		.byte	0x4
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 28
+
+
+ 1415 000b 00       		.byte	0
+ 1416 000c 0000     		.2byte	0
+ 1417 000e 0000     		.2byte	0
+ 1418 0010 00000000 		.4byte	.LFB1
+ 1419 0014 0A000000 		.4byte	.LFE1-.LFB1
+ 1420 0018 00000000 		.4byte	.LFB2
+ 1421 001c 0A000000 		.4byte	.LFE2-.LFB2
+ 1422 0020 00000000 		.4byte	.LFB3
+ 1423 0024 0A000000 		.4byte	.LFE3-.LFB3
+ 1424 0028 00000000 		.4byte	.LFB4
+ 1425 002c 2E000000 		.4byte	.LFE4-.LFB4
+ 1426 0030 00000000 		.4byte	.LFB5
+ 1427 0034 36000000 		.4byte	.LFE5-.LFB5
+ 1428 0038 00000000 		.4byte	.LFB6
+ 1429 003c 24000000 		.4byte	.LFE6-.LFB6
+ 1430 0040 00000000 		.4byte	.LFB0
+ 1431 0044 1A000000 		.4byte	.LFE0-.LFB0
+ 1432 0048 00000000 		.4byte	.LFB7
+ 1433 004c 60000000 		.4byte	.LFE7-.LFB7
+ 1434 0050 00000000 		.4byte	.LFB8
+ 1435 0054 0E000000 		.4byte	.LFE8-.LFB8
+ 1436 0058 00000000 		.4byte	0
+ 1437 005c 00000000 		.4byte	0
+ 1438              		.section	.debug_ranges,"",%progbits
+ 1439              	.Ldebug_ranges0:
+ 1440 0000 00000000 		.4byte	.LFB1
+ 1441 0004 0A000000 		.4byte	.LFE1
+ 1442 0008 00000000 		.4byte	.LFB2
+ 1443 000c 0A000000 		.4byte	.LFE2
+ 1444 0010 00000000 		.4byte	.LFB3
+ 1445 0014 0A000000 		.4byte	.LFE3
+ 1446 0018 00000000 		.4byte	.LFB4
+ 1447 001c 2E000000 		.4byte	.LFE4
+ 1448 0020 00000000 		.4byte	.LFB5
+ 1449 0024 36000000 		.4byte	.LFE5
+ 1450 0028 00000000 		.4byte	.LFB6
+ 1451 002c 24000000 		.4byte	.LFE6
+ 1452 0030 00000000 		.4byte	.LFB0
+ 1453 0034 1A000000 		.4byte	.LFE0
+ 1454 0038 00000000 		.4byte	.LFB7
+ 1455 003c 60000000 		.4byte	.LFE7
+ 1456 0040 00000000 		.4byte	.LFB8
+ 1457 0044 0E000000 		.4byte	.LFE8
+ 1458 0048 00000000 		.4byte	0
+ 1459 004c 00000000 		.4byte	0
+ 1460              		.section	.debug_line,"",%progbits
+ 1461              	.Ldebug_line0:
+ 1462 0000 06020000 		.section	.debug_str,"MS",%progbits,1
+ 1462      02005201 
+ 1462      00000201 
+ 1462      FB0E0D00 
+ 1462      01010101 
+ 1463              	.LASF24:
+ 1464 0000 45455052 		.ascii	"EEPROM_writeByte\000"
+ 1464      4F4D5F77 
+ 1464      72697465 
+ 1464      42797465 
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 29
+
+
+ 1464      00
+ 1465              	.LASF31:
+ 1466 0011 636F6E66 		.ascii	"config_reg\000"
+ 1466      69675F72 
+ 1466      656700
+ 1467              	.LASF3:
+ 1468 001c 5F5F7569 		.ascii	"__uint8_t\000"
+ 1468      6E74385F 
+ 1468      7400
+ 1469              	.LASF21:
+ 1470 0026 45455052 		.ascii	"EEPROM_readByte\000"
+ 1470      4F4D5F72 
+ 1470      65616442 
+ 1470      79746500 
+ 1471              	.LASF13:
+ 1472 0036 666C6F61 		.ascii	"float\000"
+ 1472      7400
+ 1473              	.LASF42:
+ 1474 003c 433A5C55 		.ascii	"C:\\Users\\Mattia40\\Desktop\\AY1920_II_FINAL_PROJE"
+ 1474      73657273 
+ 1474      5C4D6174 
+ 1474      74696134 
+ 1474      305C4465 
+ 1475 006b 43545C47 		.ascii	"CT\\Group_02_Final_Project\\AY1920_II_FINAL_PROJECT"
+ 1475      726F7570 
+ 1475      5F30325F 
+ 1475      46696E61 
+ 1475      6C5F5072 
+ 1476 009c 2E637964 		.ascii	".cydsn\000"
+ 1476      736E00
+ 1477              	.LASF32:
+ 1478 00a3 696E6465 		.ascii	"index_eeprom\000"
+ 1478      785F6565 
+ 1478      70726F6D 
+ 1478      00
+ 1479              	.LASF41:
+ 1480 00b0 32354C43 		.ascii	"25LC256.c\000"
+ 1480      3235362E 
+ 1480      6300
+ 1481              	.LASF5:
+ 1482 00ba 73686F72 		.ascii	"short unsigned int\000"
+ 1482      7420756E 
+ 1482      7369676E 
+ 1482      65642069 
+ 1482      6E7400
+ 1483              	.LASF28:
+ 1484 00cd 45455052 		.ascii	"EEPROM_readPage\000"
+ 1484      4F4D5F72 
+ 1484      65616450 
+ 1484      61676500 
+ 1485              	.LASF19:
+ 1486 00dd 45455052 		.ascii	"EEPROM_writeDisable\000"
+ 1486      4F4D5F77 
+ 1486      72697465 
+ 1486      44697361 
+ 1486      626C6500 
+ 1487              	.LASF43:
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 30
+
+
+ 1488 00f1 65657072 		.ascii	"eeprom_Status\000"
+ 1488      6F6D5F53 
+ 1488      74617475 
+ 1488      7300
+ 1489              	.LASF34:
+ 1490 00ff 64617461 		.ascii	"data\000"
+ 1490      00
+ 1491              	.LASF1:
+ 1492 0104 756E7369 		.ascii	"unsigned char\000"
+ 1492      676E6564 
+ 1492      20636861 
+ 1492      7200
+ 1493              	.LASF40:
+ 1494 0112 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1494      43313120 
+ 1494      352E342E 
+ 1494      31203230 
+ 1494      31363036 
+ 1495 0145 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1495      20726576 
+ 1495      6973696F 
+ 1495      6E203233 
+ 1495      37373135 
+ 1496 0178 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1496      66756E63 
+ 1496      74696F6E 
+ 1496      2D736563 
+ 1496      74696F6E 
+ 1497              	.LASF7:
+ 1498 01a0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1498      20756E73 
+ 1498      69676E65 
+ 1498      6420696E 
+ 1498      7400
+ 1499              	.LASF27:
+ 1500 01b2 74656D70 		.ascii	"temp\000"
+ 1500      00
+ 1501              	.LASF25:
+ 1502 01b7 61646472 		.ascii	"addr\000"
+ 1502      00
+ 1503              	.LASF37:
+ 1504 01bc 5350495F 		.ascii	"SPI_Interface_tradeByte_EEPROM\000"
+ 1504      496E7465 
+ 1504      72666163 
+ 1504      655F7472 
+ 1504      61646542 
+ 1505              	.LASF30:
+ 1506 01db 45455052 		.ascii	"EEPROM_loadSettings\000"
+ 1506      4F4D5F6C 
+ 1506      6F616453 
+ 1506      65747469 
+ 1506      6E677300 
+ 1507              	.LASF26:
+ 1508 01ef 64617461 		.ascii	"dataByte\000"
+ 1508      42797465 
+ 1508      00
+ 1509              	.LASF4:
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 31
+
+
+ 1510 01f8 5F5F7569 		.ascii	"__uint16_t\000"
+ 1510      6E743136 
+ 1510      5F7400
+ 1511              	.LASF14:
+ 1512 0203 646F7562 		.ascii	"double\000"
+ 1512      6C6500
+ 1513              	.LASF36:
+ 1514 020a 5350495F 		.ascii	"SPI_Interface_ReadByte_EEPROM\000"
+ 1514      496E7465 
+ 1514      72666163 
+ 1514      655F5265 
+ 1514      61644279 
+ 1515              	.LASF20:
+ 1516 0228 45455052 		.ascii	"EEPROM_readStatus\000"
+ 1516      4F4D5F72 
+ 1516      65616453 
+ 1516      74617475 
+ 1516      7300
+ 1517              	.LASF10:
+ 1518 023a 756E7369 		.ascii	"unsigned int\000"
+ 1518      676E6564 
+ 1518      20696E74 
+ 1518      00
+ 1519              	.LASF9:
+ 1520 0247 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1520      206C6F6E 
+ 1520      6720756E 
+ 1520      7369676E 
+ 1520      65642069 
+ 1521              	.LASF11:
+ 1522 025e 75696E74 		.ascii	"uint8_t\000"
+ 1522      385F7400 
+ 1523              	.LASF23:
+ 1524 0266 64617461 		.ascii	"dataRX\000"
+ 1524      525800
+ 1525              	.LASF35:
+ 1526 026d 45455052 		.ascii	"EEPROM_waitForWriteComplete\000"
+ 1526      4F4D5F77 
+ 1526      61697446 
+ 1526      6F725772 
+ 1526      69746543 
+ 1527              	.LASF17:
+ 1528 0289 73697A65 		.ascii	"sizetype\000"
+ 1528      74797065 
+ 1528      00
+ 1529              	.LASF8:
+ 1530 0292 6C6F6E67 		.ascii	"long long int\000"
+ 1530      206C6F6E 
+ 1530      6720696E 
+ 1530      7400
+ 1531              	.LASF39:
+ 1532 02a0 43794465 		.ascii	"CyDelayUs\000"
+ 1532      6C617955 
+ 1532      7300
+ 1533              	.LASF15:
+ 1534 02aa 63686172 		.ascii	"char\000"
+ 1534      00
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccn1urz9.s 			page 32
+
+
+ 1535              	.LASF44:
+ 1536 02af 6D656D63 		.ascii	"memcpy\000"
+ 1536      707900
+ 1537              	.LASF2:
+ 1538 02b6 73686F72 		.ascii	"short int\000"
+ 1538      7420696E 
+ 1538      7400
+ 1539              	.LASF33:
+ 1540 02c0 45455052 		.ascii	"EEPROM_writePage\000"
+ 1540      4F4D5F77 
+ 1540      72697465 
+ 1540      50616765 
+ 1540      00
+ 1541              	.LASF38:
+ 1542 02d1 5350495F 		.ascii	"SPI_Interface_Multi_RW_EEPROM\000"
+ 1542      496E7465 
+ 1542      72666163 
+ 1542      655F4D75 
+ 1542      6C74695F 
+ 1543              	.LASF12:
+ 1544 02ef 75696E74 		.ascii	"uint16_t\000"
+ 1544      31365F74 
+ 1544      00
+ 1545              	.LASF6:
+ 1546 02f8 6C6F6E67 		.ascii	"long int\000"
+ 1546      20696E74 
+ 1546      00
+ 1547              	.LASF16:
+ 1548 0301 6C6F6E67 		.ascii	"long double\000"
+ 1548      20646F75 
+ 1548      626C6500 
+ 1549              	.LASF0:
+ 1550 030d 7369676E 		.ascii	"signed char\000"
+ 1550      65642063 
+ 1550      68617200 
+ 1551              	.LASF22:
+ 1552 0319 64617461 		.ascii	"dataTX\000"
+ 1552      545800
+ 1553              	.LASF29:
+ 1554 0320 6E427974 		.ascii	"nBytes\000"
+ 1554      657300
+ 1555              	.LASF18:
+ 1556 0327 45455052 		.ascii	"EEPROM_writeEnable\000"
+ 1556      4F4D5F77 
+ 1556      72697465 
+ 1556      456E6162 
+ 1556      6C6500
+ 1557              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

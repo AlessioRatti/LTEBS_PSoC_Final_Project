@@ -1,0 +1,1102 @@
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"SPIM_EEPROM_INT.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.SPIM_EEPROM_TX_ISR,"ax",%progbits
+  20              		.align	2
+  21              		.global	SPIM_EEPROM_TX_ISR
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	SPIM_EEPROM_TX_ISR, %function
+  25              	SPIM_EEPROM_TX_ISR:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC5\\SPIM_EEPROM_INT.c"
+   1:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * File Name: SPIM_EEPROM_INT.c
+   3:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Version 2.50
+   4:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+   5:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Description:
+   6:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  This file provides all Interrupt Service Routine (ISR) for the SPI Master
+   7:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  component.
+   8:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+   9:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Note:
+  10:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  None.
+  11:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+  12:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** ********************************************************************************
+  13:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *******************************************************************************/
+  18:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+  19:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** #include "SPIM_EEPROM_PVT.h"
+  20:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** #include "cyapicallbacks.h"
+  21:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+  22:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** /* User code required at start of ISR */
+  23:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** /* `#START SPIM_EEPROM_ISR_START_DEF` */
+  24:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+  25:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** /* `#END` */
+  26:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+  27:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+  28:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** /*******************************************************************************
+  29:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Function Name: SPIM_EEPROM_TX_ISR
+  30:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** ********************************************************************************
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 2
+
+
+  31:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+  32:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Summary:
+  33:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  Interrupt Service Routine for TX portion of the SPI Master.
+  34:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+  35:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Parameters:
+  36:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  None.
+  37:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+  38:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Return:
+  39:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  None.
+  40:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+  41:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Global variables:
+  42:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  SPIM_EEPROM_txBufferWrite - used for the account of the bytes which
+  43:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  have been written down in the TX software buffer.
+  44:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  SPIM_EEPROM_txBufferRead - used for the account of the bytes which
+  45:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  have been read from the TX software buffer, modified when exist data to
+  46:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  sending and FIFO Not Full.
+  47:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  SPIM_EEPROM_txBuffer[SPIM_EEPROM_TX_BUFFER_SIZE] - used to store
+  48:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  data to sending.
+  49:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  All described above Global variables are used when Software Buffer is used.
+  50:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+  51:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *******************************************************************************/
+  52:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** CY_ISR(SPIM_EEPROM_TX_ISR)
+  53:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** {
+  28              		.loc 1 53 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  54:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #if(SPIM_EEPROM_TX_SOFTWARE_BUF_ENABLED)
+  55:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         uint8 tmpStatus;
+  56:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #endif /* (SPIM_EEPROM_TX_SOFTWARE_BUF_ENABLED) */
+  57:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+  58:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #ifdef SPIM_EEPROM_TX_ISR_ENTRY_CALLBACK
+  59:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         SPIM_EEPROM_TX_ISR_EntryCallback();
+  60:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #endif /* SPIM_EEPROM_TX_ISR_ENTRY_CALLBACK */
+  61:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+  62:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     /* User code required at start of ISR */
+  63:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     /* `#START SPIM_EEPROM_TX_ISR_START` */
+  64:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+  65:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     /* `#END` */
+  66:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     
+  67:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #if(SPIM_EEPROM_TX_SOFTWARE_BUF_ENABLED)
+  68:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         /* Check if TX data buffer is not empty and there is space in TX FIFO */
+  69:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         while(SPIM_EEPROM_txBufferRead != SPIM_EEPROM_txBufferWrite)
+  33              		.loc 1 69 0
+  34 0000 28E0     		b	.L2
+  35              	.L6:
+  70:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         {
+  71:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             tmpStatus = SPIM_EEPROM_GET_STATUS_TX(SPIM_EEPROM_swStatusTx);
+  36              		.loc 1 71 0
+  37 0002 1F4B     		ldr	r3, .L8
+  38 0004 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+  39 0006 1F4A     		ldr	r2, .L8+4
+  40 0008 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  41 000a 03F00903 		and	r3, r3, #9
+  42 000e 0B43     		orrs	r3, r3, r1
+  43              	.LVL0:
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 3
+
+
+  72:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             SPIM_EEPROM_swStatusTx = tmpStatus;
+  44              		.loc 1 72 0
+  45 0010 1370     		strb	r3, [r2]
+  73:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+  74:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             if(0u != (SPIM_EEPROM_swStatusTx & SPIM_EEPROM_STS_TX_FIFO_NOT_FULL))
+  46              		.loc 1 74 0
+  47 0012 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  48              	.LVL1:
+  49 0014 13F0040F 		tst	r3, #4
+  50 0018 24D0     		beq	.L3
+  75:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             {
+  76:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 if(0u == SPIM_EEPROM_txBufferFull)
+  51              		.loc 1 76 0
+  52 001a 1B4B     		ldr	r3, .L8+8
+  53 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  54 001e 13F0FF0F 		tst	r3, #255
+  55 0022 0CD1     		bne	.L4
+  77:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 {
+  78:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                    SPIM_EEPROM_txBufferRead++;
+  56              		.loc 1 78 0
+  57 0024 194A     		ldr	r2, .L8+12
+  58              	.LVL2:
+  59 0026 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  60 0028 0133     		adds	r3, r3, #1
+  61 002a DBB2     		uxtb	r3, r3
+  62 002c 1370     		strb	r3, [r2]
+  63              	.LVL3:
+  79:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+  80:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                     if(SPIM_EEPROM_txBufferRead >= SPIM_EEPROM_TX_BUFFER_SIZE)
+  64              		.loc 1 80 0
+  65 002e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  66 0030 DBB2     		uxtb	r3, r3
+  67 0032 072B     		cmp	r3, #7
+  68 0034 06D9     		bls	.L5
+  81:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                     {
+  82:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                         SPIM_EEPROM_txBufferRead = 0u;
+  69              		.loc 1 82 0
+  70 0036 0022     		movs	r2, #0
+  71 0038 144B     		ldr	r3, .L8+12
+  72 003a 1A70     		strb	r2, [r3]
+  73 003c 02E0     		b	.L5
+  74              	.LVL4:
+  75              	.L4:
+  83:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                     }
+  84:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 }
+  85:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 else
+  86:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 {
+  87:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                     SPIM_EEPROM_txBufferFull = 0u;
+  76              		.loc 1 87 0
+  77 003e 0022     		movs	r2, #0
+  78              	.LVL5:
+  79 0040 114B     		ldr	r3, .L8+8
+  80 0042 1A70     		strb	r2, [r3]
+  81              	.LVL6:
+  82              	.L5:
+  88:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 }
+  89:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 4
+
+
+  90:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 /* Put data element into the TX FIFO */
+  91:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 CY_SET_REG8(SPIM_EEPROM_TXDATA_PTR, 
+  83              		.loc 1 91 0
+  84 0044 114B     		ldr	r3, .L8+12
+  85 0046 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  86 0048 DBB2     		uxtb	r3, r3
+  87 004a 114A     		ldr	r2, .L8+16
+  88 004c D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+  89 004e DBB2     		uxtb	r3, r3
+  90 0050 104A     		ldr	r2, .L8+20
+  91 0052 1370     		strb	r3, [r2]
+  92              	.L2:
+  69:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         {
+  93              		.loc 1 69 0
+  94 0054 0D4B     		ldr	r3, .L8+12
+  95 0056 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  96 0058 D2B2     		uxtb	r2, r2
+  97 005a 0F4B     		ldr	r3, .L8+24
+  98 005c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  99 005e DBB2     		uxtb	r3, r3
+ 100 0060 9A42     		cmp	r2, r3
+ 101 0062 CED1     		bne	.L6
+ 102              	.L3:
+  92:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                                              SPIM_EEPROM_txBuffer[SPIM_EEPROM_txBufferRead]);
+  93:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             }
+  94:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             else
+  95:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             {
+  96:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 break;
+  97:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             }
+  98:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         }
+  99:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 100:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         if(SPIM_EEPROM_txBufferRead == SPIM_EEPROM_txBufferWrite)
+ 103              		.loc 1 100 0
+ 104 0064 094B     		ldr	r3, .L8+12
+ 105 0066 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 106 0068 D2B2     		uxtb	r2, r2
+ 107 006a 0B4B     		ldr	r3, .L8+24
+ 108 006c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 109 006e DBB2     		uxtb	r3, r3
+ 110 0070 9A42     		cmp	r2, r3
+ 111 0072 04D1     		bne	.L1
+ 101:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         {
+ 102:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             /* TX Buffer is EMPTY: disable interrupt on TX NOT FULL */
+ 103:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             SPIM_EEPROM_TX_STATUS_MASK_REG &= ((uint8) ~SPIM_EEPROM_STS_TX_FIFO_NOT_FULL);
+ 112              		.loc 1 103 0
+ 113 0074 094A     		ldr	r2, .L8+28
+ 114 0076 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 115 0078 03F0FB03 		and	r3, r3, #251
+ 116 007c 1370     		strb	r3, [r2]
+ 117              	.L1:
+ 118 007e 7047     		bx	lr
+ 119              	.L9:
+ 120              		.align	2
+ 121              	.L8:
+ 122 0080 6B640040 		.word	1073767531
+ 123 0084 00000000 		.word	SPIM_EEPROM_swStatusTx
+ 124 0088 00000000 		.word	SPIM_EEPROM_txBufferFull
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 5
+
+
+ 125 008c 00000000 		.word	SPIM_EEPROM_txBufferRead
+ 126 0090 00000000 		.word	SPIM_EEPROM_txBuffer
+ 127 0094 4B640040 		.word	1073767499
+ 128 0098 00000000 		.word	SPIM_EEPROM_txBufferWrite
+ 129 009c 8B640040 		.word	1073767563
+ 130              		.cfi_endproc
+ 131              	.LFE0:
+ 132              		.size	SPIM_EEPROM_TX_ISR, .-SPIM_EEPROM_TX_ISR
+ 133              		.section	.text.SPIM_EEPROM_RX_ISR,"ax",%progbits
+ 134              		.align	2
+ 135              		.global	SPIM_EEPROM_RX_ISR
+ 136              		.thumb
+ 137              		.thumb_func
+ 138              		.type	SPIM_EEPROM_RX_ISR, %function
+ 139              	SPIM_EEPROM_RX_ISR:
+ 140              	.LFB1:
+ 104:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         }
+ 105:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 106:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #endif /* (SPIM_EEPROM_TX_SOFTWARE_BUF_ENABLED) */
+ 107:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 108:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     /* User code required at end of ISR (Optional) */
+ 109:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     /* `#START SPIM_EEPROM_TX_ISR_END` */
+ 110:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 111:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     /* `#END` */
+ 112:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     
+ 113:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #ifdef SPIM_EEPROM_TX_ISR_EXIT_CALLBACK
+ 114:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         SPIM_EEPROM_TX_ISR_ExitCallback();
+ 115:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #endif /* SPIM_EEPROM_TX_ISR_EXIT_CALLBACK */
+ 116:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** }
+ 117:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 118:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 119:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** /*******************************************************************************
+ 120:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Function Name: SPIM_EEPROM_RX_ISR
+ 121:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** ********************************************************************************
+ 122:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+ 123:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Summary:
+ 124:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  Interrupt Service Routine for RX portion of the SPI Master.
+ 125:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+ 126:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Parameters:
+ 127:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  None.
+ 128:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+ 129:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Return:
+ 130:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  None.
+ 131:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+ 132:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** * Global variables:
+ 133:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  SPIM_EEPROM_rxBufferWrite - used for the account of the bytes which
+ 134:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  have been written down in the RX software buffer modified when FIFO contains
+ 135:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  new data.
+ 136:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  SPIM_EEPROM_rxBufferRead - used for the account of the bytes which
+ 137:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  have been read from the RX software buffer, modified when overflow occurred.
+ 138:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  SPIM_EEPROM_rxBuffer[SPIM_EEPROM_RX_BUFFER_SIZE] - used to store
+ 139:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  received data, modified when FIFO contains new data.
+ 140:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *  All described above Global variables are used when Software Buffer is used.
+ 141:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *
+ 142:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** *******************************************************************************/
+ 143:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** CY_ISR(SPIM_EEPROM_RX_ISR)
+ 144:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** {
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 6
+
+
+ 141              		.loc 1 144 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145              		@ link register save eliminated.
+ 145:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #if(SPIM_EEPROM_RX_SOFTWARE_BUF_ENABLED)
+ 146:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         uint8 tmpStatus;
+ 147:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         uint8 rxData;
+ 148:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #endif /* (SPIM_EEPROM_RX_SOFTWARE_BUF_ENABLED) */
+ 149:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 150:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #ifdef SPIM_EEPROM_RX_ISR_ENTRY_CALLBACK
+ 151:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         SPIM_EEPROM_RX_ISR_EntryCallback();
+ 152:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #endif /* SPIM_EEPROM_RX_ISR_ENTRY_CALLBACK */
+ 153:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 154:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     /* User code required at start of ISR */
+ 155:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     /* `#START SPIM_EEPROM_RX_ISR_START` */
+ 156:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 157:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     /* `#END` */
+ 158:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     
+ 159:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #if(SPIM_EEPROM_RX_SOFTWARE_BUF_ENABLED)
+ 160:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 161:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         tmpStatus = SPIM_EEPROM_GET_STATUS_RX(SPIM_EEPROM_swStatusRx);
+ 146              		.loc 1 161 0
+ 147 0000 204B     		ldr	r3, .L16
+ 148 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 149 0004 2049     		ldr	r1, .L16+4
+ 150 0006 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 151 0008 03F04003 		and	r3, r3, #64
+ 152 000c 1343     		orrs	r3, r3, r2
+ 153              	.LVL7:
+ 162:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         SPIM_EEPROM_swStatusRx = tmpStatus;
+ 154              		.loc 1 162 0
+ 155 000e 0B70     		strb	r3, [r1]
+ 163:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 164:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         /* Check if RX data FIFO has some data to be moved into the RX Buffer */
+ 165:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         while(0u != (SPIM_EEPROM_swStatusRx & SPIM_EEPROM_STS_RX_FIFO_NOT_EMPTY))
+ 156              		.loc 1 165 0
+ 157 0010 32E0     		b	.L11
+ 158              	.LVL8:
+ 159              	.L15:
+ 166:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         {
+ 167:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             rxData = CY_GET_REG8(SPIM_EEPROM_RXDATA_PTR);
+ 160              		.loc 1 167 0
+ 161 0012 1E4B     		ldr	r3, .L16+8
+ 162 0014 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 163 0016 D2B2     		uxtb	r2, r2
+ 164              	.LVL9:
+ 168:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 169:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             /* Set next pointer. */
+ 170:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             SPIM_EEPROM_rxBufferWrite++;
+ 165              		.loc 1 170 0
+ 166 0018 1D49     		ldr	r1, .L16+12
+ 167              	.LVL10:
+ 168 001a 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 169 001c 0133     		adds	r3, r3, #1
+ 170 001e DBB2     		uxtb	r3, r3
+ 171 0020 0B70     		strb	r3, [r1]
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 7
+
+
+ 172              	.LVL11:
+ 171:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             if(SPIM_EEPROM_rxBufferWrite >= SPIM_EEPROM_RX_BUFFER_SIZE)
+ 173              		.loc 1 171 0
+ 174 0022 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 175 0024 DBB2     		uxtb	r3, r3
+ 176 0026 072B     		cmp	r3, #7
+ 177 0028 02D9     		bls	.L12
+ 172:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             {
+ 173:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 SPIM_EEPROM_rxBufferWrite = 0u;
+ 178              		.loc 1 173 0
+ 179 002a 0021     		movs	r1, #0
+ 180 002c 184B     		ldr	r3, .L16+12
+ 181 002e 1970     		strb	r1, [r3]
+ 182              	.L12:
+ 174:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             }
+ 175:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 176:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             if(SPIM_EEPROM_rxBufferWrite == SPIM_EEPROM_rxBufferRead)
+ 183              		.loc 1 176 0
+ 184 0030 174B     		ldr	r3, .L16+12
+ 185 0032 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 186 0034 C9B2     		uxtb	r1, r1
+ 187 0036 174B     		ldr	r3, .L16+16
+ 188 0038 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 189 003a DBB2     		uxtb	r3, r3
+ 190 003c 9942     		cmp	r1, r3
+ 191 003e 0ED1     		bne	.L13
+ 177:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             {
+ 178:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 SPIM_EEPROM_rxBufferRead++;
+ 192              		.loc 1 178 0
+ 193 0040 1449     		ldr	r1, .L16+16
+ 194 0042 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 195 0044 0133     		adds	r3, r3, #1
+ 196 0046 DBB2     		uxtb	r3, r3
+ 197 0048 0B70     		strb	r3, [r1]
+ 179:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 if(SPIM_EEPROM_rxBufferRead >= SPIM_EEPROM_RX_BUFFER_SIZE)
+ 198              		.loc 1 179 0
+ 199 004a 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 200 004c DBB2     		uxtb	r3, r3
+ 201 004e 072B     		cmp	r3, #7
+ 202 0050 02D9     		bls	.L14
+ 180:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 {
+ 181:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                     SPIM_EEPROM_rxBufferRead = 0u;
+ 203              		.loc 1 181 0
+ 204 0052 0021     		movs	r1, #0
+ 205 0054 0F4B     		ldr	r3, .L16+16
+ 206 0056 1970     		strb	r1, [r3]
+ 207              	.L14:
+ 182:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 }
+ 183:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 184:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****                 SPIM_EEPROM_rxBufferFull = 1u;
+ 208              		.loc 1 184 0
+ 209 0058 0121     		movs	r1, #1
+ 210 005a 0F4B     		ldr	r3, .L16+20
+ 211 005c 1970     		strb	r1, [r3]
+ 212              	.L13:
+ 185:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             }
+ 186:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 8
+
+
+ 187:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             /* Move data from the FIFO to the Buffer */
+ 188:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             SPIM_EEPROM_rxBuffer[SPIM_EEPROM_rxBufferWrite] = rxData;
+ 213              		.loc 1 188 0
+ 214 005e 0C4B     		ldr	r3, .L16+12
+ 215 0060 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 216 0062 DBB2     		uxtb	r3, r3
+ 217 0064 0D49     		ldr	r1, .L16+24
+ 218 0066 CA54     		strb	r2, [r1, r3]
+ 189:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 190:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             tmpStatus = SPIM_EEPROM_GET_STATUS_RX(SPIM_EEPROM_swStatusRx);
+ 219              		.loc 1 190 0
+ 220 0068 064B     		ldr	r3, .L16
+ 221 006a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 222              	.LVL12:
+ 223 006c 0649     		ldr	r1, .L16+4
+ 224 006e 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 225 0070 03F04003 		and	r3, r3, #64
+ 226 0074 1343     		orrs	r3, r3, r2
+ 227              	.LVL13:
+ 191:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****             SPIM_EEPROM_swStatusRx = tmpStatus;
+ 228              		.loc 1 191 0
+ 229 0076 0B70     		strb	r3, [r1]
+ 230              	.L11:
+ 165:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         {
+ 231              		.loc 1 165 0
+ 232 0078 034B     		ldr	r3, .L16+4
+ 233              	.LVL14:
+ 234 007a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 235 007c 13F0200F 		tst	r3, #32
+ 236 0080 C7D1     		bne	.L15
+ 192:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         }
+ 193:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 194:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #endif /* (SPIM_EEPROM_RX_SOFTWARE_BUF_ENABLED) */
+ 195:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 196:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     /* User code required at end of ISR (Optional) */
+ 197:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     /* `#START SPIM_EEPROM_RX_ISR_END` */
+ 198:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** 
+ 199:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     /* `#END` */
+ 200:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     
+ 201:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #ifdef SPIM_EEPROM_RX_ISR_EXIT_CALLBACK
+ 202:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****         SPIM_EEPROM_RX_ISR_ExitCallback();
+ 203:Generated_Source\PSoC5/SPIM_EEPROM_INT.c ****     #endif /* SPIM_EEPROM_RX_ISR_EXIT_CALLBACK */
+ 204:Generated_Source\PSoC5/SPIM_EEPROM_INT.c **** }
+ 237              		.loc 1 204 0
+ 238 0082 7047     		bx	lr
+ 239              	.L17:
+ 240              		.align	2
+ 241              	.L16:
+ 242 0084 68650040 		.word	1073767784
+ 243 0088 00000000 		.word	SPIM_EEPROM_swStatusRx
+ 244 008c 5B640040 		.word	1073767515
+ 245 0090 00000000 		.word	SPIM_EEPROM_rxBufferWrite
+ 246 0094 00000000 		.word	SPIM_EEPROM_rxBufferRead
+ 247 0098 00000000 		.word	SPIM_EEPROM_rxBufferFull
+ 248 009c 00000000 		.word	SPIM_EEPROM_rxBuffer
+ 249              		.cfi_endproc
+ 250              	.LFE1:
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 9
+
+
+ 251              		.size	SPIM_EEPROM_RX_ISR, .-SPIM_EEPROM_RX_ISR
+ 252              		.text
+ 253              	.Letext0:
+ 254              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 255              		.file 3 "Generated_Source\\PSoC5\\SPIM_EEPROM_PVT.h"
+ 256              		.section	.debug_info,"",%progbits
+ 257              	.Ldebug_info0:
+ 258 0000 89010000 		.4byte	0x189
+ 259 0004 0400     		.2byte	0x4
+ 260 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 261 000a 04       		.byte	0x4
+ 262 000b 01       		.uleb128 0x1
+ 263 000c 3D010000 		.4byte	.LASF30
+ 264 0010 0C       		.byte	0xc
+ 265 0011 A7020000 		.4byte	.LASF31
+ 266 0015 48000000 		.4byte	.LASF32
+ 267 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 268 001d 00000000 		.4byte	0
+ 269 0021 00000000 		.4byte	.Ldebug_line0
+ 270 0025 02       		.uleb128 0x2
+ 271 0026 01       		.byte	0x1
+ 272 0027 06       		.byte	0x6
+ 273 0028 EF020000 		.4byte	.LASF0
+ 274 002c 02       		.uleb128 0x2
+ 275 002d 01       		.byte	0x1
+ 276 002e 08       		.byte	0x8
+ 277 002f 2F010000 		.4byte	.LASF1
+ 278 0033 02       		.uleb128 0x2
+ 279 0034 02       		.byte	0x2
+ 280 0035 05       		.byte	0x5
+ 281 0036 84020000 		.4byte	.LASF2
+ 282 003a 02       		.uleb128 0x2
+ 283 003b 02       		.byte	0x2
+ 284 003c 07       		.byte	0x7
+ 285 003d AF000000 		.4byte	.LASF3
+ 286 0041 02       		.uleb128 0x2
+ 287 0042 04       		.byte	0x4
+ 288 0043 05       		.byte	0x5
+ 289 0044 D0020000 		.4byte	.LASF4
+ 290 0048 02       		.uleb128 0x2
+ 291 0049 04       		.byte	0x4
+ 292 004a 07       		.byte	0x7
+ 293 004b D0010000 		.4byte	.LASF5
+ 294 004f 02       		.uleb128 0x2
+ 295 0050 08       		.byte	0x8
+ 296 0051 05       		.byte	0x5
+ 297 0052 5E020000 		.4byte	.LASF6
+ 298 0056 02       		.uleb128 0x2
+ 299 0057 08       		.byte	0x8
+ 300 0058 07       		.byte	0x7
+ 301 0059 3E020000 		.4byte	.LASF7
+ 302 005d 03       		.uleb128 0x3
+ 303 005e 04       		.byte	0x4
+ 304 005f 05       		.byte	0x5
+ 305 0060 696E7400 		.ascii	"int\000"
+ 306 0064 02       		.uleb128 0x2
+ 307 0065 04       		.byte	0x4
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 10
+
+
+ 308 0066 07       		.byte	0x7
+ 309 0067 31020000 		.4byte	.LASF8
+ 310 006b 04       		.uleb128 0x4
+ 311 006c E2010000 		.4byte	.LASF12
+ 312 0070 02       		.byte	0x2
+ 313 0071 E401     		.2byte	0x1e4
+ 314 0073 2C000000 		.4byte	0x2c
+ 315 0077 02       		.uleb128 0x2
+ 316 0078 04       		.byte	0x4
+ 317 0079 04       		.byte	0x4
+ 318 007a 29010000 		.4byte	.LASF9
+ 319 007e 02       		.uleb128 0x2
+ 320 007f 08       		.byte	0x8
+ 321 0080 04       		.byte	0x4
+ 322 0081 D9000000 		.4byte	.LASF10
+ 323 0085 02       		.uleb128 0x2
+ 324 0086 01       		.byte	0x1
+ 325 0087 08       		.byte	0x8
+ 326 0088 6C020000 		.4byte	.LASF11
+ 327 008c 04       		.uleb128 0x4
+ 328 008d CB010000 		.4byte	.LASF13
+ 329 0091 02       		.byte	0x2
+ 330 0092 8E02     		.2byte	0x28e
+ 331 0094 98000000 		.4byte	0x98
+ 332 0098 05       		.uleb128 0x5
+ 333 0099 6B000000 		.4byte	0x6b
+ 334 009d 02       		.uleb128 0x2
+ 335 009e 08       		.byte	0x8
+ 336 009f 04       		.byte	0x4
+ 337 00a0 E3020000 		.4byte	.LASF14
+ 338 00a4 02       		.uleb128 0x2
+ 339 00a5 04       		.byte	0x4
+ 340 00a6 07       		.byte	0x7
+ 341 00a7 55020000 		.4byte	.LASF15
+ 342 00ab 06       		.uleb128 0x6
+ 343 00ac 04020000 		.4byte	.LASF16
+ 344 00b0 01       		.byte	0x1
+ 345 00b1 34       		.byte	0x34
+ 346 00b2 00000000 		.4byte	.LFB0
+ 347 00b6 A0000000 		.4byte	.LFE0-.LFB0
+ 348 00ba 01       		.uleb128 0x1
+ 349 00bb 9C       		.byte	0x9c
+ 350 00bc D0000000 		.4byte	0xd0
+ 351 00c0 07       		.uleb128 0x7
+ 352 00c1 D9020000 		.4byte	.LASF18
+ 353 00c5 01       		.byte	0x1
+ 354 00c6 37       		.byte	0x37
+ 355 00c7 6B000000 		.4byte	0x6b
+ 356 00cb 00000000 		.4byte	.LLST0
+ 357 00cf 00       		.byte	0
+ 358 00d0 06       		.uleb128 0x6
+ 359 00d1 71020000 		.4byte	.LASF17
+ 360 00d5 01       		.byte	0x1
+ 361 00d6 8F       		.byte	0x8f
+ 362 00d7 00000000 		.4byte	.LFB1
+ 363 00db A0000000 		.4byte	.LFE1-.LFB1
+ 364 00df 01       		.uleb128 0x1
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 11
+
+
+ 365 00e0 9C       		.byte	0x9c
+ 366 00e1 04010000 		.4byte	0x104
+ 367 00e5 07       		.uleb128 0x7
+ 368 00e6 D9020000 		.4byte	.LASF18
+ 369 00ea 01       		.byte	0x1
+ 370 00eb 92       		.byte	0x92
+ 371 00ec 6B000000 		.4byte	0x6b
+ 372 00f0 2B000000 		.4byte	.LLST1
+ 373 00f4 07       		.uleb128 0x7
+ 374 00f5 FD010000 		.4byte	.LASF19
+ 375 00f9 01       		.byte	0x1
+ 376 00fa 93       		.byte	0x93
+ 377 00fb 6B000000 		.4byte	0x6b
+ 378 00ff 61000000 		.4byte	.LLST2
+ 379 0103 00       		.byte	0
+ 380 0104 08       		.uleb128 0x8
+ 381 0105 E0000000 		.4byte	.LASF20
+ 382 0109 03       		.byte	0x3
+ 383 010a 21       		.byte	0x21
+ 384 010b 98000000 		.4byte	0x98
+ 385 010f 08       		.uleb128 0x8
+ 386 0110 C2000000 		.4byte	.LASF21
+ 387 0114 03       		.byte	0x3
+ 388 0115 22       		.byte	0x22
+ 389 0116 98000000 		.4byte	0x98
+ 390 011a 09       		.uleb128 0x9
+ 391 011b 98000000 		.4byte	0x98
+ 392 011f 2A010000 		.4byte	0x12a
+ 393 0123 0A       		.uleb128 0xa
+ 394 0124 A4000000 		.4byte	0xa4
+ 395 0128 07       		.byte	0x7
+ 396 0129 00       		.byte	0
+ 397 012a 08       		.uleb128 0x8
+ 398 012b 1A000000 		.4byte	.LASF22
+ 399 012f 03       		.byte	0x3
+ 400 0130 25       		.byte	0x25
+ 401 0131 35010000 		.4byte	0x135
+ 402 0135 05       		.uleb128 0x5
+ 403 0136 1A010000 		.4byte	0x11a
+ 404 013a 08       		.uleb128 0x8
+ 405 013b F7000000 		.4byte	.LASF23
+ 406 013f 03       		.byte	0x3
+ 407 0140 26       		.byte	0x26
+ 408 0141 98000000 		.4byte	0x98
+ 409 0145 08       		.uleb128 0x8
+ 410 0146 00000000 		.4byte	.LASF24
+ 411 014a 03       		.byte	0x3
+ 412 014b 27       		.byte	0x27
+ 413 014c 98000000 		.4byte	0x98
+ 414 0150 08       		.uleb128 0x8
+ 415 0151 2F000000 		.4byte	.LASF25
+ 416 0155 03       		.byte	0x3
+ 417 0156 28       		.byte	0x28
+ 418 0157 98000000 		.4byte	0x98
+ 419 015b 08       		.uleb128 0x8
+ 420 015c E8010000 		.4byte	.LASF26
+ 421 0160 03       		.byte	0x3
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 12
+
+
+ 422 0161 2C       		.byte	0x2c
+ 423 0162 66010000 		.4byte	0x166
+ 424 0166 05       		.uleb128 0x5
+ 425 0167 1A010000 		.4byte	0x11a
+ 426 016b 08       		.uleb128 0x8
+ 427 016c 8E020000 		.4byte	.LASF27
+ 428 0170 03       		.byte	0x3
+ 429 0171 2D       		.byte	0x2d
+ 430 0172 98000000 		.4byte	0x98
+ 431 0176 08       		.uleb128 0x8
+ 432 0177 17020000 		.4byte	.LASF28
+ 433 017b 03       		.byte	0x3
+ 434 017c 2E       		.byte	0x2e
+ 435 017d 98000000 		.4byte	0x98
+ 436 0181 08       		.uleb128 0x8
+ 437 0182 10010000 		.4byte	.LASF29
+ 438 0186 03       		.byte	0x3
+ 439 0187 2F       		.byte	0x2f
+ 440 0188 98000000 		.4byte	0x98
+ 441 018c 00       		.byte	0
+ 442              		.section	.debug_abbrev,"",%progbits
+ 443              	.Ldebug_abbrev0:
+ 444 0000 01       		.uleb128 0x1
+ 445 0001 11       		.uleb128 0x11
+ 446 0002 01       		.byte	0x1
+ 447 0003 25       		.uleb128 0x25
+ 448 0004 0E       		.uleb128 0xe
+ 449 0005 13       		.uleb128 0x13
+ 450 0006 0B       		.uleb128 0xb
+ 451 0007 03       		.uleb128 0x3
+ 452 0008 0E       		.uleb128 0xe
+ 453 0009 1B       		.uleb128 0x1b
+ 454 000a 0E       		.uleb128 0xe
+ 455 000b 55       		.uleb128 0x55
+ 456 000c 17       		.uleb128 0x17
+ 457 000d 11       		.uleb128 0x11
+ 458 000e 01       		.uleb128 0x1
+ 459 000f 10       		.uleb128 0x10
+ 460 0010 17       		.uleb128 0x17
+ 461 0011 00       		.byte	0
+ 462 0012 00       		.byte	0
+ 463 0013 02       		.uleb128 0x2
+ 464 0014 24       		.uleb128 0x24
+ 465 0015 00       		.byte	0
+ 466 0016 0B       		.uleb128 0xb
+ 467 0017 0B       		.uleb128 0xb
+ 468 0018 3E       		.uleb128 0x3e
+ 469 0019 0B       		.uleb128 0xb
+ 470 001a 03       		.uleb128 0x3
+ 471 001b 0E       		.uleb128 0xe
+ 472 001c 00       		.byte	0
+ 473 001d 00       		.byte	0
+ 474 001e 03       		.uleb128 0x3
+ 475 001f 24       		.uleb128 0x24
+ 476 0020 00       		.byte	0
+ 477 0021 0B       		.uleb128 0xb
+ 478 0022 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 13
+
+
+ 479 0023 3E       		.uleb128 0x3e
+ 480 0024 0B       		.uleb128 0xb
+ 481 0025 03       		.uleb128 0x3
+ 482 0026 08       		.uleb128 0x8
+ 483 0027 00       		.byte	0
+ 484 0028 00       		.byte	0
+ 485 0029 04       		.uleb128 0x4
+ 486 002a 16       		.uleb128 0x16
+ 487 002b 00       		.byte	0
+ 488 002c 03       		.uleb128 0x3
+ 489 002d 0E       		.uleb128 0xe
+ 490 002e 3A       		.uleb128 0x3a
+ 491 002f 0B       		.uleb128 0xb
+ 492 0030 3B       		.uleb128 0x3b
+ 493 0031 05       		.uleb128 0x5
+ 494 0032 49       		.uleb128 0x49
+ 495 0033 13       		.uleb128 0x13
+ 496 0034 00       		.byte	0
+ 497 0035 00       		.byte	0
+ 498 0036 05       		.uleb128 0x5
+ 499 0037 35       		.uleb128 0x35
+ 500 0038 00       		.byte	0
+ 501 0039 49       		.uleb128 0x49
+ 502 003a 13       		.uleb128 0x13
+ 503 003b 00       		.byte	0
+ 504 003c 00       		.byte	0
+ 505 003d 06       		.uleb128 0x6
+ 506 003e 2E       		.uleb128 0x2e
+ 507 003f 01       		.byte	0x1
+ 508 0040 3F       		.uleb128 0x3f
+ 509 0041 19       		.uleb128 0x19
+ 510 0042 03       		.uleb128 0x3
+ 511 0043 0E       		.uleb128 0xe
+ 512 0044 3A       		.uleb128 0x3a
+ 513 0045 0B       		.uleb128 0xb
+ 514 0046 3B       		.uleb128 0x3b
+ 515 0047 0B       		.uleb128 0xb
+ 516 0048 27       		.uleb128 0x27
+ 517 0049 19       		.uleb128 0x19
+ 518 004a 11       		.uleb128 0x11
+ 519 004b 01       		.uleb128 0x1
+ 520 004c 12       		.uleb128 0x12
+ 521 004d 06       		.uleb128 0x6
+ 522 004e 40       		.uleb128 0x40
+ 523 004f 18       		.uleb128 0x18
+ 524 0050 9742     		.uleb128 0x2117
+ 525 0052 19       		.uleb128 0x19
+ 526 0053 01       		.uleb128 0x1
+ 527 0054 13       		.uleb128 0x13
+ 528 0055 00       		.byte	0
+ 529 0056 00       		.byte	0
+ 530 0057 07       		.uleb128 0x7
+ 531 0058 34       		.uleb128 0x34
+ 532 0059 00       		.byte	0
+ 533 005a 03       		.uleb128 0x3
+ 534 005b 0E       		.uleb128 0xe
+ 535 005c 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 14
+
+
+ 536 005d 0B       		.uleb128 0xb
+ 537 005e 3B       		.uleb128 0x3b
+ 538 005f 0B       		.uleb128 0xb
+ 539 0060 49       		.uleb128 0x49
+ 540 0061 13       		.uleb128 0x13
+ 541 0062 02       		.uleb128 0x2
+ 542 0063 17       		.uleb128 0x17
+ 543 0064 00       		.byte	0
+ 544 0065 00       		.byte	0
+ 545 0066 08       		.uleb128 0x8
+ 546 0067 34       		.uleb128 0x34
+ 547 0068 00       		.byte	0
+ 548 0069 03       		.uleb128 0x3
+ 549 006a 0E       		.uleb128 0xe
+ 550 006b 3A       		.uleb128 0x3a
+ 551 006c 0B       		.uleb128 0xb
+ 552 006d 3B       		.uleb128 0x3b
+ 553 006e 0B       		.uleb128 0xb
+ 554 006f 49       		.uleb128 0x49
+ 555 0070 13       		.uleb128 0x13
+ 556 0071 3F       		.uleb128 0x3f
+ 557 0072 19       		.uleb128 0x19
+ 558 0073 3C       		.uleb128 0x3c
+ 559 0074 19       		.uleb128 0x19
+ 560 0075 00       		.byte	0
+ 561 0076 00       		.byte	0
+ 562 0077 09       		.uleb128 0x9
+ 563 0078 01       		.uleb128 0x1
+ 564 0079 01       		.byte	0x1
+ 565 007a 49       		.uleb128 0x49
+ 566 007b 13       		.uleb128 0x13
+ 567 007c 01       		.uleb128 0x1
+ 568 007d 13       		.uleb128 0x13
+ 569 007e 00       		.byte	0
+ 570 007f 00       		.byte	0
+ 571 0080 0A       		.uleb128 0xa
+ 572 0081 21       		.uleb128 0x21
+ 573 0082 00       		.byte	0
+ 574 0083 49       		.uleb128 0x49
+ 575 0084 13       		.uleb128 0x13
+ 576 0085 2F       		.uleb128 0x2f
+ 577 0086 0B       		.uleb128 0xb
+ 578 0087 00       		.byte	0
+ 579 0088 00       		.byte	0
+ 580 0089 00       		.byte	0
+ 581              		.section	.debug_loc,"",%progbits
+ 582              	.Ldebug_loc0:
+ 583              	.LLST0:
+ 584 0000 10000000 		.4byte	.LVL0
+ 585 0004 14000000 		.4byte	.LVL1
+ 586 0008 0100     		.2byte	0x1
+ 587 000a 53       		.byte	0x53
+ 588 000b 14000000 		.4byte	.LVL1
+ 589 000f 26000000 		.4byte	.LVL2
+ 590 0013 0200     		.2byte	0x2
+ 591 0015 72       		.byte	0x72
+ 592 0016 00       		.sleb128 0
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 15
+
+
+ 593 0017 3E000000 		.4byte	.LVL4
+ 594 001b 40000000 		.4byte	.LVL5
+ 595 001f 0200     		.2byte	0x2
+ 596 0021 72       		.byte	0x72
+ 597 0022 00       		.sleb128 0
+ 598 0023 00000000 		.4byte	0
+ 599 0027 00000000 		.4byte	0
+ 600              	.LLST1:
+ 601 002b 0E000000 		.4byte	.LVL7
+ 602 002f 12000000 		.4byte	.LVL8
+ 603 0033 0100     		.2byte	0x1
+ 604 0035 53       		.byte	0x53
+ 605 0036 12000000 		.4byte	.LVL8
+ 606 003a 1A000000 		.4byte	.LVL10
+ 607 003e 0200     		.2byte	0x2
+ 608 0040 71       		.byte	0x71
+ 609 0041 00       		.sleb128 0
+ 610 0042 76000000 		.4byte	.LVL13
+ 611 0046 7A000000 		.4byte	.LVL14
+ 612 004a 0100     		.2byte	0x1
+ 613 004c 53       		.byte	0x53
+ 614 004d 7A000000 		.4byte	.LVL14
+ 615 0051 A0000000 		.4byte	.LFE1
+ 616 0055 0200     		.2byte	0x2
+ 617 0057 71       		.byte	0x71
+ 618 0058 00       		.sleb128 0
+ 619 0059 00000000 		.4byte	0
+ 620 005d 00000000 		.4byte	0
+ 621              	.LLST2:
+ 622 0061 18000000 		.4byte	.LVL9
+ 623 0065 6C000000 		.4byte	.LVL12
+ 624 0069 0100     		.2byte	0x1
+ 625 006b 52       		.byte	0x52
+ 626 006c 00000000 		.4byte	0
+ 627 0070 00000000 		.4byte	0
+ 628              		.section	.debug_aranges,"",%progbits
+ 629 0000 24000000 		.4byte	0x24
+ 630 0004 0200     		.2byte	0x2
+ 631 0006 00000000 		.4byte	.Ldebug_info0
+ 632 000a 04       		.byte	0x4
+ 633 000b 00       		.byte	0
+ 634 000c 0000     		.2byte	0
+ 635 000e 0000     		.2byte	0
+ 636 0010 00000000 		.4byte	.LFB0
+ 637 0014 A0000000 		.4byte	.LFE0-.LFB0
+ 638 0018 00000000 		.4byte	.LFB1
+ 639 001c A0000000 		.4byte	.LFE1-.LFB1
+ 640 0020 00000000 		.4byte	0
+ 641 0024 00000000 		.4byte	0
+ 642              		.section	.debug_ranges,"",%progbits
+ 643              	.Ldebug_ranges0:
+ 644 0000 00000000 		.4byte	.LFB0
+ 645 0004 A0000000 		.4byte	.LFE0
+ 646 0008 00000000 		.4byte	.LFB1
+ 647 000c A0000000 		.4byte	.LFE1
+ 648 0010 00000000 		.4byte	0
+ 649 0014 00000000 		.4byte	0
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 16
+
+
+ 650              		.section	.debug_line,"",%progbits
+ 651              	.Ldebug_line0:
+ 652 0000 B0000000 		.section	.debug_str,"MS",%progbits,1
+ 652      02006100 
+ 652      00000201 
+ 652      FB0E0D00 
+ 652      01010101 
+ 653              	.LASF24:
+ 654 0000 5350494D 		.ascii	"SPIM_EEPROM_txBufferWrite\000"
+ 654      5F454550 
+ 654      524F4D5F 
+ 654      74784275 
+ 654      66666572 
+ 655              	.LASF22:
+ 656 001a 5350494D 		.ascii	"SPIM_EEPROM_txBuffer\000"
+ 656      5F454550 
+ 656      524F4D5F 
+ 656      74784275 
+ 656      66666572 
+ 657              	.LASF25:
+ 658 002f 5350494D 		.ascii	"SPIM_EEPROM_txBufferFull\000"
+ 658      5F454550 
+ 658      524F4D5F 
+ 658      74784275 
+ 658      66666572 
+ 659              	.LASF32:
+ 660 0048 433A5C55 		.ascii	"C:\\Users\\Mattia40\\Desktop\\AY1920_II_FINAL_PROJE"
+ 660      73657273 
+ 660      5C4D6174 
+ 660      74696134 
+ 660      305C4465 
+ 661 0077 43545C47 		.ascii	"CT\\Group_02_Final_Project\\AY1920_II_FINAL_PROJECT"
+ 661      726F7570 
+ 661      5F30325F 
+ 661      46696E61 
+ 661      6C5F5072 
+ 662 00a8 2E637964 		.ascii	".cydsn\000"
+ 662      736E00
+ 663              	.LASF3:
+ 664 00af 73686F72 		.ascii	"short unsigned int\000"
+ 664      7420756E 
+ 664      7369676E 
+ 664      65642069 
+ 664      6E7400
+ 665              	.LASF21:
+ 666 00c2 5350494D 		.ascii	"SPIM_EEPROM_swStatusRx\000"
+ 666      5F454550 
+ 666      524F4D5F 
+ 666      73775374 
+ 666      61747573 
+ 667              	.LASF10:
+ 668 00d9 646F7562 		.ascii	"double\000"
+ 668      6C6500
+ 669              	.LASF20:
+ 670 00e0 5350494D 		.ascii	"SPIM_EEPROM_swStatusTx\000"
+ 670      5F454550 
+ 670      524F4D5F 
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 17
+
+
+ 670      73775374 
+ 670      61747573 
+ 671              	.LASF23:
+ 672 00f7 5350494D 		.ascii	"SPIM_EEPROM_txBufferRead\000"
+ 672      5F454550 
+ 672      524F4D5F 
+ 672      74784275 
+ 672      66666572 
+ 673              	.LASF29:
+ 674 0110 5350494D 		.ascii	"SPIM_EEPROM_rxBufferFull\000"
+ 674      5F454550 
+ 674      524F4D5F 
+ 674      72784275 
+ 674      66666572 
+ 675              	.LASF9:
+ 676 0129 666C6F61 		.ascii	"float\000"
+ 676      7400
+ 677              	.LASF1:
+ 678 012f 756E7369 		.ascii	"unsigned char\000"
+ 678      676E6564 
+ 678      20636861 
+ 678      7200
+ 679              	.LASF30:
+ 680 013d 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 680      43313120 
+ 680      352E342E 
+ 680      31203230 
+ 680      31363036 
+ 681 0170 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 681      20726576 
+ 681      6973696F 
+ 681      6E203233 
+ 681      37373135 
+ 682 01a3 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 682      66756E63 
+ 682      74696F6E 
+ 682      2D736563 
+ 682      74696F6E 
+ 683              	.LASF13:
+ 684 01cb 72656738 		.ascii	"reg8\000"
+ 684      00
+ 685              	.LASF5:
+ 686 01d0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 686      20756E73 
+ 686      69676E65 
+ 686      6420696E 
+ 686      7400
+ 687              	.LASF12:
+ 688 01e2 75696E74 		.ascii	"uint8\000"
+ 688      3800
+ 689              	.LASF26:
+ 690 01e8 5350494D 		.ascii	"SPIM_EEPROM_rxBuffer\000"
+ 690      5F454550 
+ 690      524F4D5F 
+ 690      72784275 
+ 690      66666572 
+ 691              	.LASF19:
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 18
+
+
+ 692 01fd 72784461 		.ascii	"rxData\000"
+ 692      746100
+ 693              	.LASF16:
+ 694 0204 5350494D 		.ascii	"SPIM_EEPROM_TX_ISR\000"
+ 694      5F454550 
+ 694      524F4D5F 
+ 694      54585F49 
+ 694      535200
+ 695              	.LASF28:
+ 696 0217 5350494D 		.ascii	"SPIM_EEPROM_rxBufferWrite\000"
+ 696      5F454550 
+ 696      524F4D5F 
+ 696      72784275 
+ 696      66666572 
+ 697              	.LASF8:
+ 698 0231 756E7369 		.ascii	"unsigned int\000"
+ 698      676E6564 
+ 698      20696E74 
+ 698      00
+ 699              	.LASF7:
+ 700 023e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 700      206C6F6E 
+ 700      6720756E 
+ 700      7369676E 
+ 700      65642069 
+ 701              	.LASF15:
+ 702 0255 73697A65 		.ascii	"sizetype\000"
+ 702      74797065 
+ 702      00
+ 703              	.LASF6:
+ 704 025e 6C6F6E67 		.ascii	"long long int\000"
+ 704      206C6F6E 
+ 704      6720696E 
+ 704      7400
+ 705              	.LASF11:
+ 706 026c 63686172 		.ascii	"char\000"
+ 706      00
+ 707              	.LASF17:
+ 708 0271 5350494D 		.ascii	"SPIM_EEPROM_RX_ISR\000"
+ 708      5F454550 
+ 708      524F4D5F 
+ 708      52585F49 
+ 708      535200
+ 709              	.LASF2:
+ 710 0284 73686F72 		.ascii	"short int\000"
+ 710      7420696E 
+ 710      7400
+ 711              	.LASF27:
+ 712 028e 5350494D 		.ascii	"SPIM_EEPROM_rxBufferRead\000"
+ 712      5F454550 
+ 712      524F4D5F 
+ 712      72784275 
+ 712      66666572 
+ 713              	.LASF31:
+ 714 02a7 47656E65 		.ascii	"Generated_Source\\PSoC5\\SPIM_EEPROM_INT.c\000"
+ 714      72617465 
+ 714      645F536F 
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccH6wAni.s 			page 19
+
+
+ 714      75726365 
+ 714      5C50536F 
+ 715              	.LASF4:
+ 716 02d0 6C6F6E67 		.ascii	"long int\000"
+ 716      20696E74 
+ 716      00
+ 717              	.LASF18:
+ 718 02d9 746D7053 		.ascii	"tmpStatus\000"
+ 718      74617475 
+ 718      7300
+ 719              	.LASF14:
+ 720 02e3 6C6F6E67 		.ascii	"long double\000"
+ 720      20646F75 
+ 720      626C6500 
+ 721              	.LASF0:
+ 722 02ef 7369676E 		.ascii	"signed char\000"
+ 722      65642063 
+ 722      68617200 
+ 723              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
