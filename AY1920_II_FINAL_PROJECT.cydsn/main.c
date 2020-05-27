@@ -10,12 +10,21 @@
  * ========================================
 */
 #include "project.h"
+#include "stdio.h"
+#include "string.h"
 
 /* EEPROM */
 #include "25LC256.h"
 #include "LIS3DH.h"
 /* LIS3DH */
 #include "LIS3DH_Regs.h"
+/* DMA */
+#include "DMARoutines.h"
+
+/* INTERRUPT */
+#include "InterruptRoutines.h"
+
+
 
 int main(void)
 {

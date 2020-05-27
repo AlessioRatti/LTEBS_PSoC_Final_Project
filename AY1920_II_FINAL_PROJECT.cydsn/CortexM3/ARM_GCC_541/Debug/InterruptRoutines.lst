@@ -1,0 +1,3263 @@
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"InterruptRoutines.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Custom_ISR_ADC,"ax",%progbits
+  20              		.align	2
+  21              		.global	Custom_ISR_ADC
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Custom_ISR_ADC, %function
+  25              	Custom_ISR_ADC:
+  26              	.LFB64:
+  27              		.file 1 "InterruptRoutines.c"
+   1:InterruptRoutines.c **** /* ========================================
+   2:InterruptRoutines.c ****  *
+   3:InterruptRoutines.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:InterruptRoutines.c ****  * All Rights Reserved
+   5:InterruptRoutines.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:InterruptRoutines.c ****  *
+   7:InterruptRoutines.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:InterruptRoutines.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:InterruptRoutines.c ****  *
+  10:InterruptRoutines.c ****  * ========================================
+  11:InterruptRoutines.c **** */
+  12:InterruptRoutines.c **** 
+  13:InterruptRoutines.c **** /*
+  14:InterruptRoutines.c **** *   \brief Source code for Interrupt Routines.
+  15:InterruptRoutines.c **** */
+  16:InterruptRoutines.c **** 
+  17:InterruptRoutines.c **** // Include header
+  18:InterruptRoutines.c **** #include "InterruptRoutines.h"
+  19:InterruptRoutines.c **** 
+  20:InterruptRoutines.c **** // Variables declaration
+  21:InterruptRoutines.c **** int16 value_digit_analog;   //Value from the analog sensor
+  22:InterruptRoutines.c **** 
+  23:InterruptRoutines.c **** uint8_t ch_receveid;//Character to switch on/off the UART transmission
+  24:InterruptRoutines.c **** uint8_t ControlFlag;//Control the on/off of the led
+  25:InterruptRoutines.c **** 
+  26:InterruptRoutines.c **** // Extern defined here
+  27:InterruptRoutines.c **** uint8_t dataReady_FIFO = 0;
+  28:InterruptRoutines.c **** uint8_t dataReady_STREAM = 0;
+  29:InterruptRoutines.c **** uint8_t configSets[2] = {0, 5};
+  30:InterruptRoutines.c **** uint8_t data_config[4];
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 2
+
+
+  31:InterruptRoutines.c **** uint8_t cfg_reg;
+  32:InterruptRoutines.c **** uint8_t cfg_reg_old;
+  33:InterruptRoutines.c **** uint8_t update_cfg_reg;
+  34:InterruptRoutines.c **** 
+  35:InterruptRoutines.c **** 
+  36:InterruptRoutines.c **** char bufferUART[200];
+  37:InterruptRoutines.c **** 
+  38:InterruptRoutines.c **** 
+  39:InterruptRoutines.c **** uint8_t FlagFSR=0;
+  40:InterruptRoutines.c **** uint8_t reg_value;
+  41:InterruptRoutines.c **** 
+  42:InterruptRoutines.c **** // From LIS3DH.c
+  43:InterruptRoutines.c **** extern const uint8_t lis3dh_dataRate_t[4];
+  44:InterruptRoutines.c **** extern const uint8_t lis3dh_dataRange_t[4];
+  45:InterruptRoutines.c **** 
+  46:InterruptRoutines.c **** // From main.c
+  47:InterruptRoutines.c **** extern uint16_t indexSTREAM;
+  48:InterruptRoutines.c **** extern uint16_t indexEEPROM;
+  49:InterruptRoutines.c **** extern uint8_t memoryFull;
+  50:InterruptRoutines.c **** extern uint8_t dataReady_DMA;
+  51:InterruptRoutines.c **** extern const uint16_t Timer_Period[4];
+  52:InterruptRoutines.c **** 
+  53:InterruptRoutines.c **** CY_ISR(Custom_ISR_ADC) // ISR on EOC
+  54:InterruptRoutines.c **** {
+  28              		.loc 1 54 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  55:InterruptRoutines.c ****     
+  56:InterruptRoutines.c ****     
+  57:InterruptRoutines.c ****     //Pin_DEBUG_Write(!Pin_DEBUG_Read());
+  58:InterruptRoutines.c ****     
+  59:InterruptRoutines.c ****     //Save the value of the selected analog sensor. We use this function because
+  60:InterruptRoutines.c ****     //when the ADC is configured for 16-bit single ended mode, the ADC_Read32() function should be 
+  61:InterruptRoutines.c ****     
+  62:InterruptRoutines.c ****     //value_digit_analog = ADC_DelSig_GetResult16();
+  63:InterruptRoutines.c ****     
+  64:InterruptRoutines.c ****     //sprintf(bufferUART, "ADC val = %d\r\n", value_digit_analog);
+  65:InterruptRoutines.c ****     /*
+  66:InterruptRoutines.c ****     uint8_t UARTarray[4];
+  67:InterruptRoutines.c ****     UARTarray[0] = 0xA0;
+  68:InterruptRoutines.c ****     UARTarray[1] = (value_digit_analog & 0xFF);
+  69:InterruptRoutines.c ****     UARTarray[2] = (value_digit_analog>>8);
+  70:InterruptRoutines.c ****     UARTarray[3] = 0xC0;
+  71:InterruptRoutines.c ****     UART_PutArray(UARTarray, 4);
+  72:InterruptRoutines.c ****     */
+  73:InterruptRoutines.c ****     /*
+  74:InterruptRoutines.c ****     // Write bytes in buffer, in the position of the photoresistor
+  75:InterruptRoutines.c ****     DataBuffer[3] = value_digit_ldr >> 8;
+  76:InterruptRoutines.c ****     DataBuffer[4] = value_digit_ldr & 0xFF;
+  77:InterruptRoutines.c ****     
+  78:InterruptRoutines.c ****     //Switch between photoresistor and potentiometer
+  79:InterruptRoutines.c ****     if (value_digit_ldr<THRESHOLD)
+  80:InterruptRoutines.c ****     {
+  81:InterruptRoutines.c ****         
+  82:InterruptRoutines.c ****         AMux_Select(POTENTIOMETER);//Selcet the channel of the potentiometer
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 3
+
+
+  83:InterruptRoutines.c ****         value_digit_pot=ADC_DelSig_Read32();//Save the value of the potentiometer
+  84:InterruptRoutines.c ****         //Set the limitations
+  85:InterruptRoutines.c ****         if (value_digit_pot < MIN)    value_digit_pot = MIN;
+  86:InterruptRoutines.c ****         if (value_digit_pot > MAX)    value_digit_pot = MAX;
+  87:InterruptRoutines.c **** 
+  88:InterruptRoutines.c ****         // Write bytes in buffer
+  89:InterruptRoutines.c ****         DataBuffer[1] = value_digit_pot >> 8;
+  90:InterruptRoutines.c ****         DataBuffer[2] = value_digit_pot & 0xFF;
+  91:InterruptRoutines.c ****         
+  92:InterruptRoutines.c ****         PWM_WriteCompare(value_digit_pot);//Change the intensity of the LED light with the values f
+  93:InterruptRoutines.c ****         AMux_Select(PHOTORESISTOR);//Select the channel of the photoresistor
+  94:InterruptRoutines.c ****         ControlFlag=1;
+  95:InterruptRoutines.c ****     }
+  96:InterruptRoutines.c ****     //Switch off the LED
+  97:InterruptRoutines.c ****     if (value_digit_ldr>THRESHOLD && ControlFlag==1) 
+  98:InterruptRoutines.c ****     {
+  99:InterruptRoutines.c ****         PWM_WriteCompare(LED_OFF);
+ 100:InterruptRoutines.c ****         ControlFlag=0;
+ 101:InterruptRoutines.c ****     }
+ 102:InterruptRoutines.c ****     */
+ 103:InterruptRoutines.c ****     // Enable to send data based on UART command
+ 104:InterruptRoutines.c ****     PacketReadyFlag=1;
+  33              		.loc 1 104 0
+  34 0000 0122     		movs	r2, #1
+  35 0002 014B     		ldr	r3, .L2
+  36 0004 1A70     		strb	r2, [r3]
+  37 0006 7047     		bx	lr
+  38              	.L3:
+  39              		.align	2
+  40              	.L2:
+  41 0008 00000000 		.word	PacketReadyFlag
+  42              		.cfi_endproc
+  43              	.LFE64:
+  44              		.size	Custom_ISR_ADC, .-Custom_ISR_ADC
+  45              		.section	.text.Custom_ISR_OVRN,"ax",%progbits
+  46              		.align	2
+  47              		.global	Custom_ISR_OVRN
+  48              		.thumb
+  49              		.thumb_func
+  50              		.type	Custom_ISR_OVRN, %function
+  51              	Custom_ISR_OVRN:
+  52              	.LFB66:
+ 105:InterruptRoutines.c ****     
+ 106:InterruptRoutines.c ****     
+ 107:InterruptRoutines.c **** }
+ 108:InterruptRoutines.c **** 
+ 109:InterruptRoutines.c **** /*----------------------------------------------*/
+ 110:InterruptRoutines.c **** /*                  ISR on RX                   */
+ 111:InterruptRoutines.c **** /*----------------------------------------------*/
+ 112:InterruptRoutines.c **** 
+ 113:InterruptRoutines.c **** uint8_t frequency;
+ 114:InterruptRoutines.c **** uint8_t Startstream;
+ 115:InterruptRoutines.c **** uint8_t Stopstream;
+ 116:InterruptRoutines.c **** uint16_t indexEEPROM;
+ 117:InterruptRoutines.c **** CY_ISR(Custom_ISR_RX)
+ 118:InterruptRoutines.c **** {
+ 119:InterruptRoutines.c ****     //Non-blocking call to get the latest data recieved  
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 4
+
+
+ 120:InterruptRoutines.c ****     ch_receveid = UART_GetChar();
+ 121:InterruptRoutines.c ****     sprintf(bufferUART, "ch_received = %c\r\n", ch_receveid);
+ 122:InterruptRoutines.c ****     UART_PutString(bufferUART);
+ 123:InterruptRoutines.c ****     sprintf(bufferUART, "configSets = %d - %d\r\n", configSets[0], configSets[1]);
+ 124:InterruptRoutines.c ****     UART_PutString(bufferUART);
+ 125:InterruptRoutines.c ****     
+ 126:InterruptRoutines.c ****     //Switch on/off the UART comunication
+ 127:InterruptRoutines.c ****     if(!configSets[0]){
+ 128:InterruptRoutines.c ****         switch(ch_receveid)
+ 129:InterruptRoutines.c ****         {
+ 130:InterruptRoutines.c ****             case 'B':
+ 131:InterruptRoutines.c ****             case 'b':
+ 132:InterruptRoutines.c ****                 PWM_BLINK_WritePeriod(199);
+ 133:InterruptRoutines.c ****                 PWM_BLINK_WriteCompare(100);
+ 134:InterruptRoutines.c ****                 //Pin_LED_Write(LED_ON);//Switch on the PSoC Blue LED --> the UART comunication is 
+ 135:InterruptRoutines.c ****                 //Timer_Start();//Sets the initVar variable, calls the Timer_Init() function, and t
+ 136:InterruptRoutines.c ****                 //AMux_Select(PHOTORESISTOR);//At the beginning set the channel of the photoresisto
+ 137:InterruptRoutines.c ****                 //PWM_WriteCompare(LED_OFF);//At the beginning the LED is off
+ 138:InterruptRoutines.c ****                 //ControlFlag=0;
+ 139:InterruptRoutines.c ****                 
+ 140:InterruptRoutines.c ****                 // Go back to state 0
+ 141:InterruptRoutines.c ****                 configSets[0]=0;
+ 142:InterruptRoutines.c ****                 
+ 143:InterruptRoutines.c ****                 // Begin acquisition
+ 144:InterruptRoutines.c ****                 data_config[3]=0x80;
+ 145:InterruptRoutines.c ****                 
+ 146:InterruptRoutines.c ****                 // Compress new settings (begin acquisition)
+ 147:InterruptRoutines.c ****                 cfg_reg = LIS3DH_zipConfig(data_config);
+ 148:InterruptRoutines.c ****                 
+ 149:InterruptRoutines.c ****                 // Save new settings in EEPROM
+ 150:InterruptRoutines.c ****                 /*EEPROM_writeByte(CFG_REG, cfg_reg);
+ 151:InterruptRoutines.c ****                 EEPROM_waitForWriteComplete();
+ 152:InterruptRoutines.c ****                 reg_value = EEPROM_readByte(CFG_REG);
+ 153:InterruptRoutines.c ****                 sprintf(bufferUART, "** UPDATED config_reg = 0x%02x\r\n", reg_value);
+ 154:InterruptRoutines.c ****                 UART_PutString(bufferUART);*/
+ 155:InterruptRoutines.c ****                 memoryFull = 0;
+ 156:InterruptRoutines.c ****                 indexEEPROM = DATA_START; // bring index back to start
+ 157:InterruptRoutines.c ****                 update_cfg_reg = 1;
+ 158:InterruptRoutines.c ****                 break;
+ 159:InterruptRoutines.c ****             case 'S':
+ 160:InterruptRoutines.c ****             case 's':
+ 161:InterruptRoutines.c ****                 PWM_BLINK_WritePeriod(0);
+ 162:InterruptRoutines.c ****                 PWM_BLINK_WriteCompare(0);
+ 163:InterruptRoutines.c ****                 //Pin_LED_Write(LED_OFF);//Switch off the PSoC Blue LED --> the UART comunication i
+ 164:InterruptRoutines.c ****                 //Timer_Stop();//Disables the Timer
+ 165:InterruptRoutines.c ****                 //PWM_WriteCompare(LED_OFF);//At the end the LED is off
+ 166:InterruptRoutines.c ****                 
+ 167:InterruptRoutines.c ****                 // Go back to state 0
+ 168:InterruptRoutines.c ****                 configSets[0] = 0;
+ 169:InterruptRoutines.c ****                 
+ 170:InterruptRoutines.c ****                 // Stop acquisition
+ 171:InterruptRoutines.c ****                 data_config[3]=0x00; // bypass mode
+ 172:InterruptRoutines.c ****                 //LIS3DH_setConfig(data_config); // set user-dependent settings
+ 173:InterruptRoutines.c ****                 
+ 174:InterruptRoutines.c ****                 // Compress new settings (stop acquisition)
+ 175:InterruptRoutines.c ****                 cfg_reg = LIS3DH_zipConfig(data_config);
+ 176:InterruptRoutines.c ****                 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 5
+
+
+ 177:InterruptRoutines.c ****                 // Save new settings in EEPROM
+ 178:InterruptRoutines.c ****                 /**EEPROM_writeByte(CFG_REG, cfg_reg);
+ 179:InterruptRoutines.c ****                 EEPROM_waitForWriteComplete();
+ 180:InterruptRoutines.c ****                 reg_value = EEPROM_readByte(CFG_REG);
+ 181:InterruptRoutines.c ****                 sprintf(bufferUART, "** UPDATED config_reg = 0x%02x\r\n", reg_value);
+ 182:InterruptRoutines.c ****                 UART_PutString(bufferUART);*/
+ 183:InterruptRoutines.c ****                 //reg_value = EEPROM_readByte(CFG_REG);
+ 184:InterruptRoutines.c ****                 //sprintf(bufferUART, "** UPDATED config_reg = 0x%02x\r\n", reg_value);
+ 185:InterruptRoutines.c ****                 //UART_PutString(bufferUART);
+ 186:InterruptRoutines.c ****                 
+ 187:InterruptRoutines.c ****                 update_cfg_reg = 1;
+ 188:InterruptRoutines.c ****                 
+ 189:InterruptRoutines.c ****                 // Show the main menu
+ 190:InterruptRoutines.c ****                 ShowMenu();
+ 191:InterruptRoutines.c ****                 break;
+ 192:InterruptRoutines.c ****             case 'F':
+ 193:InterruptRoutines.c ****             case 'f':
+ 194:InterruptRoutines.c ****                 Timer_STREAM_Stop();
+ 195:InterruptRoutines.c ****                 UART_PutString("|Character | Full Scale Range         |\n| 1        | +- 2g        
+ 196:InterruptRoutines.c ****                 configSets[0] = ch_receveid;
+ 197:InterruptRoutines.c ****                 
+ 198:InterruptRoutines.c ****                 break;
+ 199:InterruptRoutines.c ****             case 'P':
+ 200:InterruptRoutines.c ****             case 'p':
+ 201:InterruptRoutines.c ****                 Timer_STREAM_Stop();
+ 202:InterruptRoutines.c ****                 UART_PutString("|Character | Sampling Frequency       |\n| 1        |  1Hz         
+ 203:InterruptRoutines.c ****                 configSets[0] = ch_receveid;
+ 204:InterruptRoutines.c ****                
+ 205:InterruptRoutines.c ****                 break;
+ 206:InterruptRoutines.c ****             case 'L':
+ 207:InterruptRoutines.c ****             case 'l':
+ 208:InterruptRoutines.c ****                 Timer_STREAM_Stop();
+ 209:InterruptRoutines.c ****                 UART_PutString("|Character | Sensor                   |\n| 0        | Store luminos
+ 210:InterruptRoutines.c ****                 configSets[0] = ch_receveid;
+ 211:InterruptRoutines.c ****                 break;
+ 212:InterruptRoutines.c ****             case 'V':
+ 213:InterruptRoutines.c ****             case 'v':
+ 214:InterruptRoutines.c ****                 PWM_BLINK_WritePeriod(0);
+ 215:InterruptRoutines.c ****                 PWM_BLINK_WriteCompare(0);
+ 216:InterruptRoutines.c ****                 
+ 217:InterruptRoutines.c ****                 data_config[3]=0x00;
+ 218:InterruptRoutines.c ****                 LIS3DH_setConfig(data_config);// set user-dependent settings
+ 219:InterruptRoutines.c ****                 configSets[0] = ch_receveid;
+ 220:InterruptRoutines.c ****                 //configSets[1] = 5;
+ 221:InterruptRoutines.c ****                 /*
+ 222:InterruptRoutines.c ****                 IndexEEPROMStart = (uint8_t)DATA_START;
+ 223:InterruptRoutines.c ****                 EEPROM_writePage(0x0000, &IndexEEPROMStart, 2);
+ 224:InterruptRoutines.c ****                 EEPROM_waitForWriteComplete();
+ 225:InterruptRoutines.c ****                 */
+ 226:InterruptRoutines.c ****                 sprintf(bufferUART, "config_reg = 0x%02x\r\n", cfg_reg_old);
+ 227:InterruptRoutines.c ****                 UART_PutString(bufferUART);
+ 228:InterruptRoutines.c ****                 
+ 229:InterruptRoutines.c ****                 cfg_reg = LIS3DH_zipConfig(data_config);
+ 230:InterruptRoutines.c ****                 
+ 231:InterruptRoutines.c ****                 sprintf(bufferUART, "config_reg = 0x%02x\r\n", cfg_reg);
+ 232:InterruptRoutines.c ****                 UART_PutString(bufferUART);
+ 233:InterruptRoutines.c ****                 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 6
+
+
+ 234:InterruptRoutines.c ****                 Pin_LED_ext_Write(LED_ON);
+ 235:InterruptRoutines.c ****                 
+ 236:InterruptRoutines.c ****                 /*
+ 237:InterruptRoutines.c ****                 sprintf(bufferUART, "DATACONFIG = 0x%02x\r\n", data_config[0]);
+ 238:InterruptRoutines.c ****                 UART_PutString(bufferUART);
+ 239:InterruptRoutines.c ****                 frequency=((data_config[0]>>4)&0x0F)-1;
+ 240:InterruptRoutines.c ****                 sprintf(bufferUART, "DATACONFIG = 0x%02x\r\n", frequency);
+ 241:InterruptRoutines.c ****                 UART_PutString(bufferUART);
+ 242:InterruptRoutines.c ****                 */
+ 243:InterruptRoutines.c ****                 //Timer_STREAM_WritePeriod(Timer_Period[frequency]); //cfg_reg&MASK_FS
+ 244:InterruptRoutines.c ****                 //Timer_STREAM_Start();
+ 245:InterruptRoutines.c ****                 Startstream=1;
+ 246:InterruptRoutines.c ****                 break;
+ 247:InterruptRoutines.c ****             default:
+ 248:InterruptRoutines.c ****                 break;
+ 249:InterruptRoutines.c ****         }
+ 250:InterruptRoutines.c ****     }
+ 251:InterruptRoutines.c ****     else if((configSets[0]=='V')||(configSets[0]=='v')){
+ 252:InterruptRoutines.c ****         switch(ch_receveid){
+ 253:InterruptRoutines.c ****             case 'U':
+ 254:InterruptRoutines.c ****             case 'u':
+ 255:InterruptRoutines.c ****             case '?':
+ 256:InterruptRoutines.c ****                 Timer_STREAM_Stop();
+ 257:InterruptRoutines.c ****                 Stopstream=1;
+ 258:InterruptRoutines.c ****                 Pin_LED_ext_Write(LED_OFF);
+ 259:InterruptRoutines.c ****                 ShowMenu();
+ 260:InterruptRoutines.c ****                 break;
+ 261:InterruptRoutines.c ****                 }
+ 262:InterruptRoutines.c ****     }
+ 263:InterruptRoutines.c ****     else{
+ 264:InterruptRoutines.c ****         switch(configSets[0]) {
+ 265:InterruptRoutines.c ****             case 'f':
+ 266:InterruptRoutines.c ****             case 'F':
+ 267:InterruptRoutines.c ****                 switch(ch_receveid) {
+ 268:InterruptRoutines.c ****                     case '1':
+ 269:InterruptRoutines.c ****                         data_config[1]=lis3dh_dataRange_t[0] | CTRL_REG4_NORM;
+ 270:InterruptRoutines.c ****                         configSets[1]=1;
+ 271:InterruptRoutines.c ****                         break;
+ 272:InterruptRoutines.c ****                     case '2':
+ 273:InterruptRoutines.c ****                         data_config[1]=lis3dh_dataRange_t[1] | CTRL_REG4_NORM;
+ 274:InterruptRoutines.c ****                         configSets[1]=2;
+ 275:InterruptRoutines.c ****                         break;
+ 276:InterruptRoutines.c ****                     case '3':
+ 277:InterruptRoutines.c ****                         data_config[1]=lis3dh_dataRange_t[2] | CTRL_REG4_NORM;
+ 278:InterruptRoutines.c ****                         configSets[1]=3;
+ 279:InterruptRoutines.c ****                         
+ 280:InterruptRoutines.c ****                         break;
+ 281:InterruptRoutines.c ****                     case '4':
+ 282:InterruptRoutines.c ****                         data_config[1]=lis3dh_dataRange_t[3] | CTRL_REG4_NORM;
+ 283:InterruptRoutines.c ****                         configSets[1]=4;
+ 284:InterruptRoutines.c ****                         break;
+ 285:InterruptRoutines.c ****                     case '?':
+ 286:InterruptRoutines.c ****                         ShowMenu();
+ 287:InterruptRoutines.c ****                         break;
+ 288:InterruptRoutines.c ****                     default:
+ 289:InterruptRoutines.c ****                         configSets[1]=5;
+ 290:InterruptRoutines.c ****                         
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 7
+
+
+ 291:InterruptRoutines.c ****                         break;
+ 292:InterruptRoutines.c ****                 }
+ 293:InterruptRoutines.c ****                 break;
+ 294:InterruptRoutines.c ****                 
+ 295:InterruptRoutines.c ****             case 'p':
+ 296:InterruptRoutines.c ****             case 'P':
+ 297:InterruptRoutines.c ****                 switch(ch_receveid) {
+ 298:InterruptRoutines.c ****                     case '1':
+ 299:InterruptRoutines.c ****                         data_config[0]=lis3dh_dataRate_t[0]| CTRL_REG1_NORM;
+ 300:InterruptRoutines.c ****                         sprintf(bufferUART, "dataconfig = 0x%02x\r\n", data_config[0]);
+ 301:InterruptRoutines.c ****                         UART_PutString(bufferUART);
+ 302:InterruptRoutines.c ****                         configSets[1]=1;
+ 303:InterruptRoutines.c ****                         break;
+ 304:InterruptRoutines.c ****                     case '2':
+ 305:InterruptRoutines.c ****                         data_config[0]=lis3dh_dataRate_t[1]| CTRL_REG1_NORM;
+ 306:InterruptRoutines.c ****                         configSets[1]=2;
+ 307:InterruptRoutines.c ****                         sprintf(bufferUART, "dataconfig = 0x%02x\r\n", data_config[0]);
+ 308:InterruptRoutines.c ****                         UART_PutString(bufferUART);
+ 309:InterruptRoutines.c ****                         break;
+ 310:InterruptRoutines.c ****                     case '3':
+ 311:InterruptRoutines.c ****                         data_config[0]=lis3dh_dataRate_t[2]| CTRL_REG1_NORM;
+ 312:InterruptRoutines.c ****                         configSets[1]=3;
+ 313:InterruptRoutines.c ****                         sprintf(bufferUART, "dataconfig = 0x%02x\r\n", data_config[0]);
+ 314:InterruptRoutines.c ****                         UART_PutString(bufferUART);
+ 315:InterruptRoutines.c ****                         break;
+ 316:InterruptRoutines.c ****                     case '4':
+ 317:InterruptRoutines.c ****                         data_config[0]=lis3dh_dataRate_t[3]| CTRL_REG1_NORM;
+ 318:InterruptRoutines.c ****                         configSets[1]=4;
+ 319:InterruptRoutines.c ****                         sprintf(bufferUART, "dataconfig = 0x%02x\r\n", data_config[0]);
+ 320:InterruptRoutines.c ****                         UART_PutString(bufferUART);
+ 321:InterruptRoutines.c ****                         break;
+ 322:InterruptRoutines.c ****                     case '?':
+ 323:InterruptRoutines.c ****                         ShowMenu();
+ 324:InterruptRoutines.c ****                         break;
+ 325:InterruptRoutines.c ****                     default:
+ 326:InterruptRoutines.c ****                         configSets[1]=5;
+ 327:InterruptRoutines.c ****                         break;
+ 328:InterruptRoutines.c ****                 }
+ 329:InterruptRoutines.c ****                 break;
+ 330:InterruptRoutines.c ****                 
+ 331:InterruptRoutines.c ****             case 'l':
+ 332:InterruptRoutines.c ****             case 'L':
+ 333:InterruptRoutines.c ****                 switch(ch_receveid) {
+ 334:InterruptRoutines.c ****                     case '0':
+ 335:InterruptRoutines.c ****                         AMux_Select(PHOTORESISTOR);
+ 336:InterruptRoutines.c ****                         configSets[1] = 0;
+ 337:InterruptRoutines.c ****                         UART_PutString("--> Photoresistor\n\r");
+ 338:InterruptRoutines.c ****                         data_config[2]=0;
+ 339:InterruptRoutines.c ****                         break;
+ 340:InterruptRoutines.c ****                     case '1':
+ 341:InterruptRoutines.c ****                         AMux_Select(POTENTIOMETER);
+ 342:InterruptRoutines.c ****                         configSets[1] = 1;
+ 343:InterruptRoutines.c ****                         UART_PutString("--> Potentiometer\n\r");
+ 344:InterruptRoutines.c ****                         data_config[2]=1;
+ 345:InterruptRoutines.c ****                         break;
+ 346:InterruptRoutines.c ****                     case '?':
+ 347:InterruptRoutines.c ****                         ShowMenu();
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 8
+
+
+ 348:InterruptRoutines.c ****                         break;
+ 349:InterruptRoutines.c ****                     default:
+ 350:InterruptRoutines.c ****                         configSets[1]=5;
+ 351:InterruptRoutines.c ****                         break;
+ 352:InterruptRoutines.c ****                 }
+ 353:InterruptRoutines.c ****                 break;
+ 354:InterruptRoutines.c ****             
+ 355:InterruptRoutines.c ****             default:
+ 356:InterruptRoutines.c ****                 break;
+ 357:InterruptRoutines.c ****         }   
+ 358:InterruptRoutines.c ****     }
+ 359:InterruptRoutines.c **** }
+ 360:InterruptRoutines.c **** 
+ 361:InterruptRoutines.c **** 
+ 362:InterruptRoutines.c **** /*----------------------------------------------*/
+ 363:InterruptRoutines.c **** /*                 ISR on OVRN                  */
+ 364:InterruptRoutines.c **** /*----------------------------------------------*/
+ 365:InterruptRoutines.c **** 
+ 366:InterruptRoutines.c **** CY_ISR(Custom_ISR_OVRN) {
+  53              		.loc 1 366 0
+  54              		.cfi_startproc
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57              		@ link register save eliminated.
+ 367:InterruptRoutines.c ****     
+ 368:InterruptRoutines.c ****     //UART_PutString("INTERRUPT OVRN\r\n");
+ 369:InterruptRoutines.c ****     // Raise flag
+ 370:InterruptRoutines.c ****     dataReady_FIFO = 1;
+  58              		.loc 1 370 0
+  59 0000 0122     		movs	r2, #1
+  60 0002 014B     		ldr	r3, .L5
+  61 0004 1A70     		strb	r2, [r3]
+  62 0006 7047     		bx	lr
+  63              	.L6:
+  64              		.align	2
+  65              	.L5:
+  66 0008 00000000 		.word	.LANCHOR0
+  67              		.cfi_endproc
+  68              	.LFE66:
+  69              		.size	Custom_ISR_OVRN, .-Custom_ISR_OVRN
+  70              		.section	.text.Custom_ISR_STREAM,"ax",%progbits
+  71              		.align	2
+  72              		.global	Custom_ISR_STREAM
+  73              		.thumb
+  74              		.thumb_func
+  75              		.type	Custom_ISR_STREAM, %function
+  76              	Custom_ISR_STREAM:
+  77              	.LFB67:
+ 371:InterruptRoutines.c ****     //UART_PutString("LIS3DH\r\n");
+ 372:InterruptRoutines.c **** }
+ 373:InterruptRoutines.c **** 
+ 374:InterruptRoutines.c **** 
+ 375:InterruptRoutines.c **** /*----------------------------------------------*/
+ 376:InterruptRoutines.c **** /*               ISR for STREAM                 */
+ 377:InterruptRoutines.c **** /*----------------------------------------------*/
+ 378:InterruptRoutines.c **** 
+ 379:InterruptRoutines.c **** CY_ISR(Custom_ISR_STREAM) {
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 9
+
+
+  78              		.loc 1 379 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+ 380:InterruptRoutines.c ****     //UART_PutString("INTERRUPT STREAM\r\n");
+ 381:InterruptRoutines.c ****     // Raise flag
+ 382:InterruptRoutines.c ****     dataReady_STREAM = 1;
+  83              		.loc 1 382 0
+  84 0000 0122     		movs	r2, #1
+  85 0002 014B     		ldr	r3, .L8
+  86 0004 5A70     		strb	r2, [r3, #1]
+  87 0006 7047     		bx	lr
+  88              	.L9:
+  89              		.align	2
+  90              	.L8:
+  91 0008 00000000 		.word	.LANCHOR0
+  92              		.cfi_endproc
+  93              	.LFE67:
+  94              		.size	Custom_ISR_STREAM, .-Custom_ISR_STREAM
+  95              		.section	.text.ShowMenu,"ax",%progbits
+  96              		.align	2
+  97              		.global	ShowMenu
+  98              		.thumb
+  99              		.thumb_func
+ 100              		.type	ShowMenu, %function
+ 101              	ShowMenu:
+ 102              	.LFB68:
+ 383:InterruptRoutines.c **** }
+ 384:InterruptRoutines.c **** 
+ 385:InterruptRoutines.c **** void ShowMenu(void) {
+ 103              		.loc 1 385 0
+ 104              		.cfi_startproc
+ 105              		@ args = 0, pretend = 0, frame = 0
+ 106              		@ frame_needed = 0, uses_anonymous_args = 0
+ 107 0000 08B5     		push	{r3, lr}
+ 108              		.cfi_def_cfa_offset 8
+ 109              		.cfi_offset 3, -8
+ 110              		.cfi_offset 14, -4
+ 386:InterruptRoutines.c ****     configSets[0] = 0;
+ 111              		.loc 1 386 0
+ 112 0002 074B     		ldr	r3, .L12
+ 113 0004 0022     		movs	r2, #0
+ 114 0006 1A70     		strb	r2, [r3]
+ 387:InterruptRoutines.c ****     configSets[1] = 5;
+ 115              		.loc 1 387 0
+ 116 0008 0522     		movs	r2, #5
+ 117 000a 5A70     		strb	r2, [r3, #1]
+ 388:InterruptRoutines.c ****     UART_PutString("\n\r                *|WELCOME IN THE FINAL PROJECT|*                \r\nPlease 
+ 118              		.loc 1 388 0
+ 119 000c 0548     		ldr	r0, .L12+4
+ 120 000e FFF7FEFF 		bl	UART_PutString
+ 121              	.LVL0:
+ 389:InterruptRoutines.c ****     UART_PutString("    Legend:\r\n");
+ 122              		.loc 1 389 0
+ 123 0012 0548     		ldr	r0, .L12+8
+ 124 0014 FFF7FEFF 		bl	UART_PutString
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 10
+
+
+ 125              	.LVL1:
+ 390:InterruptRoutines.c ****     UART_PutString("        B/b-->Start Data Acquisition\r\n        F/f-->Select Full Scale Range\r
+ 126              		.loc 1 390 0
+ 127 0018 0448     		ldr	r0, .L12+12
+ 128 001a FFF7FEFF 		bl	UART_PutString
+ 129              	.LVL2:
+ 130 001e 08BD     		pop	{r3, pc}
+ 131              	.L13:
+ 132              		.align	2
+ 133              	.L12:
+ 134 0020 00000000 		.word	.LANCHOR1
+ 135 0024 00000000 		.word	.LC0
+ 136 0028 6C000000 		.word	.LC1
+ 137 002c 7C000000 		.word	.LC2
+ 138              		.cfi_endproc
+ 139              	.LFE68:
+ 140              		.size	ShowMenu, .-ShowMenu
+ 141              		.section	.text.Custom_ISR_RX,"ax",%progbits
+ 142              		.align	2
+ 143              		.global	Custom_ISR_RX
+ 144              		.thumb
+ 145              		.thumb_func
+ 146              		.type	Custom_ISR_RX, %function
+ 147              	Custom_ISR_RX:
+ 148              	.LFB65:
+ 118:InterruptRoutines.c ****     //Non-blocking call to get the latest data recieved  
+ 149              		.loc 1 118 0
+ 150              		.cfi_startproc
+ 151              		@ args = 0, pretend = 0, frame = 0
+ 152              		@ frame_needed = 0, uses_anonymous_args = 0
+ 153 0000 70B5     		push	{r4, r5, r6, lr}
+ 154              		.cfi_def_cfa_offset 16
+ 155              		.cfi_offset 4, -16
+ 156              		.cfi_offset 5, -12
+ 157              		.cfi_offset 6, -8
+ 158              		.cfi_offset 14, -4
+ 120:InterruptRoutines.c ****     sprintf(bufferUART, "ch_received = %c\r\n", ch_receveid);
+ 159              		.loc 1 120 0
+ 160 0002 FFF7FEFF 		bl	UART_GetChar
+ 161              	.LVL3:
+ 162 0006 0246     		mov	r2, r0
+ 163 0008 974B     		ldr	r3, .L51
+ 164 000a 1870     		strb	r0, [r3]
+ 121:InterruptRoutines.c ****     UART_PutString(bufferUART);
+ 165              		.loc 1 121 0
+ 166 000c 974C     		ldr	r4, .L51+4
+ 167 000e 9849     		ldr	r1, .L51+8
+ 168 0010 2046     		mov	r0, r4
+ 169 0012 FFF7FEFF 		bl	sprintf
+ 170              	.LVL4:
+ 122:InterruptRoutines.c ****     sprintf(bufferUART, "configSets = %d - %d\r\n", configSets[0], configSets[1]);
+ 171              		.loc 1 122 0
+ 172 0016 2046     		mov	r0, r4
+ 173 0018 FFF7FEFF 		bl	UART_PutString
+ 174              	.LVL5:
+ 123:InterruptRoutines.c ****     UART_PutString(bufferUART);
+ 175              		.loc 1 123 0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 11
+
+
+ 176 001c 954D     		ldr	r5, .L51+12
+ 177 001e 6B78     		ldrb	r3, [r5, #1]	@ zero_extendqisi2
+ 178 0020 2A78     		ldrb	r2, [r5]	@ zero_extendqisi2
+ 179 0022 9549     		ldr	r1, .L51+16
+ 180 0024 2046     		mov	r0, r4
+ 181 0026 FFF7FEFF 		bl	sprintf
+ 182              	.LVL6:
+ 124:InterruptRoutines.c ****     
+ 183              		.loc 1 124 0
+ 184 002a 2046     		mov	r0, r4
+ 185 002c FFF7FEFF 		bl	UART_PutString
+ 186              	.LVL7:
+ 127:InterruptRoutines.c ****         switch(ch_receveid)
+ 187              		.loc 1 127 0
+ 188 0030 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 189 0032 002B     		cmp	r3, #0
+ 190 0034 40F0B880 		bne	.L15
+ 128:InterruptRoutines.c ****         {
+ 191              		.loc 1 128 0
+ 192 0038 8B4B     		ldr	r3, .L51
+ 193 003a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 194 003c 423B     		subs	r3, r3, #66
+ 195 003e 342B     		cmp	r3, #52
+ 196 0040 00F2D981 		bhi	.L14
+ 197 0044 DFE813F0 		tbh	[pc, r3, lsl #1]
+ 198              	.L18:
+ 199 0048 3500     		.2byte	(.L17-.L18)/2
+ 200 004a D701     		.2byte	(.L14-.L18)/2
+ 201 004c D701     		.2byte	(.L14-.L18)/2
+ 202 004e D701     		.2byte	(.L14-.L18)/2
+ 203 0050 6300     		.2byte	(.L19-.L18)/2
+ 204 0052 D701     		.2byte	(.L14-.L18)/2
+ 205 0054 D701     		.2byte	(.L14-.L18)/2
+ 206 0056 D701     		.2byte	(.L14-.L18)/2
+ 207 0058 D701     		.2byte	(.L14-.L18)/2
+ 208 005a D701     		.2byte	(.L14-.L18)/2
+ 209 005c 7700     		.2byte	(.L20-.L18)/2
+ 210 005e D701     		.2byte	(.L14-.L18)/2
+ 211 0060 D701     		.2byte	(.L14-.L18)/2
+ 212 0062 D701     		.2byte	(.L14-.L18)/2
+ 213 0064 6D00     		.2byte	(.L21-.L18)/2
+ 214 0066 D701     		.2byte	(.L14-.L18)/2
+ 215 0068 D701     		.2byte	(.L14-.L18)/2
+ 216 006a 4E00     		.2byte	(.L22-.L18)/2
+ 217 006c D701     		.2byte	(.L14-.L18)/2
+ 218 006e D701     		.2byte	(.L14-.L18)/2
+ 219 0070 8100     		.2byte	(.L23-.L18)/2
+ 220 0072 D701     		.2byte	(.L14-.L18)/2
+ 221 0074 D701     		.2byte	(.L14-.L18)/2
+ 222 0076 D701     		.2byte	(.L14-.L18)/2
+ 223 0078 D701     		.2byte	(.L14-.L18)/2
+ 224 007a D701     		.2byte	(.L14-.L18)/2
+ 225 007c D701     		.2byte	(.L14-.L18)/2
+ 226 007e D701     		.2byte	(.L14-.L18)/2
+ 227 0080 D701     		.2byte	(.L14-.L18)/2
+ 228 0082 D701     		.2byte	(.L14-.L18)/2
+ 229 0084 D701     		.2byte	(.L14-.L18)/2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 12
+
+
+ 230 0086 D701     		.2byte	(.L14-.L18)/2
+ 231 0088 3500     		.2byte	(.L17-.L18)/2
+ 232 008a D701     		.2byte	(.L14-.L18)/2
+ 233 008c D701     		.2byte	(.L14-.L18)/2
+ 234 008e D701     		.2byte	(.L14-.L18)/2
+ 235 0090 6300     		.2byte	(.L19-.L18)/2
+ 236 0092 D701     		.2byte	(.L14-.L18)/2
+ 237 0094 D701     		.2byte	(.L14-.L18)/2
+ 238 0096 D701     		.2byte	(.L14-.L18)/2
+ 239 0098 D701     		.2byte	(.L14-.L18)/2
+ 240 009a D701     		.2byte	(.L14-.L18)/2
+ 241 009c 7700     		.2byte	(.L20-.L18)/2
+ 242 009e D701     		.2byte	(.L14-.L18)/2
+ 243 00a0 D701     		.2byte	(.L14-.L18)/2
+ 244 00a2 D701     		.2byte	(.L14-.L18)/2
+ 245 00a4 6D00     		.2byte	(.L21-.L18)/2
+ 246 00a6 D701     		.2byte	(.L14-.L18)/2
+ 247 00a8 D701     		.2byte	(.L14-.L18)/2
+ 248 00aa 4E00     		.2byte	(.L22-.L18)/2
+ 249 00ac D701     		.2byte	(.L14-.L18)/2
+ 250 00ae D701     		.2byte	(.L14-.L18)/2
+ 251 00b0 8100     		.2byte	(.L23-.L18)/2
+ 252              		.p2align 1
+ 253              	.L17:
+ 132:InterruptRoutines.c ****                 PWM_BLINK_WriteCompare(100);
+ 254              		.loc 1 132 0
+ 255 00b2 C720     		movs	r0, #199
+ 256 00b4 FFF7FEFF 		bl	PWM_BLINK_WritePeriod
+ 257              	.LVL8:
+ 133:InterruptRoutines.c ****                 //Pin_LED_Write(LED_ON);//Switch on the PSoC Blue LED --> the UART comunication is 
+ 258              		.loc 1 133 0
+ 259 00b8 6420     		movs	r0, #100
+ 260 00ba FFF7FEFF 		bl	PWM_BLINK_WriteCompare
+ 261              	.LVL9:
+ 141:InterruptRoutines.c ****                 
+ 262              		.loc 1 141 0
+ 263 00be 0024     		movs	r4, #0
+ 264 00c0 6C4B     		ldr	r3, .L51+12
+ 265 00c2 1C70     		strb	r4, [r3]
+ 144:InterruptRoutines.c ****                 
+ 266              		.loc 1 144 0
+ 267 00c4 6D48     		ldr	r0, .L51+20
+ 268 00c6 8023     		movs	r3, #128
+ 269 00c8 C370     		strb	r3, [r0, #3]
+ 147:InterruptRoutines.c ****                 
+ 270              		.loc 1 147 0
+ 271 00ca FFF7FEFF 		bl	LIS3DH_zipConfig
+ 272              	.LVL10:
+ 273 00ce 6C4B     		ldr	r3, .L51+24
+ 274 00d0 1870     		strb	r0, [r3]
+ 155:InterruptRoutines.c ****                 indexEEPROM = DATA_START; // bring index back to start
+ 275              		.loc 1 155 0
+ 276 00d2 6C4B     		ldr	r3, .L51+28
+ 277 00d4 1C70     		strb	r4, [r3]
+ 156:InterruptRoutines.c ****                 update_cfg_reg = 1;
+ 278              		.loc 1 156 0
+ 279 00d6 0722     		movs	r2, #7
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 13
+
+
+ 280 00d8 6B4B     		ldr	r3, .L51+32
+ 281 00da 1A80     		strh	r2, [r3]	@ movhi
+ 157:InterruptRoutines.c ****                 break;
+ 282              		.loc 1 157 0
+ 283 00dc 0122     		movs	r2, #1
+ 284 00de 6B4B     		ldr	r3, .L51+36
+ 285 00e0 1A70     		strb	r2, [r3]
+ 158:InterruptRoutines.c ****             case 'S':
+ 286              		.loc 1 158 0
+ 287 00e2 70BD     		pop	{r4, r5, r6, pc}
+ 288              	.L22:
+ 161:InterruptRoutines.c ****                 PWM_BLINK_WriteCompare(0);
+ 289              		.loc 1 161 0
+ 290 00e4 0020     		movs	r0, #0
+ 291 00e6 FFF7FEFF 		bl	PWM_BLINK_WritePeriod
+ 292              	.LVL11:
+ 162:InterruptRoutines.c ****                 //Pin_LED_Write(LED_OFF);//Switch off the PSoC Blue LED --> the UART comunication i
+ 293              		.loc 1 162 0
+ 294 00ea 0020     		movs	r0, #0
+ 295 00ec FFF7FEFF 		bl	PWM_BLINK_WriteCompare
+ 296              	.LVL12:
+ 168:InterruptRoutines.c ****                 
+ 297              		.loc 1 168 0
+ 298 00f0 0023     		movs	r3, #0
+ 299 00f2 604A     		ldr	r2, .L51+12
+ 300 00f4 1370     		strb	r3, [r2]
+ 171:InterruptRoutines.c ****                 //LIS3DH_setConfig(data_config); // set user-dependent settings
+ 301              		.loc 1 171 0
+ 302 00f6 6148     		ldr	r0, .L51+20
+ 303 00f8 C370     		strb	r3, [r0, #3]
+ 175:InterruptRoutines.c ****                 
+ 304              		.loc 1 175 0
+ 305 00fa FFF7FEFF 		bl	LIS3DH_zipConfig
+ 306              	.LVL13:
+ 307 00fe 604B     		ldr	r3, .L51+24
+ 308 0100 1870     		strb	r0, [r3]
+ 187:InterruptRoutines.c ****                 
+ 309              		.loc 1 187 0
+ 310 0102 0122     		movs	r2, #1
+ 311 0104 614B     		ldr	r3, .L51+36
+ 312 0106 1A70     		strb	r2, [r3]
+ 190:InterruptRoutines.c ****                 break;
+ 313              		.loc 1 190 0
+ 314 0108 FFF7FEFF 		bl	ShowMenu
+ 315              	.LVL14:
+ 191:InterruptRoutines.c ****             case 'F':
+ 316              		.loc 1 191 0
+ 317 010c 70BD     		pop	{r4, r5, r6, pc}
+ 318              	.L19:
+ 194:InterruptRoutines.c ****                 UART_PutString("|Character | Full Scale Range         |\n| 1        | +- 2g        
+ 319              		.loc 1 194 0
+ 320 010e FFF7FEFF 		bl	Timer_STREAM_Stop
+ 321              	.LVL15:
+ 195:InterruptRoutines.c ****                 configSets[0] = ch_receveid;
+ 322              		.loc 1 195 0
+ 323 0112 5F48     		ldr	r0, .L51+40
+ 324 0114 FFF7FEFF 		bl	UART_PutString
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 14
+
+
+ 325              	.LVL16:
+ 196:InterruptRoutines.c ****                 
+ 326              		.loc 1 196 0
+ 327 0118 534B     		ldr	r3, .L51
+ 328 011a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 329 011c 554B     		ldr	r3, .L51+12
+ 330 011e 1A70     		strb	r2, [r3]
+ 198:InterruptRoutines.c ****             case 'P':
+ 331              		.loc 1 198 0
+ 332 0120 70BD     		pop	{r4, r5, r6, pc}
+ 333              	.L21:
+ 201:InterruptRoutines.c ****                 UART_PutString("|Character | Sampling Frequency       |\n| 1        |  1Hz         
+ 334              		.loc 1 201 0
+ 335 0122 FFF7FEFF 		bl	Timer_STREAM_Stop
+ 336              	.LVL17:
+ 202:InterruptRoutines.c ****                 configSets[0] = ch_receveid;
+ 337              		.loc 1 202 0
+ 338 0126 5B48     		ldr	r0, .L51+44
+ 339 0128 FFF7FEFF 		bl	UART_PutString
+ 340              	.LVL18:
+ 203:InterruptRoutines.c ****                
+ 341              		.loc 1 203 0
+ 342 012c 4E4B     		ldr	r3, .L51
+ 343 012e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 344 0130 504B     		ldr	r3, .L51+12
+ 345 0132 1A70     		strb	r2, [r3]
+ 205:InterruptRoutines.c ****             case 'L':
+ 346              		.loc 1 205 0
+ 347 0134 70BD     		pop	{r4, r5, r6, pc}
+ 348              	.L20:
+ 208:InterruptRoutines.c ****                 UART_PutString("|Character | Sensor                   |\n| 0        | Store luminos
+ 349              		.loc 1 208 0
+ 350 0136 FFF7FEFF 		bl	Timer_STREAM_Stop
+ 351              	.LVL19:
+ 209:InterruptRoutines.c ****                 configSets[0] = ch_receveid;
+ 352              		.loc 1 209 0
+ 353 013a 5748     		ldr	r0, .L51+48
+ 354 013c FFF7FEFF 		bl	UART_PutString
+ 355              	.LVL20:
+ 210:InterruptRoutines.c ****                 break;
+ 356              		.loc 1 210 0
+ 357 0140 494B     		ldr	r3, .L51
+ 358 0142 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 359 0144 4B4B     		ldr	r3, .L51+12
+ 360 0146 1A70     		strb	r2, [r3]
+ 211:InterruptRoutines.c ****             case 'V':
+ 361              		.loc 1 211 0
+ 362 0148 70BD     		pop	{r4, r5, r6, pc}
+ 363              	.L23:
+ 214:InterruptRoutines.c ****                 PWM_BLINK_WriteCompare(0);
+ 364              		.loc 1 214 0
+ 365 014a 0020     		movs	r0, #0
+ 366 014c FFF7FEFF 		bl	PWM_BLINK_WritePeriod
+ 367              	.LVL21:
+ 215:InterruptRoutines.c ****                 
+ 368              		.loc 1 215 0
+ 369 0150 0020     		movs	r0, #0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 15
+
+
+ 370 0152 FFF7FEFF 		bl	PWM_BLINK_WriteCompare
+ 371              	.LVL22:
+ 217:InterruptRoutines.c ****                 LIS3DH_setConfig(data_config);// set user-dependent settings
+ 372              		.loc 1 217 0
+ 373 0156 494D     		ldr	r5, .L51+20
+ 374 0158 0023     		movs	r3, #0
+ 375 015a EB70     		strb	r3, [r5, #3]
+ 218:InterruptRoutines.c ****                 configSets[0] = ch_receveid;
+ 376              		.loc 1 218 0
+ 377 015c 2846     		mov	r0, r5
+ 378 015e FFF7FEFF 		bl	LIS3DH_setConfig
+ 379              	.LVL23:
+ 219:InterruptRoutines.c ****                 //configSets[1] = 5;
+ 380              		.loc 1 219 0
+ 381 0162 414B     		ldr	r3, .L51
+ 382 0164 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 383 0166 434B     		ldr	r3, .L51+12
+ 384 0168 1A70     		strb	r2, [r3]
+ 226:InterruptRoutines.c ****                 UART_PutString(bufferUART);
+ 385              		.loc 1 226 0
+ 386 016a 4C4E     		ldr	r6, .L51+52
+ 387 016c 3F4C     		ldr	r4, .L51+4
+ 388 016e 4C4B     		ldr	r3, .L51+56
+ 389 0170 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 390 0172 3146     		mov	r1, r6
+ 391 0174 2046     		mov	r0, r4
+ 392 0176 FFF7FEFF 		bl	sprintf
+ 393              	.LVL24:
+ 227:InterruptRoutines.c ****                 
+ 394              		.loc 1 227 0
+ 395 017a 2046     		mov	r0, r4
+ 396 017c FFF7FEFF 		bl	UART_PutString
+ 397              	.LVL25:
+ 229:InterruptRoutines.c ****                 
+ 398              		.loc 1 229 0
+ 399 0180 2846     		mov	r0, r5
+ 400 0182 FFF7FEFF 		bl	LIS3DH_zipConfig
+ 401              	.LVL26:
+ 402 0186 0246     		mov	r2, r0
+ 403 0188 3D4B     		ldr	r3, .L51+24
+ 404 018a 1870     		strb	r0, [r3]
+ 231:InterruptRoutines.c ****                 UART_PutString(bufferUART);
+ 405              		.loc 1 231 0
+ 406 018c 3146     		mov	r1, r6
+ 407 018e 2046     		mov	r0, r4
+ 408 0190 FFF7FEFF 		bl	sprintf
+ 409              	.LVL27:
+ 232:InterruptRoutines.c ****                 
+ 410              		.loc 1 232 0
+ 411 0194 2046     		mov	r0, r4
+ 412 0196 FFF7FEFF 		bl	UART_PutString
+ 413              	.LVL28:
+ 234:InterruptRoutines.c ****                 
+ 414              		.loc 1 234 0
+ 415 019a 0120     		movs	r0, #1
+ 416 019c FFF7FEFF 		bl	Pin_LED_ext_Write
+ 417              	.LVL29:
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 16
+
+
+ 245:InterruptRoutines.c ****                 break;
+ 418              		.loc 1 245 0
+ 419 01a0 0122     		movs	r2, #1
+ 420 01a2 404B     		ldr	r3, .L51+60
+ 421 01a4 1A70     		strb	r2, [r3]
+ 246:InterruptRoutines.c ****             default:
+ 422              		.loc 1 246 0
+ 423 01a6 70BD     		pop	{r4, r5, r6, pc}
+ 424              	.L15:
+ 251:InterruptRoutines.c ****         switch(ch_receveid){
+ 425              		.loc 1 251 0
+ 426 01a8 562B     		cmp	r3, #86
+ 427 01aa 01D0     		beq	.L24
+ 251:InterruptRoutines.c ****         switch(ch_receveid){
+ 428              		.loc 1 251 0 is_stmt 0 discriminator 1
+ 429 01ac 762B     		cmp	r3, #118
+ 430 01ae 13D1     		bne	.L25
+ 431              	.L24:
+ 252:InterruptRoutines.c ****             case 'U':
+ 432              		.loc 1 252 0 is_stmt 1
+ 433 01b0 2D4B     		ldr	r3, .L51
+ 434 01b2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 435 01b4 552B     		cmp	r3, #85
+ 436 01b6 04D0     		beq	.L26
+ 437 01b8 752B     		cmp	r3, #117
+ 438 01ba 02D0     		beq	.L26
+ 439 01bc 3F2B     		cmp	r3, #63
+ 440 01be 40F01A81 		bne	.L14
+ 441              	.L26:
+ 256:InterruptRoutines.c ****                 Stopstream=1;
+ 442              		.loc 1 256 0
+ 443 01c2 FFF7FEFF 		bl	Timer_STREAM_Stop
+ 444              	.LVL30:
+ 257:InterruptRoutines.c ****                 Pin_LED_ext_Write(LED_OFF);
+ 445              		.loc 1 257 0
+ 446 01c6 0122     		movs	r2, #1
+ 447 01c8 374B     		ldr	r3, .L51+64
+ 448 01ca 1A70     		strb	r2, [r3]
+ 258:InterruptRoutines.c ****                 ShowMenu();
+ 449              		.loc 1 258 0
+ 450 01cc 0020     		movs	r0, #0
+ 451 01ce FFF7FEFF 		bl	Pin_LED_ext_Write
+ 452              	.LVL31:
+ 259:InterruptRoutines.c ****                 break;
+ 453              		.loc 1 259 0
+ 454 01d2 FFF7FEFF 		bl	ShowMenu
+ 455              	.LVL32:
+ 260:InterruptRoutines.c ****                 }
+ 456              		.loc 1 260 0
+ 457 01d6 70BD     		pop	{r4, r5, r6, pc}
+ 458              	.L25:
+ 264:InterruptRoutines.c ****             case 'f':
+ 459              		.loc 1 264 0
+ 460 01d8 463B     		subs	r3, r3, #70
+ 461 01da 2A2B     		cmp	r3, #42
+ 462 01dc 00F20B81 		bhi	.L14
+ 463 01e0 DFE813F0 		tbh	[pc, r3, lsl #1]
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 17
+
+
+ 464              	.L28:
+ 465 01e4 2B00     		.2byte	(.L27-.L28)/2
+ 466 01e6 0901     		.2byte	(.L14-.L28)/2
+ 467 01e8 0901     		.2byte	(.L14-.L28)/2
+ 468 01ea 0901     		.2byte	(.L14-.L28)/2
+ 469 01ec 0901     		.2byte	(.L14-.L28)/2
+ 470 01ee 0901     		.2byte	(.L14-.L28)/2
+ 471 01f0 E300     		.2byte	(.L29-.L28)/2
+ 472 01f2 0901     		.2byte	(.L14-.L28)/2
+ 473 01f4 0901     		.2byte	(.L14-.L28)/2
+ 474 01f6 0901     		.2byte	(.L14-.L28)/2
+ 475 01f8 8500     		.2byte	(.L30-.L28)/2
+ 476 01fa 0901     		.2byte	(.L14-.L28)/2
+ 477 01fc 0901     		.2byte	(.L14-.L28)/2
+ 478 01fe 0901     		.2byte	(.L14-.L28)/2
+ 479 0200 0901     		.2byte	(.L14-.L28)/2
+ 480 0202 0901     		.2byte	(.L14-.L28)/2
+ 481 0204 0901     		.2byte	(.L14-.L28)/2
+ 482 0206 0901     		.2byte	(.L14-.L28)/2
+ 483 0208 0901     		.2byte	(.L14-.L28)/2
+ 484 020a 0901     		.2byte	(.L14-.L28)/2
+ 485 020c 0901     		.2byte	(.L14-.L28)/2
+ 486 020e 0901     		.2byte	(.L14-.L28)/2
+ 487 0210 0901     		.2byte	(.L14-.L28)/2
+ 488 0212 0901     		.2byte	(.L14-.L28)/2
+ 489 0214 0901     		.2byte	(.L14-.L28)/2
+ 490 0216 0901     		.2byte	(.L14-.L28)/2
+ 491 0218 0901     		.2byte	(.L14-.L28)/2
+ 492 021a 0901     		.2byte	(.L14-.L28)/2
+ 493 021c 0901     		.2byte	(.L14-.L28)/2
+ 494 021e 0901     		.2byte	(.L14-.L28)/2
+ 495 0220 0901     		.2byte	(.L14-.L28)/2
+ 496 0222 0901     		.2byte	(.L14-.L28)/2
+ 497 0224 2B00     		.2byte	(.L27-.L28)/2
+ 498 0226 0901     		.2byte	(.L14-.L28)/2
+ 499 0228 0901     		.2byte	(.L14-.L28)/2
+ 500 022a 0901     		.2byte	(.L14-.L28)/2
+ 501 022c 0901     		.2byte	(.L14-.L28)/2
+ 502 022e 0901     		.2byte	(.L14-.L28)/2
+ 503 0230 E300     		.2byte	(.L29-.L28)/2
+ 504 0232 0901     		.2byte	(.L14-.L28)/2
+ 505 0234 0901     		.2byte	(.L14-.L28)/2
+ 506 0236 0901     		.2byte	(.L14-.L28)/2
+ 507 0238 8500     		.2byte	(.L30-.L28)/2
+ 508              		.p2align 1
+ 509              	.L27:
+ 267:InterruptRoutines.c ****                     case '1':
+ 510              		.loc 1 267 0
+ 511 023a 0B4B     		ldr	r3, .L51
+ 512 023c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 513 023e 313B     		subs	r3, r3, #49
+ 514 0240 0E2B     		cmp	r3, #14
+ 515 0242 50D8     		bhi	.L31
+ 516 0244 DFE803F0 		tbb	[pc, r3]
+ 517              	.L33:
+ 518 0248 08       		.byte	(.L32-.L33)/2
+ 519 0249 34       		.byte	(.L34-.L33)/2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 18
+
+
+ 520 024a 3C       		.byte	(.L35-.L33)/2
+ 521 024b 44       		.byte	(.L36-.L33)/2
+ 522 024c 4F       		.byte	(.L31-.L33)/2
+ 523 024d 4F       		.byte	(.L31-.L33)/2
+ 524 024e 4F       		.byte	(.L31-.L33)/2
+ 525 024f 4F       		.byte	(.L31-.L33)/2
+ 526 0250 4F       		.byte	(.L31-.L33)/2
+ 527 0251 4F       		.byte	(.L31-.L33)/2
+ 528 0252 4F       		.byte	(.L31-.L33)/2
+ 529 0253 4F       		.byte	(.L31-.L33)/2
+ 530 0254 4F       		.byte	(.L31-.L33)/2
+ 531 0255 4F       		.byte	(.L31-.L33)/2
+ 532 0256 4C       		.byte	(.L37-.L33)/2
+ 533 0257 00       		.p2align 1
+ 534              	.L32:
+ 269:InterruptRoutines.c ****                         configSets[1]=1;
+ 535              		.loc 1 269 0
+ 536 0258 144B     		ldr	r3, .L51+68
+ 537 025a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 538 025c 074B     		ldr	r3, .L51+20
+ 539 025e 5A70     		strb	r2, [r3, #1]
+ 270:InterruptRoutines.c ****                         break;
+ 540              		.loc 1 270 0
+ 541 0260 0122     		movs	r2, #1
+ 542 0262 044B     		ldr	r3, .L51+12
+ 543 0264 5A70     		strb	r2, [r3, #1]
+ 271:InterruptRoutines.c ****                     case '2':
+ 544              		.loc 1 271 0
+ 545 0266 70BD     		pop	{r4, r5, r6, pc}
+ 546              	.L52:
+ 547              		.align	2
+ 548              	.L51:
+ 549 0268 00000000 		.word	ch_receveid
+ 550 026c 00000000 		.word	bufferUART
+ 551 0270 3C010000 		.word	.LC3
+ 552 0274 00000000 		.word	.LANCHOR1
+ 553 0278 50010000 		.word	.LC4
+ 554 027c 00000000 		.word	data_config
+ 555 0280 00000000 		.word	cfg_reg
+ 556 0284 00000000 		.word	memoryFull
+ 557 0288 00000000 		.word	indexEEPROM
+ 558 028c 00000000 		.word	update_cfg_reg
+ 559 0290 68010000 		.word	.LC5
+ 560 0294 34020000 		.word	.LC6
+ 561 0298 00030000 		.word	.LC7
+ 562 029c 7C030000 		.word	.LC8
+ 563 02a0 00000000 		.word	cfg_reg_old
+ 564 02a4 00000000 		.word	Startstream
+ 565 02a8 00000000 		.word	Stopstream
+ 566 02ac 00000000 		.word	lis3dh_dataRange_t
+ 567              	.L34:
+ 273:InterruptRoutines.c ****                         configSets[1]=2;
+ 568              		.loc 1 273 0
+ 569 02b0 514B     		ldr	r3, .L53
+ 570 02b2 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ 571 02b4 514B     		ldr	r3, .L53+4
+ 572 02b6 5A70     		strb	r2, [r3, #1]
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 19
+
+
+ 274:InterruptRoutines.c ****                         break;
+ 573              		.loc 1 274 0
+ 574 02b8 0222     		movs	r2, #2
+ 575 02ba 514B     		ldr	r3, .L53+8
+ 576 02bc 5A70     		strb	r2, [r3, #1]
+ 275:InterruptRoutines.c ****                     case '3':
+ 577              		.loc 1 275 0
+ 578 02be 70BD     		pop	{r4, r5, r6, pc}
+ 579              	.L35:
+ 277:InterruptRoutines.c ****                         configSets[1]=3;
+ 580              		.loc 1 277 0
+ 581 02c0 4D4B     		ldr	r3, .L53
+ 582 02c2 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 583 02c4 4D4B     		ldr	r3, .L53+4
+ 584 02c6 5A70     		strb	r2, [r3, #1]
+ 278:InterruptRoutines.c ****                         
+ 585              		.loc 1 278 0
+ 586 02c8 0322     		movs	r2, #3
+ 587 02ca 4D4B     		ldr	r3, .L53+8
+ 588 02cc 5A70     		strb	r2, [r3, #1]
+ 280:InterruptRoutines.c ****                     case '4':
+ 589              		.loc 1 280 0
+ 590 02ce 70BD     		pop	{r4, r5, r6, pc}
+ 591              	.L36:
+ 282:InterruptRoutines.c ****                         configSets[1]=4;
+ 592              		.loc 1 282 0
+ 593 02d0 494B     		ldr	r3, .L53
+ 594 02d2 DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
+ 595 02d4 494B     		ldr	r3, .L53+4
+ 596 02d6 5A70     		strb	r2, [r3, #1]
+ 283:InterruptRoutines.c ****                         break;
+ 597              		.loc 1 283 0
+ 598 02d8 0422     		movs	r2, #4
+ 599 02da 494B     		ldr	r3, .L53+8
+ 600 02dc 5A70     		strb	r2, [r3, #1]
+ 284:InterruptRoutines.c ****                     case '?':
+ 601              		.loc 1 284 0
+ 602 02de 70BD     		pop	{r4, r5, r6, pc}
+ 603              	.L37:
+ 286:InterruptRoutines.c ****                         break;
+ 604              		.loc 1 286 0
+ 605 02e0 FFF7FEFF 		bl	ShowMenu
+ 606              	.LVL33:
+ 287:InterruptRoutines.c ****                     default:
+ 607              		.loc 1 287 0
+ 608 02e4 70BD     		pop	{r4, r5, r6, pc}
+ 609              	.L31:
+ 289:InterruptRoutines.c ****                         
+ 610              		.loc 1 289 0
+ 611 02e6 0522     		movs	r2, #5
+ 612 02e8 454B     		ldr	r3, .L53+8
+ 613 02ea 5A70     		strb	r2, [r3, #1]
+ 291:InterruptRoutines.c ****                 }
+ 614              		.loc 1 291 0
+ 615 02ec 70BD     		pop	{r4, r5, r6, pc}
+ 616              	.L30:
+ 297:InterruptRoutines.c ****                     case '1':
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 20
+
+
+ 617              		.loc 1 297 0
+ 618 02ee 454B     		ldr	r3, .L53+12
+ 619 02f0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 620 02f2 313B     		subs	r3, r3, #49
+ 621 02f4 0E2B     		cmp	r3, #14
+ 622 02f6 54D8     		bhi	.L38
+ 623 02f8 DFE803F0 		tbb	[pc, r3]
+ 624              	.L40:
+ 625 02fc 08       		.byte	(.L39-.L40)/2
+ 626 02fd 1A       		.byte	(.L41-.L40)/2
+ 627 02fe 2C       		.byte	(.L42-.L40)/2
+ 628 02ff 3E       		.byte	(.L43-.L40)/2
+ 629 0300 53       		.byte	(.L38-.L40)/2
+ 630 0301 53       		.byte	(.L38-.L40)/2
+ 631 0302 53       		.byte	(.L38-.L40)/2
+ 632 0303 53       		.byte	(.L38-.L40)/2
+ 633 0304 53       		.byte	(.L38-.L40)/2
+ 634 0305 53       		.byte	(.L38-.L40)/2
+ 635 0306 53       		.byte	(.L38-.L40)/2
+ 636 0307 53       		.byte	(.L38-.L40)/2
+ 637 0308 53       		.byte	(.L38-.L40)/2
+ 638 0309 53       		.byte	(.L38-.L40)/2
+ 639 030a 50       		.byte	(.L44-.L40)/2
+ 640 030b 00       		.p2align 1
+ 641              	.L39:
+ 299:InterruptRoutines.c ****                         sprintf(bufferUART, "dataconfig = 0x%02x\r\n", data_config[0]);
+ 642              		.loc 1 299 0
+ 643 030c 3E4B     		ldr	r3, .L53+16
+ 644 030e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 645 0310 42F00702 		orr	r2, r2, #7
+ 646 0314 394B     		ldr	r3, .L53+4
+ 647 0316 1A70     		strb	r2, [r3]
+ 300:InterruptRoutines.c ****                         UART_PutString(bufferUART);
+ 648              		.loc 1 300 0
+ 649 0318 3C4C     		ldr	r4, .L53+20
+ 650 031a 3D49     		ldr	r1, .L53+24
+ 651 031c 2046     		mov	r0, r4
+ 652 031e FFF7FEFF 		bl	sprintf
+ 653              	.LVL34:
+ 301:InterruptRoutines.c ****                         configSets[1]=1;
+ 654              		.loc 1 301 0
+ 655 0322 2046     		mov	r0, r4
+ 656 0324 FFF7FEFF 		bl	UART_PutString
+ 657              	.LVL35:
+ 302:InterruptRoutines.c ****                         break;
+ 658              		.loc 1 302 0
+ 659 0328 0122     		movs	r2, #1
+ 660 032a 354B     		ldr	r3, .L53+8
+ 661 032c 5A70     		strb	r2, [r3, #1]
+ 303:InterruptRoutines.c ****                     case '2':
+ 662              		.loc 1 303 0
+ 663 032e 70BD     		pop	{r4, r5, r6, pc}
+ 664              	.L41:
+ 305:InterruptRoutines.c ****                         configSets[1]=2;
+ 665              		.loc 1 305 0
+ 666 0330 354B     		ldr	r3, .L53+16
+ 667 0332 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 21
+
+
+ 668 0334 42F00702 		orr	r2, r2, #7
+ 669 0338 304B     		ldr	r3, .L53+4
+ 670 033a 1A70     		strb	r2, [r3]
+ 306:InterruptRoutines.c ****                         sprintf(bufferUART, "dataconfig = 0x%02x\r\n", data_config[0]);
+ 671              		.loc 1 306 0
+ 672 033c 0221     		movs	r1, #2
+ 673 033e 304B     		ldr	r3, .L53+8
+ 674 0340 5970     		strb	r1, [r3, #1]
+ 307:InterruptRoutines.c ****                         UART_PutString(bufferUART);
+ 675              		.loc 1 307 0
+ 676 0342 324C     		ldr	r4, .L53+20
+ 677 0344 3249     		ldr	r1, .L53+24
+ 678 0346 2046     		mov	r0, r4
+ 679 0348 FFF7FEFF 		bl	sprintf
+ 680              	.LVL36:
+ 308:InterruptRoutines.c ****                         break;
+ 681              		.loc 1 308 0
+ 682 034c 2046     		mov	r0, r4
+ 683 034e FFF7FEFF 		bl	UART_PutString
+ 684              	.LVL37:
+ 309:InterruptRoutines.c ****                     case '3':
+ 685              		.loc 1 309 0
+ 686 0352 70BD     		pop	{r4, r5, r6, pc}
+ 687              	.L42:
+ 311:InterruptRoutines.c ****                         configSets[1]=3;
+ 688              		.loc 1 311 0
+ 689 0354 2C4B     		ldr	r3, .L53+16
+ 690 0356 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 691 0358 42F00702 		orr	r2, r2, #7
+ 692 035c 274B     		ldr	r3, .L53+4
+ 693 035e 1A70     		strb	r2, [r3]
+ 312:InterruptRoutines.c ****                         sprintf(bufferUART, "dataconfig = 0x%02x\r\n", data_config[0]);
+ 694              		.loc 1 312 0
+ 695 0360 0321     		movs	r1, #3
+ 696 0362 274B     		ldr	r3, .L53+8
+ 697 0364 5970     		strb	r1, [r3, #1]
+ 313:InterruptRoutines.c ****                         UART_PutString(bufferUART);
+ 698              		.loc 1 313 0
+ 699 0366 294C     		ldr	r4, .L53+20
+ 700 0368 2949     		ldr	r1, .L53+24
+ 701 036a 2046     		mov	r0, r4
+ 702 036c FFF7FEFF 		bl	sprintf
+ 703              	.LVL38:
+ 314:InterruptRoutines.c ****                         break;
+ 704              		.loc 1 314 0
+ 705 0370 2046     		mov	r0, r4
+ 706 0372 FFF7FEFF 		bl	UART_PutString
+ 707              	.LVL39:
+ 315:InterruptRoutines.c ****                     case '4':
+ 708              		.loc 1 315 0
+ 709 0376 70BD     		pop	{r4, r5, r6, pc}
+ 710              	.L43:
+ 317:InterruptRoutines.c ****                         configSets[1]=4;
+ 711              		.loc 1 317 0
+ 712 0378 234B     		ldr	r3, .L53+16
+ 713 037a DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
+ 714 037c 42F00702 		orr	r2, r2, #7
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 22
+
+
+ 715 0380 1E4B     		ldr	r3, .L53+4
+ 716 0382 1A70     		strb	r2, [r3]
+ 318:InterruptRoutines.c ****                         sprintf(bufferUART, "dataconfig = 0x%02x\r\n", data_config[0]);
+ 717              		.loc 1 318 0
+ 718 0384 0421     		movs	r1, #4
+ 719 0386 1E4B     		ldr	r3, .L53+8
+ 720 0388 5970     		strb	r1, [r3, #1]
+ 319:InterruptRoutines.c ****                         UART_PutString(bufferUART);
+ 721              		.loc 1 319 0
+ 722 038a 204C     		ldr	r4, .L53+20
+ 723 038c 2049     		ldr	r1, .L53+24
+ 724 038e 2046     		mov	r0, r4
+ 725 0390 FFF7FEFF 		bl	sprintf
+ 726              	.LVL40:
+ 320:InterruptRoutines.c ****                         break;
+ 727              		.loc 1 320 0
+ 728 0394 2046     		mov	r0, r4
+ 729 0396 FFF7FEFF 		bl	UART_PutString
+ 730              	.LVL41:
+ 321:InterruptRoutines.c ****                     case '?':
+ 731              		.loc 1 321 0
+ 732 039a 70BD     		pop	{r4, r5, r6, pc}
+ 733              	.L44:
+ 323:InterruptRoutines.c ****                         break;
+ 734              		.loc 1 323 0
+ 735 039c FFF7FEFF 		bl	ShowMenu
+ 736              	.LVL42:
+ 324:InterruptRoutines.c ****                     default:
+ 737              		.loc 1 324 0
+ 738 03a0 70BD     		pop	{r4, r5, r6, pc}
+ 739              	.L38:
+ 326:InterruptRoutines.c ****                         break;
+ 740              		.loc 1 326 0
+ 741 03a2 0522     		movs	r2, #5
+ 742 03a4 164B     		ldr	r3, .L53+8
+ 743 03a6 5A70     		strb	r2, [r3, #1]
+ 327:InterruptRoutines.c ****                 }
+ 744              		.loc 1 327 0
+ 745 03a8 70BD     		pop	{r4, r5, r6, pc}
+ 746              	.L29:
+ 333:InterruptRoutines.c ****                     case '0':
+ 747              		.loc 1 333 0
+ 748 03aa 164B     		ldr	r3, .L53+12
+ 749 03ac 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 750 03ae 312B     		cmp	r3, #49
+ 751 03b0 0FD0     		beq	.L46
+ 752 03b2 3F2B     		cmp	r3, #63
+ 753 03b4 19D0     		beq	.L47
+ 754 03b6 302B     		cmp	r3, #48
+ 755 03b8 1AD1     		bne	.L49
+ 335:InterruptRoutines.c ****                         configSets[1] = 0;
+ 756              		.loc 1 335 0
+ 757 03ba 0020     		movs	r0, #0
+ 758 03bc FFF7FEFF 		bl	AMux_Select
+ 759              	.LVL43:
+ 336:InterruptRoutines.c ****                         UART_PutString("--> Photoresistor\n\r");
+ 760              		.loc 1 336 0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 23
+
+
+ 761 03c0 0024     		movs	r4, #0
+ 762 03c2 0F4B     		ldr	r3, .L53+8
+ 763 03c4 5C70     		strb	r4, [r3, #1]
+ 337:InterruptRoutines.c ****                         data_config[2]=0;
+ 764              		.loc 1 337 0
+ 765 03c6 1348     		ldr	r0, .L53+28
+ 766 03c8 FFF7FEFF 		bl	UART_PutString
+ 767              	.LVL44:
+ 338:InterruptRoutines.c ****                         break;
+ 768              		.loc 1 338 0
+ 769 03cc 0B4B     		ldr	r3, .L53+4
+ 770 03ce 9C70     		strb	r4, [r3, #2]
+ 339:InterruptRoutines.c ****                     case '1':
+ 771              		.loc 1 339 0
+ 772 03d0 70BD     		pop	{r4, r5, r6, pc}
+ 773              	.L46:
+ 341:InterruptRoutines.c ****                         configSets[1] = 1;
+ 774              		.loc 1 341 0
+ 775 03d2 0120     		movs	r0, #1
+ 776 03d4 FFF7FEFF 		bl	AMux_Select
+ 777              	.LVL45:
+ 342:InterruptRoutines.c ****                         UART_PutString("--> Potentiometer\n\r");
+ 778              		.loc 1 342 0
+ 779 03d8 0124     		movs	r4, #1
+ 780 03da 094B     		ldr	r3, .L53+8
+ 781 03dc 5C70     		strb	r4, [r3, #1]
+ 343:InterruptRoutines.c ****                         data_config[2]=1;
+ 782              		.loc 1 343 0
+ 783 03de 0E48     		ldr	r0, .L53+32
+ 784 03e0 FFF7FEFF 		bl	UART_PutString
+ 785              	.LVL46:
+ 344:InterruptRoutines.c ****                         break;
+ 786              		.loc 1 344 0
+ 787 03e4 054B     		ldr	r3, .L53+4
+ 788 03e6 9C70     		strb	r4, [r3, #2]
+ 345:InterruptRoutines.c ****                     case '?':
+ 789              		.loc 1 345 0
+ 790 03e8 70BD     		pop	{r4, r5, r6, pc}
+ 791              	.L47:
+ 347:InterruptRoutines.c ****                         break;
+ 792              		.loc 1 347 0
+ 793 03ea FFF7FEFF 		bl	ShowMenu
+ 794              	.LVL47:
+ 348:InterruptRoutines.c ****                     default:
+ 795              		.loc 1 348 0
+ 796 03ee 70BD     		pop	{r4, r5, r6, pc}
+ 797              	.L49:
+ 350:InterruptRoutines.c ****                         break;
+ 798              		.loc 1 350 0
+ 799 03f0 0522     		movs	r2, #5
+ 800 03f2 034B     		ldr	r3, .L53+8
+ 801 03f4 5A70     		strb	r2, [r3, #1]
+ 802              	.L14:
+ 803 03f6 70BD     		pop	{r4, r5, r6, pc}
+ 804              	.L54:
+ 805              		.align	2
+ 806              	.L53:
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 24
+
+
+ 807 03f8 00000000 		.word	lis3dh_dataRange_t
+ 808 03fc 00000000 		.word	data_config
+ 809 0400 00000000 		.word	.LANCHOR1
+ 810 0404 00000000 		.word	ch_receveid
+ 811 0408 00000000 		.word	lis3dh_dataRate_t
+ 812 040c 00000000 		.word	bufferUART
+ 813 0410 94030000 		.word	.LC9
+ 814 0414 AC030000 		.word	.LC10
+ 815 0418 C0030000 		.word	.LC11
+ 816              		.cfi_endproc
+ 817              	.LFE65:
+ 818              		.size	Custom_ISR_RX, .-Custom_ISR_RX
+ 819              		.comm	indexEEPROM,2,2
+ 820              		.comm	Stopstream,1,1
+ 821              		.comm	Startstream,1,1
+ 822              		.comm	frequency,1,1
+ 823              		.comm	reg_value,1,1
+ 824              		.global	FlagFSR
+ 825              		.comm	bufferUART,200,4
+ 826              		.comm	update_cfg_reg,1,1
+ 827              		.comm	cfg_reg_old,1,1
+ 828              		.comm	cfg_reg,1,1
+ 829              		.comm	data_config,4,4
+ 830              		.global	configSets
+ 831              		.global	dataReady_STREAM
+ 832              		.global	dataReady_FIFO
+ 833              		.comm	ControlFlag,1,1
+ 834              		.comm	ch_receveid,1,1
+ 835              		.comm	value_digit_analog,2,2
+ 836              		.comm	PacketReadyFlag,1,1
+ 837              		.comm	DataBuffer,6,4
+ 838              		.data
+ 839              		.align	2
+ 840              		.set	.LANCHOR1,. + 0
+ 841              		.type	configSets, %object
+ 842              		.size	configSets, 2
+ 843              	configSets:
+ 844 0000 00       		.byte	0
+ 845 0001 05       		.byte	5
+ 846              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 847              		.align	2
+ 848              	.LC0:
+ 849 0000 0A0D2020 		.ascii	"\012\015                *|WELCOME IN THE FINAL PROJ"
+ 849      20202020 
+ 849      20202020 
+ 849      20202020 
+ 849      20202A7C 
+ 850 002d 4543547C 		.ascii	"ECT|*                \015\012Please select your per"
+ 850      2A202020 
+ 850      20202020 
+ 850      20202020 
+ 850      20202020 
+ 851 005a 736F6E61 		.ascii	"sonal settings\015\012\000"
+ 851      6C207365 
+ 851      7474696E 
+ 851      67730D0A 
+ 851      00
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 25
+
+
+ 852 006b 00       		.space	1
+ 853              	.LC1:
+ 854 006c 20202020 		.ascii	"    Legend:\015\012\000"
+ 854      4C656765 
+ 854      6E643A0D 
+ 854      0A00
+ 855 007a 0000     		.space	2
+ 856              	.LC2:
+ 857 007c 20202020 		.ascii	"        B/b-->Start Data Acquisition\015\012       "
+ 857      20202020 
+ 857      422F622D 
+ 857      2D3E5374 
+ 857      61727420 
+ 858 00a9 20462F66 		.ascii	" F/f-->Select Full Scale Range\015\012        P/p--"
+ 858      2D2D3E53 
+ 858      656C6563 
+ 858      74204675 
+ 858      6C6C2053 
+ 859 00d6 3E53656C 		.ascii	">Select Sampling Frequency\015\012        L/l-->Sel"
+ 859      65637420 
+ 859      53616D70 
+ 859      6C696E67 
+ 859      20467265 
+ 860 0103 65637420 		.ascii	"ect Analog Sensor\015\012        S/s-->Stop data ac"
+ 860      416E616C 
+ 860      6F672053 
+ 860      656E736F 
+ 860      720D0A20 
+ 861 0130 71756973 		.ascii	"quisition\015\012\000"
+ 861      6974696F 
+ 861      6E0D0A00 
+ 862              	.LC3:
+ 863 013c 63685F72 		.ascii	"ch_received = %c\015\012\000"
+ 863      65636569 
+ 863      76656420 
+ 863      3D202563 
+ 863      0D0A00
+ 864 014f 00       		.space	1
+ 865              	.LC4:
+ 866 0150 636F6E66 		.ascii	"configSets = %d - %d\015\012\000"
+ 866      69675365 
+ 866      7473203D 
+ 866      20256420 
+ 866      2D202564 
+ 867 0167 00       		.space	1
+ 868              	.LC5:
+ 869 0168 7C436861 		.ascii	"|Character | Full Scale Range         |\012| 1     "
+ 869      72616374 
+ 869      6572207C 
+ 869      2046756C 
+ 869      6C205363 
+ 870 0198 2020207C 		.ascii	"   | +- 2g                    |\012| 2        | +- "
+ 870      202B2D20 
+ 870      32672020 
+ 870      20202020 
+ 870      20202020 
+ 871 01c8 34672020 		.ascii	"4g                    |\012| 3        | +- 8g      "
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 26
+
+
+ 871      20202020 
+ 871      20202020 
+ 871      20202020 
+ 871      20202020 
+ 872 01f8 20202020 		.ascii	"              |\012| 4        | +- 16g             "
+ 872      20202020 
+ 872      20202020 
+ 872      20207C0A 
+ 872      7C203420 
+ 873 0228 20202020 		.ascii	"      |\012\015\000"
+ 873      20207C0A 
+ 873      0D00
+ 874 0232 0000     		.space	2
+ 875              	.LC6:
+ 876 0234 7C436861 		.ascii	"|Character | Sampling Frequency       |\012| 1     "
+ 876      72616374 
+ 876      6572207C 
+ 876      2053616D 
+ 876      706C696E 
+ 877 0264 2020207C 		.ascii	"   |  1Hz                     |\012| 2        | 10H"
+ 877      20203148 
+ 877      7A202020 
+ 877      20202020 
+ 877      20202020 
+ 878 0294 7A202020 		.ascii	"z                     |\012| 3        | 25Hz       "
+ 878      20202020 
+ 878      20202020 
+ 878      20202020 
+ 878      20202020 
+ 879 02c4 20202020 		.ascii	"              |\012| 4        | 50Hz               "
+ 879      20202020 
+ 879      20202020 
+ 879      20207C0A 
+ 879      7C203420 
+ 880 02f4 20202020 		.ascii	"      |\012\015\000"
+ 880      20207C0A 
+ 880      0D00
+ 881 02fe 0000     		.space	2
+ 882              	.LC7:
+ 883 0300 7C436861 		.ascii	"|Character | Sensor                   |\012| 0     "
+ 883      72616374 
+ 883      6572207C 
+ 883      2053656E 
+ 883      736F7220 
+ 884 0330 2020207C 		.ascii	"   | Store luminosity data    |\012| 1        | Sto"
+ 884      2053746F 
+ 884      7265206C 
+ 884      756D696E 
+ 884      6F736974 
+ 885 0360 72652070 		.ascii	"re potentiometer data |\012\015\000"
+ 885      6F74656E 
+ 885      74696F6D 
+ 885      65746572 
+ 885      20646174 
+ 886 037a 0000     		.space	2
+ 887              	.LC8:
+ 888 037c 636F6E66 		.ascii	"config_reg = 0x%02x\015\012\000"
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 27
+
+
+ 888      69675F72 
+ 888      6567203D 
+ 888      20307825 
+ 888      3032780D 
+ 889 0392 0000     		.space	2
+ 890              	.LC9:
+ 891 0394 64617461 		.ascii	"dataconfig = 0x%02x\015\012\000"
+ 891      636F6E66 
+ 891      6967203D 
+ 891      20307825 
+ 891      3032780D 
+ 892 03aa 0000     		.space	2
+ 893              	.LC10:
+ 894 03ac 2D2D3E20 		.ascii	"--> Photoresistor\012\015\000"
+ 894      50686F74 
+ 894      6F726573 
+ 894      6973746F 
+ 894      720A0D00 
+ 895              	.LC11:
+ 896 03c0 2D2D3E20 		.ascii	"--> Potentiometer\012\015\000"
+ 896      506F7465 
+ 896      6E74696F 
+ 896      6D657465 
+ 896      720A0D00 
+ 897              		.bss
+ 898              		.set	.LANCHOR0,. + 0
+ 899              		.type	dataReady_FIFO, %object
+ 900              		.size	dataReady_FIFO, 1
+ 901              	dataReady_FIFO:
+ 902 0000 00       		.space	1
+ 903              		.type	dataReady_STREAM, %object
+ 904              		.size	dataReady_STREAM, 1
+ 905              	dataReady_STREAM:
+ 906 0001 00       		.space	1
+ 907              		.type	FlagFSR, %object
+ 908              		.size	FlagFSR, 1
+ 909              	FlagFSR:
+ 910 0002 00       		.space	1
+ 911              		.text
+ 912              	.Letext0:
+ 913              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 914              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 915              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 916              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 917              		.file 6 "InterruptRoutines.h"
+ 918              		.file 7 "Generated_Source\\PSoC5/UART.h"
+ 919              		.file 8 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 920              		.file 9 "Generated_Source\\PSoC5/PWM_BLINK.h"
+ 921              		.file 10 "LIS3DH.h"
+ 922              		.file 11 "Generated_Source\\PSoC5/Timer_STREAM.h"
+ 923              		.file 12 "Generated_Source\\PSoC5/Pin_LED_ext.h"
+ 924              		.file 13 "Generated_Source\\PSoC5/AMux.h"
+ 925              		.section	.debug_info,"",%progbits
+ 926              	.Ldebug_info0:
+ 927 0000 34070000 		.4byte	0x734
+ 928 0004 0400     		.2byte	0x4
+ 929 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 28
+
+
+ 930 000a 04       		.byte	0x4
+ 931 000b 01       		.uleb128 0x1
+ 932 000c 69030000 		.4byte	.LASF60
+ 933 0010 0C       		.byte	0xc
+ 934 0011 4A000000 		.4byte	.LASF61
+ 935 0015 73010000 		.4byte	.LASF62
+ 936 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 937 001d 00000000 		.4byte	0
+ 938 0021 00000000 		.4byte	.Ldebug_line0
+ 939 0025 02       		.uleb128 0x2
+ 940 0026 01       		.byte	0x1
+ 941 0027 06       		.byte	0x6
+ 942 0028 30020000 		.4byte	.LASF0
+ 943 002c 03       		.uleb128 0x3
+ 944 002d 69010000 		.4byte	.LASF3
+ 945 0031 02       		.byte	0x2
+ 946 0032 1D       		.byte	0x1d
+ 947 0033 37000000 		.4byte	0x37
+ 948 0037 02       		.uleb128 0x2
+ 949 0038 01       		.byte	0x1
+ 950 0039 08       		.byte	0x8
+ 951 003a 1A020000 		.4byte	.LASF1
+ 952 003e 02       		.uleb128 0x2
+ 953 003f 02       		.byte	0x2
+ 954 0040 05       		.byte	0x5
+ 955 0041 5E000000 		.4byte	.LASF2
+ 956 0045 03       		.uleb128 0x3
+ 957 0046 A8000000 		.4byte	.LASF4
+ 958 004a 02       		.byte	0x2
+ 959 004b 2B       		.byte	0x2b
+ 960 004c 50000000 		.4byte	0x50
+ 961 0050 02       		.uleb128 0x2
+ 962 0051 02       		.byte	0x2
+ 963 0052 07       		.byte	0x7
+ 964 0053 7B020000 		.4byte	.LASF5
+ 965 0057 03       		.uleb128 0x3
+ 966 0058 22030000 		.4byte	.LASF6
+ 967 005c 02       		.byte	0x2
+ 968 005d 3F       		.byte	0x3f
+ 969 005e 62000000 		.4byte	0x62
+ 970 0062 02       		.uleb128 0x2
+ 971 0063 04       		.byte	0x4
+ 972 0064 05       		.byte	0x5
+ 973 0065 43010000 		.4byte	.LASF7
+ 974 0069 02       		.uleb128 0x2
+ 975 006a 04       		.byte	0x4
+ 976 006b 07       		.byte	0x7
+ 977 006c B0020000 		.4byte	.LASF8
+ 978 0070 02       		.uleb128 0x2
+ 979 0071 08       		.byte	0x8
+ 980 0072 05       		.byte	0x5
+ 981 0073 2D010000 		.4byte	.LASF9
+ 982 0077 02       		.uleb128 0x2
+ 983 0078 08       		.byte	0x8
+ 984 0079 07       		.byte	0x7
+ 985 007a 3C020000 		.4byte	.LASF10
+ 986 007e 04       		.uleb128 0x4
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 29
+
+
+ 987 007f 04       		.byte	0x4
+ 988 0080 05       		.byte	0x5
+ 989 0081 696E7400 		.ascii	"int\000"
+ 990 0085 02       		.uleb128 0x2
+ 991 0086 04       		.byte	0x4
+ 992 0087 07       		.byte	0x7
+ 993 0088 53020000 		.4byte	.LASF11
+ 994 008c 03       		.uleb128 0x3
+ 995 008d F4000000 		.4byte	.LASF12
+ 996 0091 03       		.byte	0x3
+ 997 0092 18       		.byte	0x18
+ 998 0093 2C000000 		.4byte	0x2c
+ 999 0097 03       		.uleb128 0x3
+ 1000 0098 72020000 		.4byte	.LASF13
+ 1001 009c 03       		.byte	0x3
+ 1002 009d 24       		.byte	0x24
+ 1003 009e 45000000 		.4byte	0x45
+ 1004 00a2 03       		.uleb128 0x3
+ 1005 00a3 93020000 		.4byte	.LASF14
+ 1006 00a7 03       		.byte	0x3
+ 1007 00a8 2C       		.byte	0x2c
+ 1008 00a9 57000000 		.4byte	0x57
+ 1009 00ad 05       		.uleb128 0x5
+ 1010 00ae 02010000 		.4byte	.LASF15
+ 1011 00b2 04       		.byte	0x4
+ 1012 00b3 E401     		.2byte	0x1e4
+ 1013 00b5 37000000 		.4byte	0x37
+ 1014 00b9 05       		.uleb128 0x5
+ 1015 00ba FC000000 		.4byte	.LASF16
+ 1016 00be 04       		.byte	0x4
+ 1017 00bf E801     		.2byte	0x1e8
+ 1018 00c1 3E000000 		.4byte	0x3e
+ 1019 00c5 02       		.uleb128 0x2
+ 1020 00c6 04       		.byte	0x4
+ 1021 00c7 04       		.byte	0x4
+ 1022 00c8 08010000 		.4byte	.LASF17
+ 1023 00cc 02       		.uleb128 0x2
+ 1024 00cd 08       		.byte	0x8
+ 1025 00ce 04       		.byte	0x4
+ 1026 00cf C2020000 		.4byte	.LASF18
+ 1027 00d3 02       		.uleb128 0x2
+ 1028 00d4 01       		.byte	0x1
+ 1029 00d5 08       		.byte	0x8
+ 1030 00d6 8E020000 		.4byte	.LASF19
+ 1031 00da 06       		.uleb128 0x6
+ 1032 00db AD000000 		.4byte	0xad
+ 1033 00df 02       		.uleb128 0x2
+ 1034 00e0 08       		.byte	0x8
+ 1035 00e1 04       		.byte	0x4
+ 1036 00e2 9C000000 		.4byte	.LASF20
+ 1037 00e6 02       		.uleb128 0x2
+ 1038 00e7 04       		.byte	0x4
+ 1039 00e8 07       		.byte	0x7
+ 1040 00e9 76000000 		.4byte	.LASF21
+ 1041 00ed 07       		.uleb128 0x7
+ 1042 00ee E5000000 		.4byte	.LASF22
+ 1043 00f2 01       		.byte	0x1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 30
+
+
+ 1044 00f3 35       		.byte	0x35
+ 1045 00f4 00000000 		.4byte	.LFB64
+ 1046 00f8 0C000000 		.4byte	.LFE64-.LFB64
+ 1047 00fc 01       		.uleb128 0x1
+ 1048 00fd 9C       		.byte	0x9c
+ 1049 00fe 08       		.uleb128 0x8
+ 1050 00ff 11000000 		.4byte	.LASF23
+ 1051 0103 01       		.byte	0x1
+ 1052 0104 6E01     		.2byte	0x16e
+ 1053 0106 00000000 		.4byte	.LFB66
+ 1054 010a 0C000000 		.4byte	.LFE66-.LFB66
+ 1055 010e 01       		.uleb128 0x1
+ 1056 010f 9C       		.byte	0x9c
+ 1057 0110 08       		.uleb128 0x8
+ 1058 0111 60020000 		.4byte	.LASF24
+ 1059 0115 01       		.byte	0x1
+ 1060 0116 7B01     		.2byte	0x17b
+ 1061 0118 00000000 		.4byte	.LFB67
+ 1062 011c 0C000000 		.4byte	.LFE67-.LFB67
+ 1063 0120 01       		.uleb128 0x1
+ 1064 0121 9C       		.byte	0x9c
+ 1065 0122 09       		.uleb128 0x9
+ 1066 0123 A7020000 		.4byte	.LASF25
+ 1067 0127 01       		.byte	0x1
+ 1068 0128 8101     		.2byte	0x181
+ 1069 012a 00000000 		.4byte	.LFB68
+ 1070 012e 30000000 		.4byte	.LFE68-.LFB68
+ 1071 0132 01       		.uleb128 0x1
+ 1072 0133 9C       		.byte	0x9c
+ 1073 0134 7A010000 		.4byte	0x17a
+ 1074 0138 0A       		.uleb128 0xa
+ 1075 0139 12000000 		.4byte	.LVL0
+ 1076 013d C9060000 		.4byte	0x6c9
+ 1077 0141 4F010000 		.4byte	0x14f
+ 1078 0145 0B       		.uleb128 0xb
+ 1079 0146 01       		.uleb128 0x1
+ 1080 0147 50       		.byte	0x50
+ 1081 0148 05       		.uleb128 0x5
+ 1082 0149 03       		.byte	0x3
+ 1083 014a 00000000 		.4byte	.LC0
+ 1084 014e 00       		.byte	0
+ 1085 014f 0A       		.uleb128 0xa
+ 1086 0150 18000000 		.4byte	.LVL1
+ 1087 0154 C9060000 		.4byte	0x6c9
+ 1088 0158 66010000 		.4byte	0x166
+ 1089 015c 0B       		.uleb128 0xb
+ 1090 015d 01       		.uleb128 0x1
+ 1091 015e 50       		.byte	0x50
+ 1092 015f 05       		.uleb128 0x5
+ 1093 0160 03       		.byte	0x3
+ 1094 0161 6C000000 		.4byte	.LC1
+ 1095 0165 00       		.byte	0
+ 1096 0166 0C       		.uleb128 0xc
+ 1097 0167 1E000000 		.4byte	.LVL2
+ 1098 016b C9060000 		.4byte	0x6c9
+ 1099 016f 0B       		.uleb128 0xb
+ 1100 0170 01       		.uleb128 0x1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 31
+
+
+ 1101 0171 50       		.byte	0x50
+ 1102 0172 05       		.uleb128 0x5
+ 1103 0173 03       		.byte	0x3
+ 1104 0174 7C000000 		.4byte	.LC2
+ 1105 0178 00       		.byte	0
+ 1106 0179 00       		.byte	0
+ 1107 017a 0D       		.uleb128 0xd
+ 1108 017b 68000000 		.4byte	.LASF26
+ 1109 017f 01       		.byte	0x1
+ 1110 0180 75       		.byte	0x75
+ 1111 0181 00000000 		.4byte	.LFB65
+ 1112 0185 1C040000 		.4byte	.LFE65-.LFB65
+ 1113 0189 01       		.uleb128 0x1
+ 1114 018a 9C       		.byte	0x9c
+ 1115 018b F5040000 		.4byte	0x4f5
+ 1116 018f 0E       		.uleb128 0xe
+ 1117 0190 06000000 		.4byte	.LVL3
+ 1118 0194 D4060000 		.4byte	0x6d4
+ 1119 0198 0A       		.uleb128 0xa
+ 1120 0199 16000000 		.4byte	.LVL4
+ 1121 019d DF060000 		.4byte	0x6df
+ 1122 01a1 B5010000 		.4byte	0x1b5
+ 1123 01a5 0B       		.uleb128 0xb
+ 1124 01a6 01       		.uleb128 0x1
+ 1125 01a7 50       		.byte	0x50
+ 1126 01a8 02       		.uleb128 0x2
+ 1127 01a9 74       		.byte	0x74
+ 1128 01aa 00       		.sleb128 0
+ 1129 01ab 0B       		.uleb128 0xb
+ 1130 01ac 01       		.uleb128 0x1
+ 1131 01ad 51       		.byte	0x51
+ 1132 01ae 05       		.uleb128 0x5
+ 1133 01af 03       		.byte	0x3
+ 1134 01b0 3C010000 		.4byte	.LC3
+ 1135 01b4 00       		.byte	0
+ 1136 01b5 0A       		.uleb128 0xa
+ 1137 01b6 1C000000 		.4byte	.LVL5
+ 1138 01ba C9060000 		.4byte	0x6c9
+ 1139 01be C9010000 		.4byte	0x1c9
+ 1140 01c2 0B       		.uleb128 0xb
+ 1141 01c3 01       		.uleb128 0x1
+ 1142 01c4 50       		.byte	0x50
+ 1143 01c5 02       		.uleb128 0x2
+ 1144 01c6 74       		.byte	0x74
+ 1145 01c7 00       		.sleb128 0
+ 1146 01c8 00       		.byte	0
+ 1147 01c9 0A       		.uleb128 0xa
+ 1148 01ca 2A000000 		.4byte	.LVL6
+ 1149 01ce DF060000 		.4byte	0x6df
+ 1150 01d2 E6010000 		.4byte	0x1e6
+ 1151 01d6 0B       		.uleb128 0xb
+ 1152 01d7 01       		.uleb128 0x1
+ 1153 01d8 50       		.byte	0x50
+ 1154 01d9 02       		.uleb128 0x2
+ 1155 01da 74       		.byte	0x74
+ 1156 01db 00       		.sleb128 0
+ 1157 01dc 0B       		.uleb128 0xb
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 32
+
+
+ 1158 01dd 01       		.uleb128 0x1
+ 1159 01de 51       		.byte	0x51
+ 1160 01df 05       		.uleb128 0x5
+ 1161 01e0 03       		.byte	0x3
+ 1162 01e1 50010000 		.4byte	.LC4
+ 1163 01e5 00       		.byte	0
+ 1164 01e6 0A       		.uleb128 0xa
+ 1165 01e7 30000000 		.4byte	.LVL7
+ 1166 01eb C9060000 		.4byte	0x6c9
+ 1167 01ef FA010000 		.4byte	0x1fa
+ 1168 01f3 0B       		.uleb128 0xb
+ 1169 01f4 01       		.uleb128 0x1
+ 1170 01f5 50       		.byte	0x50
+ 1171 01f6 02       		.uleb128 0x2
+ 1172 01f7 74       		.byte	0x74
+ 1173 01f8 00       		.sleb128 0
+ 1174 01f9 00       		.byte	0
+ 1175 01fa 0A       		.uleb128 0xa
+ 1176 01fb B8000000 		.4byte	.LVL8
+ 1177 01ff EA060000 		.4byte	0x6ea
+ 1178 0203 0E020000 		.4byte	0x20e
+ 1179 0207 0B       		.uleb128 0xb
+ 1180 0208 01       		.uleb128 0x1
+ 1181 0209 50       		.byte	0x50
+ 1182 020a 02       		.uleb128 0x2
+ 1183 020b 08       		.byte	0x8
+ 1184 020c C7       		.byte	0xc7
+ 1185 020d 00       		.byte	0
+ 1186 020e 0A       		.uleb128 0xa
+ 1187 020f BE000000 		.4byte	.LVL9
+ 1188 0213 F5060000 		.4byte	0x6f5
+ 1189 0217 22020000 		.4byte	0x222
+ 1190 021b 0B       		.uleb128 0xb
+ 1191 021c 01       		.uleb128 0x1
+ 1192 021d 50       		.byte	0x50
+ 1193 021e 02       		.uleb128 0x2
+ 1194 021f 08       		.byte	0x8
+ 1195 0220 64       		.byte	0x64
+ 1196 0221 00       		.byte	0
+ 1197 0222 0A       		.uleb128 0xa
+ 1198 0223 CE000000 		.4byte	.LVL10
+ 1199 0227 00070000 		.4byte	0x700
+ 1200 022b 39020000 		.4byte	0x239
+ 1201 022f 0B       		.uleb128 0xb
+ 1202 0230 01       		.uleb128 0x1
+ 1203 0231 50       		.byte	0x50
+ 1204 0232 05       		.uleb128 0x5
+ 1205 0233 03       		.byte	0x3
+ 1206 0234 00000000 		.4byte	data_config
+ 1207 0238 00       		.byte	0
+ 1208 0239 0A       		.uleb128 0xa
+ 1209 023a EA000000 		.4byte	.LVL11
+ 1210 023e EA060000 		.4byte	0x6ea
+ 1211 0242 4C020000 		.4byte	0x24c
+ 1212 0246 0B       		.uleb128 0xb
+ 1213 0247 01       		.uleb128 0x1
+ 1214 0248 50       		.byte	0x50
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 33
+
+
+ 1215 0249 01       		.uleb128 0x1
+ 1216 024a 30       		.byte	0x30
+ 1217 024b 00       		.byte	0
+ 1218 024c 0A       		.uleb128 0xa
+ 1219 024d F0000000 		.4byte	.LVL12
+ 1220 0251 F5060000 		.4byte	0x6f5
+ 1221 0255 5F020000 		.4byte	0x25f
+ 1222 0259 0B       		.uleb128 0xb
+ 1223 025a 01       		.uleb128 0x1
+ 1224 025b 50       		.byte	0x50
+ 1225 025c 01       		.uleb128 0x1
+ 1226 025d 30       		.byte	0x30
+ 1227 025e 00       		.byte	0
+ 1228 025f 0A       		.uleb128 0xa
+ 1229 0260 FE000000 		.4byte	.LVL13
+ 1230 0264 00070000 		.4byte	0x700
+ 1231 0268 76020000 		.4byte	0x276
+ 1232 026c 0B       		.uleb128 0xb
+ 1233 026d 01       		.uleb128 0x1
+ 1234 026e 50       		.byte	0x50
+ 1235 026f 05       		.uleb128 0x5
+ 1236 0270 03       		.byte	0x3
+ 1237 0271 00000000 		.4byte	data_config
+ 1238 0275 00       		.byte	0
+ 1239 0276 0E       		.uleb128 0xe
+ 1240 0277 0C010000 		.4byte	.LVL14
+ 1241 027b 22010000 		.4byte	0x122
+ 1242 027f 0E       		.uleb128 0xe
+ 1243 0280 12010000 		.4byte	.LVL15
+ 1244 0284 0B070000 		.4byte	0x70b
+ 1245 0288 0A       		.uleb128 0xa
+ 1246 0289 18010000 		.4byte	.LVL16
+ 1247 028d C9060000 		.4byte	0x6c9
+ 1248 0291 9F020000 		.4byte	0x29f
+ 1249 0295 0B       		.uleb128 0xb
+ 1250 0296 01       		.uleb128 0x1
+ 1251 0297 50       		.byte	0x50
+ 1252 0298 05       		.uleb128 0x5
+ 1253 0299 03       		.byte	0x3
+ 1254 029a 68010000 		.4byte	.LC5
+ 1255 029e 00       		.byte	0
+ 1256 029f 0E       		.uleb128 0xe
+ 1257 02a0 26010000 		.4byte	.LVL17
+ 1258 02a4 0B070000 		.4byte	0x70b
+ 1259 02a8 0A       		.uleb128 0xa
+ 1260 02a9 2C010000 		.4byte	.LVL18
+ 1261 02ad C9060000 		.4byte	0x6c9
+ 1262 02b1 BF020000 		.4byte	0x2bf
+ 1263 02b5 0B       		.uleb128 0xb
+ 1264 02b6 01       		.uleb128 0x1
+ 1265 02b7 50       		.byte	0x50
+ 1266 02b8 05       		.uleb128 0x5
+ 1267 02b9 03       		.byte	0x3
+ 1268 02ba 34020000 		.4byte	.LC6
+ 1269 02be 00       		.byte	0
+ 1270 02bf 0E       		.uleb128 0xe
+ 1271 02c0 3A010000 		.4byte	.LVL19
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 34
+
+
+ 1272 02c4 0B070000 		.4byte	0x70b
+ 1273 02c8 0A       		.uleb128 0xa
+ 1274 02c9 40010000 		.4byte	.LVL20
+ 1275 02cd C9060000 		.4byte	0x6c9
+ 1276 02d1 DF020000 		.4byte	0x2df
+ 1277 02d5 0B       		.uleb128 0xb
+ 1278 02d6 01       		.uleb128 0x1
+ 1279 02d7 50       		.byte	0x50
+ 1280 02d8 05       		.uleb128 0x5
+ 1281 02d9 03       		.byte	0x3
+ 1282 02da 00030000 		.4byte	.LC7
+ 1283 02de 00       		.byte	0
+ 1284 02df 0A       		.uleb128 0xa
+ 1285 02e0 50010000 		.4byte	.LVL21
+ 1286 02e4 EA060000 		.4byte	0x6ea
+ 1287 02e8 F2020000 		.4byte	0x2f2
+ 1288 02ec 0B       		.uleb128 0xb
+ 1289 02ed 01       		.uleb128 0x1
+ 1290 02ee 50       		.byte	0x50
+ 1291 02ef 01       		.uleb128 0x1
+ 1292 02f0 30       		.byte	0x30
+ 1293 02f1 00       		.byte	0
+ 1294 02f2 0A       		.uleb128 0xa
+ 1295 02f3 56010000 		.4byte	.LVL22
+ 1296 02f7 F5060000 		.4byte	0x6f5
+ 1297 02fb 05030000 		.4byte	0x305
+ 1298 02ff 0B       		.uleb128 0xb
+ 1299 0300 01       		.uleb128 0x1
+ 1300 0301 50       		.byte	0x50
+ 1301 0302 01       		.uleb128 0x1
+ 1302 0303 30       		.byte	0x30
+ 1303 0304 00       		.byte	0
+ 1304 0305 0A       		.uleb128 0xa
+ 1305 0306 62010000 		.4byte	.LVL23
+ 1306 030a 16070000 		.4byte	0x716
+ 1307 030e 19030000 		.4byte	0x319
+ 1308 0312 0B       		.uleb128 0xb
+ 1309 0313 01       		.uleb128 0x1
+ 1310 0314 50       		.byte	0x50
+ 1311 0315 02       		.uleb128 0x2
+ 1312 0316 75       		.byte	0x75
+ 1313 0317 00       		.sleb128 0
+ 1314 0318 00       		.byte	0
+ 1315 0319 0A       		.uleb128 0xa
+ 1316 031a 7A010000 		.4byte	.LVL24
+ 1317 031e DF060000 		.4byte	0x6df
+ 1318 0322 33030000 		.4byte	0x333
+ 1319 0326 0B       		.uleb128 0xb
+ 1320 0327 01       		.uleb128 0x1
+ 1321 0328 50       		.byte	0x50
+ 1322 0329 02       		.uleb128 0x2
+ 1323 032a 74       		.byte	0x74
+ 1324 032b 00       		.sleb128 0
+ 1325 032c 0B       		.uleb128 0xb
+ 1326 032d 01       		.uleb128 0x1
+ 1327 032e 51       		.byte	0x51
+ 1328 032f 02       		.uleb128 0x2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 35
+
+
+ 1329 0330 76       		.byte	0x76
+ 1330 0331 00       		.sleb128 0
+ 1331 0332 00       		.byte	0
+ 1332 0333 0A       		.uleb128 0xa
+ 1333 0334 80010000 		.4byte	.LVL25
+ 1334 0338 C9060000 		.4byte	0x6c9
+ 1335 033c 47030000 		.4byte	0x347
+ 1336 0340 0B       		.uleb128 0xb
+ 1337 0341 01       		.uleb128 0x1
+ 1338 0342 50       		.byte	0x50
+ 1339 0343 02       		.uleb128 0x2
+ 1340 0344 74       		.byte	0x74
+ 1341 0345 00       		.sleb128 0
+ 1342 0346 00       		.byte	0
+ 1343 0347 0A       		.uleb128 0xa
+ 1344 0348 86010000 		.4byte	.LVL26
+ 1345 034c 00070000 		.4byte	0x700
+ 1346 0350 5B030000 		.4byte	0x35b
+ 1347 0354 0B       		.uleb128 0xb
+ 1348 0355 01       		.uleb128 0x1
+ 1349 0356 50       		.byte	0x50
+ 1350 0357 02       		.uleb128 0x2
+ 1351 0358 75       		.byte	0x75
+ 1352 0359 00       		.sleb128 0
+ 1353 035a 00       		.byte	0
+ 1354 035b 0A       		.uleb128 0xa
+ 1355 035c 94010000 		.4byte	.LVL27
+ 1356 0360 DF060000 		.4byte	0x6df
+ 1357 0364 75030000 		.4byte	0x375
+ 1358 0368 0B       		.uleb128 0xb
+ 1359 0369 01       		.uleb128 0x1
+ 1360 036a 50       		.byte	0x50
+ 1361 036b 02       		.uleb128 0x2
+ 1362 036c 74       		.byte	0x74
+ 1363 036d 00       		.sleb128 0
+ 1364 036e 0B       		.uleb128 0xb
+ 1365 036f 01       		.uleb128 0x1
+ 1366 0370 51       		.byte	0x51
+ 1367 0371 02       		.uleb128 0x2
+ 1368 0372 76       		.byte	0x76
+ 1369 0373 00       		.sleb128 0
+ 1370 0374 00       		.byte	0
+ 1371 0375 0A       		.uleb128 0xa
+ 1372 0376 9A010000 		.4byte	.LVL28
+ 1373 037a C9060000 		.4byte	0x6c9
+ 1374 037e 89030000 		.4byte	0x389
+ 1375 0382 0B       		.uleb128 0xb
+ 1376 0383 01       		.uleb128 0x1
+ 1377 0384 50       		.byte	0x50
+ 1378 0385 02       		.uleb128 0x2
+ 1379 0386 74       		.byte	0x74
+ 1380 0387 00       		.sleb128 0
+ 1381 0388 00       		.byte	0
+ 1382 0389 0A       		.uleb128 0xa
+ 1383 038a A0010000 		.4byte	.LVL29
+ 1384 038e 21070000 		.4byte	0x721
+ 1385 0392 9C030000 		.4byte	0x39c
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 36
+
+
+ 1386 0396 0B       		.uleb128 0xb
+ 1387 0397 01       		.uleb128 0x1
+ 1388 0398 50       		.byte	0x50
+ 1389 0399 01       		.uleb128 0x1
+ 1390 039a 31       		.byte	0x31
+ 1391 039b 00       		.byte	0
+ 1392 039c 0E       		.uleb128 0xe
+ 1393 039d C6010000 		.4byte	.LVL30
+ 1394 03a1 0B070000 		.4byte	0x70b
+ 1395 03a5 0A       		.uleb128 0xa
+ 1396 03a6 D2010000 		.4byte	.LVL31
+ 1397 03aa 21070000 		.4byte	0x721
+ 1398 03ae B8030000 		.4byte	0x3b8
+ 1399 03b2 0B       		.uleb128 0xb
+ 1400 03b3 01       		.uleb128 0x1
+ 1401 03b4 50       		.byte	0x50
+ 1402 03b5 01       		.uleb128 0x1
+ 1403 03b6 30       		.byte	0x30
+ 1404 03b7 00       		.byte	0
+ 1405 03b8 0E       		.uleb128 0xe
+ 1406 03b9 D6010000 		.4byte	.LVL32
+ 1407 03bd 22010000 		.4byte	0x122
+ 1408 03c1 0E       		.uleb128 0xe
+ 1409 03c2 E4020000 		.4byte	.LVL33
+ 1410 03c6 22010000 		.4byte	0x122
+ 1411 03ca 0A       		.uleb128 0xa
+ 1412 03cb 22030000 		.4byte	.LVL34
+ 1413 03cf DF060000 		.4byte	0x6df
+ 1414 03d3 E7030000 		.4byte	0x3e7
+ 1415 03d7 0B       		.uleb128 0xb
+ 1416 03d8 01       		.uleb128 0x1
+ 1417 03d9 50       		.byte	0x50
+ 1418 03da 02       		.uleb128 0x2
+ 1419 03db 74       		.byte	0x74
+ 1420 03dc 00       		.sleb128 0
+ 1421 03dd 0B       		.uleb128 0xb
+ 1422 03de 01       		.uleb128 0x1
+ 1423 03df 51       		.byte	0x51
+ 1424 03e0 05       		.uleb128 0x5
+ 1425 03e1 03       		.byte	0x3
+ 1426 03e2 94030000 		.4byte	.LC9
+ 1427 03e6 00       		.byte	0
+ 1428 03e7 0A       		.uleb128 0xa
+ 1429 03e8 28030000 		.4byte	.LVL35
+ 1430 03ec C9060000 		.4byte	0x6c9
+ 1431 03f0 FB030000 		.4byte	0x3fb
+ 1432 03f4 0B       		.uleb128 0xb
+ 1433 03f5 01       		.uleb128 0x1
+ 1434 03f6 50       		.byte	0x50
+ 1435 03f7 02       		.uleb128 0x2
+ 1436 03f8 74       		.byte	0x74
+ 1437 03f9 00       		.sleb128 0
+ 1438 03fa 00       		.byte	0
+ 1439 03fb 0A       		.uleb128 0xa
+ 1440 03fc 4C030000 		.4byte	.LVL36
+ 1441 0400 DF060000 		.4byte	0x6df
+ 1442 0404 18040000 		.4byte	0x418
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 37
+
+
+ 1443 0408 0B       		.uleb128 0xb
+ 1444 0409 01       		.uleb128 0x1
+ 1445 040a 50       		.byte	0x50
+ 1446 040b 02       		.uleb128 0x2
+ 1447 040c 74       		.byte	0x74
+ 1448 040d 00       		.sleb128 0
+ 1449 040e 0B       		.uleb128 0xb
+ 1450 040f 01       		.uleb128 0x1
+ 1451 0410 51       		.byte	0x51
+ 1452 0411 05       		.uleb128 0x5
+ 1453 0412 03       		.byte	0x3
+ 1454 0413 94030000 		.4byte	.LC9
+ 1455 0417 00       		.byte	0
+ 1456 0418 0A       		.uleb128 0xa
+ 1457 0419 52030000 		.4byte	.LVL37
+ 1458 041d C9060000 		.4byte	0x6c9
+ 1459 0421 2C040000 		.4byte	0x42c
+ 1460 0425 0B       		.uleb128 0xb
+ 1461 0426 01       		.uleb128 0x1
+ 1462 0427 50       		.byte	0x50
+ 1463 0428 02       		.uleb128 0x2
+ 1464 0429 74       		.byte	0x74
+ 1465 042a 00       		.sleb128 0
+ 1466 042b 00       		.byte	0
+ 1467 042c 0A       		.uleb128 0xa
+ 1468 042d 70030000 		.4byte	.LVL38
+ 1469 0431 DF060000 		.4byte	0x6df
+ 1470 0435 49040000 		.4byte	0x449
+ 1471 0439 0B       		.uleb128 0xb
+ 1472 043a 01       		.uleb128 0x1
+ 1473 043b 50       		.byte	0x50
+ 1474 043c 02       		.uleb128 0x2
+ 1475 043d 74       		.byte	0x74
+ 1476 043e 00       		.sleb128 0
+ 1477 043f 0B       		.uleb128 0xb
+ 1478 0440 01       		.uleb128 0x1
+ 1479 0441 51       		.byte	0x51
+ 1480 0442 05       		.uleb128 0x5
+ 1481 0443 03       		.byte	0x3
+ 1482 0444 94030000 		.4byte	.LC9
+ 1483 0448 00       		.byte	0
+ 1484 0449 0A       		.uleb128 0xa
+ 1485 044a 76030000 		.4byte	.LVL39
+ 1486 044e C9060000 		.4byte	0x6c9
+ 1487 0452 5D040000 		.4byte	0x45d
+ 1488 0456 0B       		.uleb128 0xb
+ 1489 0457 01       		.uleb128 0x1
+ 1490 0458 50       		.byte	0x50
+ 1491 0459 02       		.uleb128 0x2
+ 1492 045a 74       		.byte	0x74
+ 1493 045b 00       		.sleb128 0
+ 1494 045c 00       		.byte	0
+ 1495 045d 0A       		.uleb128 0xa
+ 1496 045e 94030000 		.4byte	.LVL40
+ 1497 0462 DF060000 		.4byte	0x6df
+ 1498 0466 7A040000 		.4byte	0x47a
+ 1499 046a 0B       		.uleb128 0xb
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 38
+
+
+ 1500 046b 01       		.uleb128 0x1
+ 1501 046c 50       		.byte	0x50
+ 1502 046d 02       		.uleb128 0x2
+ 1503 046e 74       		.byte	0x74
+ 1504 046f 00       		.sleb128 0
+ 1505 0470 0B       		.uleb128 0xb
+ 1506 0471 01       		.uleb128 0x1
+ 1507 0472 51       		.byte	0x51
+ 1508 0473 05       		.uleb128 0x5
+ 1509 0474 03       		.byte	0x3
+ 1510 0475 94030000 		.4byte	.LC9
+ 1511 0479 00       		.byte	0
+ 1512 047a 0A       		.uleb128 0xa
+ 1513 047b 9A030000 		.4byte	.LVL41
+ 1514 047f C9060000 		.4byte	0x6c9
+ 1515 0483 8E040000 		.4byte	0x48e
+ 1516 0487 0B       		.uleb128 0xb
+ 1517 0488 01       		.uleb128 0x1
+ 1518 0489 50       		.byte	0x50
+ 1519 048a 02       		.uleb128 0x2
+ 1520 048b 74       		.byte	0x74
+ 1521 048c 00       		.sleb128 0
+ 1522 048d 00       		.byte	0
+ 1523 048e 0E       		.uleb128 0xe
+ 1524 048f A0030000 		.4byte	.LVL42
+ 1525 0493 22010000 		.4byte	0x122
+ 1526 0497 0A       		.uleb128 0xa
+ 1527 0498 C0030000 		.4byte	.LVL43
+ 1528 049c 2C070000 		.4byte	0x72c
+ 1529 04a0 AA040000 		.4byte	0x4aa
+ 1530 04a4 0B       		.uleb128 0xb
+ 1531 04a5 01       		.uleb128 0x1
+ 1532 04a6 50       		.byte	0x50
+ 1533 04a7 01       		.uleb128 0x1
+ 1534 04a8 30       		.byte	0x30
+ 1535 04a9 00       		.byte	0
+ 1536 04aa 0A       		.uleb128 0xa
+ 1537 04ab CC030000 		.4byte	.LVL44
+ 1538 04af C9060000 		.4byte	0x6c9
+ 1539 04b3 C1040000 		.4byte	0x4c1
+ 1540 04b7 0B       		.uleb128 0xb
+ 1541 04b8 01       		.uleb128 0x1
+ 1542 04b9 50       		.byte	0x50
+ 1543 04ba 05       		.uleb128 0x5
+ 1544 04bb 03       		.byte	0x3
+ 1545 04bc AC030000 		.4byte	.LC10
+ 1546 04c0 00       		.byte	0
+ 1547 04c1 0A       		.uleb128 0xa
+ 1548 04c2 D8030000 		.4byte	.LVL45
+ 1549 04c6 2C070000 		.4byte	0x72c
+ 1550 04ca D4040000 		.4byte	0x4d4
+ 1551 04ce 0B       		.uleb128 0xb
+ 1552 04cf 01       		.uleb128 0x1
+ 1553 04d0 50       		.byte	0x50
+ 1554 04d1 01       		.uleb128 0x1
+ 1555 04d2 31       		.byte	0x31
+ 1556 04d3 00       		.byte	0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 39
+
+
+ 1557 04d4 0A       		.uleb128 0xa
+ 1558 04d5 E4030000 		.4byte	.LVL46
+ 1559 04d9 C9060000 		.4byte	0x6c9
+ 1560 04dd EB040000 		.4byte	0x4eb
+ 1561 04e1 0B       		.uleb128 0xb
+ 1562 04e2 01       		.uleb128 0x1
+ 1563 04e3 50       		.byte	0x50
+ 1564 04e4 05       		.uleb128 0x5
+ 1565 04e5 03       		.byte	0x3
+ 1566 04e6 C0030000 		.4byte	.LC11
+ 1567 04ea 00       		.byte	0
+ 1568 04eb 0E       		.uleb128 0xe
+ 1569 04ec EE030000 		.4byte	.LVL47
+ 1570 04f0 22010000 		.4byte	0x122
+ 1571 04f4 00       		.byte	0
+ 1572 04f5 0F       		.uleb128 0xf
+ 1573 04f6 05050000 		.4byte	0x505
+ 1574 04fa 05050000 		.4byte	0x505
+ 1575 04fe 10       		.uleb128 0x10
+ 1576 04ff E6000000 		.4byte	0xe6
+ 1577 0503 03       		.byte	0x3
+ 1578 0504 00       		.byte	0
+ 1579 0505 11       		.uleb128 0x11
+ 1580 0506 8C000000 		.4byte	0x8c
+ 1581 050a 12       		.uleb128 0x12
+ 1582 050b 38000000 		.4byte	.LASF27
+ 1583 050f 01       		.byte	0x1
+ 1584 0510 2B       		.byte	0x2b
+ 1585 0511 15050000 		.4byte	0x515
+ 1586 0515 11       		.uleb128 0x11
+ 1587 0516 F5040000 		.4byte	0x4f5
+ 1588 051a 12       		.uleb128 0x12
+ 1589 051b 1A010000 		.4byte	.LASF28
+ 1590 051f 01       		.byte	0x1
+ 1591 0520 2C       		.byte	0x2c
+ 1592 0521 25050000 		.4byte	0x525
+ 1593 0525 11       		.uleb128 0x11
+ 1594 0526 F5040000 		.4byte	0x4f5
+ 1595 052a 13       		.uleb128 0x13
+ 1596 052b 5C030000 		.4byte	.LASF29
+ 1597 052f 05       		.byte	0x5
+ 1598 0530 1207     		.2byte	0x712
+ 1599 0532 36050000 		.4byte	0x536
+ 1600 0536 06       		.uleb128 0x6
+ 1601 0537 A2000000 		.4byte	0xa2
+ 1602 053b 0F       		.uleb128 0xf
+ 1603 053c 8C000000 		.4byte	0x8c
+ 1604 0540 4B050000 		.4byte	0x54b
+ 1605 0544 10       		.uleb128 0x10
+ 1606 0545 E6000000 		.4byte	0xe6
+ 1607 0549 05       		.byte	0x5
+ 1608 054a 00       		.byte	0
+ 1609 054b 14       		.uleb128 0x14
+ 1610 054c 91000000 		.4byte	.LASF30
+ 1611 0550 06       		.byte	0x6
+ 1612 0551 35       		.byte	0x35
+ 1613 0552 3B050000 		.4byte	0x53b
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 40
+
+
+ 1614 0556 05       		.uleb128 0x5
+ 1615 0557 03       		.byte	0x3
+ 1616 0558 00000000 		.4byte	DataBuffer
+ 1617 055c 14       		.uleb128 0x14
+ 1618 055d DB010000 		.4byte	.LASF31
+ 1619 0561 06       		.byte	0x6
+ 1620 0562 36       		.byte	0x36
+ 1621 0563 DA000000 		.4byte	0xda
+ 1622 0567 05       		.uleb128 0x5
+ 1623 0568 03       		.byte	0x3
+ 1624 0569 00000000 		.4byte	PacketReadyFlag
+ 1625 056d 0F       		.uleb128 0xf
+ 1626 056e 8C000000 		.4byte	0x8c
+ 1627 0572 7D050000 		.4byte	0x57d
+ 1628 0576 10       		.uleb128 0x10
+ 1629 0577 E6000000 		.4byte	0xe6
+ 1630 057b 03       		.byte	0x3
+ 1631 057c 00       		.byte	0
+ 1632 057d 14       		.uleb128 0x14
+ 1633 057e 50030000 		.4byte	.LASF32
+ 1634 0582 01       		.byte	0x1
+ 1635 0583 1E       		.byte	0x1e
+ 1636 0584 6D050000 		.4byte	0x56d
+ 1637 0588 05       		.uleb128 0x5
+ 1638 0589 03       		.byte	0x3
+ 1639 058a 00000000 		.4byte	data_config
+ 1640 058e 14       		.uleb128 0x14
+ 1641 058f F7030000 		.4byte	.LASF33
+ 1642 0593 01       		.byte	0x1
+ 1643 0594 1F       		.byte	0x1f
+ 1644 0595 8C000000 		.4byte	0x8c
+ 1645 0599 05       		.uleb128 0x5
+ 1646 059a 03       		.byte	0x3
+ 1647 059b 00000000 		.4byte	cfg_reg
+ 1648 059f 14       		.uleb128 0x14
+ 1649 05a0 9B020000 		.4byte	.LASF34
+ 1650 05a4 01       		.byte	0x1
+ 1651 05a5 20       		.byte	0x20
+ 1652 05a6 8C000000 		.4byte	0x8c
+ 1653 05aa 05       		.uleb128 0x5
+ 1654 05ab 03       		.byte	0x3
+ 1655 05ac 00000000 		.4byte	cfg_reg_old
+ 1656 05b0 14       		.uleb128 0x14
+ 1657 05b1 2C030000 		.4byte	.LASF35
+ 1658 05b5 01       		.byte	0x1
+ 1659 05b6 1B       		.byte	0x1b
+ 1660 05b7 8C000000 		.4byte	0x8c
+ 1661 05bb 05       		.uleb128 0x5
+ 1662 05bc 03       		.byte	0x3
+ 1663 05bd 00000000 		.4byte	dataReady_FIFO
+ 1664 05c1 14       		.uleb128 0x14
+ 1665 05c2 4C010000 		.4byte	.LASF36
+ 1666 05c6 01       		.byte	0x1
+ 1667 05c7 1C       		.byte	0x1c
+ 1668 05c8 8C000000 		.4byte	0x8c
+ 1669 05cc 05       		.uleb128 0x5
+ 1670 05cd 03       		.byte	0x3
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 41
+
+
+ 1671 05ce 00000000 		.4byte	dataReady_STREAM
+ 1672 05d2 0F       		.uleb128 0xf
+ 1673 05d3 8C000000 		.4byte	0x8c
+ 1674 05d7 E2050000 		.4byte	0x5e2
+ 1675 05db 10       		.uleb128 0x10
+ 1676 05dc E6000000 		.4byte	0xe6
+ 1677 05e0 01       		.byte	0x1
+ 1678 05e1 00       		.byte	0
+ 1679 05e2 14       		.uleb128 0x14
+ 1680 05e3 DC020000 		.4byte	.LASF37
+ 1681 05e7 01       		.byte	0x1
+ 1682 05e8 1D       		.byte	0x1d
+ 1683 05e9 D2050000 		.4byte	0x5d2
+ 1684 05ed 05       		.uleb128 0x5
+ 1685 05ee 03       		.byte	0x3
+ 1686 05ef 00000000 		.4byte	configSets
+ 1687 05f3 14       		.uleb128 0x14
+ 1688 05f4 E7020000 		.4byte	.LASF38
+ 1689 05f8 01       		.byte	0x1
+ 1690 05f9 21       		.byte	0x21
+ 1691 05fa 8C000000 		.4byte	0x8c
+ 1692 05fe 05       		.uleb128 0x5
+ 1693 05ff 03       		.byte	0x3
+ 1694 0600 00000000 		.4byte	update_cfg_reg
+ 1695 0604 14       		.uleb128 0x14
+ 1696 0605 C9020000 		.4byte	.LASF39
+ 1697 0609 01       		.byte	0x1
+ 1698 060a 15       		.byte	0x15
+ 1699 060b B9000000 		.4byte	0xb9
+ 1700 060f 05       		.uleb128 0x5
+ 1701 0610 03       		.byte	0x3
+ 1702 0611 00000000 		.4byte	value_digit_analog
+ 1703 0615 14       		.uleb128 0x14
+ 1704 0616 0C030000 		.4byte	.LASF40
+ 1705 061a 01       		.byte	0x1
+ 1706 061b 17       		.byte	0x17
+ 1707 061c 8C000000 		.4byte	0x8c
+ 1708 0620 05       		.uleb128 0x5
+ 1709 0621 03       		.byte	0x3
+ 1710 0622 00000000 		.4byte	ch_receveid
+ 1711 0626 14       		.uleb128 0x14
+ 1712 0627 FF030000 		.4byte	.LASF41
+ 1713 062b 01       		.byte	0x1
+ 1714 062c 18       		.byte	0x18
+ 1715 062d 8C000000 		.4byte	0x8c
+ 1716 0631 05       		.uleb128 0x5
+ 1717 0632 03       		.byte	0x3
+ 1718 0633 00000000 		.4byte	ControlFlag
+ 1719 0637 0F       		.uleb128 0xf
+ 1720 0638 D3000000 		.4byte	0xd3
+ 1721 063c 47060000 		.4byte	0x647
+ 1722 0640 10       		.uleb128 0x10
+ 1723 0641 E6000000 		.4byte	0xe6
+ 1724 0645 C7       		.byte	0xc7
+ 1725 0646 00       		.byte	0
+ 1726 0647 14       		.uleb128 0x14
+ 1727 0648 B3000000 		.4byte	.LASF42
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 42
+
+
+ 1728 064c 01       		.byte	0x1
+ 1729 064d 24       		.byte	0x24
+ 1730 064e 37060000 		.4byte	0x637
+ 1731 0652 05       		.uleb128 0x5
+ 1732 0653 03       		.byte	0x3
+ 1733 0654 00000000 		.4byte	bufferUART
+ 1734 0658 14       		.uleb128 0x14
+ 1735 0659 3B010000 		.4byte	.LASF43
+ 1736 065d 01       		.byte	0x1
+ 1737 065e 27       		.byte	0x27
+ 1738 065f 8C000000 		.4byte	0x8c
+ 1739 0663 05       		.uleb128 0x5
+ 1740 0664 03       		.byte	0x3
+ 1741 0665 00000000 		.4byte	FlagFSR
+ 1742 0669 14       		.uleb128 0x14
+ 1743 066a 18030000 		.4byte	.LASF44
+ 1744 066e 01       		.byte	0x1
+ 1745 066f 28       		.byte	0x28
+ 1746 0670 8C000000 		.4byte	0x8c
+ 1747 0674 05       		.uleb128 0x5
+ 1748 0675 03       		.byte	0x3
+ 1749 0676 00000000 		.4byte	reg_value
+ 1750 067a 14       		.uleb128 0x14
+ 1751 067b EB010000 		.4byte	.LASF45
+ 1752 067f 01       		.byte	0x1
+ 1753 0680 74       		.byte	0x74
+ 1754 0681 97000000 		.4byte	0x97
+ 1755 0685 05       		.uleb128 0x5
+ 1756 0686 03       		.byte	0x3
+ 1757 0687 00000000 		.4byte	indexEEPROM
+ 1758 068b 12       		.uleb128 0x12
+ 1759 068c 3B030000 		.4byte	.LASF46
+ 1760 0690 01       		.byte	0x1
+ 1761 0691 31       		.byte	0x31
+ 1762 0692 8C000000 		.4byte	0x8c
+ 1763 0696 14       		.uleb128 0x14
+ 1764 0697 46030000 		.4byte	.LASF47
+ 1765 069b 01       		.byte	0x1
+ 1766 069c 71       		.byte	0x71
+ 1767 069d 8C000000 		.4byte	0x8c
+ 1768 06a1 05       		.uleb128 0x5
+ 1769 06a2 03       		.byte	0x3
+ 1770 06a3 00000000 		.4byte	frequency
+ 1771 06a7 14       		.uleb128 0x14
+ 1772 06a8 5D010000 		.4byte	.LASF48
+ 1773 06ac 01       		.byte	0x1
+ 1774 06ad 72       		.byte	0x72
+ 1775 06ae 8C000000 		.4byte	0x8c
+ 1776 06b2 05       		.uleb128 0x5
+ 1777 06b3 03       		.byte	0x3
+ 1778 06b4 00000000 		.4byte	Startstream
+ 1779 06b8 14       		.uleb128 0x14
+ 1780 06b9 DA000000 		.4byte	.LASF49
+ 1781 06bd 01       		.byte	0x1
+ 1782 06be 73       		.byte	0x73
+ 1783 06bf 8C000000 		.4byte	0x8c
+ 1784 06c3 05       		.uleb128 0x5
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 43
+
+
+ 1785 06c4 03       		.byte	0x3
+ 1786 06c5 00000000 		.4byte	Stopstream
+ 1787 06c9 15       		.uleb128 0x15
+ 1788 06ca CB000000 		.4byte	.LASF50
+ 1789 06ce CB000000 		.4byte	.LASF50
+ 1790 06d2 07       		.byte	0x7
+ 1791 06d3 8B       		.byte	0x8b
+ 1792 06d4 15       		.uleb128 0x15
+ 1793 06d5 BE000000 		.4byte	.LASF51
+ 1794 06d9 BE000000 		.4byte	.LASF51
+ 1795 06dd 07       		.byte	0x7
+ 1796 06de 71       		.byte	0x71
+ 1797 06df 15       		.uleb128 0x15
+ 1798 06e0 28020000 		.4byte	.LASF52
+ 1799 06e4 28020000 		.4byte	.LASF52
+ 1800 06e8 08       		.byte	0x8
+ 1801 06e9 E7       		.byte	0xe7
+ 1802 06ea 15       		.uleb128 0x15
+ 1803 06eb F6020000 		.4byte	.LASF53
+ 1804 06ef F6020000 		.4byte	.LASF53
+ 1805 06f3 09       		.byte	0x9
+ 1806 06f4 BE       		.byte	0xbe
+ 1807 06f5 15       		.uleb128 0x15
+ 1808 06f6 21000000 		.4byte	.LASF54
+ 1809 06fa 21000000 		.4byte	.LASF54
+ 1810 06fe 09       		.byte	0x9
+ 1811 06ff C3       		.byte	0xc3
+ 1812 0700 15       		.uleb128 0x15
+ 1813 0701 F7010000 		.4byte	.LASF55
+ 1814 0705 F7010000 		.4byte	.LASF55
+ 1815 0709 0A       		.byte	0xa
+ 1816 070a 51       		.byte	0x51
+ 1817 070b 15       		.uleb128 0x15
+ 1818 070c 7F000000 		.4byte	.LASF56
+ 1819 0710 7F000000 		.4byte	.LASF56
+ 1820 0714 0B       		.byte	0xb
+ 1821 0715 5B       		.byte	0x5b
+ 1822 0716 15       		.uleb128 0x15
+ 1823 0717 00000000 		.4byte	.LASF57
+ 1824 071b 00000000 		.4byte	.LASF57
+ 1825 071f 0A       		.byte	0xa
+ 1826 0720 5F       		.byte	0x5f
+ 1827 0721 15       		.uleb128 0x15
+ 1828 0722 08020000 		.4byte	.LASF58
+ 1829 0726 08020000 		.4byte	.LASF58
+ 1830 072a 0C       		.byte	0xc
+ 1831 072b 26       		.byte	0x26
+ 1832 072c 15       		.uleb128 0x15
+ 1833 072d 0E010000 		.4byte	.LASF59
+ 1834 0731 0E010000 		.4byte	.LASF59
+ 1835 0735 0D       		.byte	0xd
+ 1836 0736 57       		.byte	0x57
+ 1837 0737 00       		.byte	0
+ 1838              		.section	.debug_abbrev,"",%progbits
+ 1839              	.Ldebug_abbrev0:
+ 1840 0000 01       		.uleb128 0x1
+ 1841 0001 11       		.uleb128 0x11
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 44
+
+
+ 1842 0002 01       		.byte	0x1
+ 1843 0003 25       		.uleb128 0x25
+ 1844 0004 0E       		.uleb128 0xe
+ 1845 0005 13       		.uleb128 0x13
+ 1846 0006 0B       		.uleb128 0xb
+ 1847 0007 03       		.uleb128 0x3
+ 1848 0008 0E       		.uleb128 0xe
+ 1849 0009 1B       		.uleb128 0x1b
+ 1850 000a 0E       		.uleb128 0xe
+ 1851 000b 55       		.uleb128 0x55
+ 1852 000c 17       		.uleb128 0x17
+ 1853 000d 11       		.uleb128 0x11
+ 1854 000e 01       		.uleb128 0x1
+ 1855 000f 10       		.uleb128 0x10
+ 1856 0010 17       		.uleb128 0x17
+ 1857 0011 00       		.byte	0
+ 1858 0012 00       		.byte	0
+ 1859 0013 02       		.uleb128 0x2
+ 1860 0014 24       		.uleb128 0x24
+ 1861 0015 00       		.byte	0
+ 1862 0016 0B       		.uleb128 0xb
+ 1863 0017 0B       		.uleb128 0xb
+ 1864 0018 3E       		.uleb128 0x3e
+ 1865 0019 0B       		.uleb128 0xb
+ 1866 001a 03       		.uleb128 0x3
+ 1867 001b 0E       		.uleb128 0xe
+ 1868 001c 00       		.byte	0
+ 1869 001d 00       		.byte	0
+ 1870 001e 03       		.uleb128 0x3
+ 1871 001f 16       		.uleb128 0x16
+ 1872 0020 00       		.byte	0
+ 1873 0021 03       		.uleb128 0x3
+ 1874 0022 0E       		.uleb128 0xe
+ 1875 0023 3A       		.uleb128 0x3a
+ 1876 0024 0B       		.uleb128 0xb
+ 1877 0025 3B       		.uleb128 0x3b
+ 1878 0026 0B       		.uleb128 0xb
+ 1879 0027 49       		.uleb128 0x49
+ 1880 0028 13       		.uleb128 0x13
+ 1881 0029 00       		.byte	0
+ 1882 002a 00       		.byte	0
+ 1883 002b 04       		.uleb128 0x4
+ 1884 002c 24       		.uleb128 0x24
+ 1885 002d 00       		.byte	0
+ 1886 002e 0B       		.uleb128 0xb
+ 1887 002f 0B       		.uleb128 0xb
+ 1888 0030 3E       		.uleb128 0x3e
+ 1889 0031 0B       		.uleb128 0xb
+ 1890 0032 03       		.uleb128 0x3
+ 1891 0033 08       		.uleb128 0x8
+ 1892 0034 00       		.byte	0
+ 1893 0035 00       		.byte	0
+ 1894 0036 05       		.uleb128 0x5
+ 1895 0037 16       		.uleb128 0x16
+ 1896 0038 00       		.byte	0
+ 1897 0039 03       		.uleb128 0x3
+ 1898 003a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 45
+
+
+ 1899 003b 3A       		.uleb128 0x3a
+ 1900 003c 0B       		.uleb128 0xb
+ 1901 003d 3B       		.uleb128 0x3b
+ 1902 003e 05       		.uleb128 0x5
+ 1903 003f 49       		.uleb128 0x49
+ 1904 0040 13       		.uleb128 0x13
+ 1905 0041 00       		.byte	0
+ 1906 0042 00       		.byte	0
+ 1907 0043 06       		.uleb128 0x6
+ 1908 0044 35       		.uleb128 0x35
+ 1909 0045 00       		.byte	0
+ 1910 0046 49       		.uleb128 0x49
+ 1911 0047 13       		.uleb128 0x13
+ 1912 0048 00       		.byte	0
+ 1913 0049 00       		.byte	0
+ 1914 004a 07       		.uleb128 0x7
+ 1915 004b 2E       		.uleb128 0x2e
+ 1916 004c 00       		.byte	0
+ 1917 004d 3F       		.uleb128 0x3f
+ 1918 004e 19       		.uleb128 0x19
+ 1919 004f 03       		.uleb128 0x3
+ 1920 0050 0E       		.uleb128 0xe
+ 1921 0051 3A       		.uleb128 0x3a
+ 1922 0052 0B       		.uleb128 0xb
+ 1923 0053 3B       		.uleb128 0x3b
+ 1924 0054 0B       		.uleb128 0xb
+ 1925 0055 27       		.uleb128 0x27
+ 1926 0056 19       		.uleb128 0x19
+ 1927 0057 11       		.uleb128 0x11
+ 1928 0058 01       		.uleb128 0x1
+ 1929 0059 12       		.uleb128 0x12
+ 1930 005a 06       		.uleb128 0x6
+ 1931 005b 40       		.uleb128 0x40
+ 1932 005c 18       		.uleb128 0x18
+ 1933 005d 9742     		.uleb128 0x2117
+ 1934 005f 19       		.uleb128 0x19
+ 1935 0060 00       		.byte	0
+ 1936 0061 00       		.byte	0
+ 1937 0062 08       		.uleb128 0x8
+ 1938 0063 2E       		.uleb128 0x2e
+ 1939 0064 00       		.byte	0
+ 1940 0065 3F       		.uleb128 0x3f
+ 1941 0066 19       		.uleb128 0x19
+ 1942 0067 03       		.uleb128 0x3
+ 1943 0068 0E       		.uleb128 0xe
+ 1944 0069 3A       		.uleb128 0x3a
+ 1945 006a 0B       		.uleb128 0xb
+ 1946 006b 3B       		.uleb128 0x3b
+ 1947 006c 05       		.uleb128 0x5
+ 1948 006d 27       		.uleb128 0x27
+ 1949 006e 19       		.uleb128 0x19
+ 1950 006f 11       		.uleb128 0x11
+ 1951 0070 01       		.uleb128 0x1
+ 1952 0071 12       		.uleb128 0x12
+ 1953 0072 06       		.uleb128 0x6
+ 1954 0073 40       		.uleb128 0x40
+ 1955 0074 18       		.uleb128 0x18
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 46
+
+
+ 1956 0075 9742     		.uleb128 0x2117
+ 1957 0077 19       		.uleb128 0x19
+ 1958 0078 00       		.byte	0
+ 1959 0079 00       		.byte	0
+ 1960 007a 09       		.uleb128 0x9
+ 1961 007b 2E       		.uleb128 0x2e
+ 1962 007c 01       		.byte	0x1
+ 1963 007d 3F       		.uleb128 0x3f
+ 1964 007e 19       		.uleb128 0x19
+ 1965 007f 03       		.uleb128 0x3
+ 1966 0080 0E       		.uleb128 0xe
+ 1967 0081 3A       		.uleb128 0x3a
+ 1968 0082 0B       		.uleb128 0xb
+ 1969 0083 3B       		.uleb128 0x3b
+ 1970 0084 05       		.uleb128 0x5
+ 1971 0085 27       		.uleb128 0x27
+ 1972 0086 19       		.uleb128 0x19
+ 1973 0087 11       		.uleb128 0x11
+ 1974 0088 01       		.uleb128 0x1
+ 1975 0089 12       		.uleb128 0x12
+ 1976 008a 06       		.uleb128 0x6
+ 1977 008b 40       		.uleb128 0x40
+ 1978 008c 18       		.uleb128 0x18
+ 1979 008d 9742     		.uleb128 0x2117
+ 1980 008f 19       		.uleb128 0x19
+ 1981 0090 01       		.uleb128 0x1
+ 1982 0091 13       		.uleb128 0x13
+ 1983 0092 00       		.byte	0
+ 1984 0093 00       		.byte	0
+ 1985 0094 0A       		.uleb128 0xa
+ 1986 0095 898201   		.uleb128 0x4109
+ 1987 0098 01       		.byte	0x1
+ 1988 0099 11       		.uleb128 0x11
+ 1989 009a 01       		.uleb128 0x1
+ 1990 009b 31       		.uleb128 0x31
+ 1991 009c 13       		.uleb128 0x13
+ 1992 009d 01       		.uleb128 0x1
+ 1993 009e 13       		.uleb128 0x13
+ 1994 009f 00       		.byte	0
+ 1995 00a0 00       		.byte	0
+ 1996 00a1 0B       		.uleb128 0xb
+ 1997 00a2 8A8201   		.uleb128 0x410a
+ 1998 00a5 00       		.byte	0
+ 1999 00a6 02       		.uleb128 0x2
+ 2000 00a7 18       		.uleb128 0x18
+ 2001 00a8 9142     		.uleb128 0x2111
+ 2002 00aa 18       		.uleb128 0x18
+ 2003 00ab 00       		.byte	0
+ 2004 00ac 00       		.byte	0
+ 2005 00ad 0C       		.uleb128 0xc
+ 2006 00ae 898201   		.uleb128 0x4109
+ 2007 00b1 01       		.byte	0x1
+ 2008 00b2 11       		.uleb128 0x11
+ 2009 00b3 01       		.uleb128 0x1
+ 2010 00b4 31       		.uleb128 0x31
+ 2011 00b5 13       		.uleb128 0x13
+ 2012 00b6 00       		.byte	0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 47
+
+
+ 2013 00b7 00       		.byte	0
+ 2014 00b8 0D       		.uleb128 0xd
+ 2015 00b9 2E       		.uleb128 0x2e
+ 2016 00ba 01       		.byte	0x1
+ 2017 00bb 3F       		.uleb128 0x3f
+ 2018 00bc 19       		.uleb128 0x19
+ 2019 00bd 03       		.uleb128 0x3
+ 2020 00be 0E       		.uleb128 0xe
+ 2021 00bf 3A       		.uleb128 0x3a
+ 2022 00c0 0B       		.uleb128 0xb
+ 2023 00c1 3B       		.uleb128 0x3b
+ 2024 00c2 0B       		.uleb128 0xb
+ 2025 00c3 27       		.uleb128 0x27
+ 2026 00c4 19       		.uleb128 0x19
+ 2027 00c5 11       		.uleb128 0x11
+ 2028 00c6 01       		.uleb128 0x1
+ 2029 00c7 12       		.uleb128 0x12
+ 2030 00c8 06       		.uleb128 0x6
+ 2031 00c9 40       		.uleb128 0x40
+ 2032 00ca 18       		.uleb128 0x18
+ 2033 00cb 9742     		.uleb128 0x2117
+ 2034 00cd 19       		.uleb128 0x19
+ 2035 00ce 01       		.uleb128 0x1
+ 2036 00cf 13       		.uleb128 0x13
+ 2037 00d0 00       		.byte	0
+ 2038 00d1 00       		.byte	0
+ 2039 00d2 0E       		.uleb128 0xe
+ 2040 00d3 898201   		.uleb128 0x4109
+ 2041 00d6 00       		.byte	0
+ 2042 00d7 11       		.uleb128 0x11
+ 2043 00d8 01       		.uleb128 0x1
+ 2044 00d9 31       		.uleb128 0x31
+ 2045 00da 13       		.uleb128 0x13
+ 2046 00db 00       		.byte	0
+ 2047 00dc 00       		.byte	0
+ 2048 00dd 0F       		.uleb128 0xf
+ 2049 00de 01       		.uleb128 0x1
+ 2050 00df 01       		.byte	0x1
+ 2051 00e0 49       		.uleb128 0x49
+ 2052 00e1 13       		.uleb128 0x13
+ 2053 00e2 01       		.uleb128 0x1
+ 2054 00e3 13       		.uleb128 0x13
+ 2055 00e4 00       		.byte	0
+ 2056 00e5 00       		.byte	0
+ 2057 00e6 10       		.uleb128 0x10
+ 2058 00e7 21       		.uleb128 0x21
+ 2059 00e8 00       		.byte	0
+ 2060 00e9 49       		.uleb128 0x49
+ 2061 00ea 13       		.uleb128 0x13
+ 2062 00eb 2F       		.uleb128 0x2f
+ 2063 00ec 0B       		.uleb128 0xb
+ 2064 00ed 00       		.byte	0
+ 2065 00ee 00       		.byte	0
+ 2066 00ef 11       		.uleb128 0x11
+ 2067 00f0 26       		.uleb128 0x26
+ 2068 00f1 00       		.byte	0
+ 2069 00f2 49       		.uleb128 0x49
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 48
+
+
+ 2070 00f3 13       		.uleb128 0x13
+ 2071 00f4 00       		.byte	0
+ 2072 00f5 00       		.byte	0
+ 2073 00f6 12       		.uleb128 0x12
+ 2074 00f7 34       		.uleb128 0x34
+ 2075 00f8 00       		.byte	0
+ 2076 00f9 03       		.uleb128 0x3
+ 2077 00fa 0E       		.uleb128 0xe
+ 2078 00fb 3A       		.uleb128 0x3a
+ 2079 00fc 0B       		.uleb128 0xb
+ 2080 00fd 3B       		.uleb128 0x3b
+ 2081 00fe 0B       		.uleb128 0xb
+ 2082 00ff 49       		.uleb128 0x49
+ 2083 0100 13       		.uleb128 0x13
+ 2084 0101 3F       		.uleb128 0x3f
+ 2085 0102 19       		.uleb128 0x19
+ 2086 0103 3C       		.uleb128 0x3c
+ 2087 0104 19       		.uleb128 0x19
+ 2088 0105 00       		.byte	0
+ 2089 0106 00       		.byte	0
+ 2090 0107 13       		.uleb128 0x13
+ 2091 0108 34       		.uleb128 0x34
+ 2092 0109 00       		.byte	0
+ 2093 010a 03       		.uleb128 0x3
+ 2094 010b 0E       		.uleb128 0xe
+ 2095 010c 3A       		.uleb128 0x3a
+ 2096 010d 0B       		.uleb128 0xb
+ 2097 010e 3B       		.uleb128 0x3b
+ 2098 010f 05       		.uleb128 0x5
+ 2099 0110 49       		.uleb128 0x49
+ 2100 0111 13       		.uleb128 0x13
+ 2101 0112 3F       		.uleb128 0x3f
+ 2102 0113 19       		.uleb128 0x19
+ 2103 0114 3C       		.uleb128 0x3c
+ 2104 0115 19       		.uleb128 0x19
+ 2105 0116 00       		.byte	0
+ 2106 0117 00       		.byte	0
+ 2107 0118 14       		.uleb128 0x14
+ 2108 0119 34       		.uleb128 0x34
+ 2109 011a 00       		.byte	0
+ 2110 011b 03       		.uleb128 0x3
+ 2111 011c 0E       		.uleb128 0xe
+ 2112 011d 3A       		.uleb128 0x3a
+ 2113 011e 0B       		.uleb128 0xb
+ 2114 011f 3B       		.uleb128 0x3b
+ 2115 0120 0B       		.uleb128 0xb
+ 2116 0121 49       		.uleb128 0x49
+ 2117 0122 13       		.uleb128 0x13
+ 2118 0123 3F       		.uleb128 0x3f
+ 2119 0124 19       		.uleb128 0x19
+ 2120 0125 02       		.uleb128 0x2
+ 2121 0126 18       		.uleb128 0x18
+ 2122 0127 00       		.byte	0
+ 2123 0128 00       		.byte	0
+ 2124 0129 15       		.uleb128 0x15
+ 2125 012a 2E       		.uleb128 0x2e
+ 2126 012b 00       		.byte	0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 49
+
+
+ 2127 012c 3F       		.uleb128 0x3f
+ 2128 012d 19       		.uleb128 0x19
+ 2129 012e 3C       		.uleb128 0x3c
+ 2130 012f 19       		.uleb128 0x19
+ 2131 0130 6E       		.uleb128 0x6e
+ 2132 0131 0E       		.uleb128 0xe
+ 2133 0132 03       		.uleb128 0x3
+ 2134 0133 0E       		.uleb128 0xe
+ 2135 0134 3A       		.uleb128 0x3a
+ 2136 0135 0B       		.uleb128 0xb
+ 2137 0136 3B       		.uleb128 0x3b
+ 2138 0137 0B       		.uleb128 0xb
+ 2139 0138 00       		.byte	0
+ 2140 0139 00       		.byte	0
+ 2141 013a 00       		.byte	0
+ 2142              		.section	.debug_aranges,"",%progbits
+ 2143 0000 3C000000 		.4byte	0x3c
+ 2144 0004 0200     		.2byte	0x2
+ 2145 0006 00000000 		.4byte	.Ldebug_info0
+ 2146 000a 04       		.byte	0x4
+ 2147 000b 00       		.byte	0
+ 2148 000c 0000     		.2byte	0
+ 2149 000e 0000     		.2byte	0
+ 2150 0010 00000000 		.4byte	.LFB64
+ 2151 0014 0C000000 		.4byte	.LFE64-.LFB64
+ 2152 0018 00000000 		.4byte	.LFB66
+ 2153 001c 0C000000 		.4byte	.LFE66-.LFB66
+ 2154 0020 00000000 		.4byte	.LFB67
+ 2155 0024 0C000000 		.4byte	.LFE67-.LFB67
+ 2156 0028 00000000 		.4byte	.LFB68
+ 2157 002c 30000000 		.4byte	.LFE68-.LFB68
+ 2158 0030 00000000 		.4byte	.LFB65
+ 2159 0034 1C040000 		.4byte	.LFE65-.LFB65
+ 2160 0038 00000000 		.4byte	0
+ 2161 003c 00000000 		.4byte	0
+ 2162              		.section	.debug_ranges,"",%progbits
+ 2163              	.Ldebug_ranges0:
+ 2164 0000 00000000 		.4byte	.LFB64
+ 2165 0004 0C000000 		.4byte	.LFE64
+ 2166 0008 00000000 		.4byte	.LFB66
+ 2167 000c 0C000000 		.4byte	.LFE66
+ 2168 0010 00000000 		.4byte	.LFB67
+ 2169 0014 0C000000 		.4byte	.LFE67
+ 2170 0018 00000000 		.4byte	.LFB68
+ 2171 001c 30000000 		.4byte	.LFE68
+ 2172 0020 00000000 		.4byte	.LFB65
+ 2173 0024 1C040000 		.4byte	.LFE65
+ 2174 0028 00000000 		.4byte	0
+ 2175 002c 00000000 		.4byte	0
+ 2176              		.section	.debug_line,"",%progbits
+ 2177              	.Ldebug_line0:
+ 2178 0000 16030000 		.section	.debug_str,"MS",%progbits,1
+ 2178      02003502 
+ 2178      00000201 
+ 2178      FB0E0D00 
+ 2178      01010101 
+ 2179              	.LASF57:
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 50
+
+
+ 2180 0000 4C495333 		.ascii	"LIS3DH_setConfig\000"
+ 2180      44485F73 
+ 2180      6574436F 
+ 2180      6E666967 
+ 2180      00
+ 2181              	.LASF23:
+ 2182 0011 43757374 		.ascii	"Custom_ISR_OVRN\000"
+ 2182      6F6D5F49 
+ 2182      53525F4F 
+ 2182      56524E00 
+ 2183              	.LASF54:
+ 2184 0021 50574D5F 		.ascii	"PWM_BLINK_WriteCompare\000"
+ 2184      424C494E 
+ 2184      4B5F5772 
+ 2184      69746543 
+ 2184      6F6D7061 
+ 2185              	.LASF27:
+ 2186 0038 6C697333 		.ascii	"lis3dh_dataRate_t\000"
+ 2186      64685F64 
+ 2186      61746152 
+ 2186      6174655F 
+ 2186      7400
+ 2187              	.LASF61:
+ 2188 004a 496E7465 		.ascii	"InterruptRoutines.c\000"
+ 2188      72727570 
+ 2188      74526F75 
+ 2188      74696E65 
+ 2188      732E6300 
+ 2189              	.LASF2:
+ 2190 005e 73686F72 		.ascii	"short int\000"
+ 2190      7420696E 
+ 2190      7400
+ 2191              	.LASF26:
+ 2192 0068 43757374 		.ascii	"Custom_ISR_RX\000"
+ 2192      6F6D5F49 
+ 2192      53525F52 
+ 2192      5800
+ 2193              	.LASF21:
+ 2194 0076 73697A65 		.ascii	"sizetype\000"
+ 2194      74797065 
+ 2194      00
+ 2195              	.LASF56:
+ 2196 007f 54696D65 		.ascii	"Timer_STREAM_Stop\000"
+ 2196      725F5354 
+ 2196      5245414D 
+ 2196      5F53746F 
+ 2196      7000
+ 2197              	.LASF30:
+ 2198 0091 44617461 		.ascii	"DataBuffer\000"
+ 2198      42756666 
+ 2198      657200
+ 2199              	.LASF20:
+ 2200 009c 6C6F6E67 		.ascii	"long double\000"
+ 2200      20646F75 
+ 2200      626C6500 
+ 2201              	.LASF4:
+ 2202 00a8 5F5F7569 		.ascii	"__uint16_t\000"
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 51
+
+
+ 2202      6E743136 
+ 2202      5F7400
+ 2203              	.LASF42:
+ 2204 00b3 62756666 		.ascii	"bufferUART\000"
+ 2204      65725541 
+ 2204      525400
+ 2205              	.LASF51:
+ 2206 00be 55415254 		.ascii	"UART_GetChar\000"
+ 2206      5F476574 
+ 2206      43686172 
+ 2206      00
+ 2207              	.LASF50:
+ 2208 00cb 55415254 		.ascii	"UART_PutString\000"
+ 2208      5F507574 
+ 2208      53747269 
+ 2208      6E6700
+ 2209              	.LASF49:
+ 2210 00da 53746F70 		.ascii	"Stopstream\000"
+ 2210      73747265 
+ 2210      616D00
+ 2211              	.LASF22:
+ 2212 00e5 43757374 		.ascii	"Custom_ISR_ADC\000"
+ 2212      6F6D5F49 
+ 2212      53525F41 
+ 2212      444300
+ 2213              	.LASF12:
+ 2214 00f4 75696E74 		.ascii	"uint8_t\000"
+ 2214      385F7400 
+ 2215              	.LASF16:
+ 2216 00fc 696E7431 		.ascii	"int16\000"
+ 2216      3600
+ 2217              	.LASF15:
+ 2218 0102 75696E74 		.ascii	"uint8\000"
+ 2218      3800
+ 2219              	.LASF17:
+ 2220 0108 666C6F61 		.ascii	"float\000"
+ 2220      7400
+ 2221              	.LASF59:
+ 2222 010e 414D7578 		.ascii	"AMux_Select\000"
+ 2222      5F53656C 
+ 2222      65637400 
+ 2223              	.LASF28:
+ 2224 011a 6C697333 		.ascii	"lis3dh_dataRange_t\000"
+ 2224      64685F64 
+ 2224      61746152 
+ 2224      616E6765 
+ 2224      5F7400
+ 2225              	.LASF9:
+ 2226 012d 6C6F6E67 		.ascii	"long long int\000"
+ 2226      206C6F6E 
+ 2226      6720696E 
+ 2226      7400
+ 2227              	.LASF43:
+ 2228 013b 466C6167 		.ascii	"FlagFSR\000"
+ 2228      46535200 
+ 2229              	.LASF7:
+ 2230 0143 6C6F6E67 		.ascii	"long int\000"
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 52
+
+
+ 2230      20696E74 
+ 2230      00
+ 2231              	.LASF36:
+ 2232 014c 64617461 		.ascii	"dataReady_STREAM\000"
+ 2232      52656164 
+ 2232      795F5354 
+ 2232      5245414D 
+ 2232      00
+ 2233              	.LASF48:
+ 2234 015d 53746172 		.ascii	"Startstream\000"
+ 2234      74737472 
+ 2234      65616D00 
+ 2235              	.LASF3:
+ 2236 0169 5F5F7569 		.ascii	"__uint8_t\000"
+ 2236      6E74385F 
+ 2236      7400
+ 2237              	.LASF62:
+ 2238 0173 433A5C55 		.ascii	"C:\\Users\\aless\\Documents\\PSoC_Creator\\AY1920_I"
+ 2238      73657273 
+ 2238      5C616C65 
+ 2238      73735C44 
+ 2238      6F63756D 
+ 2239 01a1 495F3032 		.ascii	"I_02_RATTI_SINATRA_QUARANTA\\AY1920_II_FINAL_PROJEC"
+ 2239      5F524154 
+ 2239      54495F53 
+ 2239      494E4154 
+ 2239      52415F51 
+ 2240 01d3 542E6379 		.ascii	"T.cydsn\000"
+ 2240      64736E00 
+ 2241              	.LASF31:
+ 2242 01db 5061636B 		.ascii	"PacketReadyFlag\000"
+ 2242      65745265 
+ 2242      61647946 
+ 2242      6C616700 
+ 2243              	.LASF45:
+ 2244 01eb 696E6465 		.ascii	"indexEEPROM\000"
+ 2244      78454550 
+ 2244      524F4D00 
+ 2245              	.LASF55:
+ 2246 01f7 4C495333 		.ascii	"LIS3DH_zipConfig\000"
+ 2246      44485F7A 
+ 2246      6970436F 
+ 2246      6E666967 
+ 2246      00
+ 2247              	.LASF58:
+ 2248 0208 50696E5F 		.ascii	"Pin_LED_ext_Write\000"
+ 2248      4C45445F 
+ 2248      6578745F 
+ 2248      57726974 
+ 2248      6500
+ 2249              	.LASF1:
+ 2250 021a 756E7369 		.ascii	"unsigned char\000"
+ 2250      676E6564 
+ 2250      20636861 
+ 2250      7200
+ 2251              	.LASF52:
+ 2252 0228 73707269 		.ascii	"sprintf\000"
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 53
+
+
+ 2252      6E746600 
+ 2253              	.LASF0:
+ 2254 0230 7369676E 		.ascii	"signed char\000"
+ 2254      65642063 
+ 2254      68617200 
+ 2255              	.LASF10:
+ 2256 023c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2256      206C6F6E 
+ 2256      6720756E 
+ 2256      7369676E 
+ 2256      65642069 
+ 2257              	.LASF11:
+ 2258 0253 756E7369 		.ascii	"unsigned int\000"
+ 2258      676E6564 
+ 2258      20696E74 
+ 2258      00
+ 2259              	.LASF24:
+ 2260 0260 43757374 		.ascii	"Custom_ISR_STREAM\000"
+ 2260      6F6D5F49 
+ 2260      53525F53 
+ 2260      54524541 
+ 2260      4D00
+ 2261              	.LASF13:
+ 2262 0272 75696E74 		.ascii	"uint16_t\000"
+ 2262      31365F74 
+ 2262      00
+ 2263              	.LASF5:
+ 2264 027b 73686F72 		.ascii	"short unsigned int\000"
+ 2264      7420756E 
+ 2264      7369676E 
+ 2264      65642069 
+ 2264      6E7400
+ 2265              	.LASF19:
+ 2266 028e 63686172 		.ascii	"char\000"
+ 2266      00
+ 2267              	.LASF14:
+ 2268 0293 696E7433 		.ascii	"int32_t\000"
+ 2268      325F7400 
+ 2269              	.LASF34:
+ 2270 029b 6366675F 		.ascii	"cfg_reg_old\000"
+ 2270      7265675F 
+ 2270      6F6C6400 
+ 2271              	.LASF25:
+ 2272 02a7 53686F77 		.ascii	"ShowMenu\000"
+ 2272      4D656E75 
+ 2272      00
+ 2273              	.LASF8:
+ 2274 02b0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2274      20756E73 
+ 2274      69676E65 
+ 2274      6420696E 
+ 2274      7400
+ 2275              	.LASF18:
+ 2276 02c2 646F7562 		.ascii	"double\000"
+ 2276      6C6500
+ 2277              	.LASF39:
+ 2278 02c9 76616C75 		.ascii	"value_digit_analog\000"
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 54
+
+
+ 2278      655F6469 
+ 2278      6769745F 
+ 2278      616E616C 
+ 2278      6F6700
+ 2279              	.LASF37:
+ 2280 02dc 636F6E66 		.ascii	"configSets\000"
+ 2280      69675365 
+ 2280      747300
+ 2281              	.LASF38:
+ 2282 02e7 75706461 		.ascii	"update_cfg_reg\000"
+ 2282      74655F63 
+ 2282      66675F72 
+ 2282      656700
+ 2283              	.LASF53:
+ 2284 02f6 50574D5F 		.ascii	"PWM_BLINK_WritePeriod\000"
+ 2284      424C494E 
+ 2284      4B5F5772 
+ 2284      69746550 
+ 2284      6572696F 
+ 2285              	.LASF40:
+ 2286 030c 63685F72 		.ascii	"ch_receveid\000"
+ 2286      65636576 
+ 2286      65696400 
+ 2287              	.LASF44:
+ 2288 0318 7265675F 		.ascii	"reg_value\000"
+ 2288      76616C75 
+ 2288      6500
+ 2289              	.LASF6:
+ 2290 0322 5F5F696E 		.ascii	"__int32_t\000"
+ 2290      7433325F 
+ 2290      7400
+ 2291              	.LASF35:
+ 2292 032c 64617461 		.ascii	"dataReady_FIFO\000"
+ 2292      52656164 
+ 2292      795F4649 
+ 2292      464F00
+ 2293              	.LASF46:
+ 2294 033b 6D656D6F 		.ascii	"memoryFull\000"
+ 2294      72794675 
+ 2294      6C6C00
+ 2295              	.LASF47:
+ 2296 0346 66726571 		.ascii	"frequency\000"
+ 2296      75656E63 
+ 2296      7900
+ 2297              	.LASF32:
+ 2298 0350 64617461 		.ascii	"data_config\000"
+ 2298      5F636F6E 
+ 2298      66696700 
+ 2299              	.LASF29:
+ 2300 035c 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2300      52784275 
+ 2300      66666572 
+ 2300      00
+ 2301              	.LASF60:
+ 2302 0369 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2302      43313120 
+ 2302      352E342E 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccJnh5He.s 			page 55
+
+
+ 2302      31203230 
+ 2302      31363036 
+ 2303 039c 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2303      20726576 
+ 2303      6973696F 
+ 2303      6E203233 
+ 2303      37373135 
+ 2304 03cf 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2304      66756E63 
+ 2304      74696F6E 
+ 2304      2D736563 
+ 2304      74696F6E 
+ 2305              	.LASF33:
+ 2306 03f7 6366675F 		.ascii	"cfg_reg\000"
+ 2306      72656700 
+ 2307              	.LASF41:
+ 2308 03ff 436F6E74 		.ascii	"ControlFlag\000"
+ 2308      726F6C46 
+ 2308      6C616700 
+ 2309              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

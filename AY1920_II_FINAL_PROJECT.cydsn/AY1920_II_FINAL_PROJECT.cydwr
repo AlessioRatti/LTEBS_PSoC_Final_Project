@@ -267,6 +267,7 @@
       <Data key="d250621c-c9d6-40ae-9353-79204565c037" value="Pin_INT" />
       <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="Pin_LED" />
       <Data key="ed092b9b-d398-4703-be89-cebf998501f6" value="MOSI_1" />
+      <Data key="f384822c-22f3-4c46-9447-6efbc3e5f3cc" value="Pin_DEBUG" />
     </Group>
   </Group>
   <Group key="EEPROM">
@@ -3431,6 +3432,11 @@
     <Group key="ed092b9b-d398-4703-be89-cebf998501f6">
       <Group key="0">
         <Data key="Port Format" value="12,3" />
+      </Group>
+    </Group>
+    <Group key="f384822c-22f3-4c46-9447-6efbc3e5f3cc">
+      <Group key="0">
+        <Data key="Port Format" value="3,1" />
       </Group>
     </Group>
     <Group key="UnAssigned Pins" />
