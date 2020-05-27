@@ -10,6 +10,8 @@
  * ========================================
 */
 #include "project.h"
+#include "stdio.h"
+#include "string.h"
 
 /* EEPROM */
 #include "25LC256.h"
@@ -21,6 +23,8 @@
 
 /* INTERRUPT */
 #include "InterruptRoutines.h"
+
+
 
 int main(void)
 {

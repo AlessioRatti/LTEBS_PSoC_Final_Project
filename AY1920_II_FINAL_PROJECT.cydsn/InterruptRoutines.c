@@ -392,6 +392,34 @@ void ShowMenu(void) {
                    "        S/s-->Stop data acquisition\r\n");
 }
 
+/*----------------------------------------------*/
+/*               ISR for STREAM                 */
+/*----------------------------------------------*/
+CY_ISR (Custom_ISR_DMA) {
+    dataReady_DMA = 1;
+    
+    //UART_PutString("DMA\r\n");
+    /*
+    uint8_t UARTarray[4];
+    UARTarray[0] = 0xA0;
+    UARTarray[1] = (ADCBuffer[0]);
+    UARTarray[2] = (ADCBuffer[1]);
+    UARTarray[3] = 0xC0;
+    UART_PutArray(UARTarray, 4);
+    */
+}
+
+/*----------------------------------------------*/
+/*                ISR for SOC                   */
+/*----------------------------------------------*/
+CY_ISR (Custom_ISR_TIMER) {
+    // Read Timer status register to bring interrupt line low
+    Timer_ADC_ReadStatusRegister();
+    //UART_PutString("TIMER\r\n");
+    
+}
+
+/* [] END OF FILE */
 
 
 /* [] END OF FILE */
