@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
   18:DMARoutines.c ****     /* Move these variable declarations to the top of the function */
   19:DMARoutines.c ****     uint8 DMA_Chan;
   20:DMARoutines.c ****     uint8 DMA_TD[1];
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 2
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 2
 
 
   21:DMARoutines.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
   83              		.comm	ADCBuffer,64,4
   84              		.text
   85              	.Letext0:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 3
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 3
 
 
   86              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
@@ -135,17 +135,17 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
   97 0006 00000000 		.4byte	.Ldebug_abbrev0
   98 000a 04       		.byte	0x4
   99 000b 01       		.uleb128 0x1
- 100 000c 82000000 		.4byte	.LASF30
+ 100 000c E9000000 		.4byte	.LASF30
  101 0010 0C       		.byte	0xc
- 102 0011 D2010000 		.4byte	.LASF31
- 103 0015 24020000 		.4byte	.LASF32
+ 102 0011 39020000 		.4byte	.LASF31
+ 103 0015 11000000 		.4byte	.LASF32
  104 0019 00000000 		.4byte	.Ldebug_ranges0+0
  105 001d 00000000 		.4byte	0
  106 0021 00000000 		.4byte	.Ldebug_line0
  107 0025 02       		.uleb128 0x2
  108 0026 01       		.byte	0x1
  109 0027 06       		.byte	0x6
- 110 0028 18020000 		.4byte	.LASF0
+ 110 0028 7F020000 		.4byte	.LASF0
  111 002c 03       		.uleb128 0x3
  112 002d 00000000 		.4byte	.LASF4
  113 0031 02       		.byte	0x2
@@ -154,39 +154,39 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  116 0037 02       		.uleb128 0x2
  117 0038 01       		.byte	0x1
  118 0039 08       		.byte	0x8
- 119 003a 74000000 		.4byte	.LASF1
+ 119 003a DB000000 		.4byte	.LASF1
  120 003e 02       		.uleb128 0x2
  121 003f 02       		.byte	0x2
  122 0040 05       		.byte	0x5
- 123 0041 F3010000 		.4byte	.LASF2
+ 123 0041 5A020000 		.4byte	.LASF2
  124 0045 02       		.uleb128 0x2
  125 0046 02       		.byte	0x2
  126 0047 07       		.byte	0x7
- 127 0048 3F010000 		.4byte	.LASF3
+ 127 0048 A6010000 		.4byte	.LASF3
  128 004c 03       		.uleb128 0x3
- 129 004d 11000000 		.4byte	.LASF5
+ 129 004d 78000000 		.4byte	.LASF5
  130 0051 02       		.byte	0x2
  131 0052 3F       		.byte	0x3f
  132 0053 57000000 		.4byte	0x57
  133 0057 02       		.uleb128 0x2
  134 0058 04       		.byte	0x4
  135 0059 05       		.byte	0x5
- 136 005a 03020000 		.4byte	.LASF6
+ 136 005a 6A020000 		.4byte	.LASF6
  137 005e 02       		.uleb128 0x2
  138 005f 04       		.byte	0x4
  139 0060 07       		.byte	0x7
- 140 0061 2D010000 		.4byte	.LASF7
+ 140 0061 94010000 		.4byte	.LASF7
  141 0065 02       		.uleb128 0x2
  142 0066 08       		.byte	0x8
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 4
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 4
 
 
  143 0067 05       		.byte	0x5
- 144 0068 E0010000 		.4byte	.LASF8
+ 144 0068 47020000 		.4byte	.LASF8
  145 006c 02       		.uleb128 0x2
  146 006d 08       		.byte	0x8
  147 006e 07       		.byte	0x7
- 148 006f 98010000 		.4byte	.LASF9
+ 148 006f FF010000 		.4byte	.LASF9
  149 0073 04       		.uleb128 0x4
  150 0074 04       		.byte	0x4
  151 0075 05       		.byte	0x5
@@ -194,64 +194,64 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  153 007a 02       		.uleb128 0x2
  154 007b 04       		.byte	0x4
  155 007c 07       		.byte	0x7
- 156 007d 8B010000 		.4byte	.LASF10
+ 156 007d F2010000 		.4byte	.LASF10
  157 0081 03       		.uleb128 0x3
- 158 0082 AF010000 		.4byte	.LASF11
+ 158 0082 16020000 		.4byte	.LASF11
  159 0086 03       		.byte	0x3
  160 0087 18       		.byte	0x18
  161 0088 2C000000 		.4byte	0x2c
  162 008c 03       		.uleb128 0x3
- 163 008d C1010000 		.4byte	.LASF12
+ 163 008d 28020000 		.4byte	.LASF12
  164 0091 03       		.byte	0x3
  165 0092 2C       		.byte	0x2c
  166 0093 4C000000 		.4byte	0x4c
  167 0097 05       		.uleb128 0x5
- 168 0098 FD010000 		.4byte	.LASF13
+ 168 0098 64020000 		.4byte	.LASF13
  169 009c 04       		.byte	0x4
  170 009d E401     		.2byte	0x1e4
  171 009f 37000000 		.4byte	0x37
  172 00a3 05       		.uleb128 0x5
- 173 00a4 74010000 		.4byte	.LASF14
+ 173 00a4 DB010000 		.4byte	.LASF14
  174 00a8 04       		.byte	0x4
  175 00a9 E501     		.2byte	0x1e5
  176 00ab 45000000 		.4byte	0x45
  177 00af 05       		.uleb128 0x5
- 178 00b0 84010000 		.4byte	.LASF15
+ 178 00b0 EB010000 		.4byte	.LASF15
  179 00b4 04       		.byte	0x4
  180 00b5 E601     		.2byte	0x1e6
  181 00b7 5E000000 		.4byte	0x5e
  182 00bb 02       		.uleb128 0x2
  183 00bc 04       		.byte	0x4
  184 00bd 04       		.byte	0x4
- 185 00be 6E000000 		.4byte	.LASF16
+ 185 00be D5000000 		.4byte	.LASF16
  186 00c2 02       		.uleb128 0x2
  187 00c3 08       		.byte	0x8
  188 00c4 04       		.byte	0x4
- 189 00c5 5F010000 		.4byte	.LASF17
+ 189 00c5 C6010000 		.4byte	.LASF17
  190 00c9 02       		.uleb128 0x2
  191 00ca 01       		.byte	0x1
  192 00cb 08       		.byte	0x8
- 193 00cc EE010000 		.4byte	.LASF18
+ 193 00cc 55020000 		.4byte	.LASF18
  194 00d0 05       		.uleb128 0x5
- 195 00d1 10010000 		.4byte	.LASF19
+ 195 00d1 77010000 		.4byte	.LASF19
  196 00d5 04       		.byte	0x4
  197 00d6 8E02     		.2byte	0x28e
  198 00d8 DC000000 		.4byte	0xdc
  199 00dc 06       		.uleb128 0x6
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 5
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 5
 
 
  200 00dd 97000000 		.4byte	0x97
  201 00e1 02       		.uleb128 0x2
  202 00e2 08       		.byte	0x8
  203 00e3 04       		.byte	0x4
- 204 00e4 0C020000 		.4byte	.LASF20
+ 204 00e4 73020000 		.4byte	.LASF20
  205 00e8 02       		.uleb128 0x2
  206 00e9 04       		.byte	0x4
  207 00ea 07       		.byte	0x7
- 208 00eb C9010000 		.4byte	.LASF21
+ 208 00eb 30020000 		.4byte	.LASF21
  209 00ef 07       		.uleb128 0x7
- 210 00f0 53000000 		.4byte	.LASF33
+ 210 00f0 BA000000 		.4byte	.LASF33
  211 00f4 01       		.byte	0x1
  212 00f5 0F       		.byte	0xf
  213 00f6 00000000 		.4byte	.LFB64
@@ -260,7 +260,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  216 00ff 9C       		.byte	0x9c
  217 0100 C6010000 		.4byte	0x1c6
  218 0104 08       		.uleb128 0x8
- 219 0105 7B010000 		.4byte	.LASF34
+ 219 0105 E2010000 		.4byte	.LASF34
  220 0109 01       		.byte	0x1
  221 010a 13       		.byte	0x13
  222 010b 97000000 		.4byte	0x97
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  254 0141 FF1F     		.2byte	0x1fff
  255 0143 00       		.byte	0
  256 0144 0C       		.uleb128 0xc
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 6
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 6
 
 
  257 0145 18000000 		.4byte	.LVL2
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  311 0197 3A000000 		.4byte	.LVL5
  312 019b 34020000 		.4byte	0x234
  313 019f B0010000 		.4byte	0x1b0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 7
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 7
 
 
  314 01a3 0B       		.uleb128 0xb
@@ -398,7 +398,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  348 01d4 00       		.byte	0
  349 01d5 00       		.byte	0
  350 01d6 10       		.uleb128 0x10
- 351 01d7 52010000 		.4byte	.LASF22
+ 351 01d7 B9010000 		.4byte	.LASF22
  352 01db 05       		.byte	0x5
  353 01dc 1207     		.2byte	0x712
  354 01de E2010000 		.4byte	0x1e2
@@ -412,44 +412,44 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  362 01f5 3F       		.byte	0x3f
  363 01f6 00       		.byte	0
  364 01f7 11       		.uleb128 0x11
- 365 01f8 B7010000 		.4byte	.LASF23
+ 365 01f8 1E020000 		.4byte	.LASF23
  366 01fc 06       		.byte	0x6
  367 01fd 1D       		.byte	0x1d
  368 01fe E7010000 		.4byte	0x1e7
  369 0202 05       		.uleb128 0x5
  370 0203 03       		.byte	0x3
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 8
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 8
 
 
  371 0204 00000000 		.4byte	ADCBuffer
  372 0208 12       		.uleb128 0x12
- 373 0209 2D000000 		.4byte	.LASF24
- 374 020d 2D000000 		.4byte	.LASF24
+ 373 0209 94000000 		.4byte	.LASF24
+ 374 020d 94000000 		.4byte	.LASF24
  375 0211 07       		.byte	0x7
  376 0212 1E       		.byte	0x1e
  377 0213 12       		.uleb128 0x12
- 378 0214 5E000000 		.4byte	.LASF25
- 379 0218 5E000000 		.4byte	.LASF25
+ 378 0214 C5000000 		.4byte	.LASF25
+ 379 0218 C5000000 		.4byte	.LASF25
  380 021c 08       		.byte	0x8
  381 021d 38       		.byte	0x38
  382 021e 12       		.uleb128 0x12
- 383 021f 15010000 		.4byte	.LASF26
- 384 0223 15010000 		.4byte	.LASF26
+ 383 021f 7C010000 		.4byte	.LASF26
+ 384 0223 7C010000 		.4byte	.LASF26
  385 0227 08       		.byte	0x8
  386 0228 3B       		.byte	0x3b
  387 0229 12       		.uleb128 0x12
- 388 022a 1B000000 		.4byte	.LASF27
- 389 022e 1B000000 		.4byte	.LASF27
+ 388 022a 82000000 		.4byte	.LASF27
+ 389 022e 82000000 		.4byte	.LASF27
  390 0232 08       		.byte	0x8
  391 0233 3F       		.byte	0x3f
  392 0234 12       		.uleb128 0x12
- 393 0235 3F000000 		.4byte	.LASF28
- 394 0239 3F000000 		.4byte	.LASF28
+ 393 0235 A6000000 		.4byte	.LASF28
+ 394 0239 A6000000 		.4byte	.LASF28
  395 023d 08       		.byte	0x8
  396 023e 2F       		.byte	0x2f
  397 023f 12       		.uleb128 0x12
- 398 0240 66010000 		.4byte	.LASF29
- 399 0244 66010000 		.4byte	.LASF29
+ 398 0240 CD010000 		.4byte	.LASF29
+ 399 0244 CD010000 		.4byte	.LASF29
  400 0248 08       		.byte	0x8
  401 0249 29       		.byte	0x29
  402 024a 00       		.byte	0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  425 0014 24       		.uleb128 0x24
  426 0015 00       		.byte	0
  427 0016 0B       		.uleb128 0xb
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 9
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 9
 
 
  428 0017 0B       		.uleb128 0xb
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  482 004d 3F       		.uleb128 0x3f
  483 004e 19       		.uleb128 0x19
  484 004f 03       		.uleb128 0x3
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 10
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 10
 
 
  485 0050 0E       		.uleb128 0xe
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  539 0089 01       		.uleb128 0x1
  540 008a 13       		.uleb128 0x13
  541 008b 00       		.byte	0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 11
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 11
 
 
  542 008c 00       		.byte	0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  596 00c9 05       		.uleb128 0x5
  597 00ca 49       		.uleb128 0x49
  598 00cb 13       		.uleb128 0x13
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 12
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 12
 
 
  599 00cc 3F       		.uleb128 0x3f
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  653 000a 04       		.byte	0x4
  654 000b 00       		.byte	0
  655 000c 0000     		.2byte	0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 13
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 13
 
 
  656 000e 0000     		.2byte	0
@@ -746,182 +746,182 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 1
  672              	.LASF35:
  673 000a 444D415F 		.ascii	"DMA_TD\000"
  673      544400
- 674              	.LASF5:
- 675 0011 5F5F696E 		.ascii	"__int32_t\000"
- 675      7433325F 
- 675      7400
- 676              	.LASF27:
- 677 001b 4379446D 		.ascii	"CyDmaTdSetAddress\000"
- 677      61546453 
- 677      65744164 
- 677      64726573 
- 677      7300
- 678              	.LASF24:
- 679 002d 444D415F 		.ascii	"DMA_DmaInitialize\000"
- 679      446D6149 
- 679      6E697469 
- 679      616C697A 
- 679      6500
- 680              	.LASF28:
- 681 003f 4379446D 		.ascii	"CyDmaChSetInitialTd\000"
- 681      61436853 
- 681      6574496E 
- 681      69746961 
- 681      6C546400 
- 682              	.LASF33:
- 683 0053 444D415F 		.ascii	"DMA_Config\000"
- 683      436F6E66 
- 683      696700
- 684              	.LASF25:
- 685 005e 4379446D 		.ascii	"CyDmaTdAllocate\000"
- 685      61546441 
- 685      6C6C6F63 
- 685      61746500 
- 686              	.LASF16:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 14
+ 674              	.LASF32:
+ 675 0011 433A5C55 		.ascii	"C:\\Users\\Mattia40\\Desktop\\AY1920_II_FINAL_PROJE"
+ 675      73657273 
+ 675      5C4D6174 
+ 675      74696134 
+ 675      305C4465 
+ 676 0040 43545C47 		.ascii	"CT\\Group_02_Final_Project\\AY1920_II_FINAL_PROJECT"
+ 676      726F7570 
+ 676      5F30325F 
+ 676      46696E61 
+ 676      6C5F5072 
+ 677 0071 2E637964 		.ascii	".cydsn\000"
+ 677      736E00
+ 678              	.LASF5:
+ 679 0078 5F5F696E 		.ascii	"__int32_t\000"
+ 679      7433325F 
+ 679      7400
+ 680              	.LASF27:
+ 681 0082 4379446D 		.ascii	"CyDmaTdSetAddress\000"
+ 681      61546453 
+ 681      65744164 
+ 681      64726573 
+ 681      7300
+ 682              	.LASF24:
+ 683 0094 444D415F 		.ascii	"DMA_DmaInitialize\000"
+ 683      446D6149 
+ 683      6E697469 
+ 683      616C697A 
+ 683      6500
+ 684              	.LASF28:
+ 685 00a6 4379446D 		.ascii	"CyDmaChSetInitialTd\000"
+ 685      61436853 
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 14
 
 
- 687 006e 666C6F61 		.ascii	"float\000"
- 687      7400
- 688              	.LASF1:
- 689 0074 756E7369 		.ascii	"unsigned char\000"
- 689      676E6564 
- 689      20636861 
- 689      7200
- 690              	.LASF30:
- 691 0082 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 691      43313120 
- 691      352E342E 
- 691      31203230 
- 691      31363036 
- 692 00b5 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 692      20726576 
- 692      6973696F 
- 692      6E203233 
- 692      37373135 
- 693 00e8 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 693      66756E63 
- 693      74696F6E 
- 693      2D736563 
- 693      74696F6E 
- 694              	.LASF19:
- 695 0110 72656738 		.ascii	"reg8\000"
- 695      00
- 696              	.LASF26:
- 697 0115 4379446D 		.ascii	"CyDmaTdSetConfiguration\000"
- 697      61546453 
- 697      6574436F 
- 697      6E666967 
- 697      75726174 
- 698              	.LASF7:
- 699 012d 6C6F6E67 		.ascii	"long unsigned int\000"
- 699      20756E73 
- 699      69676E65 
- 699      6420696E 
- 699      7400
- 700              	.LASF3:
- 701 013f 73686F72 		.ascii	"short unsigned int\000"
- 701      7420756E 
- 701      7369676E 
- 701      65642069 
- 701      6E7400
- 702              	.LASF22:
- 703 0152 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 703      52784275 
- 703      66666572 
- 703      00
- 704              	.LASF17:
- 705 015f 646F7562 		.ascii	"double\000"
- 705      6C6500
- 706              	.LASF29:
- 707 0166 4379446D 		.ascii	"CyDmaChEnable\000"
- 707      61436845 
- 707      6E61626C 
- 707      6500
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 15
+ 685      6574496E 
+ 685      69746961 
+ 685      6C546400 
+ 686              	.LASF33:
+ 687 00ba 444D415F 		.ascii	"DMA_Config\000"
+ 687      436F6E66 
+ 687      696700
+ 688              	.LASF25:
+ 689 00c5 4379446D 		.ascii	"CyDmaTdAllocate\000"
+ 689      61546441 
+ 689      6C6C6F63 
+ 689      61746500 
+ 690              	.LASF16:
+ 691 00d5 666C6F61 		.ascii	"float\000"
+ 691      7400
+ 692              	.LASF1:
+ 693 00db 756E7369 		.ascii	"unsigned char\000"
+ 693      676E6564 
+ 693      20636861 
+ 693      7200
+ 694              	.LASF30:
+ 695 00e9 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 695      43313120 
+ 695      352E342E 
+ 695      31203230 
+ 695      31363036 
+ 696 011c 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 696      20726576 
+ 696      6973696F 
+ 696      6E203233 
+ 696      37373135 
+ 697 014f 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 697      66756E63 
+ 697      74696F6E 
+ 697      2D736563 
+ 697      74696F6E 
+ 698              	.LASF19:
+ 699 0177 72656738 		.ascii	"reg8\000"
+ 699      00
+ 700              	.LASF26:
+ 701 017c 4379446D 		.ascii	"CyDmaTdSetConfiguration\000"
+ 701      61546453 
+ 701      6574436F 
+ 701      6E666967 
+ 701      75726174 
+ 702              	.LASF7:
+ 703 0194 6C6F6E67 		.ascii	"long unsigned int\000"
+ 703      20756E73 
+ 703      69676E65 
+ 703      6420696E 
+ 703      7400
+ 704              	.LASF3:
+ 705 01a6 73686F72 		.ascii	"short unsigned int\000"
+ 705      7420756E 
+ 705      7369676E 
+ 705      65642069 
+ 705      6E7400
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 15
 
 
- 708              	.LASF14:
- 709 0174 75696E74 		.ascii	"uint16\000"
- 709      313600
- 710              	.LASF34:
- 711 017b 444D415F 		.ascii	"DMA_Chan\000"
- 711      4368616E 
- 711      00
- 712              	.LASF15:
- 713 0184 75696E74 		.ascii	"uint32\000"
- 713      333200
- 714              	.LASF10:
- 715 018b 756E7369 		.ascii	"unsigned int\000"
- 715      676E6564 
- 715      20696E74 
+ 706              	.LASF22:
+ 707 01b9 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 707      52784275 
+ 707      66666572 
+ 707      00
+ 708              	.LASF17:
+ 709 01c6 646F7562 		.ascii	"double\000"
+ 709      6C6500
+ 710              	.LASF29:
+ 711 01cd 4379446D 		.ascii	"CyDmaChEnable\000"
+ 711      61436845 
+ 711      6E61626C 
+ 711      6500
+ 712              	.LASF14:
+ 713 01db 75696E74 		.ascii	"uint16\000"
+ 713      313600
+ 714              	.LASF34:
+ 715 01e2 444D415F 		.ascii	"DMA_Chan\000"
+ 715      4368616E 
  715      00
- 716              	.LASF9:
- 717 0198 6C6F6E67 		.ascii	"long long unsigned int\000"
- 717      206C6F6E 
- 717      6720756E 
- 717      7369676E 
- 717      65642069 
- 718              	.LASF11:
- 719 01af 75696E74 		.ascii	"uint8_t\000"
- 719      385F7400 
- 720              	.LASF23:
- 721 01b7 41444342 		.ascii	"ADCBuffer\000"
- 721      75666665 
- 721      7200
- 722              	.LASF12:
- 723 01c1 696E7433 		.ascii	"int32_t\000"
- 723      325F7400 
- 724              	.LASF21:
- 725 01c9 73697A65 		.ascii	"sizetype\000"
- 725      74797065 
- 725      00
- 726              	.LASF31:
- 727 01d2 444D4152 		.ascii	"DMARoutines.c\000"
- 727      6F757469 
- 727      6E65732E 
- 727      6300
- 728              	.LASF8:
- 729 01e0 6C6F6E67 		.ascii	"long long int\000"
- 729      206C6F6E 
- 729      6720696E 
- 729      7400
- 730              	.LASF18:
- 731 01ee 63686172 		.ascii	"char\000"
- 731      00
- 732              	.LASF2:
- 733 01f3 73686F72 		.ascii	"short int\000"
- 733      7420696E 
+ 716              	.LASF15:
+ 717 01eb 75696E74 		.ascii	"uint32\000"
+ 717      333200
+ 718              	.LASF10:
+ 719 01f2 756E7369 		.ascii	"unsigned int\000"
+ 719      676E6564 
+ 719      20696E74 
+ 719      00
+ 720              	.LASF9:
+ 721 01ff 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 721      206C6F6E 
+ 721      6720756E 
+ 721      7369676E 
+ 721      65642069 
+ 722              	.LASF11:
+ 723 0216 75696E74 		.ascii	"uint8_t\000"
+ 723      385F7400 
+ 724              	.LASF23:
+ 725 021e 41444342 		.ascii	"ADCBuffer\000"
+ 725      75666665 
+ 725      7200
+ 726              	.LASF12:
+ 727 0228 696E7433 		.ascii	"int32_t\000"
+ 727      325F7400 
+ 728              	.LASF21:
+ 729 0230 73697A65 		.ascii	"sizetype\000"
+ 729      74797065 
+ 729      00
+ 730              	.LASF31:
+ 731 0239 444D4152 		.ascii	"DMARoutines.c\000"
+ 731      6F757469 
+ 731      6E65732E 
+ 731      6300
+ 732              	.LASF8:
+ 733 0247 6C6F6E67 		.ascii	"long long int\000"
+ 733      206C6F6E 
+ 733      6720696E 
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc8Cdb0Q.s 			page 16
+
+
  733      7400
- 734              	.LASF13:
- 735 01fd 75696E74 		.ascii	"uint8\000"
- 735      3800
- 736              	.LASF6:
- 737 0203 6C6F6E67 		.ascii	"long int\000"
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccltchIz.s 			page 16
-
-
- 737      20696E74 
- 737      00
- 738              	.LASF20:
- 739 020c 6C6F6E67 		.ascii	"long double\000"
- 739      20646F75 
- 739      626C6500 
- 740              	.LASF0:
- 741 0218 7369676E 		.ascii	"signed char\000"
- 741      65642063 
- 741      68617200 
- 742              	.LASF32:
- 743 0224 433A5C55 		.ascii	"C:\\Users\\aless\\Documents\\PSoC_Creator\\AY1920_I"
- 743      73657273 
- 743      5C616C65 
- 743      73735C44 
- 743      6F63756D 
- 744 0252 495F3032 		.ascii	"I_02_RATTI_SINATRA_QUARANTA\\AY1920_II_FINAL_PROJEC"
- 744      5F524154 
- 744      54495F53 
- 744      494E4154 
- 744      52415F51 
- 745 0284 542E6379 		.ascii	"T.cydsn\000"
- 745      64736E00 
+ 734              	.LASF18:
+ 735 0255 63686172 		.ascii	"char\000"
+ 735      00
+ 736              	.LASF2:
+ 737 025a 73686F72 		.ascii	"short int\000"
+ 737      7420696E 
+ 737      7400
+ 738              	.LASF13:
+ 739 0264 75696E74 		.ascii	"uint8\000"
+ 739      3800
+ 740              	.LASF6:
+ 741 026a 6C6F6E67 		.ascii	"long int\000"
+ 741      20696E74 
+ 741      00
+ 742              	.LASF20:
+ 743 0273 6C6F6E67 		.ascii	"long double\000"
+ 743      20646F75 
+ 743      626C6500 
+ 744              	.LASF0:
+ 745 027f 7369676E 		.ascii	"signed char\000"
+ 745      65642063 
+ 745      68617200 
  746              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

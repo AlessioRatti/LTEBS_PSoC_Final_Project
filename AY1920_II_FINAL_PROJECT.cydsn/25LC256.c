@@ -88,7 +88,10 @@ void EEPROM_readPage(uint16_t addr, uint8_t* dataRX, uint8_t nBytes) {
 
 void EEPROM_writePage(uint16_t addr, uint8_t* data, uint8_t nBytes) {
 	
-    CyGlobalIntDisable;
+    //CyGlobalIntDisable;
+    
+    /* Save current global interrupt enable and disable it */
+    uint8 interruptState = CyEnterCriticalSection();
     
     /* Enable WRITE operations */
     EEPROM_writeEnable();
@@ -111,7 +114,11 @@ void EEPROM_writePage(uint16_t addr, uint8_t* data, uint8_t nBytes) {
 	
 	SPI_Interface_Multi_RW_EEPROM(dataTX, 3+nBytes, &temp, 0);
     
-    CyGlobalIntEnable;
+    //CyGlobalIntEnable;
+    
+    /* Restore global interrupt enable state */
+    CyExitCriticalSection(interruptState);
+	
 	
 }
 

@@ -419,7 +419,12 @@ CY_ISR (Custom_ISR_TIMER) {
     
 }
 
-/* [] END OF FILE */
+/*----------------------------------------------*/
+/*        ISR for On-board Push Button          */
+/*----------------------------------------------*/
 
-
+CY_ISR(Custome_ISR_DEBOUNCE){
+    ResetButton=1;
+    UART_PutString("HAI PREMUTO IL PULSANTE DI RESET\r\n");
+}
 /* [] END OF FILE */

@@ -27,7 +27,7 @@
     #define TRANSMIT_BUFFER_SIZE 1+BYTE_TO_SEND+1 //Buffer size
     #define LED_OFF 0 //Switch off the LED
     #define LED_ON  1 //Switch on the LED
-    #define MAX 1023 //Maximum value for the ADC
+    #define MAX 5000 //Maximum value for the ADC
     #define MIN 0 //Minimum value for the ADC
     #define THRESHOLD 25000 //Set arbitrary threshold for the light intensity
     #define PHOTORESISTOR 0 //Photoresist's channel into the AMux
@@ -45,6 +45,7 @@
     CY_ISR_PROTO (Custom_ISR_STREAM);
     CY_ISR_PROTO (Custom_ISR_DMA);
     CY_ISR_PROTO (Custom_ISR_TIMER);
+    CY_ISR_PROTO (Custome_ISR_DEBOUNCE);
     
     /* Functions */
     void ShowMenu(void);
@@ -52,6 +53,9 @@
     //Set variables
     uint8_t DataBuffer[TRANSMIT_BUFFER_SIZE];   //Memory buffer
     volatile uint8 PacketReadyFlag;             //Flag to enable the transmission
+    
+    /*reset*/
+    uint8_t ResetButton;
     
     // Bring out extern vars
     extern uint8_t data_config[4];
