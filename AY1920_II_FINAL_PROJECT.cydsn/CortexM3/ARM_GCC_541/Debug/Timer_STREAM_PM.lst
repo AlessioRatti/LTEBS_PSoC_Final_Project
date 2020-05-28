@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
   28:Generated_Source\PSoC5/Timer_STREAM_PM.c **** * Summary:
   29:Generated_Source\PSoC5/Timer_STREAM_PM.c **** *     Save the current user configuration
   30:Generated_Source\PSoC5/Timer_STREAM_PM.c **** *
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 2
 
 
   31:Generated_Source\PSoC5/Timer_STREAM_PM.c **** * Parameters:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
   68:Generated_Source\PSoC5/Timer_STREAM_PM.c **** *
   69:Generated_Source\PSoC5/Timer_STREAM_PM.c **** * Return:
   70:Generated_Source\PSoC5/Timer_STREAM_PM.c **** *  void
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 3
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 3
 
 
   71:Generated_Source\PSoC5/Timer_STREAM_PM.c **** *
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  108:Generated_Source\PSoC5/Timer_STREAM_PM.c **** *  Timer_STREAM_backup.TimerEnableState:  Is modified depending on the
  109:Generated_Source\PSoC5/Timer_STREAM_PM.c **** *  enable state of the block before entering sleep mode.
  110:Generated_Source\PSoC5/Timer_STREAM_PM.c **** *
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 4
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 4
 
 
  111:Generated_Source\PSoC5/Timer_STREAM_PM.c **** *******************************************************************************/
@@ -230,7 +230,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
   91              	.L8:
   92              		.align	2
   93              	.L7:
-  94 0020 0C4F0040 		.word	1073762060
+  94 0020 244F0040 		.word	1073762084
   95 0024 00000000 		.word	.LANCHOR0
   96              		.cfi_endproc
   97              	.LFE2:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
   99              		.section	.text.Timer_STREAM_Wakeup,"ax",%progbits
  100              		.align	2
  101              		.global	Timer_STREAM_Wakeup
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 5
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 5
 
 
  102              		.thumb
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  127              	.L12:
  128 0010 00000000 		.word	.LANCHOR0
  129              		.cfi_endproc
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 6
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 6
 
 
  130              	.LFE3:
@@ -331,7 +331,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  157 0025 02       		.uleb128 0x2
  158 0026 01       		.byte	0x1
  159 0027 06       		.byte	0x6
- 160 0028 B0010000 		.4byte	.LASF0
+ 160 0028 B9010000 		.4byte	.LASF0
  161 002c 02       		.uleb128 0x2
  162 002d 01       		.byte	0x1
  163 002e 08       		.byte	0x8
@@ -339,11 +339,11 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  165 0033 02       		.uleb128 0x2
  166 0034 02       		.byte	0x2
  167 0035 05       		.byte	0x5
- 168 0036 44020000 		.4byte	.LASF2
+ 168 0036 45020000 		.4byte	.LASF2
  169 003a 02       		.uleb128 0x2
  170 003b 02       		.byte	0x2
  171 003c 07       		.byte	0x7
- 172 003d 9D010000 		.4byte	.LASF3
+ 172 003d A6010000 		.4byte	.LASF3
  173 0041 02       		.uleb128 0x2
  174 0042 04       		.byte	0x4
  175 0043 05       		.byte	0x5
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  184 0052 00000000 		.4byte	.LASF6
  185 0056 02       		.uleb128 0x2
  186 0057 08       		.byte	0x8
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 7
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 7
 
 
  187 0058 07       		.byte	0x7
@@ -389,7 +389,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  212 0087 08       		.byte	0x8
  213 0088 6A010000 		.4byte	.LASF11
  214 008c 04       		.uleb128 0x4
- 215 008d 4E020000 		.4byte	.LASF13
+ 215 008d 4F020000 		.4byte	.LASF13
  216 0091 02       		.byte	0x2
  217 0092 8E02     		.2byte	0x28e
  218 0094 98000000 		.4byte	0x98
@@ -402,14 +402,14 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  225 00a4 02       		.uleb128 0x2
  226 00a5 04       		.byte	0x4
  227 00a6 07       		.byte	0x7
- 228 00a7 D4010000 		.4byte	.LASF15
+ 228 00a7 9D010000 		.4byte	.LASF15
  229 00ab 06       		.uleb128 0x6
  230 00ac 01       		.byte	0x1
  231 00ad 03       		.byte	0x3
  232 00ae 43       		.byte	0x43
  233 00af C0000000 		.4byte	0xc0
  234 00b3 07       		.uleb128 0x7
- 235 00b4 82020000 		.4byte	.LASF26
+ 235 00b4 83020000 		.4byte	.LASF26
  236 00b8 03       		.byte	0x3
  237 00b9 45       		.byte	0x45
  238 00ba 6B000000 		.4byte	0x6b
@@ -418,13 +418,13 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  241 00c0 08       		.uleb128 0x8
  242 00c1 0E000000 		.4byte	.LASF16
  243 00c5 03       		.byte	0x3
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 8
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 8
 
 
  244 00c6 53       		.byte	0x53
  245 00c7 AB000000 		.4byte	0xab
  246 00cb 09       		.uleb128 0x9
- 247 00cc BC010000 		.4byte	.LASF17
+ 247 00cc C5010000 		.4byte	.LASF17
  248 00d0 01       		.byte	0x1
  249 00d1 2B       		.byte	0x2b
  250 00d2 00000000 		.4byte	.LFB0
@@ -432,7 +432,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  252 00da 01       		.uleb128 0x1
  253 00db 9C       		.byte	0x9c
  254 00dc 09       		.uleb128 0x9
- 255 00dd 67020000 		.4byte	.LASF18
+ 255 00dd 68020000 		.4byte	.LASF18
  256 00e1 01       		.byte	0x1
  257 00e2 4D       		.byte	0x4d
  258 00e3 00000000 		.4byte	.LFB1
@@ -466,7 +466,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  286 0126 47010000 		.4byte	0x147
  287 012a 00       		.byte	0
  288 012b 0C       		.uleb128 0xc
- 289 012c 53020000 		.4byte	.LASF27
+ 289 012c 54020000 		.4byte	.LASF27
  290 0130 01       		.byte	0x1
  291 0131 15       		.byte	0x15
  292 0132 C0000000 		.4byte	0xc0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  298 0141 35000000 		.4byte	.LASF21
  299 0145 03       		.byte	0x3
  300 0146 5B       		.byte	0x5b
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 9
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 9
 
 
  301 0147 0D       		.uleb128 0xd
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  355 002e 3A       		.uleb128 0x3a
  356 002f 0B       		.uleb128 0xb
  357 0030 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 10
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 10
 
 
  358 0031 05       		.uleb128 0x5
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  412 0067 2E       		.uleb128 0x2e
  413 0068 00       		.byte	0
  414 0069 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 11
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 11
 
 
  415 006a 19       		.uleb128 0x19
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  469 00a4 34       		.uleb128 0x34
  470 00a5 00       		.byte	0
  471 00a6 03       		.uleb128 0x3
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 12
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 12
 
 
  472 00a7 0E       		.uleb128 0xe
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  526 0014 28000000 		.4byte	.LFE2
  527 0018 00000000 		.4byte	.LFB3
  528 001c 14000000 		.4byte	.LFE3
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 13
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 13
 
 
  529 0020 00000000 		.4byte	0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  549 00ea 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  549      66756E63 
  549      74696F6E 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 14
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 14
 
 
  549      2D736563 
@@ -832,63 +832,63 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 1
  571 0191 6C6F6E67 		.ascii	"long double\000"
  571      20646F75 
  571      626C6500 
- 572              	.LASF3:
- 573 019d 73686F72 		.ascii	"short unsigned int\000"
- 573      7420756E 
- 573      7369676E 
- 573      65642069 
- 573      6E7400
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccbm36I2.s 			page 15
+ 572              	.LASF15:
+ 573 019d 73697A65 		.ascii	"sizetype\000"
+ 573      74797065 
+ 573      00
+ 574              	.LASF3:
+ 575 01a6 73686F72 		.ascii	"short unsigned int\000"
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccOlH1VX.s 			page 15
 
 
- 574              	.LASF0:
- 575 01b0 7369676E 		.ascii	"signed char\000"
- 575      65642063 
- 575      68617200 
- 576              	.LASF17:
- 577 01bc 54696D65 		.ascii	"Timer_STREAM_SaveConfig\000"
- 577      725F5354 
- 577      5245414D 
- 577      5F536176 
- 577      65436F6E 
- 578              	.LASF15:
- 579 01d4 73697A65 		.ascii	"sizetype\000"
- 579      74797065 
- 579      00
+ 575      7420756E 
+ 575      7369676E 
+ 575      65642069 
+ 575      6E7400
+ 576              	.LASF0:
+ 577 01b9 7369676E 		.ascii	"signed char\000"
+ 577      65642063 
+ 577      68617200 
+ 578              	.LASF17:
+ 579 01c5 54696D65 		.ascii	"Timer_STREAM_SaveConfig\000"
+ 579      725F5354 
+ 579      5245414D 
+ 579      5F536176 
+ 579      65436F6E 
  580              	.LASF25:
- 581 01dd 433A5C55 		.ascii	"C:\\Users\\Mattia40\\Desktop\\AY1920_II_FINAL_PROJE"
+ 581 01dd 433A5C55 		.ascii	"C:\\Users\\aless\\Documents\\PSoC_Creator\\AY1920_I"
  581      73657273 
- 581      5C4D6174 
- 581      74696134 
- 581      305C4465 
- 582 020c 43545C47 		.ascii	"CT\\Group_02_Final_Project\\AY1920_II_FINAL_PROJECT"
- 582      726F7570 
- 582      5F30325F 
- 582      46696E61 
- 582      6C5F5072 
- 583 023d 2E637964 		.ascii	".cydsn\000"
- 583      736E00
+ 581      5C616C65 
+ 581      73735C44 
+ 581      6F63756D 
+ 582 020b 495F3032 		.ascii	"I_02_RATTI_SINATRA_QUARANTA\\AY1920_II_FINAL_PROJEC"
+ 582      5F524154 
+ 582      54495F53 
+ 582      494E4154 
+ 582      52415F51 
+ 583 023d 542E6379 		.ascii	"T.cydsn\000"
+ 583      64736E00 
  584              	.LASF2:
- 585 0244 73686F72 		.ascii	"short int\000"
+ 585 0245 73686F72 		.ascii	"short int\000"
  585      7420696E 
  585      7400
  586              	.LASF13:
- 587 024e 72656738 		.ascii	"reg8\000"
+ 587 024f 72656738 		.ascii	"reg8\000"
  587      00
  588              	.LASF27:
- 589 0253 54696D65 		.ascii	"Timer_STREAM_backup\000"
+ 589 0254 54696D65 		.ascii	"Timer_STREAM_backup\000"
  589      725F5354 
  589      5245414D 
  589      5F626163 
  589      6B757000 
  590              	.LASF18:
- 591 0267 54696D65 		.ascii	"Timer_STREAM_RestoreConfig\000"
+ 591 0268 54696D65 		.ascii	"Timer_STREAM_RestoreConfig\000"
  591      725F5354 
  591      5245414D 
  591      5F526573 
  591      746F7265 
  592              	.LASF26:
- 593 0282 54696D65 		.ascii	"TimerEnableState\000"
+ 593 0283 54696D65 		.ascii	"TimerEnableState\000"
  593      72456E61 
  593      626C6553 
  593      74617465 

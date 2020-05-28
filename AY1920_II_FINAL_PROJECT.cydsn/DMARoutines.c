@@ -12,6 +12,9 @@
 
 #include "DMARoutines.h"
 
+// Used in InterruptRoutines.c
+uint8 DMA_Chan;
+
 void DMA_Config(void){
     
     /* Variable declarations for DMA */

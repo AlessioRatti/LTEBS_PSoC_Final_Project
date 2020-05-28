@@ -20,6 +20,7 @@
     #include "LIS3DH.h"
     #include "25LC256.h"
     #include "project.h"
+    #include "DMARoutines.h"
     //#include "LIS3DH_Regs.h"
     
     //Define some constant
@@ -39,20 +40,17 @@
     /*
     *   \brief ISR Code.
     */
-    CY_ISR_PROTO (Custom_ISR_ADC);
+    CY_ISR_PROTO (Custom_ISR_RESET);
     CY_ISR_PROTO (Custom_ISR_RX);
     CY_ISR_PROTO (Custom_ISR_OVRN);
     CY_ISR_PROTO (Custom_ISR_STREAM);
     CY_ISR_PROTO (Custom_ISR_DMA);
     CY_ISR_PROTO (Custom_ISR_TIMER);
     CY_ISR_PROTO (Custome_ISR_DEBOUNCE);
+    CY_ISR_PROTO (Custom_ISR_INDEX);
     
     /* Functions */
     void ShowMenu(void);
-    
-    //Set variables
-    uint8_t DataBuffer[TRANSMIT_BUFFER_SIZE];   //Memory buffer
-    volatile uint8 PacketReadyFlag;             //Flag to enable the transmission
     
     /*reset*/
     uint8_t ResetButton;
@@ -65,7 +63,6 @@
     extern uint8_t dataReady_STREAM;
     extern uint8_t configSets[2];
     extern uint8_t update_cfg_reg;
-    
     
 #endif
 
