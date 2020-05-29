@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
   28:Generated_Source\PSoC5/blink_clock.c **** 
   29:Generated_Source\PSoC5/blink_clock.c **** 
   30:Generated_Source\PSoC5/blink_clock.c **** /*******************************************************************************
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 2
 
 
   31:Generated_Source\PSoC5/blink_clock.c **** * Function Name: blink_clock_Start
@@ -87,13 +87,13 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
   33              		.loc 1 48 0
   34 0000 054A     		ldr	r2, .L2
   35 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-  36 0004 43F04003 		orr	r3, r3, #64
+  36 0004 43F08003 		orr	r3, r3, #128
   37 0008 1370     		strb	r3, [r2]
   49:Generated_Source\PSoC5/blink_clock.c **** 	blink_clock_CLKSTBY |= blink_clock_CLKSTBY_MASK;
   38              		.loc 1 49 0
   39 000a 1032     		adds	r2, r2, #16
   40 000c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-  41 000e 43F04003 		orr	r3, r3, #64
+  41 000e 43F08003 		orr	r3, r3, #128
   42 0012 1370     		strb	r3, [r2]
   43 0014 7047     		bx	lr
   44              	.L3:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
   54:Generated_Source\PSoC5/blink_clock.c **** * Function Name: blink_clock_Stop
   55:Generated_Source\PSoC5/blink_clock.c **** ********************************************************************************
   56:Generated_Source\PSoC5/blink_clock.c **** *
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 3
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 3
 
 
   57:Generated_Source\PSoC5/blink_clock.c **** * Summary:
@@ -147,13 +147,13 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
   64              		.loc 1 74 0
   65 0000 054A     		ldr	r2, .L5
   66 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-  67 0004 03F0BF03 		and	r3, r3, #191
+  67 0004 03F07F03 		and	r3, r3, #127
   68 0008 1370     		strb	r3, [r2]
   75:Generated_Source\PSoC5/blink_clock.c **** 	blink_clock_CLKSTBY &= (uint8)(~blink_clock_CLKSTBY_MASK);
   69              		.loc 1 75 0
   70 000a 1032     		adds	r2, r2, #16
   71 000c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-  72 000e 03F0BF03 		and	r3, r3, #191
+  72 000e 03F07F03 		and	r3, r3, #127
   73 0012 1370     		strb	r3, [r2]
   74 0014 7047     		bx	lr
   75              	.L6:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
   80:Generated_Source\PSoC5/blink_clock.c **** 
   81:Generated_Source\PSoC5/blink_clock.c **** 
   82:Generated_Source\PSoC5/blink_clock.c **** /*******************************************************************************
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 4
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 4
 
 
   83:Generated_Source\PSoC5/blink_clock.c **** * Function Name: blink_clock_StopBlock
@@ -209,7 +209,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
   95              		.loc 1 102 0
   96 0000 164B     		ldr	r3, .L10
   97 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  98 0004 13F0400F 		tst	r3, #64
+  98 0004 13F0800F 		tst	r3, #128
   99 0008 27D0     		beq	.L7
  100              	.LBB2:
  103:Generated_Source\PSoC5/blink_clock.c ****     {
@@ -229,7 +229,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  113:Generated_Source\PSoC5/blink_clock.c **** #else
  114:Generated_Source\PSoC5/blink_clock.c ****         CLK_DIST_DMASK = blink_clock_CLKEN_MASK;
  105              		.loc 1 114 0
- 106 0010 4020     		movs	r0, #64
+ 106 0010 8020     		movs	r0, #128
  107 0012 144A     		ldr	r2, .L10+8
  108 0014 1070     		strb	r0, [r2]
  115:Generated_Source\PSoC5/blink_clock.c ****         CLK_DIST_AMASK = 0x00u;
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  111 0018 1370     		strb	r3, [r2]
  116:Generated_Source\PSoC5/blink_clock.c **** #endif /* blink_clock__CFG3 */
  117:Generated_Source\PSoC5/blink_clock.c **** 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 5
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 5
 
 
  118:Generated_Source\PSoC5/blink_clock.c ****         /* Clear mask of bus clock. */
@@ -257,7 +257,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  121              	.LVL0:
  122:Generated_Source\PSoC5/blink_clock.c ****         CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
  122              		.loc 1 122 0
- 123 002a 963B     		subs	r3, r3, #150
+ 123 002a 9A3B     		subs	r3, r3, #154
  124 002c 1A80     		strh	r2, [r3]	@ movhi
  123:Generated_Source\PSoC5/blink_clock.c ****         CLK_DIST_LD = CYCLK_LD_DISABLE | CYCLK_LD_SYNC_EN | CYCLK_LD_LOAD;
  125              		.loc 1 123 0
@@ -279,13 +279,13 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  134              		.loc 1 130 0
  135 003c 0749     		ldr	r1, .L10
  136 003e 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
- 137 0040 03F0BF03 		and	r3, r3, #191
+ 137 0040 03F07F03 		and	r3, r3, #127
  138 0044 0B70     		strb	r3, [r1]
  131:Generated_Source\PSoC5/blink_clock.c ****         blink_clock_CLKSTBY &= (uint8)(~blink_clock_CLKSTBY_MASK);
  139              		.loc 1 131 0
  140 0046 1031     		adds	r1, r1, #16
  141 0048 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
- 142 004a 03F0BF03 		and	r3, r3, #191
+ 142 004a 03F07F03 		and	r3, r3, #127
  143 004e 0B70     		strb	r3, [r1]
  132:Generated_Source\PSoC5/blink_clock.c **** 
  133:Generated_Source\PSoC5/blink_clock.c **** #if HAS_CLKDIST_LD_DISABLE
@@ -297,8 +297,8 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  147 0054 1970     		strb	r1, [r3]
  136:Generated_Source\PSoC5/blink_clock.c ****         CY_SET_REG16(blink_clock_DIV_PTR, oldDivider);
  148              		.loc 1 136 0
- 149 0056 9733     		adds	r3, r3, #151
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 6
+ 149 0056 9B33     		adds	r3, r3, #155
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 6
 
 
  150 0058 1A80     		strh	r2, [r3]	@ movhi
@@ -311,7 +311,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  157 005c A2430040 		.word	1073759138
  158 0060 01400040 		.word	1073758209
  159 0064 10400040 		.word	1073758224
- 160 0068 98400040 		.word	1073758360
+ 160 0068 9C400040 		.word	1073758364
  161              	.LBE2:
  162              		.cfi_endproc
  163              	.LFE2:
@@ -358,12 +358,12 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  160:Generated_Source\PSoC5/blink_clock.c ****     {
  161:Generated_Source\PSoC5/blink_clock.c ****         blink_clock_CLKSTBY &= (uint8)(~blink_clock_CLKSTBY_MASK);
  181              		.loc 1 161 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 7
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 7
 
 
  182 0002 064A     		ldr	r2, .L15
  183 0004 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 184 0006 03F0BF03 		and	r3, r3, #191
+ 184 0006 03F07F03 		and	r3, r3, #127
  185 000a 1370     		strb	r3, [r2]
  186 000c 7047     		bx	lr
  187              	.L13:
@@ -374,7 +374,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  188              		.loc 1 165 0
  189 000e 034A     		ldr	r2, .L15
  190 0010 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 191 0012 43F04003 		orr	r3, r3, #64
+ 191 0012 43F08003 		orr	r3, r3, #128
  192 0016 1370     		strb	r3, [r2]
  193 0018 7047     		bx	lr
  194              	.L16:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  189:Generated_Source\PSoC5/blink_clock.c **** * Returns:
  190:Generated_Source\PSoC5/blink_clock.c **** *  None
  191:Generated_Source\PSoC5/blink_clock.c **** *
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 8
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 8
 
 
  192:Generated_Source\PSoC5/blink_clock.c **** *******************************************************************************/
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  246:Generated_Source\PSoC5/blink_clock.c ****                     CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
  247:Generated_Source\PSoC5/blink_clock.c ****                     CLK_DIST_LD = CYCLK_LD_DISABLE|CYCLK_LD_SYNC_EN|CYCLK_LD_LOAD;
  248:Generated_Source\PSoC5/blink_clock.c **** 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 9
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 9
 
 
  249:Generated_Source\PSoC5/blink_clock.c ****                     /* Wait for clock to be disabled */
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  213              		@ link register save eliminated.
  299:Generated_Source\PSoC5/blink_clock.c ****     return CY_GET_REG16(blink_clock_DIV_PTR);
  214              		.loc 1 299 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 10
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 10
 
 
  215 0000 014B     		ldr	r3, .L18
@@ -550,7 +550,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  220              	.L19:
  221              		.align	2
  222              	.L18:
- 223 0008 98400040 		.word	1073758360
+ 223 0008 9C400040 		.word	1073758364
  224              		.cfi_endproc
  225              	.LFE5:
  226              		.size	blink_clock_GetDividerRegister, .-blink_clock_GetDividerRegister
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  235              		.loc 1 333 0
  236              		.cfi_startproc
  237              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 11
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 11
 
 
  238              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -616,7 +616,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  249              	.L22:
  250 000e 00BF     		.align	2
  251              	.L21:
- 252 0010 9A400040 		.word	1073758362
+ 252 0010 9E400040 		.word	1073758366
  253              		.cfi_endproc
  254              	.LFE6:
  255              		.size	blink_clock_SetModeRegister, .-blink_clock_SetModeRegister
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  362:Generated_Source\PSoC5/blink_clock.c **** *
  363:Generated_Source\PSoC5/blink_clock.c **** * Returns:
  364:Generated_Source\PSoC5/blink_clock.c **** *  None
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 12
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 12
 
 
  365:Generated_Source\PSoC5/blink_clock.c **** *
@@ -685,7 +685,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  280              	.L25:
  281 0012 00BF     		.align	2
  282              	.L24:
- 283 0014 9A400040 		.word	1073758362
+ 283 0014 9E400040 		.word	1073758366
  284              		.cfi_endproc
  285              	.LFE7:
  286              		.size	blink_clock_ClearModeRegister, .-blink_clock_ClearModeRegister
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  388:Generated_Source\PSoC5/blink_clock.c **** uint8 blink_clock_GetModeRegister(void) 
  389:Generated_Source\PSoC5/blink_clock.c **** {
  295              		.loc 1 389 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 13
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 13
 
 
  296              		.cfi_startproc
@@ -736,7 +736,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  306              	.L28:
  307 000a 00BF     		.align	2
  308              	.L27:
- 309 000c 9A400040 		.word	1073758362
+ 309 000c 9E400040 		.word	1073758366
  310              		.cfi_endproc
  311              	.LFE8:
  312              		.size	blink_clock_GetModeRegister, .-blink_clock_GetModeRegister
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  419:Generated_Source\PSoC5/blink_clock.c **** void blink_clock_SetSourceRegister(uint8 clkSource) 
  420:Generated_Source\PSoC5/blink_clock.c **** {
  421:Generated_Source\PSoC5/blink_clock.c ****     uint16 currDiv = blink_clock_GetDividerRegister();
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 14
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 14
 
 
  422:Generated_Source\PSoC5/blink_clock.c ****     uint8 oldSrc = blink_clock_GetSourceRegister();
@@ -838,13 +838,13 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  329              		.loc 1 467 0
  330 0004 00F00700 		and	r0, r0, #7
  331 0008 7047     		bx	lr
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 15
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 15
 
 
  332              	.L31:
  333 000a 00BF     		.align	2
  334              	.L30:
- 335 000c 9A400040 		.word	1073758362
+ 335 000c 9E400040 		.word	1073758366
  336              		.cfi_endproc
  337              	.LFE10:
  338              		.size	blink_clock_GetSourceRegister, .-blink_clock_GetSourceRegister
@@ -883,13 +883,13 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  201:Generated_Source\PSoC5/blink_clock.c ****     {
  368              		.loc 1 201 0
  369 0010 A042     		cmp	r0, r4
- 370 0012 57D0     		beq	.L32
+ 370 0012 58D0     		beq	.L32
  203:Generated_Source\PSoC5/blink_clock.c **** 
  371              		.loc 1 203 0
  372 0014 2C4B     		ldr	r3, .L45
  373 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 374 0018 03F04003 		and	r3, r3, #64
- 375 001c DAB2     		uxtb	r2, r3
+ 374 0018 03F08003 		and	r3, r3, #128
+ 375 001c DBB2     		uxtb	r3, r3
  376              	.LVL11:
  205:Generated_Source\PSoC5/blink_clock.c ****         {
  377              		.loc 1 205 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  379              		.loc 1 205 0 is_stmt 0 discriminator 1
  380 0020 00B1     		cbz	r0, .L35
  205:Generated_Source\PSoC5/blink_clock.c ****         {
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 16
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 16
 
 
  381              		.loc 1 205 0 discriminator 2
@@ -910,11 +910,11 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  213:Generated_Source\PSoC5/blink_clock.c ****                 blink_clock_MOD_SRC &= (uint8)(~CYCLK_SSS);
  386              		.loc 1 213 0
  387 0026 294B     		ldr	r3, .L45+4
- 388 0028 1C80     		strh	r4, [r3]	@ movhi
+ 388              	.LVL12:
+ 389 0028 1C80     		strh	r4, [r3]	@ movhi
  214:Generated_Source\PSoC5/blink_clock.c ****             }
- 389              		.loc 1 214 0
- 390 002a 294A     		ldr	r2, .L45+8
- 391              	.LVL12:
+ 390              		.loc 1 214 0
+ 391 002a 294A     		ldr	r2, .L45+8
  392 002c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  393 002e 03F0BF03 		and	r3, r3, #191
  394 0032 1370     		strb	r3, [r2]
@@ -924,1283 +924,1272 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 1
  220:Generated_Source\PSoC5/blink_clock.c ****                 CY_SET_REG16(blink_clock_DIV_PTR, clkDivider);
  398              		.loc 1 220 0
  399 0036 264A     		ldr	r2, .L45+8
- 400              	.LVL14:
- 401 0038 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 402              	.LVL15:
- 403 003a 43F04003 		orr	r3, r3, #64
- 404 003e 1370     		strb	r3, [r2]
+ 400 0038 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 401              	.LVL14:
+ 402 003a 43F04003 		orr	r3, r3, #64
+ 403 003e 1370     		strb	r3, [r2]
  221:Generated_Source\PSoC5/blink_clock.c ****             }
- 405              		.loc 1 221 0
- 406 0040 224B     		ldr	r3, .L45+4
- 407 0042 1C80     		strh	r4, [r3]	@ movhi
- 408 0044 70BD     		pop	{r4, r5, r6, pc}
- 409              	.LVL16:
- 410              	.L34:
+ 404              		.loc 1 221 0
+ 405 0040 224B     		ldr	r3, .L45+4
+ 406 0042 1C80     		strh	r4, [r3]	@ movhi
+ 407 0044 70BD     		pop	{r4, r5, r6, pc}
+ 408              	.LVL15:
+ 409              	.L34:
  227:Generated_Source\PSoC5/blink_clock.c ****             {
- 411              		.loc 1 227 0
- 412 0046 22B3     		cbz	r2, .L37
+ 410              		.loc 1 227 0
+ 411 0046 23B3     		cbz	r3, .L37
  229:Generated_Source\PSoC5/blink_clock.c **** 
- 413              		.loc 1 229 0
- 414 0048 0023     		movs	r3, #0
- 415 004a 2249     		ldr	r1, .L45+12
- 416 004c 0B70     		strb	r3, [r1]
+ 412              		.loc 1 229 0
+ 413 0048 0022     		movs	r2, #0
+ 414 004a 2249     		ldr	r1, .L45+12
+ 415 004c 0A70     		strb	r2, [r1]
  236:Generated_Source\PSoC5/blink_clock.c ****                 CLK_DIST_AMASK = 0x00u;
- 417              		.loc 1 236 0
- 418 004e 4026     		movs	r6, #64
- 419              	.LVL17:
- 420 0050 0F31     		adds	r1, r1, #15
- 421 0052 0E70     		strb	r6, [r1]
+ 416              		.loc 1 236 0
+ 417 004e 8026     		movs	r6, #128
+ 418              	.LVL16:
+ 419 0050 0F31     		adds	r1, r1, #15
+ 420 0052 0E70     		strb	r6, [r1]
  237:Generated_Source\PSoC5/blink_clock.c **** #endif /* blink_clock__CFG3 */
- 422              		.loc 1 237 0
- 423 0054 0431     		adds	r1, r1, #4
- 424 0056 0B70     		strb	r3, [r1]
+ 421              		.loc 1 237 0
+ 422 0054 0431     		adds	r1, r1, #4
+ 423 0056 0A70     		strb	r2, [r1]
  240:Generated_Source\PSoC5/blink_clock.c **** 
- 425              		.loc 1 240 0
- 426 0058 0C39     		subs	r1, r1, #12
- 427 005a 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 17
+ 424              		.loc 1 240 0
+ 425 0058 0C39     		subs	r1, r1, #12
+ 426 005a 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+ 427 005c 02F07F02 		and	r2, r2, #127
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 17
 
 
- 428 005c 03F07F03 		and	r3, r3, #127
- 429 0060 0B70     		strb	r3, [r1]
+ 428 0060 0A70     		strb	r2, [r1]
  243:Generated_Source\PSoC5/blink_clock.c ****                 {
- 430              		.loc 1 243 0
- 431 0062 1B4B     		ldr	r3, .L45+8
- 432 0064 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 433 0066 13F0080F 		tst	r3, #8
- 434 006a 00D0     		beq	.L38
+ 429              		.loc 1 243 0
+ 430 0062 1B4A     		ldr	r2, .L45+8
+ 431 0064 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 432 0066 12F0080F 		tst	r2, #8
+ 433 006a 00D0     		beq	.L38
  243:Generated_Source\PSoC5/blink_clock.c ****                 {
- 435              		.loc 1 243 0 is_stmt 0 discriminator 1
- 436 006c 8CB9     		cbnz	r4, .L37
- 437              	.L38:
+ 434              		.loc 1 243 0 is_stmt 0 discriminator 1
+ 435 006c 8CB9     		cbnz	r4, .L37
+ 436              	.L38:
  246:Generated_Source\PSoC5/blink_clock.c ****                     CLK_DIST_LD = CYCLK_LD_DISABLE|CYCLK_LD_SYNC_EN|CYCLK_LD_LOAD;
- 438              		.loc 1 246 0 is_stmt 1
- 439 006e 1A4B     		ldr	r3, .L45+16
- 440 0070 1880     		strh	r0, [r3]	@ movhi
+ 437              		.loc 1 246 0 is_stmt 1
+ 438 006e 1A4A     		ldr	r2, .L45+16
+ 439 0070 1080     		strh	r0, [r2]	@ movhi
  247:Generated_Source\PSoC5/blink_clock.c **** 
- 441              		.loc 1 247 0
- 442 0072 0721     		movs	r1, #7
- 443 0074 013B     		subs	r3, r3, #1
- 444 0076 1970     		strb	r1, [r3]
- 445              	.L39:
+ 440              		.loc 1 247 0
+ 441 0072 0721     		movs	r1, #7
+ 442 0074 013A     		subs	r2, r2, #1
+ 443 0076 1170     		strb	r1, [r2]
+ 444              	.L39:
  250:Generated_Source\PSoC5/blink_clock.c **** #endif /* HAS_CLKDIST_LD_DISABLE */
- 446              		.loc 1 250 0 discriminator 1
- 447 0078 164B     		ldr	r3, .L45+12
- 448 007a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 449 007c 13F0010F 		tst	r3, #1
- 450 0080 FAD1     		bne	.L39
+ 445              		.loc 1 250 0 discriminator 1
+ 446 0078 164A     		ldr	r2, .L45+12
+ 447 007a 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 448 007c 12F0010F 		tst	r2, #1
+ 449 0080 FAD1     		bne	.L39
  253:Generated_Source\PSoC5/blink_clock.c **** 
- 451              		.loc 1 253 0
- 452 0082 1149     		ldr	r1, .L45
- 453 0084 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
- 454 0086 03F0BF03 		and	r3, r3, #191
- 455 008a 0B70     		strb	r3, [r1]
+ 450              		.loc 1 253 0
+ 451 0082 1149     		ldr	r1, .L45
+ 452 0084 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+ 453 0086 02F07F02 		and	r2, r2, #127
+ 454 008a 0A70     		strb	r2, [r1]
  257:Generated_Source\PSoC5/blink_clock.c **** #endif /* HAS_CLKDIST_LD_DISABLE */
- 456              		.loc 1 257 0
- 457 008c 0021     		movs	r1, #0
- 458 008e 114B     		ldr	r3, .L45+12
- 459 0090 1970     		strb	r1, [r3]
- 460              	.L37:
+ 455              		.loc 1 257 0
+ 456 008c 0021     		movs	r1, #0
+ 457 008e 114A     		ldr	r2, .L45+12
+ 458 0090 1170     		strb	r1, [r2]
+ 459              	.L37:
  263:Generated_Source\PSoC5/blink_clock.c ****             {
- 461              		.loc 1 263 0
- 462 0092 0D4B     		ldr	r3, .L45
- 463 0094 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 464 0096 13F0400F 		tst	r3, #64
- 465 009a 0DD0     		beq	.L40
+ 460              		.loc 1 263 0
+ 461 0092 0D4A     		ldr	r2, .L45
+ 462 0094 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 463 0096 12F0800F 		tst	r2, #128
+ 464 009a 0DD0     		beq	.L40
  266:Generated_Source\PSoC5/blink_clock.c **** 
- 466              		.loc 1 266 0
- 467 009c 0E4B     		ldr	r3, .L45+16
+ 465              		.loc 1 266 0
+ 466 009c 0E4B     		ldr	r3, .L45+16
+ 467              	.LVL17:
  468 009e 1C80     		strh	r4, [r3]	@ movhi
  268:Generated_Source\PSoC5/blink_clock.c ****                 while ((CLK_DIST_LD & CYCLK_LD_LOAD) != 0u) { }
  469              		.loc 1 268 0
  470 00a0 0DB1     		cbz	r5, .L43
  471 00a2 0322     		movs	r2, #3
- 472              	.LVL18:
- 473 00a4 00E0     		b	.L41
- 474              	.LVL19:
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 18
+ 472 00a4 00E0     		b	.L41
+ 473              	.L43:
+ 474 00a6 0122     		movs	r2, #1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 18
 
 
- 475              	.L43:
- 476 00a6 0122     		movs	r2, #1
- 477              	.LVL20:
- 478              	.L41:
+ 475              	.L41:
  268:Generated_Source\PSoC5/blink_clock.c ****                 while ((CLK_DIST_LD & CYCLK_LD_LOAD) != 0u) { }
- 479              		.loc 1 268 0 is_stmt 0 discriminator 4
- 480 00a8 0A4B     		ldr	r3, .L45+12
- 481 00aa 1A70     		strb	r2, [r3]
- 482              	.L42:
+ 476              		.loc 1 268 0 is_stmt 0 discriminator 4
+ 477 00a8 0A4B     		ldr	r3, .L45+12
+ 478 00aa 1A70     		strb	r2, [r3]
+ 479              	.L42:
  269:Generated_Source\PSoC5/blink_clock.c ****             }
- 483              		.loc 1 269 0 is_stmt 1 discriminator 1
- 484 00ac 094B     		ldr	r3, .L45+12
- 485 00ae 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 486 00b0 13F0010F 		tst	r3, #1
- 487 00b4 FAD1     		bne	.L42
- 488 00b6 70BD     		pop	{r4, r5, r6, pc}
- 489              	.LVL21:
- 490              	.L40:
+ 480              		.loc 1 269 0 is_stmt 1 discriminator 1
+ 481 00ac 094B     		ldr	r3, .L45+12
+ 482 00ae 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 483 00b0 13F0010F 		tst	r3, #1
+ 484 00b4 FAD1     		bne	.L42
+ 485 00b6 70BD     		pop	{r4, r5, r6, pc}
+ 486              	.LVL18:
+ 487              	.L40:
  274:Generated_Source\PSoC5/blink_clock.c **** 				blink_clock_CLKEN |= enabled;
- 491              		.loc 1 274 0
- 492 00b8 044B     		ldr	r3, .L45+4
- 493 00ba 1C80     		strh	r4, [r3]	@ movhi
+ 488              		.loc 1 274 0
+ 489 00b8 044A     		ldr	r2, .L45+4
+ 490 00ba 1480     		strh	r4, [r2]	@ movhi
  275:Generated_Source\PSoC5/blink_clock.c ****             }
- 494              		.loc 1 275 0
- 495 00bc 0249     		ldr	r1, .L45
- 496 00be 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
- 497 00c0 1343     		orrs	r3, r3, r2
- 498 00c2 0B70     		strb	r3, [r1]
- 499              	.LVL22:
- 500              	.L32:
- 501 00c4 70BD     		pop	{r4, r5, r6, pc}
- 502              	.L46:
- 503 00c6 00BF     		.align	2
- 504              	.L45:
- 505 00c8 A2430040 		.word	1073759138
- 506 00cc 98400040 		.word	1073758360
- 507 00d0 9A400040 		.word	1073758362
- 508 00d4 01400040 		.word	1073758209
- 509 00d8 02400040 		.word	1073758210
- 510              		.cfi_endproc
- 511              	.LFE4:
- 512              		.size	blink_clock_SetDividerRegister, .-blink_clock_SetDividerRegister
- 513              		.section	.text.blink_clock_SetSourceRegister,"ax",%progbits
- 514              		.align	2
- 515              		.global	blink_clock_SetSourceRegister
- 516              		.thumb
- 517              		.thumb_func
- 518              		.type	blink_clock_SetSourceRegister, %function
- 519              	blink_clock_SetSourceRegister:
- 520              	.LFB9:
+ 491              		.loc 1 275 0
+ 492 00bc 02F20632 		addw	r2, r2, #774
+ 493 00c0 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+ 494 00c2 0B43     		orrs	r3, r3, r1
+ 495              	.LVL19:
+ 496 00c4 1370     		strb	r3, [r2]
+ 497              	.L32:
+ 498 00c6 70BD     		pop	{r4, r5, r6, pc}
+ 499              	.L46:
+ 500              		.align	2
+ 501              	.L45:
+ 502 00c8 A2430040 		.word	1073759138
+ 503 00cc 9C400040 		.word	1073758364
+ 504 00d0 9E400040 		.word	1073758366
+ 505 00d4 01400040 		.word	1073758209
+ 506 00d8 02400040 		.word	1073758210
+ 507              		.cfi_endproc
+ 508              	.LFE4:
+ 509              		.size	blink_clock_SetDividerRegister, .-blink_clock_SetDividerRegister
+ 510              		.section	.text.blink_clock_SetSourceRegister,"ax",%progbits
+ 511              		.align	2
+ 512              		.global	blink_clock_SetSourceRegister
+ 513              		.thumb
+ 514              		.thumb_func
+ 515              		.type	blink_clock_SetSourceRegister, %function
+ 516              	blink_clock_SetSourceRegister:
+ 517              	.LFB9:
  420:Generated_Source\PSoC5/blink_clock.c ****     uint16 currDiv = blink_clock_GetDividerRegister();
- 521              		.loc 1 420 0
- 522              		.cfi_startproc
- 523              		@ args = 0, pretend = 0, frame = 0
- 524              		@ frame_needed = 0, uses_anonymous_args = 0
- 525              	.LVL23:
- 526 0000 38B5     		push	{r3, r4, r5, lr}
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 19
+ 518              		.loc 1 420 0
+ 519              		.cfi_startproc
+ 520              		@ args = 0, pretend = 0, frame = 0
+ 521              		@ frame_needed = 0, uses_anonymous_args = 0
+ 522              	.LVL20:
+ 523 0000 38B5     		push	{r3, r4, r5, lr}
+ 524              		.cfi_def_cfa_offset 16
+ 525              		.cfi_offset 3, -16
+ 526              		.cfi_offset 4, -12
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 19
 
 
- 527              		.cfi_def_cfa_offset 16
- 528              		.cfi_offset 3, -16
- 529              		.cfi_offset 4, -12
- 530              		.cfi_offset 5, -8
- 531              		.cfi_offset 14, -4
- 532 0002 0446     		mov	r4, r0
+ 527              		.cfi_offset 5, -8
+ 528              		.cfi_offset 14, -4
+ 529 0002 0446     		mov	r4, r0
  421:Generated_Source\PSoC5/blink_clock.c ****     uint8 oldSrc = blink_clock_GetSourceRegister();
- 533              		.loc 1 421 0
- 534 0004 FFF7FEFF 		bl	blink_clock_GetDividerRegister
- 535              	.LVL24:
- 536 0008 0546     		mov	r5, r0
- 537              	.LVL25:
+ 530              		.loc 1 421 0
+ 531 0004 FFF7FEFF 		bl	blink_clock_GetDividerRegister
+ 532              	.LVL21:
+ 533 0008 0546     		mov	r5, r0
+ 534              	.LVL22:
  422:Generated_Source\PSoC5/blink_clock.c **** 
- 538              		.loc 1 422 0
- 539 000a FFF7FEFF 		bl	blink_clock_GetSourceRegister
- 540              	.LVL26:
+ 535              		.loc 1 422 0
+ 536 000a FFF7FEFF 		bl	blink_clock_GetSourceRegister
+ 537              	.LVL23:
  424:Generated_Source\PSoC5/blink_clock.c ****         (clkSource == ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
- 541              		.loc 1 424 0
- 542 000e 0346     		mov	r3, r0
- 543 0010 60B1     		cbz	r0, .L48
+ 538              		.loc 1 424 0
+ 539 000e 0346     		mov	r3, r0
+ 540 0010 60B1     		cbz	r0, .L48
  424:Generated_Source\PSoC5/blink_clock.c ****         (clkSource == ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
- 544              		.loc 1 424 0 is_stmt 0 discriminator 1
- 545 0012 5CB9     		cbnz	r4, .L48
+ 541              		.loc 1 424 0 is_stmt 0 discriminator 1
+ 542 0012 5CB9     		cbnz	r4, .L48
  425:Generated_Source\PSoC5/blink_clock.c ****     {
- 546              		.loc 1 425 0 is_stmt 1
- 547 0014 55B9     		cbnz	r5, .L48
+ 543              		.loc 1 425 0 is_stmt 1
+ 544 0014 55B9     		cbnz	r5, .L48
  429:Generated_Source\PSoC5/blink_clock.c ****         blink_clock_MOD_SRC =
- 548              		.loc 1 429 0
- 549 0016 104A     		ldr	r2, .L52
- 550 0018 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 551 001a 43F04003 		orr	r3, r3, #64
- 552 001e 1370     		strb	r3, [r2]
+ 545              		.loc 1 429 0
+ 546 0016 104A     		ldr	r2, .L52
+ 547 0018 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 548 001a 43F04003 		orr	r3, r3, #64
+ 549 001e 1370     		strb	r3, [r2]
  431:Generated_Source\PSoC5/blink_clock.c ****     }
- 553              		.loc 1 431 0
- 554 0020 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 550              		.loc 1 431 0
+ 551 0020 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  430:Generated_Source\PSoC5/blink_clock.c ****             (blink_clock_MOD_SRC & (uint8)(~blink_clock_SRC_SEL_MSK)) | clkSource;
- 555              		.loc 1 430 0
- 556 0022 03F0F803 		and	r3, r3, #248
- 557 0026 1C43     		orrs	r4, r4, r3
- 558 0028 1470     		strb	r4, [r2]
- 559 002a 38BD     		pop	{r3, r4, r5, pc}
- 560              	.LVL27:
- 561              	.L48:
+ 552              		.loc 1 430 0
+ 553 0022 03F0F803 		and	r3, r3, #248
+ 554 0026 1C43     		orrs	r4, r4, r3
+ 555 0028 1470     		strb	r4, [r2]
+ 556 002a 38BD     		pop	{r3, r4, r5, pc}
+ 557              	.LVL24:
+ 558              	.L48:
  433:Generated_Source\PSoC5/blink_clock.c ****             (clkSource != ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
- 562              		.loc 1 433 0
- 563 002c 63B9     		cbnz	r3, .L50
+ 559              		.loc 1 433 0
+ 560 002c 63B9     		cbnz	r3, .L50
  433:Generated_Source\PSoC5/blink_clock.c ****             (clkSource != ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
- 564              		.loc 1 433 0 is_stmt 0 discriminator 1
- 565 002e 5CB1     		cbz	r4, .L50
+ 561              		.loc 1 433 0 is_stmt 0 discriminator 1
+ 562 002e 5CB1     		cbz	r4, .L50
  434:Generated_Source\PSoC5/blink_clock.c ****     {
- 566              		.loc 1 434 0 is_stmt 1
- 567 0030 55B9     		cbnz	r5, .L50
+ 563              		.loc 1 434 0 is_stmt 1
+ 564 0030 55B9     		cbnz	r5, .L50
  439:Generated_Source\PSoC5/blink_clock.c ****         blink_clock_MOD_SRC &= (uint8)(~CYCLK_SSS);
- 568              		.loc 1 439 0
- 569 0032 094A     		ldr	r2, .L52
- 570 0034 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 565              		.loc 1 439 0
+ 566 0032 094A     		ldr	r2, .L52
+ 567 0034 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  438:Generated_Source\PSoC5/blink_clock.c ****             (blink_clock_MOD_SRC & (uint8)(~blink_clock_SRC_SEL_MSK)) | clkSource;
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 20
+ 568              		.loc 1 438 0
+ 569 0036 03F0F803 		and	r3, r3, #248
+ 570 003a 1C43     		orrs	r4, r4, r3
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 20
 
 
- 571              		.loc 1 438 0
- 572 0036 03F0F803 		and	r3, r3, #248
- 573 003a 1C43     		orrs	r4, r4, r3
- 574 003c 1470     		strb	r4, [r2]
+ 571 003c 1470     		strb	r4, [r2]
  440:Generated_Source\PSoC5/blink_clock.c ****     }
- 575              		.loc 1 440 0
- 576 003e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 577 0040 03F0BF03 		and	r3, r3, #191
- 578 0044 1370     		strb	r3, [r2]
- 579 0046 38BD     		pop	{r3, r4, r5, pc}
- 580              	.LVL28:
- 581              	.L50:
+ 572              		.loc 1 440 0
+ 573 003e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 574 0040 03F0BF03 		and	r3, r3, #191
+ 575 0044 1370     		strb	r3, [r2]
+ 576 0046 38BD     		pop	{r3, r4, r5, pc}
+ 577              	.LVL25:
+ 578              	.L50:
  445:Generated_Source\PSoC5/blink_clock.c ****     }
- 582              		.loc 1 445 0
- 583 0048 034A     		ldr	r2, .L52
- 584 004a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 579              		.loc 1 445 0
+ 580 0048 034A     		ldr	r2, .L52
+ 581 004a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  444:Generated_Source\PSoC5/blink_clock.c ****             (blink_clock_MOD_SRC & (uint8)(~blink_clock_SRC_SEL_MSK)) | clkSource;
- 585              		.loc 1 444 0
- 586 004c 03F0F803 		and	r3, r3, #248
- 587 0050 1C43     		orrs	r4, r4, r3
- 588 0052 1470     		strb	r4, [r2]
- 589 0054 38BD     		pop	{r3, r4, r5, pc}
- 590              	.LVL29:
- 591              	.L53:
- 592 0056 00BF     		.align	2
- 593              	.L52:
- 594 0058 9A400040 		.word	1073758362
- 595              		.cfi_endproc
- 596              	.LFE9:
- 597              		.size	blink_clock_SetSourceRegister, .-blink_clock_SetSourceRegister
- 598              		.text
- 599              	.Letext0:
- 600              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
- 601              		.section	.debug_info,"",%progbits
- 602              	.Ldebug_info0:
- 603 0000 7F020000 		.4byte	0x27f
- 604 0004 0400     		.2byte	0x4
- 605 0006 00000000 		.4byte	.Ldebug_abbrev0
- 606 000a 04       		.byte	0x4
- 607 000b 01       		.uleb128 0x1
- 608 000c 9F020000 		.4byte	.LASF36
- 609 0010 0C       		.byte	0xc
- 610 0011 00000000 		.4byte	.LASF37
- 611 0015 0B010000 		.4byte	.LASF38
- 612 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 613 001d 00000000 		.4byte	0
- 614 0021 00000000 		.4byte	.Ldebug_line0
- 615 0025 02       		.uleb128 0x2
- 616 0026 01       		.byte	0x1
- 617 0027 06       		.byte	0x6
- 618 0028 C2000000 		.4byte	.LASF0
- 619 002c 02       		.uleb128 0x2
- 620 002d 01       		.byte	0x1
- 621 002e 08       		.byte	0x8
- 622 002f F1000000 		.4byte	.LASF1
- 623 0033 02       		.uleb128 0x2
- 624 0034 02       		.byte	0x2
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 21
+ 582              		.loc 1 444 0
+ 583 004c 03F0F803 		and	r3, r3, #248
+ 584 0050 1C43     		orrs	r4, r4, r3
+ 585 0052 1470     		strb	r4, [r2]
+ 586 0054 38BD     		pop	{r3, r4, r5, pc}
+ 587              	.LVL26:
+ 588              	.L53:
+ 589 0056 00BF     		.align	2
+ 590              	.L52:
+ 591 0058 9E400040 		.word	1073758366
+ 592              		.cfi_endproc
+ 593              	.LFE9:
+ 594              		.size	blink_clock_SetSourceRegister, .-blink_clock_SetSourceRegister
+ 595              		.text
+ 596              	.Letext0:
+ 597              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
+ 598              		.section	.debug_info,"",%progbits
+ 599              	.Ldebug_info0:
+ 600 0000 7F020000 		.4byte	0x27f
+ 601 0004 0400     		.2byte	0x4
+ 602 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 603 000a 04       		.byte	0x4
+ 604 000b 01       		.uleb128 0x1
+ 605 000c A0020000 		.4byte	.LASF36
+ 606 0010 0C       		.byte	0xc
+ 607 0011 00000000 		.4byte	.LASF37
+ 608 0015 DF000000 		.4byte	.LASF38
+ 609 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 610 001d 00000000 		.4byte	0
+ 611 0021 00000000 		.4byte	.Ldebug_line0
+ 612 0025 02       		.uleb128 0x2
+ 613 0026 01       		.byte	0x1
+ 614 0027 06       		.byte	0x6
+ 615 0028 67010000 		.4byte	.LASF0
+ 616 002c 02       		.uleb128 0x2
+ 617 002d 01       		.byte	0x1
+ 618 002e 08       		.byte	0x8
+ 619 002f 4D010000 		.4byte	.LASF1
+ 620 0033 02       		.uleb128 0x2
+ 621 0034 02       		.byte	0x2
+ 622 0035 05       		.byte	0x5
+ 623 0036 33000000 		.4byte	.LASF2
+ 624 003a 02       		.uleb128 0x2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 21
 
 
- 625 0035 05       		.byte	0x5
- 626 0036 33000000 		.4byte	.LASF2
- 627 003a 02       		.uleb128 0x2
- 628 003b 02       		.byte	0x2
- 629 003c 07       		.byte	0x7
- 630 003d 96010000 		.4byte	.LASF3
- 631 0041 02       		.uleb128 0x2
- 632 0042 04       		.byte	0x4
- 633 0043 05       		.byte	0x5
- 634 0044 E2000000 		.4byte	.LASF4
- 635 0048 02       		.uleb128 0x2
- 636 0049 04       		.byte	0x4
- 637 004a 07       		.byte	0x7
- 638 004b 25020000 		.4byte	.LASF5
- 639 004f 02       		.uleb128 0x2
- 640 0050 08       		.byte	0x8
- 641 0051 05       		.byte	0x5
- 642 0052 D4000000 		.4byte	.LASF6
- 643 0056 02       		.uleb128 0x2
- 644 0057 08       		.byte	0x8
- 645 0058 07       		.byte	0x7
- 646 0059 72010000 		.4byte	.LASF7
- 647 005d 03       		.uleb128 0x3
- 648 005e 04       		.byte	0x4
- 649 005f 05       		.byte	0x5
- 650 0060 696E7400 		.ascii	"int\000"
- 651 0064 02       		.uleb128 0x2
- 652 0065 04       		.byte	0x4
- 653 0066 07       		.byte	0x7
- 654 0067 89010000 		.4byte	.LASF8
- 655 006b 04       		.uleb128 0x4
- 656 006c 8E000000 		.4byte	.LASF9
- 657 0070 02       		.byte	0x2
- 658 0071 E401     		.2byte	0x1e4
- 659 0073 2C000000 		.4byte	0x2c
- 660 0077 04       		.uleb128 0x4
- 661 0078 78000000 		.4byte	.LASF10
- 662 007c 02       		.byte	0x2
- 663 007d E501     		.2byte	0x1e5
- 664 007f 3A000000 		.4byte	0x3a
- 665 0083 02       		.uleb128 0x2
- 666 0084 04       		.byte	0x4
- 667 0085 04       		.byte	0x4
- 668 0086 CE000000 		.4byte	.LASF11
- 669 008a 02       		.uleb128 0x2
- 670 008b 08       		.byte	0x8
- 671 008c 04       		.byte	0x4
- 672 008d 37020000 		.4byte	.LASF12
- 673 0091 02       		.uleb128 0x2
- 674 0092 01       		.byte	0x1
- 675 0093 08       		.byte	0x8
- 676 0094 A9010000 		.4byte	.LASF13
- 677 0098 04       		.uleb128 0x4
- 678 0099 20020000 		.4byte	.LASF14
- 679 009d 02       		.byte	0x2
- 680 009e 8E02     		.2byte	0x28e
- 681 00a0 A4000000 		.4byte	0xa4
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 22
+ 625 003b 02       		.byte	0x2
+ 626 003c 07       		.byte	0x7
+ 627 003d 97010000 		.4byte	.LASF3
+ 628 0041 02       		.uleb128 0x2
+ 629 0042 04       		.byte	0x4
+ 630 0043 05       		.byte	0x5
+ 631 0044 D6000000 		.4byte	.LASF4
+ 632 0048 02       		.uleb128 0x2
+ 633 0049 04       		.byte	0x4
+ 634 004a 07       		.byte	0x7
+ 635 004b 26020000 		.4byte	.LASF5
+ 636 004f 02       		.uleb128 0x2
+ 637 0050 08       		.byte	0x8
+ 638 0051 05       		.byte	0x5
+ 639 0052 C8000000 		.4byte	.LASF6
+ 640 0056 02       		.uleb128 0x2
+ 641 0057 08       		.byte	0x8
+ 642 0058 07       		.byte	0x7
+ 643 0059 73010000 		.4byte	.LASF7
+ 644 005d 03       		.uleb128 0x3
+ 645 005e 04       		.byte	0x4
+ 646 005f 05       		.byte	0x5
+ 647 0060 696E7400 		.ascii	"int\000"
+ 648 0064 02       		.uleb128 0x2
+ 649 0065 04       		.byte	0x4
+ 650 0066 07       		.byte	0x7
+ 651 0067 8A010000 		.4byte	.LASF8
+ 652 006b 04       		.uleb128 0x4
+ 653 006c 8E000000 		.4byte	.LASF9
+ 654 0070 02       		.byte	0x2
+ 655 0071 E401     		.2byte	0x1e4
+ 656 0073 2C000000 		.4byte	0x2c
+ 657 0077 04       		.uleb128 0x4
+ 658 0078 78000000 		.4byte	.LASF10
+ 659 007c 02       		.byte	0x2
+ 660 007d E501     		.2byte	0x1e5
+ 661 007f 3A000000 		.4byte	0x3a
+ 662 0083 02       		.uleb128 0x2
+ 663 0084 04       		.byte	0x4
+ 664 0085 04       		.byte	0x4
+ 665 0086 C2000000 		.4byte	.LASF11
+ 666 008a 02       		.uleb128 0x2
+ 667 008b 08       		.byte	0x8
+ 668 008c 04       		.byte	0x4
+ 669 008d 38020000 		.4byte	.LASF12
+ 670 0091 02       		.uleb128 0x2
+ 671 0092 01       		.byte	0x1
+ 672 0093 08       		.byte	0x8
+ 673 0094 AA010000 		.4byte	.LASF13
+ 674 0098 04       		.uleb128 0x4
+ 675 0099 21020000 		.4byte	.LASF14
+ 676 009d 02       		.byte	0x2
+ 677 009e 8E02     		.2byte	0x28e
+ 678 00a0 A4000000 		.4byte	0xa4
+ 679 00a4 05       		.uleb128 0x5
+ 680 00a5 6B000000 		.4byte	0x6b
+ 681 00a9 04       		.uleb128 0x4
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 22
 
 
- 682 00a4 05       		.uleb128 0x5
- 683 00a5 6B000000 		.4byte	0x6b
- 684 00a9 04       		.uleb128 0x4
- 685 00aa 2D000000 		.4byte	.LASF15
- 686 00ae 02       		.byte	0x2
- 687 00af 8F02     		.2byte	0x28f
- 688 00b1 B5000000 		.4byte	0xb5
- 689 00b5 05       		.uleb128 0x5
- 690 00b6 77000000 		.4byte	0x77
- 691 00ba 06       		.uleb128 0x6
- 692 00bb B0000000 		.4byte	.LASF16
- 693 00bf 01       		.byte	0x1
- 694 00c0 2D       		.byte	0x2d
- 695 00c1 00000000 		.4byte	.LFB0
- 696 00c5 1C000000 		.4byte	.LFE0-.LFB0
- 697 00c9 01       		.uleb128 0x1
- 698 00ca 9C       		.byte	0x9c
- 699 00cb 06       		.uleb128 0x6
- 700 00cc 94000000 		.4byte	.LASF17
- 701 00d0 01       		.byte	0x1
- 702 00d1 47       		.byte	0x47
- 703 00d2 00000000 		.4byte	.LFB1
- 704 00d6 1C000000 		.4byte	.LFE1-.LFB1
- 705 00da 01       		.uleb128 0x1
- 706 00db 9C       		.byte	0x9c
- 707 00dc 07       		.uleb128 0x7
- 708 00dd 2D030000 		.4byte	.LASF18
- 709 00e1 01       		.byte	0x1
- 710 00e2 64       		.byte	0x64
- 711 00e3 00000000 		.4byte	.LFB2
- 712 00e7 6C000000 		.4byte	.LFE2-.LFB2
- 713 00eb 01       		.uleb128 0x1
- 714 00ec 9C       		.byte	0x9c
- 715 00ed 0B010000 		.4byte	0x10b
- 716 00f1 08       		.uleb128 0x8
- 717 00f2 0A000000 		.4byte	.LBB2
- 718 00f6 62000000 		.4byte	.LBE2-.LBB2
- 719 00fa 09       		.uleb128 0x9
- 720 00fb C0010000 		.4byte	.LASF30
- 721 00ff 01       		.byte	0x1
- 722 0100 69       		.byte	0x69
- 723 0101 77000000 		.4byte	0x77
- 724 0105 00000000 		.4byte	.LLST0
- 725 0109 00       		.byte	0
- 726 010a 00       		.byte	0
- 727 010b 07       		.uleb128 0x7
- 728 010c E9010000 		.4byte	.LASF19
- 729 0110 01       		.byte	0x1
- 730 0111 9D       		.byte	0x9d
- 731 0112 00000000 		.4byte	.LFB3
- 732 0116 20000000 		.4byte	.LFE3-.LFB3
- 733 011a 01       		.uleb128 0x1
- 734 011b 9C       		.byte	0x9c
- 735 011c 2E010000 		.4byte	0x12e
- 736 0120 0A       		.uleb128 0xa
- 737 0121 EB000000 		.4byte	.LASF21
- 738 0125 01       		.byte	0x1
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 23
+ 682 00aa 2D000000 		.4byte	.LASF15
+ 683 00ae 02       		.byte	0x2
+ 684 00af 8F02     		.2byte	0x28f
+ 685 00b1 B5000000 		.4byte	0xb5
+ 686 00b5 05       		.uleb128 0x5
+ 687 00b6 77000000 		.4byte	0x77
+ 688 00ba 06       		.uleb128 0x6
+ 689 00bb B0000000 		.4byte	.LASF16
+ 690 00bf 01       		.byte	0x1
+ 691 00c0 2D       		.byte	0x2d
+ 692 00c1 00000000 		.4byte	.LFB0
+ 693 00c5 1C000000 		.4byte	.LFE0-.LFB0
+ 694 00c9 01       		.uleb128 0x1
+ 695 00ca 9C       		.byte	0x9c
+ 696 00cb 06       		.uleb128 0x6
+ 697 00cc 94000000 		.4byte	.LASF17
+ 698 00d0 01       		.byte	0x1
+ 699 00d1 47       		.byte	0x47
+ 700 00d2 00000000 		.4byte	.LFB1
+ 701 00d6 1C000000 		.4byte	.LFE1-.LFB1
+ 702 00da 01       		.uleb128 0x1
+ 703 00db 9C       		.byte	0x9c
+ 704 00dc 07       		.uleb128 0x7
+ 705 00dd 2E030000 		.4byte	.LASF18
+ 706 00e1 01       		.byte	0x1
+ 707 00e2 64       		.byte	0x64
+ 708 00e3 00000000 		.4byte	.LFB2
+ 709 00e7 6C000000 		.4byte	.LFE2-.LFB2
+ 710 00eb 01       		.uleb128 0x1
+ 711 00ec 9C       		.byte	0x9c
+ 712 00ed 0B010000 		.4byte	0x10b
+ 713 00f1 08       		.uleb128 0x8
+ 714 00f2 0A000000 		.4byte	.LBB2
+ 715 00f6 62000000 		.4byte	.LBE2-.LBB2
+ 716 00fa 09       		.uleb128 0x9
+ 717 00fb C1010000 		.4byte	.LASF30
+ 718 00ff 01       		.byte	0x1
+ 719 0100 69       		.byte	0x69
+ 720 0101 77000000 		.4byte	0x77
+ 721 0105 00000000 		.4byte	.LLST0
+ 722 0109 00       		.byte	0
+ 723 010a 00       		.byte	0
+ 724 010b 07       		.uleb128 0x7
+ 725 010c EA010000 		.4byte	.LASF19
+ 726 0110 01       		.byte	0x1
+ 727 0111 9D       		.byte	0x9d
+ 728 0112 00000000 		.4byte	.LFB3
+ 729 0116 20000000 		.4byte	.LFE3-.LFB3
+ 730 011a 01       		.uleb128 0x1
+ 731 011b 9C       		.byte	0x9c
+ 732 011c 2E010000 		.4byte	0x12e
+ 733 0120 0A       		.uleb128 0xa
+ 734 0121 47010000 		.4byte	.LASF21
+ 735 0125 01       		.byte	0x1
+ 736 0126 9D       		.byte	0x9d
+ 737 0127 6B000000 		.4byte	0x6b
+ 738 012b 01       		.uleb128 0x1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 23
 
 
- 739 0126 9D       		.byte	0x9d
- 740 0127 6B000000 		.4byte	0x6b
- 741 012b 01       		.uleb128 0x1
- 742 012c 50       		.byte	0x50
- 743 012d 00       		.byte	0
- 744 012e 0B       		.uleb128 0xb
- 745 012f 3E020000 		.4byte	.LASF24
- 746 0133 01       		.byte	0x1
- 747 0134 2901     		.2byte	0x129
- 748 0136 77000000 		.4byte	0x77
- 749 013a 00000000 		.4byte	.LFB5
- 750 013e 0C000000 		.4byte	.LFE5-.LFB5
- 751 0142 01       		.uleb128 0x1
- 752 0143 9C       		.byte	0x9c
- 753 0144 0C       		.uleb128 0xc
- 754 0145 5C000000 		.4byte	.LASF20
- 755 0149 01       		.byte	0x1
- 756 014a 4C01     		.2byte	0x14c
- 757 014c 00000000 		.4byte	.LFB6
- 758 0150 14000000 		.4byte	.LFE6-.LFB6
- 759 0154 01       		.uleb128 0x1
- 760 0155 9C       		.byte	0x9c
- 761 0156 6B010000 		.4byte	0x16b
- 762 015a 0D       		.uleb128 0xd
- 763 015b FF000000 		.4byte	.LASF22
- 764 015f 01       		.byte	0x1
- 765 0160 4C01     		.2byte	0x14c
- 766 0162 6B000000 		.4byte	0x6b
- 767 0166 13000000 		.4byte	.LLST1
- 768 016a 00       		.byte	0
- 769 016b 0C       		.uleb128 0xc
- 770 016c 81020000 		.4byte	.LASF23
- 771 0170 01       		.byte	0x1
- 772 0171 6F01     		.2byte	0x16f
- 773 0173 00000000 		.4byte	.LFB7
- 774 0177 18000000 		.4byte	.LFE7-.LFB7
- 775 017b 01       		.uleb128 0x1
- 776 017c 9C       		.byte	0x9c
- 777 017d 92010000 		.4byte	0x192
- 778 0181 0D       		.uleb128 0xd
- 779 0182 FF000000 		.4byte	.LASF22
- 780 0186 01       		.byte	0x1
- 781 0187 6F01     		.2byte	0x16f
- 782 0189 6B000000 		.4byte	0x6b
- 783 018d 34000000 		.4byte	.LLST2
- 784 0191 00       		.byte	0
- 785 0192 0B       		.uleb128 0xb
- 786 0193 5D020000 		.4byte	.LASF25
- 787 0197 01       		.byte	0x1
- 788 0198 8401     		.2byte	0x184
- 789 019a 6B000000 		.4byte	0x6b
- 790 019e 00000000 		.4byte	.LFB8
- 791 01a2 10000000 		.4byte	.LFE8-.LFB8
- 792 01a6 01       		.uleb128 0x1
- 793 01a7 9C       		.byte	0x9c
- 794 01a8 0B       		.uleb128 0xb
- 795 01a9 CB010000 		.4byte	.LASF26
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 24
+ 739 012c 50       		.byte	0x50
+ 740 012d 00       		.byte	0
+ 741 012e 0B       		.uleb128 0xb
+ 742 012f 3F020000 		.4byte	.LASF24
+ 743 0133 01       		.byte	0x1
+ 744 0134 2901     		.2byte	0x129
+ 745 0136 77000000 		.4byte	0x77
+ 746 013a 00000000 		.4byte	.LFB5
+ 747 013e 0C000000 		.4byte	.LFE5-.LFB5
+ 748 0142 01       		.uleb128 0x1
+ 749 0143 9C       		.byte	0x9c
+ 750 0144 0C       		.uleb128 0xc
+ 751 0145 5C000000 		.4byte	.LASF20
+ 752 0149 01       		.byte	0x1
+ 753 014a 4C01     		.2byte	0x14c
+ 754 014c 00000000 		.4byte	.LFB6
+ 755 0150 14000000 		.4byte	.LFE6-.LFB6
+ 756 0154 01       		.uleb128 0x1
+ 757 0155 9C       		.byte	0x9c
+ 758 0156 6B010000 		.4byte	0x16b
+ 759 015a 0D       		.uleb128 0xd
+ 760 015b 5B010000 		.4byte	.LASF22
+ 761 015f 01       		.byte	0x1
+ 762 0160 4C01     		.2byte	0x14c
+ 763 0162 6B000000 		.4byte	0x6b
+ 764 0166 13000000 		.4byte	.LLST1
+ 765 016a 00       		.byte	0
+ 766 016b 0C       		.uleb128 0xc
+ 767 016c 82020000 		.4byte	.LASF23
+ 768 0170 01       		.byte	0x1
+ 769 0171 6F01     		.2byte	0x16f
+ 770 0173 00000000 		.4byte	.LFB7
+ 771 0177 18000000 		.4byte	.LFE7-.LFB7
+ 772 017b 01       		.uleb128 0x1
+ 773 017c 9C       		.byte	0x9c
+ 774 017d 92010000 		.4byte	0x192
+ 775 0181 0D       		.uleb128 0xd
+ 776 0182 5B010000 		.4byte	.LASF22
+ 777 0186 01       		.byte	0x1
+ 778 0187 6F01     		.2byte	0x16f
+ 779 0189 6B000000 		.4byte	0x6b
+ 780 018d 34000000 		.4byte	.LLST2
+ 781 0191 00       		.byte	0
+ 782 0192 0B       		.uleb128 0xb
+ 783 0193 5E020000 		.4byte	.LASF25
+ 784 0197 01       		.byte	0x1
+ 785 0198 8401     		.2byte	0x184
+ 786 019a 6B000000 		.4byte	0x6b
+ 787 019e 00000000 		.4byte	.LFB8
+ 788 01a2 10000000 		.4byte	.LFE8-.LFB8
+ 789 01a6 01       		.uleb128 0x1
+ 790 01a7 9C       		.byte	0x9c
+ 791 01a8 0B       		.uleb128 0xb
+ 792 01a9 CC010000 		.4byte	.LASF26
+ 793 01ad 01       		.byte	0x1
+ 794 01ae D001     		.2byte	0x1d0
+ 795 01b0 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 24
 
 
- 796 01ad 01       		.byte	0x1
- 797 01ae D001     		.2byte	0x1d0
- 798 01b0 6B000000 		.4byte	0x6b
- 799 01b4 00000000 		.4byte	.LFB10
- 800 01b8 10000000 		.4byte	.LFE10-.LFB10
- 801 01bc 01       		.uleb128 0x1
- 802 01bd 9C       		.byte	0x9c
- 803 01be 07       		.uleb128 0x7
- 804 01bf 3D000000 		.4byte	.LASF27
- 805 01c3 01       		.byte	0x1
- 806 01c4 C1       		.byte	0xc1
- 807 01c5 00000000 		.4byte	.LFB4
- 808 01c9 DC000000 		.4byte	.LFE4-.LFB4
- 809 01cd 01       		.uleb128 0x1
- 810 01ce 9C       		.byte	0x9c
- 811 01cf 2F020000 		.4byte	0x22f
- 812 01d3 0E       		.uleb128 0xe
- 813 01d4 A5000000 		.4byte	.LASF28
- 814 01d8 01       		.byte	0x1
- 815 01d9 C1       		.byte	0xc1
- 816 01da 77000000 		.4byte	0x77
- 817 01de 55000000 		.4byte	.LLST3
- 818 01e2 0E       		.uleb128 0xe
- 819 01e3 7F000000 		.4byte	.LASF29
- 820 01e7 01       		.byte	0x1
- 821 01e8 C1       		.byte	0xc1
- 822 01e9 6B000000 		.4byte	0x6b
- 823 01ed 76000000 		.4byte	.LLST4
- 824 01f1 09       		.uleb128 0x9
- 825 01f2 79020000 		.4byte	.LASF31
- 826 01f6 01       		.byte	0x1
- 827 01f7 C4       		.byte	0xc4
- 828 01f8 6B000000 		.4byte	0x6b
- 829 01fc 97000000 		.4byte	.LLST5
- 830 0200 09       		.uleb128 0x9
- 831 0201 B8010000 		.4byte	.LASF32
- 832 0205 01       		.byte	0x1
- 833 0206 C6       		.byte	0xc6
- 834 0207 6B000000 		.4byte	0x6b
- 835 020b E1000000 		.4byte	.LLST6
- 836 020f 0F       		.uleb128 0xf
- 837 0210 C0010000 		.4byte	.LASF30
- 838 0214 01       		.byte	0x1
- 839 0215 C7       		.byte	0xc7
- 840 0216 77000000 		.4byte	0x77
- 841 021a 01       		.uleb128 0x1
- 842 021b 50       		.byte	0x50
- 843 021c 10       		.uleb128 0x10
- 844 021d 0A000000 		.4byte	.LVL8
- 845 0221 A8010000 		.4byte	0x1a8
- 846 0225 10       		.uleb128 0x10
- 847 0226 10000000 		.4byte	.LVL10
- 848 022a 2E010000 		.4byte	0x12e
- 849 022e 00       		.byte	0
- 850 022f 11       		.uleb128 0x11
- 851 0230 02020000 		.4byte	.LASF39
- 852 0234 01       		.byte	0x1
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 25
+ 796 01b4 00000000 		.4byte	.LFB10
+ 797 01b8 10000000 		.4byte	.LFE10-.LFB10
+ 798 01bc 01       		.uleb128 0x1
+ 799 01bd 9C       		.byte	0x9c
+ 800 01be 07       		.uleb128 0x7
+ 801 01bf 3D000000 		.4byte	.LASF27
+ 802 01c3 01       		.byte	0x1
+ 803 01c4 C1       		.byte	0xc1
+ 804 01c5 00000000 		.4byte	.LFB4
+ 805 01c9 DC000000 		.4byte	.LFE4-.LFB4
+ 806 01cd 01       		.uleb128 0x1
+ 807 01ce 9C       		.byte	0x9c
+ 808 01cf 2F020000 		.4byte	0x22f
+ 809 01d3 0E       		.uleb128 0xe
+ 810 01d4 A5000000 		.4byte	.LASF28
+ 811 01d8 01       		.byte	0x1
+ 812 01d9 C1       		.byte	0xc1
+ 813 01da 77000000 		.4byte	0x77
+ 814 01de 55000000 		.4byte	.LLST3
+ 815 01e2 0E       		.uleb128 0xe
+ 816 01e3 7F000000 		.4byte	.LASF29
+ 817 01e7 01       		.byte	0x1
+ 818 01e8 C1       		.byte	0xc1
+ 819 01e9 6B000000 		.4byte	0x6b
+ 820 01ed 76000000 		.4byte	.LLST4
+ 821 01f1 09       		.uleb128 0x9
+ 822 01f2 7A020000 		.4byte	.LASF31
+ 823 01f6 01       		.byte	0x1
+ 824 01f7 C4       		.byte	0xc4
+ 825 01f8 6B000000 		.4byte	0x6b
+ 826 01fc 97000000 		.4byte	.LLST5
+ 827 0200 09       		.uleb128 0x9
+ 828 0201 B9010000 		.4byte	.LASF32
+ 829 0205 01       		.byte	0x1
+ 830 0206 C6       		.byte	0xc6
+ 831 0207 6B000000 		.4byte	0x6b
+ 832 020b CB000000 		.4byte	.LLST6
+ 833 020f 0F       		.uleb128 0xf
+ 834 0210 C1010000 		.4byte	.LASF30
+ 835 0214 01       		.byte	0x1
+ 836 0215 C7       		.byte	0xc7
+ 837 0216 77000000 		.4byte	0x77
+ 838 021a 01       		.uleb128 0x1
+ 839 021b 50       		.byte	0x50
+ 840 021c 10       		.uleb128 0x10
+ 841 021d 0A000000 		.4byte	.LVL8
+ 842 0221 A8010000 		.4byte	0x1a8
+ 843 0225 10       		.uleb128 0x10
+ 844 0226 10000000 		.4byte	.LVL10
+ 845 022a 2E010000 		.4byte	0x12e
+ 846 022e 00       		.byte	0
+ 847 022f 11       		.uleb128 0x11
+ 848 0230 03020000 		.4byte	.LASF39
+ 849 0234 01       		.byte	0x1
+ 850 0235 A301     		.2byte	0x1a3
+ 851 0237 00000000 		.4byte	.LFB9
+ 852 023b 5C000000 		.4byte	.LFE9-.LFB9
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 25
 
 
- 853 0235 A301     		.2byte	0x1a3
- 854 0237 00000000 		.4byte	.LFB9
- 855 023b 5C000000 		.4byte	.LFE9-.LFB9
- 856 023f 01       		.uleb128 0x1
- 857 0240 9C       		.byte	0x9c
- 858 0241 0D       		.uleb128 0xd
- 859 0242 AE010000 		.4byte	.LASF33
- 860 0246 01       		.byte	0x1
- 861 0247 A301     		.2byte	0x1a3
- 862 0249 6B000000 		.4byte	0x6b
- 863 024d F4000000 		.4byte	.LLST7
- 864 0251 12       		.uleb128 0x12
- 865 0252 25000000 		.4byte	.LASF34
- 866 0256 01       		.byte	0x1
- 867 0257 A501     		.2byte	0x1a5
- 868 0259 77000000 		.4byte	0x77
- 869 025d 15010000 		.4byte	.LLST8
- 870 0261 13       		.uleb128 0x13
- 871 0262 87000000 		.4byte	.LASF35
- 872 0266 01       		.byte	0x1
- 873 0267 A601     		.2byte	0x1a6
- 874 0269 6B000000 		.4byte	0x6b
- 875 026d 01       		.uleb128 0x1
- 876 026e 50       		.byte	0x50
- 877 026f 10       		.uleb128 0x10
- 878 0270 08000000 		.4byte	.LVL24
- 879 0274 2E010000 		.4byte	0x12e
- 880 0278 10       		.uleb128 0x10
- 881 0279 0E000000 		.4byte	.LVL26
- 882 027d A8010000 		.4byte	0x1a8
- 883 0281 00       		.byte	0
- 884 0282 00       		.byte	0
- 885              		.section	.debug_abbrev,"",%progbits
- 886              	.Ldebug_abbrev0:
- 887 0000 01       		.uleb128 0x1
- 888 0001 11       		.uleb128 0x11
- 889 0002 01       		.byte	0x1
- 890 0003 25       		.uleb128 0x25
- 891 0004 0E       		.uleb128 0xe
- 892 0005 13       		.uleb128 0x13
- 893 0006 0B       		.uleb128 0xb
- 894 0007 03       		.uleb128 0x3
- 895 0008 0E       		.uleb128 0xe
- 896 0009 1B       		.uleb128 0x1b
- 897 000a 0E       		.uleb128 0xe
- 898 000b 55       		.uleb128 0x55
- 899 000c 17       		.uleb128 0x17
- 900 000d 11       		.uleb128 0x11
- 901 000e 01       		.uleb128 0x1
- 902 000f 10       		.uleb128 0x10
- 903 0010 17       		.uleb128 0x17
- 904 0011 00       		.byte	0
- 905 0012 00       		.byte	0
- 906 0013 02       		.uleb128 0x2
- 907 0014 24       		.uleb128 0x24
- 908 0015 00       		.byte	0
- 909 0016 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 26
+ 853 023f 01       		.uleb128 0x1
+ 854 0240 9C       		.byte	0x9c
+ 855 0241 0D       		.uleb128 0xd
+ 856 0242 AF010000 		.4byte	.LASF33
+ 857 0246 01       		.byte	0x1
+ 858 0247 A301     		.2byte	0x1a3
+ 859 0249 6B000000 		.4byte	0x6b
+ 860 024d DE000000 		.4byte	.LLST7
+ 861 0251 12       		.uleb128 0x12
+ 862 0252 25000000 		.4byte	.LASF34
+ 863 0256 01       		.byte	0x1
+ 864 0257 A501     		.2byte	0x1a5
+ 865 0259 77000000 		.4byte	0x77
+ 866 025d FF000000 		.4byte	.LLST8
+ 867 0261 13       		.uleb128 0x13
+ 868 0262 87000000 		.4byte	.LASF35
+ 869 0266 01       		.byte	0x1
+ 870 0267 A601     		.2byte	0x1a6
+ 871 0269 6B000000 		.4byte	0x6b
+ 872 026d 01       		.uleb128 0x1
+ 873 026e 50       		.byte	0x50
+ 874 026f 10       		.uleb128 0x10
+ 875 0270 08000000 		.4byte	.LVL21
+ 876 0274 2E010000 		.4byte	0x12e
+ 877 0278 10       		.uleb128 0x10
+ 878 0279 0E000000 		.4byte	.LVL23
+ 879 027d A8010000 		.4byte	0x1a8
+ 880 0281 00       		.byte	0
+ 881 0282 00       		.byte	0
+ 882              		.section	.debug_abbrev,"",%progbits
+ 883              	.Ldebug_abbrev0:
+ 884 0000 01       		.uleb128 0x1
+ 885 0001 11       		.uleb128 0x11
+ 886 0002 01       		.byte	0x1
+ 887 0003 25       		.uleb128 0x25
+ 888 0004 0E       		.uleb128 0xe
+ 889 0005 13       		.uleb128 0x13
+ 890 0006 0B       		.uleb128 0xb
+ 891 0007 03       		.uleb128 0x3
+ 892 0008 0E       		.uleb128 0xe
+ 893 0009 1B       		.uleb128 0x1b
+ 894 000a 0E       		.uleb128 0xe
+ 895 000b 55       		.uleb128 0x55
+ 896 000c 17       		.uleb128 0x17
+ 897 000d 11       		.uleb128 0x11
+ 898 000e 01       		.uleb128 0x1
+ 899 000f 10       		.uleb128 0x10
+ 900 0010 17       		.uleb128 0x17
+ 901 0011 00       		.byte	0
+ 902 0012 00       		.byte	0
+ 903 0013 02       		.uleb128 0x2
+ 904 0014 24       		.uleb128 0x24
+ 905 0015 00       		.byte	0
+ 906 0016 0B       		.uleb128 0xb
+ 907 0017 0B       		.uleb128 0xb
+ 908 0018 3E       		.uleb128 0x3e
+ 909 0019 0B       		.uleb128 0xb
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 26
 
 
- 910 0017 0B       		.uleb128 0xb
- 911 0018 3E       		.uleb128 0x3e
- 912 0019 0B       		.uleb128 0xb
- 913 001a 03       		.uleb128 0x3
- 914 001b 0E       		.uleb128 0xe
- 915 001c 00       		.byte	0
- 916 001d 00       		.byte	0
- 917 001e 03       		.uleb128 0x3
- 918 001f 24       		.uleb128 0x24
- 919 0020 00       		.byte	0
- 920 0021 0B       		.uleb128 0xb
- 921 0022 0B       		.uleb128 0xb
- 922 0023 3E       		.uleb128 0x3e
- 923 0024 0B       		.uleb128 0xb
- 924 0025 03       		.uleb128 0x3
- 925 0026 08       		.uleb128 0x8
- 926 0027 00       		.byte	0
- 927 0028 00       		.byte	0
- 928 0029 04       		.uleb128 0x4
- 929 002a 16       		.uleb128 0x16
- 930 002b 00       		.byte	0
- 931 002c 03       		.uleb128 0x3
- 932 002d 0E       		.uleb128 0xe
- 933 002e 3A       		.uleb128 0x3a
- 934 002f 0B       		.uleb128 0xb
- 935 0030 3B       		.uleb128 0x3b
- 936 0031 05       		.uleb128 0x5
- 937 0032 49       		.uleb128 0x49
- 938 0033 13       		.uleb128 0x13
- 939 0034 00       		.byte	0
- 940 0035 00       		.byte	0
- 941 0036 05       		.uleb128 0x5
- 942 0037 35       		.uleb128 0x35
- 943 0038 00       		.byte	0
- 944 0039 49       		.uleb128 0x49
- 945 003a 13       		.uleb128 0x13
- 946 003b 00       		.byte	0
- 947 003c 00       		.byte	0
- 948 003d 06       		.uleb128 0x6
- 949 003e 2E       		.uleb128 0x2e
- 950 003f 00       		.byte	0
- 951 0040 3F       		.uleb128 0x3f
- 952 0041 19       		.uleb128 0x19
- 953 0042 03       		.uleb128 0x3
- 954 0043 0E       		.uleb128 0xe
- 955 0044 3A       		.uleb128 0x3a
- 956 0045 0B       		.uleb128 0xb
- 957 0046 3B       		.uleb128 0x3b
- 958 0047 0B       		.uleb128 0xb
- 959 0048 27       		.uleb128 0x27
- 960 0049 19       		.uleb128 0x19
- 961 004a 11       		.uleb128 0x11
- 962 004b 01       		.uleb128 0x1
- 963 004c 12       		.uleb128 0x12
- 964 004d 06       		.uleb128 0x6
- 965 004e 40       		.uleb128 0x40
- 966 004f 18       		.uleb128 0x18
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 27
+ 910 001a 03       		.uleb128 0x3
+ 911 001b 0E       		.uleb128 0xe
+ 912 001c 00       		.byte	0
+ 913 001d 00       		.byte	0
+ 914 001e 03       		.uleb128 0x3
+ 915 001f 24       		.uleb128 0x24
+ 916 0020 00       		.byte	0
+ 917 0021 0B       		.uleb128 0xb
+ 918 0022 0B       		.uleb128 0xb
+ 919 0023 3E       		.uleb128 0x3e
+ 920 0024 0B       		.uleb128 0xb
+ 921 0025 03       		.uleb128 0x3
+ 922 0026 08       		.uleb128 0x8
+ 923 0027 00       		.byte	0
+ 924 0028 00       		.byte	0
+ 925 0029 04       		.uleb128 0x4
+ 926 002a 16       		.uleb128 0x16
+ 927 002b 00       		.byte	0
+ 928 002c 03       		.uleb128 0x3
+ 929 002d 0E       		.uleb128 0xe
+ 930 002e 3A       		.uleb128 0x3a
+ 931 002f 0B       		.uleb128 0xb
+ 932 0030 3B       		.uleb128 0x3b
+ 933 0031 05       		.uleb128 0x5
+ 934 0032 49       		.uleb128 0x49
+ 935 0033 13       		.uleb128 0x13
+ 936 0034 00       		.byte	0
+ 937 0035 00       		.byte	0
+ 938 0036 05       		.uleb128 0x5
+ 939 0037 35       		.uleb128 0x35
+ 940 0038 00       		.byte	0
+ 941 0039 49       		.uleb128 0x49
+ 942 003a 13       		.uleb128 0x13
+ 943 003b 00       		.byte	0
+ 944 003c 00       		.byte	0
+ 945 003d 06       		.uleb128 0x6
+ 946 003e 2E       		.uleb128 0x2e
+ 947 003f 00       		.byte	0
+ 948 0040 3F       		.uleb128 0x3f
+ 949 0041 19       		.uleb128 0x19
+ 950 0042 03       		.uleb128 0x3
+ 951 0043 0E       		.uleb128 0xe
+ 952 0044 3A       		.uleb128 0x3a
+ 953 0045 0B       		.uleb128 0xb
+ 954 0046 3B       		.uleb128 0x3b
+ 955 0047 0B       		.uleb128 0xb
+ 956 0048 27       		.uleb128 0x27
+ 957 0049 19       		.uleb128 0x19
+ 958 004a 11       		.uleb128 0x11
+ 959 004b 01       		.uleb128 0x1
+ 960 004c 12       		.uleb128 0x12
+ 961 004d 06       		.uleb128 0x6
+ 962 004e 40       		.uleb128 0x40
+ 963 004f 18       		.uleb128 0x18
+ 964 0050 9742     		.uleb128 0x2117
+ 965 0052 19       		.uleb128 0x19
+ 966 0053 00       		.byte	0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 27
 
 
- 967 0050 9742     		.uleb128 0x2117
- 968 0052 19       		.uleb128 0x19
- 969 0053 00       		.byte	0
- 970 0054 00       		.byte	0
- 971 0055 07       		.uleb128 0x7
- 972 0056 2E       		.uleb128 0x2e
- 973 0057 01       		.byte	0x1
- 974 0058 3F       		.uleb128 0x3f
- 975 0059 19       		.uleb128 0x19
- 976 005a 03       		.uleb128 0x3
- 977 005b 0E       		.uleb128 0xe
- 978 005c 3A       		.uleb128 0x3a
- 979 005d 0B       		.uleb128 0xb
- 980 005e 3B       		.uleb128 0x3b
- 981 005f 0B       		.uleb128 0xb
- 982 0060 27       		.uleb128 0x27
- 983 0061 19       		.uleb128 0x19
- 984 0062 11       		.uleb128 0x11
- 985 0063 01       		.uleb128 0x1
- 986 0064 12       		.uleb128 0x12
- 987 0065 06       		.uleb128 0x6
- 988 0066 40       		.uleb128 0x40
- 989 0067 18       		.uleb128 0x18
- 990 0068 9742     		.uleb128 0x2117
- 991 006a 19       		.uleb128 0x19
- 992 006b 01       		.uleb128 0x1
- 993 006c 13       		.uleb128 0x13
- 994 006d 00       		.byte	0
- 995 006e 00       		.byte	0
- 996 006f 08       		.uleb128 0x8
- 997 0070 0B       		.uleb128 0xb
- 998 0071 01       		.byte	0x1
- 999 0072 11       		.uleb128 0x11
- 1000 0073 01       		.uleb128 0x1
- 1001 0074 12       		.uleb128 0x12
- 1002 0075 06       		.uleb128 0x6
- 1003 0076 00       		.byte	0
- 1004 0077 00       		.byte	0
- 1005 0078 09       		.uleb128 0x9
- 1006 0079 34       		.uleb128 0x34
- 1007 007a 00       		.byte	0
- 1008 007b 03       		.uleb128 0x3
- 1009 007c 0E       		.uleb128 0xe
- 1010 007d 3A       		.uleb128 0x3a
- 1011 007e 0B       		.uleb128 0xb
- 1012 007f 3B       		.uleb128 0x3b
- 1013 0080 0B       		.uleb128 0xb
- 1014 0081 49       		.uleb128 0x49
- 1015 0082 13       		.uleb128 0x13
- 1016 0083 02       		.uleb128 0x2
- 1017 0084 17       		.uleb128 0x17
- 1018 0085 00       		.byte	0
- 1019 0086 00       		.byte	0
- 1020 0087 0A       		.uleb128 0xa
- 1021 0088 05       		.uleb128 0x5
- 1022 0089 00       		.byte	0
- 1023 008a 03       		.uleb128 0x3
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 28
+ 967 0054 00       		.byte	0
+ 968 0055 07       		.uleb128 0x7
+ 969 0056 2E       		.uleb128 0x2e
+ 970 0057 01       		.byte	0x1
+ 971 0058 3F       		.uleb128 0x3f
+ 972 0059 19       		.uleb128 0x19
+ 973 005a 03       		.uleb128 0x3
+ 974 005b 0E       		.uleb128 0xe
+ 975 005c 3A       		.uleb128 0x3a
+ 976 005d 0B       		.uleb128 0xb
+ 977 005e 3B       		.uleb128 0x3b
+ 978 005f 0B       		.uleb128 0xb
+ 979 0060 27       		.uleb128 0x27
+ 980 0061 19       		.uleb128 0x19
+ 981 0062 11       		.uleb128 0x11
+ 982 0063 01       		.uleb128 0x1
+ 983 0064 12       		.uleb128 0x12
+ 984 0065 06       		.uleb128 0x6
+ 985 0066 40       		.uleb128 0x40
+ 986 0067 18       		.uleb128 0x18
+ 987 0068 9742     		.uleb128 0x2117
+ 988 006a 19       		.uleb128 0x19
+ 989 006b 01       		.uleb128 0x1
+ 990 006c 13       		.uleb128 0x13
+ 991 006d 00       		.byte	0
+ 992 006e 00       		.byte	0
+ 993 006f 08       		.uleb128 0x8
+ 994 0070 0B       		.uleb128 0xb
+ 995 0071 01       		.byte	0x1
+ 996 0072 11       		.uleb128 0x11
+ 997 0073 01       		.uleb128 0x1
+ 998 0074 12       		.uleb128 0x12
+ 999 0075 06       		.uleb128 0x6
+ 1000 0076 00       		.byte	0
+ 1001 0077 00       		.byte	0
+ 1002 0078 09       		.uleb128 0x9
+ 1003 0079 34       		.uleb128 0x34
+ 1004 007a 00       		.byte	0
+ 1005 007b 03       		.uleb128 0x3
+ 1006 007c 0E       		.uleb128 0xe
+ 1007 007d 3A       		.uleb128 0x3a
+ 1008 007e 0B       		.uleb128 0xb
+ 1009 007f 3B       		.uleb128 0x3b
+ 1010 0080 0B       		.uleb128 0xb
+ 1011 0081 49       		.uleb128 0x49
+ 1012 0082 13       		.uleb128 0x13
+ 1013 0083 02       		.uleb128 0x2
+ 1014 0084 17       		.uleb128 0x17
+ 1015 0085 00       		.byte	0
+ 1016 0086 00       		.byte	0
+ 1017 0087 0A       		.uleb128 0xa
+ 1018 0088 05       		.uleb128 0x5
+ 1019 0089 00       		.byte	0
+ 1020 008a 03       		.uleb128 0x3
+ 1021 008b 0E       		.uleb128 0xe
+ 1022 008c 3A       		.uleb128 0x3a
+ 1023 008d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 28
 
 
- 1024 008b 0E       		.uleb128 0xe
- 1025 008c 3A       		.uleb128 0x3a
- 1026 008d 0B       		.uleb128 0xb
- 1027 008e 3B       		.uleb128 0x3b
- 1028 008f 0B       		.uleb128 0xb
- 1029 0090 49       		.uleb128 0x49
- 1030 0091 13       		.uleb128 0x13
- 1031 0092 02       		.uleb128 0x2
- 1032 0093 18       		.uleb128 0x18
- 1033 0094 00       		.byte	0
- 1034 0095 00       		.byte	0
- 1035 0096 0B       		.uleb128 0xb
- 1036 0097 2E       		.uleb128 0x2e
- 1037 0098 00       		.byte	0
- 1038 0099 3F       		.uleb128 0x3f
- 1039 009a 19       		.uleb128 0x19
- 1040 009b 03       		.uleb128 0x3
- 1041 009c 0E       		.uleb128 0xe
- 1042 009d 3A       		.uleb128 0x3a
- 1043 009e 0B       		.uleb128 0xb
- 1044 009f 3B       		.uleb128 0x3b
- 1045 00a0 05       		.uleb128 0x5
- 1046 00a1 27       		.uleb128 0x27
- 1047 00a2 19       		.uleb128 0x19
- 1048 00a3 49       		.uleb128 0x49
- 1049 00a4 13       		.uleb128 0x13
- 1050 00a5 11       		.uleb128 0x11
- 1051 00a6 01       		.uleb128 0x1
- 1052 00a7 12       		.uleb128 0x12
- 1053 00a8 06       		.uleb128 0x6
- 1054 00a9 40       		.uleb128 0x40
- 1055 00aa 18       		.uleb128 0x18
- 1056 00ab 9742     		.uleb128 0x2117
- 1057 00ad 19       		.uleb128 0x19
- 1058 00ae 00       		.byte	0
- 1059 00af 00       		.byte	0
- 1060 00b0 0C       		.uleb128 0xc
- 1061 00b1 2E       		.uleb128 0x2e
- 1062 00b2 01       		.byte	0x1
- 1063 00b3 3F       		.uleb128 0x3f
- 1064 00b4 19       		.uleb128 0x19
- 1065 00b5 03       		.uleb128 0x3
- 1066 00b6 0E       		.uleb128 0xe
- 1067 00b7 3A       		.uleb128 0x3a
- 1068 00b8 0B       		.uleb128 0xb
- 1069 00b9 3B       		.uleb128 0x3b
- 1070 00ba 05       		.uleb128 0x5
- 1071 00bb 27       		.uleb128 0x27
- 1072 00bc 19       		.uleb128 0x19
- 1073 00bd 11       		.uleb128 0x11
- 1074 00be 01       		.uleb128 0x1
- 1075 00bf 12       		.uleb128 0x12
- 1076 00c0 06       		.uleb128 0x6
- 1077 00c1 40       		.uleb128 0x40
- 1078 00c2 18       		.uleb128 0x18
- 1079 00c3 9742     		.uleb128 0x2117
- 1080 00c5 19       		.uleb128 0x19
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 29
+ 1024 008e 3B       		.uleb128 0x3b
+ 1025 008f 0B       		.uleb128 0xb
+ 1026 0090 49       		.uleb128 0x49
+ 1027 0091 13       		.uleb128 0x13
+ 1028 0092 02       		.uleb128 0x2
+ 1029 0093 18       		.uleb128 0x18
+ 1030 0094 00       		.byte	0
+ 1031 0095 00       		.byte	0
+ 1032 0096 0B       		.uleb128 0xb
+ 1033 0097 2E       		.uleb128 0x2e
+ 1034 0098 00       		.byte	0
+ 1035 0099 3F       		.uleb128 0x3f
+ 1036 009a 19       		.uleb128 0x19
+ 1037 009b 03       		.uleb128 0x3
+ 1038 009c 0E       		.uleb128 0xe
+ 1039 009d 3A       		.uleb128 0x3a
+ 1040 009e 0B       		.uleb128 0xb
+ 1041 009f 3B       		.uleb128 0x3b
+ 1042 00a0 05       		.uleb128 0x5
+ 1043 00a1 27       		.uleb128 0x27
+ 1044 00a2 19       		.uleb128 0x19
+ 1045 00a3 49       		.uleb128 0x49
+ 1046 00a4 13       		.uleb128 0x13
+ 1047 00a5 11       		.uleb128 0x11
+ 1048 00a6 01       		.uleb128 0x1
+ 1049 00a7 12       		.uleb128 0x12
+ 1050 00a8 06       		.uleb128 0x6
+ 1051 00a9 40       		.uleb128 0x40
+ 1052 00aa 18       		.uleb128 0x18
+ 1053 00ab 9742     		.uleb128 0x2117
+ 1054 00ad 19       		.uleb128 0x19
+ 1055 00ae 00       		.byte	0
+ 1056 00af 00       		.byte	0
+ 1057 00b0 0C       		.uleb128 0xc
+ 1058 00b1 2E       		.uleb128 0x2e
+ 1059 00b2 01       		.byte	0x1
+ 1060 00b3 3F       		.uleb128 0x3f
+ 1061 00b4 19       		.uleb128 0x19
+ 1062 00b5 03       		.uleb128 0x3
+ 1063 00b6 0E       		.uleb128 0xe
+ 1064 00b7 3A       		.uleb128 0x3a
+ 1065 00b8 0B       		.uleb128 0xb
+ 1066 00b9 3B       		.uleb128 0x3b
+ 1067 00ba 05       		.uleb128 0x5
+ 1068 00bb 27       		.uleb128 0x27
+ 1069 00bc 19       		.uleb128 0x19
+ 1070 00bd 11       		.uleb128 0x11
+ 1071 00be 01       		.uleb128 0x1
+ 1072 00bf 12       		.uleb128 0x12
+ 1073 00c0 06       		.uleb128 0x6
+ 1074 00c1 40       		.uleb128 0x40
+ 1075 00c2 18       		.uleb128 0x18
+ 1076 00c3 9742     		.uleb128 0x2117
+ 1077 00c5 19       		.uleb128 0x19
+ 1078 00c6 01       		.uleb128 0x1
+ 1079 00c7 13       		.uleb128 0x13
+ 1080 00c8 00       		.byte	0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 29
 
 
- 1081 00c6 01       		.uleb128 0x1
- 1082 00c7 13       		.uleb128 0x13
- 1083 00c8 00       		.byte	0
- 1084 00c9 00       		.byte	0
- 1085 00ca 0D       		.uleb128 0xd
- 1086 00cb 05       		.uleb128 0x5
- 1087 00cc 00       		.byte	0
- 1088 00cd 03       		.uleb128 0x3
- 1089 00ce 0E       		.uleb128 0xe
- 1090 00cf 3A       		.uleb128 0x3a
- 1091 00d0 0B       		.uleb128 0xb
- 1092 00d1 3B       		.uleb128 0x3b
- 1093 00d2 05       		.uleb128 0x5
- 1094 00d3 49       		.uleb128 0x49
- 1095 00d4 13       		.uleb128 0x13
- 1096 00d5 02       		.uleb128 0x2
- 1097 00d6 17       		.uleb128 0x17
- 1098 00d7 00       		.byte	0
- 1099 00d8 00       		.byte	0
- 1100 00d9 0E       		.uleb128 0xe
- 1101 00da 05       		.uleb128 0x5
- 1102 00db 00       		.byte	0
- 1103 00dc 03       		.uleb128 0x3
- 1104 00dd 0E       		.uleb128 0xe
- 1105 00de 3A       		.uleb128 0x3a
- 1106 00df 0B       		.uleb128 0xb
- 1107 00e0 3B       		.uleb128 0x3b
- 1108 00e1 0B       		.uleb128 0xb
- 1109 00e2 49       		.uleb128 0x49
- 1110 00e3 13       		.uleb128 0x13
- 1111 00e4 02       		.uleb128 0x2
- 1112 00e5 17       		.uleb128 0x17
- 1113 00e6 00       		.byte	0
- 1114 00e7 00       		.byte	0
- 1115 00e8 0F       		.uleb128 0xf
- 1116 00e9 34       		.uleb128 0x34
- 1117 00ea 00       		.byte	0
- 1118 00eb 03       		.uleb128 0x3
- 1119 00ec 0E       		.uleb128 0xe
- 1120 00ed 3A       		.uleb128 0x3a
- 1121 00ee 0B       		.uleb128 0xb
- 1122 00ef 3B       		.uleb128 0x3b
- 1123 00f0 0B       		.uleb128 0xb
- 1124 00f1 49       		.uleb128 0x49
- 1125 00f2 13       		.uleb128 0x13
- 1126 00f3 02       		.uleb128 0x2
- 1127 00f4 18       		.uleb128 0x18
- 1128 00f5 00       		.byte	0
- 1129 00f6 00       		.byte	0
- 1130 00f7 10       		.uleb128 0x10
- 1131 00f8 898201   		.uleb128 0x4109
- 1132 00fb 00       		.byte	0
- 1133 00fc 11       		.uleb128 0x11
- 1134 00fd 01       		.uleb128 0x1
- 1135 00fe 31       		.uleb128 0x31
- 1136 00ff 13       		.uleb128 0x13
- 1137 0100 00       		.byte	0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 30
+ 1081 00c9 00       		.byte	0
+ 1082 00ca 0D       		.uleb128 0xd
+ 1083 00cb 05       		.uleb128 0x5
+ 1084 00cc 00       		.byte	0
+ 1085 00cd 03       		.uleb128 0x3
+ 1086 00ce 0E       		.uleb128 0xe
+ 1087 00cf 3A       		.uleb128 0x3a
+ 1088 00d0 0B       		.uleb128 0xb
+ 1089 00d1 3B       		.uleb128 0x3b
+ 1090 00d2 05       		.uleb128 0x5
+ 1091 00d3 49       		.uleb128 0x49
+ 1092 00d4 13       		.uleb128 0x13
+ 1093 00d5 02       		.uleb128 0x2
+ 1094 00d6 17       		.uleb128 0x17
+ 1095 00d7 00       		.byte	0
+ 1096 00d8 00       		.byte	0
+ 1097 00d9 0E       		.uleb128 0xe
+ 1098 00da 05       		.uleb128 0x5
+ 1099 00db 00       		.byte	0
+ 1100 00dc 03       		.uleb128 0x3
+ 1101 00dd 0E       		.uleb128 0xe
+ 1102 00de 3A       		.uleb128 0x3a
+ 1103 00df 0B       		.uleb128 0xb
+ 1104 00e0 3B       		.uleb128 0x3b
+ 1105 00e1 0B       		.uleb128 0xb
+ 1106 00e2 49       		.uleb128 0x49
+ 1107 00e3 13       		.uleb128 0x13
+ 1108 00e4 02       		.uleb128 0x2
+ 1109 00e5 17       		.uleb128 0x17
+ 1110 00e6 00       		.byte	0
+ 1111 00e7 00       		.byte	0
+ 1112 00e8 0F       		.uleb128 0xf
+ 1113 00e9 34       		.uleb128 0x34
+ 1114 00ea 00       		.byte	0
+ 1115 00eb 03       		.uleb128 0x3
+ 1116 00ec 0E       		.uleb128 0xe
+ 1117 00ed 3A       		.uleb128 0x3a
+ 1118 00ee 0B       		.uleb128 0xb
+ 1119 00ef 3B       		.uleb128 0x3b
+ 1120 00f0 0B       		.uleb128 0xb
+ 1121 00f1 49       		.uleb128 0x49
+ 1122 00f2 13       		.uleb128 0x13
+ 1123 00f3 02       		.uleb128 0x2
+ 1124 00f4 18       		.uleb128 0x18
+ 1125 00f5 00       		.byte	0
+ 1126 00f6 00       		.byte	0
+ 1127 00f7 10       		.uleb128 0x10
+ 1128 00f8 898201   		.uleb128 0x4109
+ 1129 00fb 00       		.byte	0
+ 1130 00fc 11       		.uleb128 0x11
+ 1131 00fd 01       		.uleb128 0x1
+ 1132 00fe 31       		.uleb128 0x31
+ 1133 00ff 13       		.uleb128 0x13
+ 1134 0100 00       		.byte	0
+ 1135 0101 00       		.byte	0
+ 1136 0102 11       		.uleb128 0x11
+ 1137 0103 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 30
 
 
- 1138 0101 00       		.byte	0
- 1139 0102 11       		.uleb128 0x11
- 1140 0103 2E       		.uleb128 0x2e
- 1141 0104 01       		.byte	0x1
- 1142 0105 3F       		.uleb128 0x3f
- 1143 0106 19       		.uleb128 0x19
- 1144 0107 03       		.uleb128 0x3
- 1145 0108 0E       		.uleb128 0xe
- 1146 0109 3A       		.uleb128 0x3a
- 1147 010a 0B       		.uleb128 0xb
- 1148 010b 3B       		.uleb128 0x3b
- 1149 010c 05       		.uleb128 0x5
- 1150 010d 27       		.uleb128 0x27
- 1151 010e 19       		.uleb128 0x19
- 1152 010f 11       		.uleb128 0x11
- 1153 0110 01       		.uleb128 0x1
- 1154 0111 12       		.uleb128 0x12
- 1155 0112 06       		.uleb128 0x6
- 1156 0113 40       		.uleb128 0x40
- 1157 0114 18       		.uleb128 0x18
- 1158 0115 9742     		.uleb128 0x2117
- 1159 0117 19       		.uleb128 0x19
- 1160 0118 00       		.byte	0
- 1161 0119 00       		.byte	0
- 1162 011a 12       		.uleb128 0x12
- 1163 011b 34       		.uleb128 0x34
- 1164 011c 00       		.byte	0
- 1165 011d 03       		.uleb128 0x3
- 1166 011e 0E       		.uleb128 0xe
- 1167 011f 3A       		.uleb128 0x3a
- 1168 0120 0B       		.uleb128 0xb
- 1169 0121 3B       		.uleb128 0x3b
- 1170 0122 05       		.uleb128 0x5
- 1171 0123 49       		.uleb128 0x49
- 1172 0124 13       		.uleb128 0x13
- 1173 0125 02       		.uleb128 0x2
- 1174 0126 17       		.uleb128 0x17
- 1175 0127 00       		.byte	0
- 1176 0128 00       		.byte	0
- 1177 0129 13       		.uleb128 0x13
- 1178 012a 34       		.uleb128 0x34
- 1179 012b 00       		.byte	0
- 1180 012c 03       		.uleb128 0x3
- 1181 012d 0E       		.uleb128 0xe
- 1182 012e 3A       		.uleb128 0x3a
- 1183 012f 0B       		.uleb128 0xb
- 1184 0130 3B       		.uleb128 0x3b
- 1185 0131 05       		.uleb128 0x5
- 1186 0132 49       		.uleb128 0x49
- 1187 0133 13       		.uleb128 0x13
- 1188 0134 02       		.uleb128 0x2
- 1189 0135 18       		.uleb128 0x18
- 1190 0136 00       		.byte	0
- 1191 0137 00       		.byte	0
- 1192 0138 00       		.byte	0
- 1193              		.section	.debug_loc,"",%progbits
- 1194              	.Ldebug_loc0:
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 31
+ 1138 0104 01       		.byte	0x1
+ 1139 0105 3F       		.uleb128 0x3f
+ 1140 0106 19       		.uleb128 0x19
+ 1141 0107 03       		.uleb128 0x3
+ 1142 0108 0E       		.uleb128 0xe
+ 1143 0109 3A       		.uleb128 0x3a
+ 1144 010a 0B       		.uleb128 0xb
+ 1145 010b 3B       		.uleb128 0x3b
+ 1146 010c 05       		.uleb128 0x5
+ 1147 010d 27       		.uleb128 0x27
+ 1148 010e 19       		.uleb128 0x19
+ 1149 010f 11       		.uleb128 0x11
+ 1150 0110 01       		.uleb128 0x1
+ 1151 0111 12       		.uleb128 0x12
+ 1152 0112 06       		.uleb128 0x6
+ 1153 0113 40       		.uleb128 0x40
+ 1154 0114 18       		.uleb128 0x18
+ 1155 0115 9742     		.uleb128 0x2117
+ 1156 0117 19       		.uleb128 0x19
+ 1157 0118 00       		.byte	0
+ 1158 0119 00       		.byte	0
+ 1159 011a 12       		.uleb128 0x12
+ 1160 011b 34       		.uleb128 0x34
+ 1161 011c 00       		.byte	0
+ 1162 011d 03       		.uleb128 0x3
+ 1163 011e 0E       		.uleb128 0xe
+ 1164 011f 3A       		.uleb128 0x3a
+ 1165 0120 0B       		.uleb128 0xb
+ 1166 0121 3B       		.uleb128 0x3b
+ 1167 0122 05       		.uleb128 0x5
+ 1168 0123 49       		.uleb128 0x49
+ 1169 0124 13       		.uleb128 0x13
+ 1170 0125 02       		.uleb128 0x2
+ 1171 0126 17       		.uleb128 0x17
+ 1172 0127 00       		.byte	0
+ 1173 0128 00       		.byte	0
+ 1174 0129 13       		.uleb128 0x13
+ 1175 012a 34       		.uleb128 0x34
+ 1176 012b 00       		.byte	0
+ 1177 012c 03       		.uleb128 0x3
+ 1178 012d 0E       		.uleb128 0xe
+ 1179 012e 3A       		.uleb128 0x3a
+ 1180 012f 0B       		.uleb128 0xb
+ 1181 0130 3B       		.uleb128 0x3b
+ 1182 0131 05       		.uleb128 0x5
+ 1183 0132 49       		.uleb128 0x49
+ 1184 0133 13       		.uleb128 0x13
+ 1185 0134 02       		.uleb128 0x2
+ 1186 0135 18       		.uleb128 0x18
+ 1187 0136 00       		.byte	0
+ 1188 0137 00       		.byte	0
+ 1189 0138 00       		.byte	0
+ 1190              		.section	.debug_loc,"",%progbits
+ 1191              	.Ldebug_loc0:
+ 1192              	.LLST0:
+ 1193 0000 2A000000 		.4byte	.LVL0
+ 1194 0004 5A000000 		.4byte	.LVL1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 31
 
 
- 1195              	.LLST0:
- 1196 0000 2A000000 		.4byte	.LVL0
- 1197 0004 5A000000 		.4byte	.LVL1
- 1198 0008 0100     		.2byte	0x1
- 1199 000a 52       		.byte	0x52
- 1200 000b 00000000 		.4byte	0
- 1201 000f 00000000 		.4byte	0
- 1202              	.LLST1:
- 1203 0013 00000000 		.4byte	.LVL3
- 1204 0017 08000000 		.4byte	.LVL4
- 1205 001b 0100     		.2byte	0x1
- 1206 001d 50       		.byte	0x50
- 1207 001e 08000000 		.4byte	.LVL4
- 1208 0022 14000000 		.4byte	.LFE6
- 1209 0026 0400     		.2byte	0x4
- 1210 0028 F3       		.byte	0xf3
- 1211 0029 01       		.uleb128 0x1
- 1212 002a 50       		.byte	0x50
- 1213 002b 9F       		.byte	0x9f
- 1214 002c 00000000 		.4byte	0
- 1215 0030 00000000 		.4byte	0
- 1216              	.LLST2:
- 1217 0034 00000000 		.4byte	.LVL5
- 1218 0038 06000000 		.4byte	.LVL6
- 1219 003c 0100     		.2byte	0x1
- 1220 003e 50       		.byte	0x50
- 1221 003f 06000000 		.4byte	.LVL6
- 1222 0043 18000000 		.4byte	.LFE7
- 1223 0047 0400     		.2byte	0x4
- 1224 0049 F3       		.byte	0xf3
- 1225 004a 01       		.uleb128 0x1
- 1226 004b 50       		.byte	0x50
- 1227 004c 9F       		.byte	0x9f
- 1228 004d 00000000 		.4byte	0
- 1229 0051 00000000 		.4byte	0
- 1230              	.LLST3:
- 1231 0055 00000000 		.4byte	.LVL7
- 1232 0059 09000000 		.4byte	.LVL8-1
- 1233 005d 0100     		.2byte	0x1
- 1234 005f 50       		.byte	0x50
- 1235 0060 09000000 		.4byte	.LVL8-1
- 1236 0064 DC000000 		.4byte	.LFE4
- 1237 0068 0400     		.2byte	0x4
- 1238 006a F3       		.byte	0xf3
- 1239 006b 01       		.uleb128 0x1
- 1240 006c 50       		.byte	0x50
- 1241 006d 9F       		.byte	0x9f
- 1242 006e 00000000 		.4byte	0
- 1243 0072 00000000 		.4byte	0
- 1244              	.LLST4:
- 1245 0076 00000000 		.4byte	.LVL7
- 1246 007a 09000000 		.4byte	.LVL8-1
- 1247 007e 0100     		.2byte	0x1
- 1248 0080 51       		.byte	0x51
- 1249 0081 09000000 		.4byte	.LVL8-1
- 1250 0085 DC000000 		.4byte	.LFE4
- 1251 0089 0400     		.2byte	0x4
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 32
+ 1195 0008 0100     		.2byte	0x1
+ 1196 000a 52       		.byte	0x52
+ 1197 000b 00000000 		.4byte	0
+ 1198 000f 00000000 		.4byte	0
+ 1199              	.LLST1:
+ 1200 0013 00000000 		.4byte	.LVL3
+ 1201 0017 08000000 		.4byte	.LVL4
+ 1202 001b 0100     		.2byte	0x1
+ 1203 001d 50       		.byte	0x50
+ 1204 001e 08000000 		.4byte	.LVL4
+ 1205 0022 14000000 		.4byte	.LFE6
+ 1206 0026 0400     		.2byte	0x4
+ 1207 0028 F3       		.byte	0xf3
+ 1208 0029 01       		.uleb128 0x1
+ 1209 002a 50       		.byte	0x50
+ 1210 002b 9F       		.byte	0x9f
+ 1211 002c 00000000 		.4byte	0
+ 1212 0030 00000000 		.4byte	0
+ 1213              	.LLST2:
+ 1214 0034 00000000 		.4byte	.LVL5
+ 1215 0038 06000000 		.4byte	.LVL6
+ 1216 003c 0100     		.2byte	0x1
+ 1217 003e 50       		.byte	0x50
+ 1218 003f 06000000 		.4byte	.LVL6
+ 1219 0043 18000000 		.4byte	.LFE7
+ 1220 0047 0400     		.2byte	0x4
+ 1221 0049 F3       		.byte	0xf3
+ 1222 004a 01       		.uleb128 0x1
+ 1223 004b 50       		.byte	0x50
+ 1224 004c 9F       		.byte	0x9f
+ 1225 004d 00000000 		.4byte	0
+ 1226 0051 00000000 		.4byte	0
+ 1227              	.LLST3:
+ 1228 0055 00000000 		.4byte	.LVL7
+ 1229 0059 09000000 		.4byte	.LVL8-1
+ 1230 005d 0100     		.2byte	0x1
+ 1231 005f 50       		.byte	0x50
+ 1232 0060 09000000 		.4byte	.LVL8-1
+ 1233 0064 DC000000 		.4byte	.LFE4
+ 1234 0068 0400     		.2byte	0x4
+ 1235 006a F3       		.byte	0xf3
+ 1236 006b 01       		.uleb128 0x1
+ 1237 006c 50       		.byte	0x50
+ 1238 006d 9F       		.byte	0x9f
+ 1239 006e 00000000 		.4byte	0
+ 1240 0072 00000000 		.4byte	0
+ 1241              	.LLST4:
+ 1242 0076 00000000 		.4byte	.LVL7
+ 1243 007a 09000000 		.4byte	.LVL8-1
+ 1244 007e 0100     		.2byte	0x1
+ 1245 0080 51       		.byte	0x51
+ 1246 0081 09000000 		.4byte	.LVL8-1
+ 1247 0085 DC000000 		.4byte	.LFE4
+ 1248 0089 0400     		.2byte	0x4
+ 1249 008b F3       		.byte	0xf3
+ 1250 008c 01       		.uleb128 0x1
+ 1251 008d 51       		.byte	0x51
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 32
 
 
- 1252 008b F3       		.byte	0xf3
- 1253 008c 01       		.uleb128 0x1
- 1254 008d 51       		.byte	0x51
- 1255 008e 9F       		.byte	0x9f
- 1256 008f 00000000 		.4byte	0
- 1257 0093 00000000 		.4byte	0
- 1258              	.LLST5:
- 1259 0097 1E000000 		.4byte	.LVL11
- 1260 009b 2C000000 		.4byte	.LVL12
- 1261 009f 0100     		.2byte	0x1
- 1262 00a1 52       		.byte	0x52
- 1263 00a2 36000000 		.4byte	.LVL13
- 1264 00a6 38000000 		.4byte	.LVL14
- 1265 00aa 0100     		.2byte	0x1
- 1266 00ac 52       		.byte	0x52
- 1267 00ad 38000000 		.4byte	.LVL14
- 1268 00b1 3A000000 		.4byte	.LVL15
- 1269 00b5 0100     		.2byte	0x1
- 1270 00b7 53       		.byte	0x53
- 1271 00b8 46000000 		.4byte	.LVL16
- 1272 00bc A4000000 		.4byte	.LVL18
- 1273 00c0 0100     		.2byte	0x1
- 1274 00c2 52       		.byte	0x52
- 1275 00c3 A6000000 		.4byte	.LVL19
- 1276 00c7 A8000000 		.4byte	.LVL20
- 1277 00cb 0100     		.2byte	0x1
- 1278 00cd 52       		.byte	0x52
- 1279 00ce B8000000 		.4byte	.LVL21
- 1280 00d2 C4000000 		.4byte	.LVL22
- 1281 00d6 0100     		.2byte	0x1
- 1282 00d8 52       		.byte	0x52
- 1283 00d9 00000000 		.4byte	0
- 1284 00dd 00000000 		.4byte	0
- 1285              	.LLST6:
- 1286 00e1 0C000000 		.4byte	.LVL9
- 1287 00e5 50000000 		.4byte	.LVL17
- 1288 00e9 0100     		.2byte	0x1
- 1289 00eb 56       		.byte	0x56
- 1290 00ec 00000000 		.4byte	0
- 1291 00f0 00000000 		.4byte	0
- 1292              	.LLST7:
- 1293 00f4 00000000 		.4byte	.LVL23
- 1294 00f8 07000000 		.4byte	.LVL24-1
- 1295 00fc 0100     		.2byte	0x1
- 1296 00fe 50       		.byte	0x50
- 1297 00ff 07000000 		.4byte	.LVL24-1
- 1298 0103 5C000000 		.4byte	.LFE9
- 1299 0107 0400     		.2byte	0x4
- 1300 0109 F3       		.byte	0xf3
- 1301 010a 01       		.uleb128 0x1
- 1302 010b 50       		.byte	0x50
- 1303 010c 9F       		.byte	0x9f
- 1304 010d 00000000 		.4byte	0
- 1305 0111 00000000 		.4byte	0
- 1306              	.LLST8:
- 1307 0115 0A000000 		.4byte	.LVL25
- 1308 0119 56000000 		.4byte	.LVL29
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 33
+ 1252 008e 9F       		.byte	0x9f
+ 1253 008f 00000000 		.4byte	0
+ 1254 0093 00000000 		.4byte	0
+ 1255              	.LLST5:
+ 1256 0097 1E000000 		.4byte	.LVL11
+ 1257 009b 28000000 		.4byte	.LVL12
+ 1258 009f 0100     		.2byte	0x1
+ 1259 00a1 53       		.byte	0x53
+ 1260 00a2 36000000 		.4byte	.LVL13
+ 1261 00a6 3A000000 		.4byte	.LVL14
+ 1262 00aa 0100     		.2byte	0x1
+ 1263 00ac 53       		.byte	0x53
+ 1264 00ad 46000000 		.4byte	.LVL15
+ 1265 00b1 9E000000 		.4byte	.LVL17
+ 1266 00b5 0100     		.2byte	0x1
+ 1267 00b7 53       		.byte	0x53
+ 1268 00b8 B8000000 		.4byte	.LVL18
+ 1269 00bc C4000000 		.4byte	.LVL19
+ 1270 00c0 0100     		.2byte	0x1
+ 1271 00c2 53       		.byte	0x53
+ 1272 00c3 00000000 		.4byte	0
+ 1273 00c7 00000000 		.4byte	0
+ 1274              	.LLST6:
+ 1275 00cb 0C000000 		.4byte	.LVL9
+ 1276 00cf 50000000 		.4byte	.LVL16
+ 1277 00d3 0100     		.2byte	0x1
+ 1278 00d5 56       		.byte	0x56
+ 1279 00d6 00000000 		.4byte	0
+ 1280 00da 00000000 		.4byte	0
+ 1281              	.LLST7:
+ 1282 00de 00000000 		.4byte	.LVL20
+ 1283 00e2 07000000 		.4byte	.LVL21-1
+ 1284 00e6 0100     		.2byte	0x1
+ 1285 00e8 50       		.byte	0x50
+ 1286 00e9 07000000 		.4byte	.LVL21-1
+ 1287 00ed 5C000000 		.4byte	.LFE9
+ 1288 00f1 0400     		.2byte	0x4
+ 1289 00f3 F3       		.byte	0xf3
+ 1290 00f4 01       		.uleb128 0x1
+ 1291 00f5 50       		.byte	0x50
+ 1292 00f6 9F       		.byte	0x9f
+ 1293 00f7 00000000 		.4byte	0
+ 1294 00fb 00000000 		.4byte	0
+ 1295              	.LLST8:
+ 1296 00ff 0A000000 		.4byte	.LVL22
+ 1297 0103 56000000 		.4byte	.LVL26
+ 1298 0107 0100     		.2byte	0x1
+ 1299 0109 55       		.byte	0x55
+ 1300 010a 00000000 		.4byte	0
+ 1301 010e 00000000 		.4byte	0
+ 1302              		.section	.debug_aranges,"",%progbits
+ 1303 0000 6C000000 		.4byte	0x6c
+ 1304 0004 0200     		.2byte	0x2
+ 1305 0006 00000000 		.4byte	.Ldebug_info0
+ 1306 000a 04       		.byte	0x4
+ 1307 000b 00       		.byte	0
+ 1308 000c 0000     		.2byte	0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 33
 
 
- 1309 011d 0100     		.2byte	0x1
- 1310 011f 55       		.byte	0x55
- 1311 0120 00000000 		.4byte	0
- 1312 0124 00000000 		.4byte	0
- 1313              		.section	.debug_aranges,"",%progbits
- 1314 0000 6C000000 		.4byte	0x6c
- 1315 0004 0200     		.2byte	0x2
- 1316 0006 00000000 		.4byte	.Ldebug_info0
- 1317 000a 04       		.byte	0x4
- 1318 000b 00       		.byte	0
- 1319 000c 0000     		.2byte	0
- 1320 000e 0000     		.2byte	0
- 1321 0010 00000000 		.4byte	.LFB0
- 1322 0014 1C000000 		.4byte	.LFE0-.LFB0
- 1323 0018 00000000 		.4byte	.LFB1
- 1324 001c 1C000000 		.4byte	.LFE1-.LFB1
- 1325 0020 00000000 		.4byte	.LFB2
- 1326 0024 6C000000 		.4byte	.LFE2-.LFB2
- 1327 0028 00000000 		.4byte	.LFB3
- 1328 002c 20000000 		.4byte	.LFE3-.LFB3
- 1329 0030 00000000 		.4byte	.LFB5
- 1330 0034 0C000000 		.4byte	.LFE5-.LFB5
- 1331 0038 00000000 		.4byte	.LFB6
- 1332 003c 14000000 		.4byte	.LFE6-.LFB6
- 1333 0040 00000000 		.4byte	.LFB7
- 1334 0044 18000000 		.4byte	.LFE7-.LFB7
- 1335 0048 00000000 		.4byte	.LFB8
- 1336 004c 10000000 		.4byte	.LFE8-.LFB8
- 1337 0050 00000000 		.4byte	.LFB10
- 1338 0054 10000000 		.4byte	.LFE10-.LFB10
- 1339 0058 00000000 		.4byte	.LFB4
- 1340 005c DC000000 		.4byte	.LFE4-.LFB4
- 1341 0060 00000000 		.4byte	.LFB9
- 1342 0064 5C000000 		.4byte	.LFE9-.LFB9
- 1343 0068 00000000 		.4byte	0
- 1344 006c 00000000 		.4byte	0
- 1345              		.section	.debug_ranges,"",%progbits
- 1346              	.Ldebug_ranges0:
- 1347 0000 00000000 		.4byte	.LFB0
- 1348 0004 1C000000 		.4byte	.LFE0
- 1349 0008 00000000 		.4byte	.LFB1
- 1350 000c 1C000000 		.4byte	.LFE1
- 1351 0010 00000000 		.4byte	.LFB2
- 1352 0014 6C000000 		.4byte	.LFE2
- 1353 0018 00000000 		.4byte	.LFB3
- 1354 001c 20000000 		.4byte	.LFE3
- 1355 0020 00000000 		.4byte	.LFB5
- 1356 0024 0C000000 		.4byte	.LFE5
- 1357 0028 00000000 		.4byte	.LFB6
- 1358 002c 14000000 		.4byte	.LFE6
- 1359 0030 00000000 		.4byte	.LFB7
- 1360 0034 18000000 		.4byte	.LFE7
- 1361 0038 00000000 		.4byte	.LFB8
- 1362 003c 10000000 		.4byte	.LFE8
- 1363 0040 00000000 		.4byte	.LFB10
- 1364 0044 10000000 		.4byte	.LFE10
- 1365 0048 00000000 		.4byte	.LFB4
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 34
+ 1309 000e 0000     		.2byte	0
+ 1310 0010 00000000 		.4byte	.LFB0
+ 1311 0014 1C000000 		.4byte	.LFE0-.LFB0
+ 1312 0018 00000000 		.4byte	.LFB1
+ 1313 001c 1C000000 		.4byte	.LFE1-.LFB1
+ 1314 0020 00000000 		.4byte	.LFB2
+ 1315 0024 6C000000 		.4byte	.LFE2-.LFB2
+ 1316 0028 00000000 		.4byte	.LFB3
+ 1317 002c 20000000 		.4byte	.LFE3-.LFB3
+ 1318 0030 00000000 		.4byte	.LFB5
+ 1319 0034 0C000000 		.4byte	.LFE5-.LFB5
+ 1320 0038 00000000 		.4byte	.LFB6
+ 1321 003c 14000000 		.4byte	.LFE6-.LFB6
+ 1322 0040 00000000 		.4byte	.LFB7
+ 1323 0044 18000000 		.4byte	.LFE7-.LFB7
+ 1324 0048 00000000 		.4byte	.LFB8
+ 1325 004c 10000000 		.4byte	.LFE8-.LFB8
+ 1326 0050 00000000 		.4byte	.LFB10
+ 1327 0054 10000000 		.4byte	.LFE10-.LFB10
+ 1328 0058 00000000 		.4byte	.LFB4
+ 1329 005c DC000000 		.4byte	.LFE4-.LFB4
+ 1330 0060 00000000 		.4byte	.LFB9
+ 1331 0064 5C000000 		.4byte	.LFE9-.LFB9
+ 1332 0068 00000000 		.4byte	0
+ 1333 006c 00000000 		.4byte	0
+ 1334              		.section	.debug_ranges,"",%progbits
+ 1335              	.Ldebug_ranges0:
+ 1336 0000 00000000 		.4byte	.LFB0
+ 1337 0004 1C000000 		.4byte	.LFE0
+ 1338 0008 00000000 		.4byte	.LFB1
+ 1339 000c 1C000000 		.4byte	.LFE1
+ 1340 0010 00000000 		.4byte	.LFB2
+ 1341 0014 6C000000 		.4byte	.LFE2
+ 1342 0018 00000000 		.4byte	.LFB3
+ 1343 001c 20000000 		.4byte	.LFE3
+ 1344 0020 00000000 		.4byte	.LFB5
+ 1345 0024 0C000000 		.4byte	.LFE5
+ 1346 0028 00000000 		.4byte	.LFB6
+ 1347 002c 14000000 		.4byte	.LFE6
+ 1348 0030 00000000 		.4byte	.LFB7
+ 1349 0034 18000000 		.4byte	.LFE7
+ 1350 0038 00000000 		.4byte	.LFB8
+ 1351 003c 10000000 		.4byte	.LFE8
+ 1352 0040 00000000 		.4byte	.LFB10
+ 1353 0044 10000000 		.4byte	.LFE10
+ 1354 0048 00000000 		.4byte	.LFB4
+ 1355 004c DC000000 		.4byte	.LFE4
+ 1356 0050 00000000 		.4byte	.LFB9
+ 1357 0054 5C000000 		.4byte	.LFE9
+ 1358 0058 00000000 		.4byte	0
+ 1359 005c 00000000 		.4byte	0
+ 1360              		.section	.debug_line,"",%progbits
+ 1361              	.Ldebug_line0:
+ 1362 0000 76010000 		.section	.debug_str,"MS",%progbits,1
+ 1362      02004800 
+ 1362      00000201 
+ 1362      FB0E0D00 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 34
 
 
- 1366 004c DC000000 		.4byte	.LFE4
- 1367 0050 00000000 		.4byte	.LFB9
- 1368 0054 5C000000 		.4byte	.LFE9
- 1369 0058 00000000 		.4byte	0
- 1370 005c 00000000 		.4byte	0
- 1371              		.section	.debug_line,"",%progbits
- 1372              	.Ldebug_line0:
- 1373 0000 76010000 		.section	.debug_str,"MS",%progbits,1
- 1373      02004800 
- 1373      00000201 
- 1373      FB0E0D00 
- 1373      01010101 
- 1374              	.LASF37:
- 1375 0000 47656E65 		.ascii	"Generated_Source\\PSoC5\\blink_clock.c\000"
- 1375      72617465 
- 1375      645F536F 
- 1375      75726365 
- 1375      5C50536F 
- 1376              	.LASF34:
- 1377 0025 63757272 		.ascii	"currDiv\000"
- 1377      44697600 
- 1378              	.LASF15:
- 1379 002d 72656731 		.ascii	"reg16\000"
- 1379      3600
- 1380              	.LASF2:
- 1381 0033 73686F72 		.ascii	"short int\000"
- 1381      7420696E 
- 1381      7400
- 1382              	.LASF27:
- 1383 003d 626C696E 		.ascii	"blink_clock_SetDividerRegister\000"
- 1383      6B5F636C 
- 1383      6F636B5F 
- 1383      53657444 
- 1383      69766964 
- 1384              	.LASF20:
- 1385 005c 626C696E 		.ascii	"blink_clock_SetModeRegister\000"
- 1385      6B5F636C 
- 1385      6F636B5F 
- 1385      5365744D 
- 1385      6F646552 
- 1386              	.LASF10:
- 1387 0078 75696E74 		.ascii	"uint16\000"
- 1387      313600
- 1388              	.LASF29:
- 1389 007f 72657374 		.ascii	"restart\000"
- 1389      61727400 
- 1390              	.LASF35:
- 1391 0087 6F6C6453 		.ascii	"oldSrc\000"
- 1391      726300
- 1392              	.LASF9:
- 1393 008e 75696E74 		.ascii	"uint8\000"
- 1393      3800
- 1394              	.LASF17:
- 1395 0094 626C696E 		.ascii	"blink_clock_Stop\000"
- 1395      6B5F636C 
- 1395      6F636B5F 
- 1395      53746F70 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 35
+ 1362      01010101 
+ 1363              	.LASF37:
+ 1364 0000 47656E65 		.ascii	"Generated_Source\\PSoC5\\blink_clock.c\000"
+ 1364      72617465 
+ 1364      645F536F 
+ 1364      75726365 
+ 1364      5C50536F 
+ 1365              	.LASF34:
+ 1366 0025 63757272 		.ascii	"currDiv\000"
+ 1366      44697600 
+ 1367              	.LASF15:
+ 1368 002d 72656731 		.ascii	"reg16\000"
+ 1368      3600
+ 1369              	.LASF2:
+ 1370 0033 73686F72 		.ascii	"short int\000"
+ 1370      7420696E 
+ 1370      7400
+ 1371              	.LASF27:
+ 1372 003d 626C696E 		.ascii	"blink_clock_SetDividerRegister\000"
+ 1372      6B5F636C 
+ 1372      6F636B5F 
+ 1372      53657444 
+ 1372      69766964 
+ 1373              	.LASF20:
+ 1374 005c 626C696E 		.ascii	"blink_clock_SetModeRegister\000"
+ 1374      6B5F636C 
+ 1374      6F636B5F 
+ 1374      5365744D 
+ 1374      6F646552 
+ 1375              	.LASF10:
+ 1376 0078 75696E74 		.ascii	"uint16\000"
+ 1376      313600
+ 1377              	.LASF29:
+ 1378 007f 72657374 		.ascii	"restart\000"
+ 1378      61727400 
+ 1379              	.LASF35:
+ 1380 0087 6F6C6453 		.ascii	"oldSrc\000"
+ 1380      726300
+ 1381              	.LASF9:
+ 1382 008e 75696E74 		.ascii	"uint8\000"
+ 1382      3800
+ 1383              	.LASF17:
+ 1384 0094 626C696E 		.ascii	"blink_clock_Stop\000"
+ 1384      6B5F636C 
+ 1384      6F636B5F 
+ 1384      53746F70 
+ 1384      00
+ 1385              	.LASF28:
+ 1386 00a5 636C6B44 		.ascii	"clkDivider\000"
+ 1386      69766964 
+ 1386      657200
+ 1387              	.LASF16:
+ 1388 00b0 626C696E 		.ascii	"blink_clock_Start\000"
+ 1388      6B5F636C 
+ 1388      6F636B5F 
+ 1388      53746172 
+ 1388      7400
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 35
 
 
- 1395      00
- 1396              	.LASF28:
- 1397 00a5 636C6B44 		.ascii	"clkDivider\000"
- 1397      69766964 
- 1397      657200
- 1398              	.LASF16:
- 1399 00b0 626C696E 		.ascii	"blink_clock_Start\000"
- 1399      6B5F636C 
- 1399      6F636B5F 
- 1399      53746172 
- 1399      7400
- 1400              	.LASF0:
- 1401 00c2 7369676E 		.ascii	"signed char\000"
- 1401      65642063 
- 1401      68617200 
- 1402              	.LASF11:
- 1403 00ce 666C6F61 		.ascii	"float\000"
- 1403      7400
- 1404              	.LASF6:
- 1405 00d4 6C6F6E67 		.ascii	"long long int\000"
- 1405      206C6F6E 
- 1405      6720696E 
- 1405      7400
- 1406              	.LASF4:
- 1407 00e2 6C6F6E67 		.ascii	"long int\000"
- 1407      20696E74 
- 1407      00
- 1408              	.LASF21:
- 1409 00eb 73746174 		.ascii	"state\000"
- 1409      6500
- 1410              	.LASF1:
- 1411 00f1 756E7369 		.ascii	"unsigned char\000"
- 1411      676E6564 
- 1411      20636861 
- 1411      7200
- 1412              	.LASF22:
- 1413 00ff 6D6F6465 		.ascii	"modeBitMask\000"
- 1413      4269744D 
- 1413      61736B00 
- 1414              	.LASF38:
- 1415 010b 433A5C55 		.ascii	"C:\\Users\\Mattia40\\Desktop\\AY1920_II_FINAL_PROJE"
- 1415      73657273 
- 1415      5C4D6174 
- 1415      74696134 
- 1415      305C4465 
- 1416 013a 43545C47 		.ascii	"CT\\Group_02_Final_Project\\AY1920_II_FINAL_PROJECT"
- 1416      726F7570 
- 1416      5F30325F 
- 1416      46696E61 
- 1416      6C5F5072 
- 1417 016b 2E637964 		.ascii	".cydsn\000"
- 1417      736E00
- 1418              	.LASF7:
- 1419 0172 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1419      206C6F6E 
- 1419      6720756E 
- 1419      7369676E 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 36
+ 1389              	.LASF11:
+ 1390 00c2 666C6F61 		.ascii	"float\000"
+ 1390      7400
+ 1391              	.LASF6:
+ 1392 00c8 6C6F6E67 		.ascii	"long long int\000"
+ 1392      206C6F6E 
+ 1392      6720696E 
+ 1392      7400
+ 1393              	.LASF4:
+ 1394 00d6 6C6F6E67 		.ascii	"long int\000"
+ 1394      20696E74 
+ 1394      00
+ 1395              	.LASF38:
+ 1396 00df 433A5C55 		.ascii	"C:\\Users\\aless\\Documents\\PSoC_Creator\\AY1920_I"
+ 1396      73657273 
+ 1396      5C616C65 
+ 1396      73735C44 
+ 1396      6F63756D 
+ 1397 010d 495F3032 		.ascii	"I_02_RATTI_SINATRA_QUARANTA\\AY1920_II_FINAL_PROJEC"
+ 1397      5F524154 
+ 1397      54495F53 
+ 1397      494E4154 
+ 1397      52415F51 
+ 1398 013f 542E6379 		.ascii	"T.cydsn\000"
+ 1398      64736E00 
+ 1399              	.LASF21:
+ 1400 0147 73746174 		.ascii	"state\000"
+ 1400      6500
+ 1401              	.LASF1:
+ 1402 014d 756E7369 		.ascii	"unsigned char\000"
+ 1402      676E6564 
+ 1402      20636861 
+ 1402      7200
+ 1403              	.LASF22:
+ 1404 015b 6D6F6465 		.ascii	"modeBitMask\000"
+ 1404      4269744D 
+ 1404      61736B00 
+ 1405              	.LASF0:
+ 1406 0167 7369676E 		.ascii	"signed char\000"
+ 1406      65642063 
+ 1406      68617200 
+ 1407              	.LASF7:
+ 1408 0173 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1408      206C6F6E 
+ 1408      6720756E 
+ 1408      7369676E 
+ 1408      65642069 
+ 1409              	.LASF8:
+ 1410 018a 756E7369 		.ascii	"unsigned int\000"
+ 1410      676E6564 
+ 1410      20696E74 
+ 1410      00
+ 1411              	.LASF3:
+ 1412 0197 73686F72 		.ascii	"short unsigned int\000"
+ 1412      7420756E 
+ 1412      7369676E 
+ 1412      65642069 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 36
 
 
- 1419      65642069 
- 1420              	.LASF8:
- 1421 0189 756E7369 		.ascii	"unsigned int\000"
- 1421      676E6564 
- 1421      20696E74 
- 1421      00
- 1422              	.LASF3:
- 1423 0196 73686F72 		.ascii	"short unsigned int\000"
- 1423      7420756E 
- 1423      7369676E 
- 1423      65642069 
- 1423      6E7400
- 1424              	.LASF13:
- 1425 01a9 63686172 		.ascii	"char\000"
- 1425      00
- 1426              	.LASF33:
- 1427 01ae 636C6B53 		.ascii	"clkSource\000"
- 1427      6F757263 
- 1427      6500
- 1428              	.LASF32:
- 1429 01b8 63757272 		.ascii	"currSrc\000"
- 1429      53726300 
- 1430              	.LASF30:
- 1431 01c0 6F6C6444 		.ascii	"oldDivider\000"
- 1431      69766964 
- 1431      657200
- 1432              	.LASF26:
- 1433 01cb 626C696E 		.ascii	"blink_clock_GetSourceRegister\000"
- 1433      6B5F636C 
- 1433      6F636B5F 
- 1433      47657453 
- 1433      6F757263 
- 1434              	.LASF19:
- 1435 01e9 626C696E 		.ascii	"blink_clock_StandbyPower\000"
- 1435      6B5F636C 
- 1435      6F636B5F 
- 1435      5374616E 
- 1435      64627950 
- 1436              	.LASF39:
- 1437 0202 626C696E 		.ascii	"blink_clock_SetSourceRegister\000"
- 1437      6B5F636C 
- 1437      6F636B5F 
- 1437      53657453 
- 1437      6F757263 
- 1438              	.LASF14:
- 1439 0220 72656738 		.ascii	"reg8\000"
- 1439      00
- 1440              	.LASF5:
- 1441 0225 6C6F6E67 		.ascii	"long unsigned int\000"
- 1441      20756E73 
- 1441      69676E65 
- 1441      6420696E 
- 1441      7400
- 1442              	.LASF12:
- 1443 0237 646F7562 		.ascii	"double\000"
- 1443      6C6500
- 1444              	.LASF24:
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccS5CkkV.s 			page 37
+ 1412      6E7400
+ 1413              	.LASF13:
+ 1414 01aa 63686172 		.ascii	"char\000"
+ 1414      00
+ 1415              	.LASF33:
+ 1416 01af 636C6B53 		.ascii	"clkSource\000"
+ 1416      6F757263 
+ 1416      6500
+ 1417              	.LASF32:
+ 1418 01b9 63757272 		.ascii	"currSrc\000"
+ 1418      53726300 
+ 1419              	.LASF30:
+ 1420 01c1 6F6C6444 		.ascii	"oldDivider\000"
+ 1420      69766964 
+ 1420      657200
+ 1421              	.LASF26:
+ 1422 01cc 626C696E 		.ascii	"blink_clock_GetSourceRegister\000"
+ 1422      6B5F636C 
+ 1422      6F636B5F 
+ 1422      47657453 
+ 1422      6F757263 
+ 1423              	.LASF19:
+ 1424 01ea 626C696E 		.ascii	"blink_clock_StandbyPower\000"
+ 1424      6B5F636C 
+ 1424      6F636B5F 
+ 1424      5374616E 
+ 1424      64627950 
+ 1425              	.LASF39:
+ 1426 0203 626C696E 		.ascii	"blink_clock_SetSourceRegister\000"
+ 1426      6B5F636C 
+ 1426      6F636B5F 
+ 1426      53657453 
+ 1426      6F757263 
+ 1427              	.LASF14:
+ 1428 0221 72656738 		.ascii	"reg8\000"
+ 1428      00
+ 1429              	.LASF5:
+ 1430 0226 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1430      20756E73 
+ 1430      69676E65 
+ 1430      6420696E 
+ 1430      7400
+ 1431              	.LASF12:
+ 1432 0238 646F7562 		.ascii	"double\000"
+ 1432      6C6500
+ 1433              	.LASF24:
+ 1434 023f 626C696E 		.ascii	"blink_clock_GetDividerRegister\000"
+ 1434      6B5F636C 
+ 1434      6F636B5F 
+ 1434      47657444 
+ 1434      69766964 
+ 1435              	.LASF25:
+ 1436 025e 626C696E 		.ascii	"blink_clock_GetModeRegister\000"
+ 1436      6B5F636C 
+ 1436      6F636B5F 
+ 1436      4765744D 
+ 1436      6F646552 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccZsZw6T.s 			page 37
 
 
- 1445 023e 626C696E 		.ascii	"blink_clock_GetDividerRegister\000"
- 1445      6B5F636C 
- 1445      6F636B5F 
- 1445      47657444 
- 1445      69766964 
- 1446              	.LASF25:
- 1447 025d 626C696E 		.ascii	"blink_clock_GetModeRegister\000"
- 1447      6B5F636C 
- 1447      6F636B5F 
- 1447      4765744D 
- 1447      6F646552 
- 1448              	.LASF31:
- 1449 0279 656E6162 		.ascii	"enabled\000"
- 1449      6C656400 
- 1450              	.LASF23:
- 1451 0281 626C696E 		.ascii	"blink_clock_ClearModeRegister\000"
- 1451      6B5F636C 
- 1451      6F636B5F 
- 1451      436C6561 
- 1451      724D6F64 
- 1452              	.LASF36:
- 1453 029f 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1453      43313120 
- 1453      352E342E 
- 1453      31203230 
- 1453      31363036 
- 1454 02d2 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1454      20726576 
- 1454      6973696F 
- 1454      6E203233 
- 1454      37373135 
- 1455 0305 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1455      66756E63 
- 1455      74696F6E 
- 1455      2D736563 
- 1455      74696F6E 
- 1456              	.LASF18:
- 1457 032d 626C696E 		.ascii	"blink_clock_StopBlock\000"
- 1457      6B5F636C 
- 1457      6F636B5F 
- 1457      53746F70 
- 1457      426C6F63 
- 1458              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1437              	.LASF31:
+ 1438 027a 656E6162 		.ascii	"enabled\000"
+ 1438      6C656400 
+ 1439              	.LASF23:
+ 1440 0282 626C696E 		.ascii	"blink_clock_ClearModeRegister\000"
+ 1440      6B5F636C 
+ 1440      6F636B5F 
+ 1440      436C6561 
+ 1440      724D6F64 
+ 1441              	.LASF36:
+ 1442 02a0 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1442      43313120 
+ 1442      352E342E 
+ 1442      31203230 
+ 1442      31363036 
+ 1443 02d3 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1443      20726576 
+ 1443      6973696F 
+ 1443      6E203233 
+ 1443      37373135 
+ 1444 0306 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1444      66756E63 
+ 1444      74696F6E 
+ 1444      2D736563 
+ 1444      74696F6E 
+ 1445              	.LASF18:
+ 1446 032e 626C696E 		.ascii	"blink_clock_StopBlock\000"
+ 1446      6B5F636C 
+ 1446      6F636B5F 
+ 1446      53746F70 
+ 1446      426C6F63 
+ 1447              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

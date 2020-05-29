@@ -1,0 +1,1915 @@
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Counter_RESET.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Counter_RESET_Enable,"ax",%progbits
+  20              		.align	2
+  21              		.global	Counter_RESET_Enable
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Counter_RESET_Enable, %function
+  25              	Counter_RESET_Enable:
+  26              	.LFB1:
+  27              		.file 1 "Generated_Source\\PSoC5\\Counter_RESET.c"
+   1:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/Counter_RESET.c **** * File Name: Counter_RESET.c  
+   3:Generated_Source\PSoC5/Counter_RESET.c **** * Version 3.0
+   4:Generated_Source\PSoC5/Counter_RESET.c **** *
+   5:Generated_Source\PSoC5/Counter_RESET.c **** *  Description:
+   6:Generated_Source\PSoC5/Counter_RESET.c **** *     The Counter component consists of a 8, 16, 24 or 32-bit counter with
+   7:Generated_Source\PSoC5/Counter_RESET.c **** *     a selectable period between 2 and 2^Width - 1.  
+   8:Generated_Source\PSoC5/Counter_RESET.c **** *
+   9:Generated_Source\PSoC5/Counter_RESET.c **** *   Note:
+  10:Generated_Source\PSoC5/Counter_RESET.c **** *     None
+  11:Generated_Source\PSoC5/Counter_RESET.c **** *
+  12:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+  13:Generated_Source\PSoC5/Counter_RESET.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC5/Counter_RESET.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:Generated_Source\PSoC5/Counter_RESET.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:Generated_Source\PSoC5/Counter_RESET.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+  18:Generated_Source\PSoC5/Counter_RESET.c **** 
+  19:Generated_Source\PSoC5/Counter_RESET.c **** #include "Counter_RESET.h"
+  20:Generated_Source\PSoC5/Counter_RESET.c **** 
+  21:Generated_Source\PSoC5/Counter_RESET.c **** uint8 Counter_RESET_initVar = 0u;
+  22:Generated_Source\PSoC5/Counter_RESET.c **** 
+  23:Generated_Source\PSoC5/Counter_RESET.c **** 
+  24:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+  25:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_Init
+  26:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+  27:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+  28:Generated_Source\PSoC5/Counter_RESET.c **** *     Initialize to the schematic state
+  29:Generated_Source\PSoC5/Counter_RESET.c **** * 
+  30:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 2
+
+
+  31:Generated_Source\PSoC5/Counter_RESET.c **** *  void  
+  32:Generated_Source\PSoC5/Counter_RESET.c **** *
+  33:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+  34:Generated_Source\PSoC5/Counter_RESET.c **** *  void
+  35:Generated_Source\PSoC5/Counter_RESET.c **** *
+  36:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+  37:Generated_Source\PSoC5/Counter_RESET.c **** void Counter_RESET_Init(void) 
+  38:Generated_Source\PSoC5/Counter_RESET.c **** {
+  39:Generated_Source\PSoC5/Counter_RESET.c ****         #if (!Counter_RESET_UsingFixedFunction && !Counter_RESET_ControlRegRemoved)
+  40:Generated_Source\PSoC5/Counter_RESET.c ****             uint8 ctrl;
+  41:Generated_Source\PSoC5/Counter_RESET.c ****         #endif /* (!Counter_RESET_UsingFixedFunction && !Counter_RESET_ControlRegRemoved) */
+  42:Generated_Source\PSoC5/Counter_RESET.c ****         
+  43:Generated_Source\PSoC5/Counter_RESET.c ****         #if(!Counter_RESET_UsingFixedFunction) 
+  44:Generated_Source\PSoC5/Counter_RESET.c ****             /* Interrupt State Backup for Critical Region*/
+  45:Generated_Source\PSoC5/Counter_RESET.c ****             uint8 Counter_RESET_interruptState;
+  46:Generated_Source\PSoC5/Counter_RESET.c ****         #endif /* (!Counter_RESET_UsingFixedFunction) */
+  47:Generated_Source\PSoC5/Counter_RESET.c ****         
+  48:Generated_Source\PSoC5/Counter_RESET.c ****         #if (Counter_RESET_UsingFixedFunction)
+  49:Generated_Source\PSoC5/Counter_RESET.c ****             /* Clear all bits but the enable bit (if it's already set for Timer operation */
+  50:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_CONTROL &= Counter_RESET_CTRL_ENABLE;
+  51:Generated_Source\PSoC5/Counter_RESET.c ****             
+  52:Generated_Source\PSoC5/Counter_RESET.c ****             /* Clear the mode bits for continuous run mode */
+  53:Generated_Source\PSoC5/Counter_RESET.c ****             #if (CY_PSOC5A)
+  54:Generated_Source\PSoC5/Counter_RESET.c ****                 Counter_RESET_CONTROL2 &= ((uint8)(~Counter_RESET_CTRL_MODE_MASK));
+  55:Generated_Source\PSoC5/Counter_RESET.c ****             #endif /* (CY_PSOC5A) */
+  56:Generated_Source\PSoC5/Counter_RESET.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  57:Generated_Source\PSoC5/Counter_RESET.c ****                 Counter_RESET_CONTROL3 &= ((uint8)(~Counter_RESET_CTRL_MODE_MASK));                
+  58:Generated_Source\PSoC5/Counter_RESET.c ****             #endif /* (CY_PSOC3 || CY_PSOC5LP) */
+  59:Generated_Source\PSoC5/Counter_RESET.c ****             /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+  60:Generated_Source\PSoC5/Counter_RESET.c ****             #if (Counter_RESET_RunModeUsed != 0x0u)
+  61:Generated_Source\PSoC5/Counter_RESET.c ****                 /* Set 3rd bit of Control register to enable one shot mode */
+  62:Generated_Source\PSoC5/Counter_RESET.c ****                 Counter_RESET_CONTROL |= Counter_RESET_ONESHOT;
+  63:Generated_Source\PSoC5/Counter_RESET.c ****             #endif /* (Counter_RESET_RunModeUsed != 0x0u) */
+  64:Generated_Source\PSoC5/Counter_RESET.c ****             
+  65:Generated_Source\PSoC5/Counter_RESET.c ****             /* Set the IRQ to use the status register interrupts */
+  66:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_CONTROL2 |= Counter_RESET_CTRL2_IRQ_SEL;
+  67:Generated_Source\PSoC5/Counter_RESET.c ****             
+  68:Generated_Source\PSoC5/Counter_RESET.c ****             /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+  69:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_RT1 &= ((uint8)(~Counter_RESET_RT1_MASK));
+  70:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_RT1 |= Counter_RESET_SYNC;     
+  71:Generated_Source\PSoC5/Counter_RESET.c ****                     
+  72:Generated_Source\PSoC5/Counter_RESET.c ****             /*Enable DSI Sync all all inputs of the Timer*/
+  73:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_RT1 &= ((uint8)(~Counter_RESET_SYNCDSI_MASK));
+  74:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_RT1 |= Counter_RESET_SYNCDSI_EN;
+  75:Generated_Source\PSoC5/Counter_RESET.c **** 
+  76:Generated_Source\PSoC5/Counter_RESET.c ****         #else
+  77:Generated_Source\PSoC5/Counter_RESET.c ****             #if(!Counter_RESET_ControlRegRemoved)
+  78:Generated_Source\PSoC5/Counter_RESET.c ****             /* Set the default compare mode defined in the parameter */
+  79:Generated_Source\PSoC5/Counter_RESET.c ****             ctrl = Counter_RESET_CONTROL & ((uint8)(~Counter_RESET_CTRL_CMPMODE_MASK));
+  80:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_CONTROL = ctrl | Counter_RESET_DEFAULT_COMPARE_MODE;
+  81:Generated_Source\PSoC5/Counter_RESET.c ****             
+  82:Generated_Source\PSoC5/Counter_RESET.c ****             /* Set the default capture mode defined in the parameter */
+  83:Generated_Source\PSoC5/Counter_RESET.c ****             ctrl = Counter_RESET_CONTROL & ((uint8)(~Counter_RESET_CTRL_CAPMODE_MASK));
+  84:Generated_Source\PSoC5/Counter_RESET.c ****             
+  85:Generated_Source\PSoC5/Counter_RESET.c ****             #if( 0 != Counter_RESET_CAPTURE_MODE_CONF)
+  86:Generated_Source\PSoC5/Counter_RESET.c ****                 Counter_RESET_CONTROL = ctrl | Counter_RESET_DEFAULT_CAPTURE_MODE;
+  87:Generated_Source\PSoC5/Counter_RESET.c ****             #else
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 3
+
+
+  88:Generated_Source\PSoC5/Counter_RESET.c ****                 Counter_RESET_CONTROL = ctrl;
+  89:Generated_Source\PSoC5/Counter_RESET.c ****             #endif /* 0 != Counter_RESET_CAPTURE_MODE */ 
+  90:Generated_Source\PSoC5/Counter_RESET.c ****             
+  91:Generated_Source\PSoC5/Counter_RESET.c ****             #endif /* (!Counter_RESET_ControlRegRemoved) */
+  92:Generated_Source\PSoC5/Counter_RESET.c ****         #endif /* (Counter_RESET_UsingFixedFunction) */
+  93:Generated_Source\PSoC5/Counter_RESET.c ****         
+  94:Generated_Source\PSoC5/Counter_RESET.c ****         /* Clear all data in the FIFO's */
+  95:Generated_Source\PSoC5/Counter_RESET.c ****         #if (!Counter_RESET_UsingFixedFunction)
+  96:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_ClearFIFO();
+  97:Generated_Source\PSoC5/Counter_RESET.c ****         #endif /* (!Counter_RESET_UsingFixedFunction) */
+  98:Generated_Source\PSoC5/Counter_RESET.c ****         
+  99:Generated_Source\PSoC5/Counter_RESET.c ****         /* Set Initial values from Configuration */
+ 100:Generated_Source\PSoC5/Counter_RESET.c ****         Counter_RESET_WritePeriod(Counter_RESET_INIT_PERIOD_VALUE);
+ 101:Generated_Source\PSoC5/Counter_RESET.c ****         #if (!(Counter_RESET_UsingFixedFunction && (CY_PSOC5A)))
+ 102:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_WriteCounter(Counter_RESET_INIT_COUNTER_VALUE);
+ 103:Generated_Source\PSoC5/Counter_RESET.c ****         #endif /* (!(Counter_RESET_UsingFixedFunction && (CY_PSOC5A))) */
+ 104:Generated_Source\PSoC5/Counter_RESET.c ****         Counter_RESET_SetInterruptMode(Counter_RESET_INIT_INTERRUPTS_MASK);
+ 105:Generated_Source\PSoC5/Counter_RESET.c ****         
+ 106:Generated_Source\PSoC5/Counter_RESET.c ****         #if (!Counter_RESET_UsingFixedFunction)
+ 107:Generated_Source\PSoC5/Counter_RESET.c ****             /* Read the status register to clear the unwanted interrupts */
+ 108:Generated_Source\PSoC5/Counter_RESET.c ****             (void)Counter_RESET_ReadStatusRegister();
+ 109:Generated_Source\PSoC5/Counter_RESET.c ****             /* Set the compare value (only available to non-fixed function implementation */
+ 110:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_WriteCompare(Counter_RESET_INIT_COMPARE_VALUE);
+ 111:Generated_Source\PSoC5/Counter_RESET.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 112:Generated_Source\PSoC5/Counter_RESET.c ****             
+ 113:Generated_Source\PSoC5/Counter_RESET.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+ 114:Generated_Source\PSoC5/Counter_RESET.c ****             /* Enter Critical Region*/
+ 115:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_interruptState = CyEnterCriticalSection();
+ 116:Generated_Source\PSoC5/Counter_RESET.c ****             
+ 117:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_STATUS_AUX_CTRL |= Counter_RESET_STATUS_ACTL_INT_EN_MASK;
+ 118:Generated_Source\PSoC5/Counter_RESET.c ****             
+ 119:Generated_Source\PSoC5/Counter_RESET.c ****             /* Exit Critical Region*/
+ 120:Generated_Source\PSoC5/Counter_RESET.c ****             CyExitCriticalSection(Counter_RESET_interruptState);
+ 121:Generated_Source\PSoC5/Counter_RESET.c ****             
+ 122:Generated_Source\PSoC5/Counter_RESET.c ****         #endif /* (!Counter_RESET_UsingFixedFunction) */
+ 123:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 124:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 125:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 126:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+ 127:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_Enable
+ 128:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+ 129:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+ 130:Generated_Source\PSoC5/Counter_RESET.c **** *     Enable the Counter
+ 131:Generated_Source\PSoC5/Counter_RESET.c **** * 
+ 132:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ 133:Generated_Source\PSoC5/Counter_RESET.c **** *  void  
+ 134:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 135:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+ 136:Generated_Source\PSoC5/Counter_RESET.c **** *  void
+ 137:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 138:Generated_Source\PSoC5/Counter_RESET.c **** * Side Effects: 
+ 139:Generated_Source\PSoC5/Counter_RESET.c **** *   If the Enable mode is set to Hardware only then this function has no effect 
+ 140:Generated_Source\PSoC5/Counter_RESET.c **** *   on the operation of the counter.
+ 141:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 142:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+ 143:Generated_Source\PSoC5/Counter_RESET.c **** void Counter_RESET_Enable(void) 
+ 144:Generated_Source\PSoC5/Counter_RESET.c **** {
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 4
+
+
+  28              		.loc 1 144 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+ 145:Generated_Source\PSoC5/Counter_RESET.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 146:Generated_Source\PSoC5/Counter_RESET.c ****     #if (Counter_RESET_UsingFixedFunction)
+ 147:Generated_Source\PSoC5/Counter_RESET.c ****         Counter_RESET_GLOBAL_ENABLE |= Counter_RESET_BLOCK_EN_MASK;
+  33              		.loc 1 147 0
+  34 0000 084A     		ldr	r2, .L2
+  35 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  36 0004 43F00203 		orr	r3, r3, #2
+  37 0008 1370     		strb	r3, [r2]
+ 148:Generated_Source\PSoC5/Counter_RESET.c ****         Counter_RESET_GLOBAL_STBY_ENABLE |= Counter_RESET_BLOCK_STBY_EN_MASK;
+  38              		.loc 1 148 0
+  39 000a 1032     		adds	r2, r2, #16
+  40 000c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  41 000e 43F00203 		orr	r3, r3, #2
+  42 0012 1370     		strb	r3, [r2]
+ 149:Generated_Source\PSoC5/Counter_RESET.c ****     #endif /* (Counter_RESET_UsingFixedFunction) */  
+ 150:Generated_Source\PSoC5/Counter_RESET.c ****         
+ 151:Generated_Source\PSoC5/Counter_RESET.c ****     /* Enable the counter from the control register  */
+ 152:Generated_Source\PSoC5/Counter_RESET.c ****     /* If Fixed Function then make sure Mode is set correctly */
+ 153:Generated_Source\PSoC5/Counter_RESET.c ****     /* else make sure reset is clear */
+ 154:Generated_Source\PSoC5/Counter_RESET.c ****     #if(!Counter_RESET_ControlRegRemoved || Counter_RESET_UsingFixedFunction)
+ 155:Generated_Source\PSoC5/Counter_RESET.c ****         Counter_RESET_CONTROL |= Counter_RESET_CTRL_ENABLE;                
+  43              		.loc 1 155 0
+  44 0014 02F65932 		addw	r2, r2, #2905
+  45 0018 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  46 001a 43F00103 		orr	r3, r3, #1
+  47 001e 1370     		strb	r3, [r2]
+  48 0020 7047     		bx	lr
+  49              	.L3:
+  50 0022 00BF     		.align	2
+  51              	.L2:
+  52 0024 A3430040 		.word	1073759139
+  53              		.cfi_endproc
+  54              	.LFE1:
+  55              		.size	Counter_RESET_Enable, .-Counter_RESET_Enable
+  56              		.section	.text.Counter_RESET_Stop,"ax",%progbits
+  57              		.align	2
+  58              		.global	Counter_RESET_Stop
+  59              		.thumb
+  60              		.thumb_func
+  61              		.type	Counter_RESET_Stop, %function
+  62              	Counter_RESET_Stop:
+  63              	.LFB3:
+ 156:Generated_Source\PSoC5/Counter_RESET.c ****     #endif /* (!Counter_RESET_ControlRegRemoved || Counter_RESET_UsingFixedFunction) */
+ 157:Generated_Source\PSoC5/Counter_RESET.c ****     
+ 158:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 159:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 160:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 161:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+ 162:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_Start
+ 163:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+ 164:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+ 165:Generated_Source\PSoC5/Counter_RESET.c **** *  Enables the counter for operation 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 5
+
+
+ 166:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 167:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ 168:Generated_Source\PSoC5/Counter_RESET.c **** *  void  
+ 169:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 170:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+ 171:Generated_Source\PSoC5/Counter_RESET.c **** *  void
+ 172:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 173:Generated_Source\PSoC5/Counter_RESET.c **** * Global variables:
+ 174:Generated_Source\PSoC5/Counter_RESET.c **** *  Counter_RESET_initVar: Is modified when this function is called for the  
+ 175:Generated_Source\PSoC5/Counter_RESET.c **** *   first time. Is used to ensure that initialization happens only once.
+ 176:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 177:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+ 178:Generated_Source\PSoC5/Counter_RESET.c **** void Counter_RESET_Start(void) 
+ 179:Generated_Source\PSoC5/Counter_RESET.c **** {
+ 180:Generated_Source\PSoC5/Counter_RESET.c ****     if(Counter_RESET_initVar == 0u)
+ 181:Generated_Source\PSoC5/Counter_RESET.c ****     {
+ 182:Generated_Source\PSoC5/Counter_RESET.c ****         Counter_RESET_Init();
+ 183:Generated_Source\PSoC5/Counter_RESET.c ****         
+ 184:Generated_Source\PSoC5/Counter_RESET.c ****         Counter_RESET_initVar = 1u; /* Clear this bit for Initialization */        
+ 185:Generated_Source\PSoC5/Counter_RESET.c ****     }
+ 186:Generated_Source\PSoC5/Counter_RESET.c ****     
+ 187:Generated_Source\PSoC5/Counter_RESET.c ****     /* Enable the Counter */
+ 188:Generated_Source\PSoC5/Counter_RESET.c ****     Counter_RESET_Enable();        
+ 189:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 190:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 191:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 192:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+ 193:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_Stop
+ 194:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+ 195:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+ 196:Generated_Source\PSoC5/Counter_RESET.c **** * Halts the counter, but does not change any modes or disable interrupts.
+ 197:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 198:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ 199:Generated_Source\PSoC5/Counter_RESET.c **** *  void  
+ 200:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 201:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+ 202:Generated_Source\PSoC5/Counter_RESET.c **** *  void
+ 203:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 204:Generated_Source\PSoC5/Counter_RESET.c **** * Side Effects: If the Enable mode is set to Hardware only then this function
+ 205:Generated_Source\PSoC5/Counter_RESET.c **** *               has no effect on the operation of the counter.
+ 206:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 207:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+ 208:Generated_Source\PSoC5/Counter_RESET.c **** void Counter_RESET_Stop(void) 
+ 209:Generated_Source\PSoC5/Counter_RESET.c **** {
+  64              		.loc 1 209 0
+  65              		.cfi_startproc
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 0, uses_anonymous_args = 0
+  68              		@ link register save eliminated.
+ 210:Generated_Source\PSoC5/Counter_RESET.c ****     /* Disable Counter */
+ 211:Generated_Source\PSoC5/Counter_RESET.c ****     #if(!Counter_RESET_ControlRegRemoved || Counter_RESET_UsingFixedFunction)
+ 212:Generated_Source\PSoC5/Counter_RESET.c ****         Counter_RESET_CONTROL &= ((uint8)(~Counter_RESET_CTRL_ENABLE));        
+  69              		.loc 1 212 0
+  70 0000 084A     		ldr	r2, .L5
+  71 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  72 0004 03F0FE03 		and	r3, r3, #254
+  73 0008 1370     		strb	r3, [r2]
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 6
+
+
+ 213:Generated_Source\PSoC5/Counter_RESET.c ****     #endif /* (!Counter_RESET_ControlRegRemoved || Counter_RESET_UsingFixedFunction) */
+ 214:Generated_Source\PSoC5/Counter_RESET.c ****     
+ 215:Generated_Source\PSoC5/Counter_RESET.c ****     /* Globally disable the Fixed Function Block chosen */
+ 216:Generated_Source\PSoC5/Counter_RESET.c ****     #if (Counter_RESET_UsingFixedFunction)
+ 217:Generated_Source\PSoC5/Counter_RESET.c ****         Counter_RESET_GLOBAL_ENABLE &= ((uint8)(~Counter_RESET_BLOCK_EN_MASK));
+  74              		.loc 1 217 0
+  75 000a A2F66932 		subw	r2, r2, #2921
+  76 000e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  77 0010 03F0FD03 		and	r3, r3, #253
+  78 0014 1370     		strb	r3, [r2]
+ 218:Generated_Source\PSoC5/Counter_RESET.c ****         Counter_RESET_GLOBAL_STBY_ENABLE &= ((uint8)(~Counter_RESET_BLOCK_STBY_EN_MASK));
+  79              		.loc 1 218 0
+  80 0016 1032     		adds	r2, r2, #16
+  81 0018 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  82 001a 03F0FD03 		and	r3, r3, #253
+  83 001e 1370     		strb	r3, [r2]
+  84 0020 7047     		bx	lr
+  85              	.L6:
+  86 0022 00BF     		.align	2
+  87              	.L5:
+  88 0024 0C4F0040 		.word	1073762060
+  89              		.cfi_endproc
+  90              	.LFE3:
+  91              		.size	Counter_RESET_Stop, .-Counter_RESET_Stop
+  92              		.section	.text.Counter_RESET_SetInterruptMode,"ax",%progbits
+  93              		.align	2
+  94              		.global	Counter_RESET_SetInterruptMode
+  95              		.thumb
+  96              		.thumb_func
+  97              		.type	Counter_RESET_SetInterruptMode, %function
+  98              	Counter_RESET_SetInterruptMode:
+  99              	.LFB4:
+ 219:Generated_Source\PSoC5/Counter_RESET.c ****     #endif /* (Counter_RESET_UsingFixedFunction) */
+ 220:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 221:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 222:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 223:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+ 224:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_SetInterruptMode
+ 225:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+ 226:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+ 227:Generated_Source\PSoC5/Counter_RESET.c **** * Configures which interrupt sources are enabled to generate the final interrupt
+ 228:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 229:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ 230:Generated_Source\PSoC5/Counter_RESET.c **** *  InterruptsMask: This parameter is an or'd collection of the status bits
+ 231:Generated_Source\PSoC5/Counter_RESET.c **** *                   which will be allowed to generate the counters interrupt.   
+ 232:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 233:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+ 234:Generated_Source\PSoC5/Counter_RESET.c **** *  void
+ 235:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 236:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+ 237:Generated_Source\PSoC5/Counter_RESET.c **** void Counter_RESET_SetInterruptMode(uint8 interruptsMask) 
+ 238:Generated_Source\PSoC5/Counter_RESET.c **** {
+ 100              		.loc 1 238 0
+ 101              		.cfi_startproc
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 104              		@ link register save eliminated.
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 7
+
+
+ 105              	.LVL0:
+ 239:Generated_Source\PSoC5/Counter_RESET.c ****     Counter_RESET_STATUS_MASK = interruptsMask;
+ 106              		.loc 1 239 0
+ 107 0000 014B     		ldr	r3, .L8
+ 108 0002 1870     		strb	r0, [r3]
+ 109 0004 7047     		bx	lr
+ 110              	.L9:
+ 111 0006 00BF     		.align	2
+ 112              	.L8:
+ 113 0008 0F4F0040 		.word	1073762063
+ 114              		.cfi_endproc
+ 115              	.LFE4:
+ 116              		.size	Counter_RESET_SetInterruptMode, .-Counter_RESET_SetInterruptMode
+ 117              		.section	.text.Counter_RESET_ReadStatusRegister,"ax",%progbits
+ 118              		.align	2
+ 119              		.global	Counter_RESET_ReadStatusRegister
+ 120              		.thumb
+ 121              		.thumb_func
+ 122              		.type	Counter_RESET_ReadStatusRegister, %function
+ 123              	Counter_RESET_ReadStatusRegister:
+ 124              	.LFB5:
+ 240:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 241:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 242:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 243:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+ 244:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_ReadStatusRegister
+ 245:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+ 246:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+ 247:Generated_Source\PSoC5/Counter_RESET.c **** *   Reads the status register and returns it's state. This function should use
+ 248:Generated_Source\PSoC5/Counter_RESET.c **** *       defined types for the bit-field information as the bits in this
+ 249:Generated_Source\PSoC5/Counter_RESET.c **** *       register may be permuteable.
+ 250:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 251:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ 252:Generated_Source\PSoC5/Counter_RESET.c **** *  void
+ 253:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 254:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+ 255:Generated_Source\PSoC5/Counter_RESET.c **** *  (uint8) The contents of the status register
+ 256:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 257:Generated_Source\PSoC5/Counter_RESET.c **** * Side Effects:
+ 258:Generated_Source\PSoC5/Counter_RESET.c **** *   Status register bits may be clear on read. 
+ 259:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 260:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+ 261:Generated_Source\PSoC5/Counter_RESET.c **** uint8   Counter_RESET_ReadStatusRegister(void) 
+ 262:Generated_Source\PSoC5/Counter_RESET.c **** {
+ 125              		.loc 1 262 0
+ 126              		.cfi_startproc
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129              		@ link register save eliminated.
+ 263:Generated_Source\PSoC5/Counter_RESET.c ****     return Counter_RESET_STATUS;
+ 130              		.loc 1 263 0
+ 131 0000 014B     		ldr	r3, .L11
+ 132 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 264:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 133              		.loc 1 264 0
+ 134 0004 7047     		bx	lr
+ 135              	.L12:
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 8
+
+
+ 136 0006 00BF     		.align	2
+ 137              	.L11:
+ 138 0008 0F4F0040 		.word	1073762063
+ 139              		.cfi_endproc
+ 140              	.LFE5:
+ 141              		.size	Counter_RESET_ReadStatusRegister, .-Counter_RESET_ReadStatusRegister
+ 142              		.section	.text.Counter_RESET_ReadControlRegister,"ax",%progbits
+ 143              		.align	2
+ 144              		.global	Counter_RESET_ReadControlRegister
+ 145              		.thumb
+ 146              		.thumb_func
+ 147              		.type	Counter_RESET_ReadControlRegister, %function
+ 148              	Counter_RESET_ReadControlRegister:
+ 149              	.LFB6:
+ 265:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 266:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 267:Generated_Source\PSoC5/Counter_RESET.c **** #if(!Counter_RESET_ControlRegRemoved)
+ 268:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+ 269:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_ReadControlRegister
+ 270:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+ 271:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+ 272:Generated_Source\PSoC5/Counter_RESET.c **** *   Reads the control register and returns it's state. This function should use
+ 273:Generated_Source\PSoC5/Counter_RESET.c **** *       defined types for the bit-field information as the bits in this
+ 274:Generated_Source\PSoC5/Counter_RESET.c **** *       register may be permuteable.
+ 275:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 276:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ 277:Generated_Source\PSoC5/Counter_RESET.c **** *  void
+ 278:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 279:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+ 280:Generated_Source\PSoC5/Counter_RESET.c **** *  (uint8) The contents of the control register
+ 281:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 282:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+ 283:Generated_Source\PSoC5/Counter_RESET.c **** uint8   Counter_RESET_ReadControlRegister(void) 
+ 284:Generated_Source\PSoC5/Counter_RESET.c **** {
+ 150              		.loc 1 284 0
+ 151              		.cfi_startproc
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 154              		@ link register save eliminated.
+ 285:Generated_Source\PSoC5/Counter_RESET.c ****     return Counter_RESET_CONTROL;
+ 155              		.loc 1 285 0
+ 156 0000 014B     		ldr	r3, .L14
+ 157 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 286:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 158              		.loc 1 286 0
+ 159 0004 7047     		bx	lr
+ 160              	.L15:
+ 161 0006 00BF     		.align	2
+ 162              	.L14:
+ 163 0008 0C4F0040 		.word	1073762060
+ 164              		.cfi_endproc
+ 165              	.LFE6:
+ 166              		.size	Counter_RESET_ReadControlRegister, .-Counter_RESET_ReadControlRegister
+ 167              		.section	.text.Counter_RESET_WriteControlRegister,"ax",%progbits
+ 168              		.align	2
+ 169              		.global	Counter_RESET_WriteControlRegister
+ 170              		.thumb
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 9
+
+
+ 171              		.thumb_func
+ 172              		.type	Counter_RESET_WriteControlRegister, %function
+ 173              	Counter_RESET_WriteControlRegister:
+ 174              	.LFB7:
+ 287:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 288:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 289:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+ 290:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_WriteControlRegister
+ 291:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+ 292:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+ 293:Generated_Source\PSoC5/Counter_RESET.c **** *   Sets the bit-field of the control register.  This function should use
+ 294:Generated_Source\PSoC5/Counter_RESET.c **** *       defined types for the bit-field information as the bits in this
+ 295:Generated_Source\PSoC5/Counter_RESET.c **** *       register may be permuteable.
+ 296:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 297:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ 298:Generated_Source\PSoC5/Counter_RESET.c **** *  void
+ 299:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 300:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+ 301:Generated_Source\PSoC5/Counter_RESET.c **** *  (uint8) The contents of the control register
+ 302:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 303:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+ 304:Generated_Source\PSoC5/Counter_RESET.c **** void    Counter_RESET_WriteControlRegister(uint8 control) 
+ 305:Generated_Source\PSoC5/Counter_RESET.c **** {
+ 175              		.loc 1 305 0
+ 176              		.cfi_startproc
+ 177              		@ args = 0, pretend = 0, frame = 0
+ 178              		@ frame_needed = 0, uses_anonymous_args = 0
+ 179              		@ link register save eliminated.
+ 180              	.LVL1:
+ 306:Generated_Source\PSoC5/Counter_RESET.c ****     Counter_RESET_CONTROL = control;
+ 181              		.loc 1 306 0
+ 182 0000 014B     		ldr	r3, .L17
+ 183 0002 1870     		strb	r0, [r3]
+ 184 0004 7047     		bx	lr
+ 185              	.L18:
+ 186 0006 00BF     		.align	2
+ 187              	.L17:
+ 188 0008 0C4F0040 		.word	1073762060
+ 189              		.cfi_endproc
+ 190              	.LFE7:
+ 191              		.size	Counter_RESET_WriteControlRegister, .-Counter_RESET_WriteControlRegister
+ 192              		.section	.text.Counter_RESET_WriteCounter,"ax",%progbits
+ 193              		.align	2
+ 194              		.global	Counter_RESET_WriteCounter
+ 195              		.thumb
+ 196              		.thumb_func
+ 197              		.type	Counter_RESET_WriteCounter, %function
+ 198              	Counter_RESET_WriteCounter:
+ 199              	.LFB8:
+ 307:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 308:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 309:Generated_Source\PSoC5/Counter_RESET.c **** #endif  /* (!Counter_RESET_ControlRegRemoved) */
+ 310:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 311:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 312:Generated_Source\PSoC5/Counter_RESET.c **** #if (!(Counter_RESET_UsingFixedFunction && (CY_PSOC5A)))
+ 313:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+ 314:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_WriteCounter
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 10
+
+
+ 315:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+ 316:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+ 317:Generated_Source\PSoC5/Counter_RESET.c **** *   This funtion is used to set the counter to a specific value
+ 318:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 319:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ 320:Generated_Source\PSoC5/Counter_RESET.c **** *  counter:  New counter value. 
+ 321:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 322:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+ 323:Generated_Source\PSoC5/Counter_RESET.c **** *  void 
+ 324:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 325:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+ 326:Generated_Source\PSoC5/Counter_RESET.c **** void Counter_RESET_WriteCounter(uint16 counter) \
+ 327:Generated_Source\PSoC5/Counter_RESET.c ****                                    
+ 328:Generated_Source\PSoC5/Counter_RESET.c **** {
+ 200              		.loc 1 328 0
+ 201              		.cfi_startproc
+ 202              		@ args = 0, pretend = 0, frame = 0
+ 203              		@ frame_needed = 0, uses_anonymous_args = 0
+ 204              	.LVL2:
+ 205 0000 10B5     		push	{r4, lr}
+ 206              		.cfi_def_cfa_offset 8
+ 207              		.cfi_offset 4, -8
+ 208              		.cfi_offset 14, -4
+ 209 0002 0446     		mov	r4, r0
+ 329:Generated_Source\PSoC5/Counter_RESET.c ****     #if(Counter_RESET_UsingFixedFunction)
+ 330:Generated_Source\PSoC5/Counter_RESET.c ****         /* assert if block is already enabled */
+ 331:Generated_Source\PSoC5/Counter_RESET.c ****         CYASSERT (0u == (Counter_RESET_GLOBAL_ENABLE & Counter_RESET_BLOCK_EN_MASK));
+ 210              		.loc 1 331 0
+ 211 0004 094B     		ldr	r3, .L22
+ 212 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 213 0008 13F0020F 		tst	r3, #2
+ 214 000c 02D0     		beq	.L20
+ 215              		.loc 1 331 0 is_stmt 0 discriminator 1
+ 216 000e 0020     		movs	r0, #0
+ 217              	.LVL3:
+ 218 0010 FFF7FEFF 		bl	CyHalt
+ 219              	.LVL4:
+ 220              	.L20:
+ 332:Generated_Source\PSoC5/Counter_RESET.c ****         /* If block is disabled, enable it and then write the counter */
+ 333:Generated_Source\PSoC5/Counter_RESET.c ****         Counter_RESET_GLOBAL_ENABLE |= Counter_RESET_BLOCK_EN_MASK;
+ 221              		.loc 1 333 0 is_stmt 1
+ 222 0014 054B     		ldr	r3, .L22
+ 223 0016 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 224 0018 42F00202 		orr	r2, r2, #2
+ 225 001c 1A70     		strb	r2, [r3]
+ 334:Generated_Source\PSoC5/Counter_RESET.c ****         CY_SET_REG16(Counter_RESET_COUNTER_LSB_PTR, (uint16)counter);
+ 226              		.loc 1 334 0
+ 227 001e 044A     		ldr	r2, .L22+4
+ 228 0020 1480     		strh	r4, [r2]	@ movhi
+ 335:Generated_Source\PSoC5/Counter_RESET.c ****         Counter_RESET_GLOBAL_ENABLE &= ((uint8)(~Counter_RESET_BLOCK_EN_MASK));
+ 229              		.loc 1 335 0
+ 230 0022 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 231 0024 02F0FD02 		and	r2, r2, #253
+ 232 0028 1A70     		strb	r2, [r3]
+ 233 002a 10BD     		pop	{r4, pc}
+ 234              	.L23:
+ 235              		.align	2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 11
+
+
+ 236              	.L22:
+ 237 002c A3430040 		.word	1073759139
+ 238 0030 124F0040 		.word	1073762066
+ 239              		.cfi_endproc
+ 240              	.LFE8:
+ 241              		.size	Counter_RESET_WriteCounter, .-Counter_RESET_WriteCounter
+ 242              		.section	.text.Counter_RESET_ReadCounter,"ax",%progbits
+ 243              		.align	2
+ 244              		.global	Counter_RESET_ReadCounter
+ 245              		.thumb
+ 246              		.thumb_func
+ 247              		.type	Counter_RESET_ReadCounter, %function
+ 248              	Counter_RESET_ReadCounter:
+ 249              	.LFB9:
+ 336:Generated_Source\PSoC5/Counter_RESET.c ****     #else
+ 337:Generated_Source\PSoC5/Counter_RESET.c ****         CY_SET_REG16(Counter_RESET_COUNTER_LSB_PTR, counter);
+ 338:Generated_Source\PSoC5/Counter_RESET.c ****     #endif /* (Counter_RESET_UsingFixedFunction) */
+ 339:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 340:Generated_Source\PSoC5/Counter_RESET.c **** #endif /* (!(Counter_RESET_UsingFixedFunction && (CY_PSOC5A))) */
+ 341:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 342:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 343:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+ 344:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_ReadCounter
+ 345:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+ 346:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+ 347:Generated_Source\PSoC5/Counter_RESET.c **** * Returns the current value of the counter.  It doesn't matter
+ 348:Generated_Source\PSoC5/Counter_RESET.c **** * if the counter is enabled or running.
+ 349:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 350:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ 351:Generated_Source\PSoC5/Counter_RESET.c **** *  void:  
+ 352:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 353:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+ 354:Generated_Source\PSoC5/Counter_RESET.c **** *  (uint16) The present value of the counter.
+ 355:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 356:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+ 357:Generated_Source\PSoC5/Counter_RESET.c **** uint16 Counter_RESET_ReadCounter(void) 
+ 358:Generated_Source\PSoC5/Counter_RESET.c **** {
+ 250              		.loc 1 358 0
+ 251              		.cfi_startproc
+ 252              		@ args = 0, pretend = 0, frame = 0
+ 253              		@ frame_needed = 0, uses_anonymous_args = 0
+ 254              		@ link register save eliminated.
+ 359:Generated_Source\PSoC5/Counter_RESET.c ****     /* Force capture by reading Accumulator */
+ 360:Generated_Source\PSoC5/Counter_RESET.c ****     /* Must first do a software capture to be able to read the counter */
+ 361:Generated_Source\PSoC5/Counter_RESET.c ****     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 362:Generated_Source\PSoC5/Counter_RESET.c ****     #if(Counter_RESET_UsingFixedFunction)
+ 363:Generated_Source\PSoC5/Counter_RESET.c **** 		(void)CY_GET_REG16(Counter_RESET_COUNTER_LSB_PTR);
+ 255              		.loc 1 363 0
+ 256 0000 024B     		ldr	r3, .L25
+ 257 0002 1B88     		ldrh	r3, [r3]
+ 364:Generated_Source\PSoC5/Counter_RESET.c **** 	#else
+ 365:Generated_Source\PSoC5/Counter_RESET.c **** 		(void)CY_GET_REG8(Counter_RESET_COUNTER_LSB_PTR_8BIT);
+ 366:Generated_Source\PSoC5/Counter_RESET.c **** 	#endif/* (Counter_RESET_UsingFixedFunction) */
+ 367:Generated_Source\PSoC5/Counter_RESET.c ****     
+ 368:Generated_Source\PSoC5/Counter_RESET.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
+ 369:Generated_Source\PSoC5/Counter_RESET.c ****     #if(Counter_RESET_UsingFixedFunction)
+ 370:Generated_Source\PSoC5/Counter_RESET.c ****         return ((uint16)CY_GET_REG16(Counter_RESET_STATICCOUNT_LSB_PTR));
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 12
+
+
+ 258              		.loc 1 370 0
+ 259 0004 024B     		ldr	r3, .L25+4
+ 260 0006 1888     		ldrh	r0, [r3]
+ 371:Generated_Source\PSoC5/Counter_RESET.c ****     #else
+ 372:Generated_Source\PSoC5/Counter_RESET.c ****         return (CY_GET_REG16(Counter_RESET_STATICCOUNT_LSB_PTR));
+ 373:Generated_Source\PSoC5/Counter_RESET.c ****     #endif /* (Counter_RESET_UsingFixedFunction) */
+ 374:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 261              		.loc 1 374 0
+ 262 0008 80B2     		uxth	r0, r0
+ 263 000a 7047     		bx	lr
+ 264              	.L26:
+ 265              		.align	2
+ 266              	.L25:
+ 267 000c 124F0040 		.word	1073762066
+ 268 0010 144F0040 		.word	1073762068
+ 269              		.cfi_endproc
+ 270              	.LFE9:
+ 271              		.size	Counter_RESET_ReadCounter, .-Counter_RESET_ReadCounter
+ 272              		.section	.text.Counter_RESET_ReadCapture,"ax",%progbits
+ 273              		.align	2
+ 274              		.global	Counter_RESET_ReadCapture
+ 275              		.thumb
+ 276              		.thumb_func
+ 277              		.type	Counter_RESET_ReadCapture, %function
+ 278              	Counter_RESET_ReadCapture:
+ 279              	.LFB10:
+ 375:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 376:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 377:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+ 378:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_ReadCapture
+ 379:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+ 380:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+ 381:Generated_Source\PSoC5/Counter_RESET.c **** *   This function returns the last value captured.
+ 382:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 383:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ 384:Generated_Source\PSoC5/Counter_RESET.c **** *  void
+ 385:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 386:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+ 387:Generated_Source\PSoC5/Counter_RESET.c **** *  (uint16) Present Capture value.
+ 388:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 389:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+ 390:Generated_Source\PSoC5/Counter_RESET.c **** uint16 Counter_RESET_ReadCapture(void) 
+ 391:Generated_Source\PSoC5/Counter_RESET.c **** {
+ 280              		.loc 1 391 0
+ 281              		.cfi_startproc
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284              		@ link register save eliminated.
+ 392:Generated_Source\PSoC5/Counter_RESET.c ****     #if(Counter_RESET_UsingFixedFunction)
+ 393:Generated_Source\PSoC5/Counter_RESET.c ****         return ((uint16)CY_GET_REG16(Counter_RESET_STATICCOUNT_LSB_PTR));
+ 285              		.loc 1 393 0
+ 286 0000 014B     		ldr	r3, .L28
+ 287 0002 1888     		ldrh	r0, [r3]
+ 394:Generated_Source\PSoC5/Counter_RESET.c ****     #else
+ 395:Generated_Source\PSoC5/Counter_RESET.c ****         return (CY_GET_REG16(Counter_RESET_STATICCOUNT_LSB_PTR));
+ 396:Generated_Source\PSoC5/Counter_RESET.c ****     #endif /* (Counter_RESET_UsingFixedFunction) */
+ 397:Generated_Source\PSoC5/Counter_RESET.c **** }
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 13
+
+
+ 288              		.loc 1 397 0
+ 289 0004 80B2     		uxth	r0, r0
+ 290 0006 7047     		bx	lr
+ 291              	.L29:
+ 292              		.align	2
+ 293              	.L28:
+ 294 0008 144F0040 		.word	1073762068
+ 295              		.cfi_endproc
+ 296              	.LFE10:
+ 297              		.size	Counter_RESET_ReadCapture, .-Counter_RESET_ReadCapture
+ 298              		.section	.text.Counter_RESET_WritePeriod,"ax",%progbits
+ 299              		.align	2
+ 300              		.global	Counter_RESET_WritePeriod
+ 301              		.thumb
+ 302              		.thumb_func
+ 303              		.type	Counter_RESET_WritePeriod, %function
+ 304              	Counter_RESET_WritePeriod:
+ 305              	.LFB11:
+ 398:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 399:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 400:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+ 401:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_WritePeriod
+ 402:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+ 403:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+ 404:Generated_Source\PSoC5/Counter_RESET.c **** * Changes the period of the counter.  The new period 
+ 405:Generated_Source\PSoC5/Counter_RESET.c **** * will be loaded the next time terminal count is detected.
+ 406:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 407:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ 408:Generated_Source\PSoC5/Counter_RESET.c **** *  period: (uint16) A value of 0 will result in
+ 409:Generated_Source\PSoC5/Counter_RESET.c **** *         the counter remaining at zero.  
+ 410:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 411:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+ 412:Generated_Source\PSoC5/Counter_RESET.c **** *  void
+ 413:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 414:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+ 415:Generated_Source\PSoC5/Counter_RESET.c **** void Counter_RESET_WritePeriod(uint16 period) 
+ 416:Generated_Source\PSoC5/Counter_RESET.c **** {
+ 306              		.loc 1 416 0
+ 307              		.cfi_startproc
+ 308              		@ args = 0, pretend = 0, frame = 0
+ 309              		@ frame_needed = 0, uses_anonymous_args = 0
+ 310              		@ link register save eliminated.
+ 311              	.LVL5:
+ 417:Generated_Source\PSoC5/Counter_RESET.c ****     #if(Counter_RESET_UsingFixedFunction)
+ 418:Generated_Source\PSoC5/Counter_RESET.c ****         CY_SET_REG16(Counter_RESET_PERIOD_LSB_PTR,(uint16)period);
+ 312              		.loc 1 418 0
+ 313 0000 014B     		ldr	r3, .L31
+ 314 0002 1880     		strh	r0, [r3]	@ movhi
+ 315 0004 7047     		bx	lr
+ 316              	.L32:
+ 317 0006 00BF     		.align	2
+ 318              	.L31:
+ 319 0008 104F0040 		.word	1073762064
+ 320              		.cfi_endproc
+ 321              	.LFE11:
+ 322              		.size	Counter_RESET_WritePeriod, .-Counter_RESET_WritePeriod
+ 323              		.section	.text.Counter_RESET_Init,"ax",%progbits
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 14
+
+
+ 324              		.align	2
+ 325              		.global	Counter_RESET_Init
+ 326              		.thumb
+ 327              		.thumb_func
+ 328              		.type	Counter_RESET_Init, %function
+ 329              	Counter_RESET_Init:
+ 330              	.LFB0:
+  38:Generated_Source\PSoC5/Counter_RESET.c ****         #if (!Counter_RESET_UsingFixedFunction && !Counter_RESET_ControlRegRemoved)
+ 331              		.loc 1 38 0
+ 332              		.cfi_startproc
+ 333              		@ args = 0, pretend = 0, frame = 0
+ 334              		@ frame_needed = 0, uses_anonymous_args = 0
+ 335 0000 08B5     		push	{r3, lr}
+ 336              		.cfi_def_cfa_offset 8
+ 337              		.cfi_offset 3, -8
+ 338              		.cfi_offset 14, -4
+  50:Generated_Source\PSoC5/Counter_RESET.c ****             
+ 339              		.loc 1 50 0
+ 340 0002 174B     		ldr	r3, .L35
+ 341 0004 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 342 0006 02F00102 		and	r2, r2, #1
+ 343 000a 1A70     		strb	r2, [r3]
+  57:Generated_Source\PSoC5/Counter_RESET.c ****             #endif /* (CY_PSOC3 || CY_PSOC5LP) */
+ 344              		.loc 1 57 0
+ 345 000c 1549     		ldr	r1, .L35+4
+ 346 000e 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+ 347 0010 02F0FC02 		and	r2, r2, #252
+ 348 0014 0A70     		strb	r2, [r1]
+  62:Generated_Source\PSoC5/Counter_RESET.c ****             #endif /* (Counter_RESET_RunModeUsed != 0x0u) */
+ 349              		.loc 1 62 0
+ 350 0016 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 351 0018 42F00402 		orr	r2, r2, #4
+ 352 001c 1A70     		strb	r2, [r3]
+  66:Generated_Source\PSoC5/Counter_RESET.c ****             
+ 353              		.loc 1 66 0
+ 354 001e 124A     		ldr	r2, .L35+8
+ 355 0020 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 356 0022 43F00103 		orr	r3, r3, #1
+ 357 0026 1370     		strb	r3, [r2]
+  69:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_RT1 |= Counter_RESET_SYNC;     
+ 358              		.loc 1 69 0
+ 359 0028 104B     		ldr	r3, .L35+12
+ 360 002a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 361 002c 02F0CF02 		and	r2, r2, #207
+ 362 0030 1A70     		strb	r2, [r3]
+  70:Generated_Source\PSoC5/Counter_RESET.c ****                     
+ 363              		.loc 1 70 0
+ 364 0032 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 365 0034 42F03002 		orr	r2, r2, #48
+ 366 0038 1A70     		strb	r2, [r3]
+  73:Generated_Source\PSoC5/Counter_RESET.c ****             Counter_RESET_RT1 |= Counter_RESET_SYNCDSI_EN;
+ 367              		.loc 1 73 0
+ 368 003a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 369 003c 02F0F002 		and	r2, r2, #240
+ 370 0040 1A70     		strb	r2, [r3]
+  74:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 371              		.loc 1 74 0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 15
+
+
+ 372 0042 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 373 0044 42F00F02 		orr	r2, r2, #15
+ 374 0048 1A70     		strb	r2, [r3]
+ 100:Generated_Source\PSoC5/Counter_RESET.c ****         #if (!(Counter_RESET_UsingFixedFunction && (CY_PSOC5A)))
+ 375              		.loc 1 100 0
+ 376 004a 42F21070 		movw	r0, #10000
+ 377 004e FFF7FEFF 		bl	Counter_RESET_WritePeriod
+ 378              	.LVL6:
+ 102:Generated_Source\PSoC5/Counter_RESET.c ****         #endif /* (!(Counter_RESET_UsingFixedFunction && (CY_PSOC5A))) */
+ 379              		.loc 1 102 0
+ 380 0052 0020     		movs	r0, #0
+ 381 0054 FFF7FEFF 		bl	Counter_RESET_WriteCounter
+ 382              	.LVL7:
+ 104:Generated_Source\PSoC5/Counter_RESET.c ****         
+ 383              		.loc 1 104 0
+ 384 0058 0820     		movs	r0, #8
+ 385 005a FFF7FEFF 		bl	Counter_RESET_SetInterruptMode
+ 386              	.LVL8:
+ 387 005e 08BD     		pop	{r3, pc}
+ 388              	.L36:
+ 389              		.align	2
+ 390              	.L35:
+ 391 0060 0C4F0040 		.word	1073762060
+ 392 0064 0E4F0040 		.word	1073762062
+ 393 0068 0D4F0040 		.word	1073762061
+ 394 006c 174F0040 		.word	1073762071
+ 395              		.cfi_endproc
+ 396              	.LFE0:
+ 397              		.size	Counter_RESET_Init, .-Counter_RESET_Init
+ 398              		.section	.text.Counter_RESET_Start,"ax",%progbits
+ 399              		.align	2
+ 400              		.global	Counter_RESET_Start
+ 401              		.thumb
+ 402              		.thumb_func
+ 403              		.type	Counter_RESET_Start, %function
+ 404              	Counter_RESET_Start:
+ 405              	.LFB2:
+ 179:Generated_Source\PSoC5/Counter_RESET.c ****     if(Counter_RESET_initVar == 0u)
+ 406              		.loc 1 179 0
+ 407              		.cfi_startproc
+ 408              		@ args = 0, pretend = 0, frame = 0
+ 409              		@ frame_needed = 0, uses_anonymous_args = 0
+ 410 0000 08B5     		push	{r3, lr}
+ 411              		.cfi_def_cfa_offset 8
+ 412              		.cfi_offset 3, -8
+ 413              		.cfi_offset 14, -4
+ 180:Generated_Source\PSoC5/Counter_RESET.c ****     {
+ 414              		.loc 1 180 0
+ 415 0002 054B     		ldr	r3, .L40
+ 416 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 417 0006 23B9     		cbnz	r3, .L38
+ 182:Generated_Source\PSoC5/Counter_RESET.c ****         
+ 418              		.loc 1 182 0
+ 419 0008 FFF7FEFF 		bl	Counter_RESET_Init
+ 420              	.LVL9:
+ 184:Generated_Source\PSoC5/Counter_RESET.c ****     }
+ 421              		.loc 1 184 0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 16
+
+
+ 422 000c 0122     		movs	r2, #1
+ 423 000e 024B     		ldr	r3, .L40
+ 424 0010 1A70     		strb	r2, [r3]
+ 425              	.L38:
+ 188:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 426              		.loc 1 188 0
+ 427 0012 FFF7FEFF 		bl	Counter_RESET_Enable
+ 428              	.LVL10:
+ 429 0016 08BD     		pop	{r3, pc}
+ 430              	.L41:
+ 431              		.align	2
+ 432              	.L40:
+ 433 0018 00000000 		.word	.LANCHOR0
+ 434              		.cfi_endproc
+ 435              	.LFE2:
+ 436              		.size	Counter_RESET_Start, .-Counter_RESET_Start
+ 437              		.section	.text.Counter_RESET_ReadPeriod,"ax",%progbits
+ 438              		.align	2
+ 439              		.global	Counter_RESET_ReadPeriod
+ 440              		.thumb
+ 441              		.thumb_func
+ 442              		.type	Counter_RESET_ReadPeriod, %function
+ 443              	Counter_RESET_ReadPeriod:
+ 444              	.LFB12:
+ 419:Generated_Source\PSoC5/Counter_RESET.c ****     #else
+ 420:Generated_Source\PSoC5/Counter_RESET.c ****         CY_SET_REG16(Counter_RESET_PERIOD_LSB_PTR, period);
+ 421:Generated_Source\PSoC5/Counter_RESET.c ****     #endif /* (Counter_RESET_UsingFixedFunction) */
+ 422:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 423:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 424:Generated_Source\PSoC5/Counter_RESET.c **** 
+ 425:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
+ 426:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_ReadPeriod
+ 427:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
+ 428:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
+ 429:Generated_Source\PSoC5/Counter_RESET.c **** * Reads the current period value without affecting counter operation.
+ 430:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 431:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
+ 432:Generated_Source\PSoC5/Counter_RESET.c **** *  void:  
+ 433:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 434:Generated_Source\PSoC5/Counter_RESET.c **** * Return: 
+ 435:Generated_Source\PSoC5/Counter_RESET.c **** *  (uint16) Present period value.
+ 436:Generated_Source\PSoC5/Counter_RESET.c **** *
+ 437:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
+ 438:Generated_Source\PSoC5/Counter_RESET.c **** uint16 Counter_RESET_ReadPeriod(void) 
+ 439:Generated_Source\PSoC5/Counter_RESET.c **** {
+ 445              		.loc 1 439 0
+ 446              		.cfi_startproc
+ 447              		@ args = 0, pretend = 0, frame = 0
+ 448              		@ frame_needed = 0, uses_anonymous_args = 0
+ 449              		@ link register save eliminated.
+ 440:Generated_Source\PSoC5/Counter_RESET.c ****     #if(Counter_RESET_UsingFixedFunction)
+ 441:Generated_Source\PSoC5/Counter_RESET.c ****         return ((uint16)CY_GET_REG16(Counter_RESET_PERIOD_LSB_PTR));
+ 450              		.loc 1 441 0
+ 451 0000 014B     		ldr	r3, .L43
+ 452 0002 1888     		ldrh	r0, [r3]
+ 442:Generated_Source\PSoC5/Counter_RESET.c ****     #else
+ 443:Generated_Source\PSoC5/Counter_RESET.c ****         return (CY_GET_REG16(Counter_RESET_PERIOD_LSB_PTR));
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 17
+
+
+ 444:Generated_Source\PSoC5/Counter_RESET.c ****     #endif /* (Counter_RESET_UsingFixedFunction) */
+ 445:Generated_Source\PSoC5/Counter_RESET.c **** }
+ 453              		.loc 1 445 0
+ 454 0004 80B2     		uxth	r0, r0
+ 455 0006 7047     		bx	lr
+ 456              	.L44:
+ 457              		.align	2
+ 458              	.L43:
+ 459 0008 104F0040 		.word	1073762064
+ 460              		.cfi_endproc
+ 461              	.LFE12:
+ 462              		.size	Counter_RESET_ReadPeriod, .-Counter_RESET_ReadPeriod
+ 463              		.global	Counter_RESET_initVar
+ 464              		.bss
+ 465              		.set	.LANCHOR0,. + 0
+ 466              		.type	Counter_RESET_initVar, %object
+ 467              		.size	Counter_RESET_initVar, 1
+ 468              	Counter_RESET_initVar:
+ 469 0000 00       		.space	1
+ 470              		.text
+ 471              	.Letext0:
+ 472              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 473              		.file 3 "Generated_Source\\PSoC5\\CyLib.h"
+ 474              		.section	.debug_info,"",%progbits
+ 475              	.Ldebug_info0:
+ 476 0000 89020000 		.4byte	0x289
+ 477 0004 0400     		.2byte	0x4
+ 478 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 479 000a 04       		.byte	0x4
+ 480 000b 01       		.uleb128 0x1
+ 481 000c B4000000 		.4byte	.LASF35
+ 482 0010 0C       		.byte	0xc
+ 483 0011 3E030000 		.4byte	.LASF36
+ 484 0015 45020000 		.4byte	.LASF37
+ 485 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 486 001d 00000000 		.4byte	0
+ 487 0021 00000000 		.4byte	.Ldebug_line0
+ 488 0025 02       		.uleb128 0x2
+ 489 0026 01       		.byte	0x1
+ 490 0027 06       		.byte	0x6
+ 491 0028 32030000 		.4byte	.LASF0
+ 492 002c 02       		.uleb128 0x2
+ 493 002d 01       		.byte	0x1
+ 494 002e 08       		.byte	0x8
+ 495 002f A6000000 		.4byte	.LASF1
+ 496 0033 02       		.uleb128 0x2
+ 497 0034 02       		.byte	0x2
+ 498 0035 05       		.byte	0x5
+ 499 0036 C2020000 		.4byte	.LASF2
+ 500 003a 02       		.uleb128 0x2
+ 501 003b 02       		.byte	0x2
+ 502 003c 07       		.byte	0x7
+ 503 003d 3D000000 		.4byte	.LASF3
+ 504 0041 02       		.uleb128 0x2
+ 505 0042 04       		.byte	0x4
+ 506 0043 05       		.byte	0x5
+ 507 0044 F9020000 		.4byte	.LASF4
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 18
+
+
+ 508 0048 02       		.uleb128 0x2
+ 509 0049 04       		.byte	0x4
+ 510 004a 07       		.byte	0x7
+ 511 004b 47010000 		.4byte	.LASF5
+ 512 004f 02       		.uleb128 0x2
+ 513 0050 08       		.byte	0x8
+ 514 0051 05       		.byte	0x5
+ 515 0052 37020000 		.4byte	.LASF6
+ 516 0056 02       		.uleb128 0x2
+ 517 0057 08       		.byte	0x8
+ 518 0058 07       		.byte	0x7
+ 519 0059 ED010000 		.4byte	.LASF7
+ 520 005d 03       		.uleb128 0x3
+ 521 005e 04       		.byte	0x4
+ 522 005f 05       		.byte	0x5
+ 523 0060 696E7400 		.ascii	"int\000"
+ 524 0064 02       		.uleb128 0x2
+ 525 0065 04       		.byte	0x4
+ 526 0066 07       		.byte	0x7
+ 527 0067 50000000 		.4byte	.LASF8
+ 528 006b 04       		.uleb128 0x4
+ 529 006c 59010000 		.4byte	.LASF9
+ 530 0070 02       		.byte	0x2
+ 531 0071 E401     		.2byte	0x1e4
+ 532 0073 2C000000 		.4byte	0x2c
+ 533 0077 04       		.uleb128 0x4
+ 534 0078 B1010000 		.4byte	.LASF10
+ 535 007c 02       		.byte	0x2
+ 536 007d E501     		.2byte	0x1e5
+ 537 007f 3A000000 		.4byte	0x3a
+ 538 0083 02       		.uleb128 0x2
+ 539 0084 04       		.byte	0x4
+ 540 0085 04       		.byte	0x4
+ 541 0086 98000000 		.4byte	.LASF11
+ 542 008a 02       		.uleb128 0x2
+ 543 008b 08       		.byte	0x8
+ 544 008c 04       		.byte	0x4
+ 545 008d 76010000 		.4byte	.LASF12
+ 546 0091 02       		.uleb128 0x2
+ 547 0092 01       		.byte	0x1
+ 548 0093 08       		.byte	0x8
+ 549 0094 02030000 		.4byte	.LASF13
+ 550 0098 04       		.uleb128 0x4
+ 551 0099 42010000 		.4byte	.LASF14
+ 552 009d 02       		.byte	0x2
+ 553 009e 8E02     		.2byte	0x28e
+ 554 00a0 A4000000 		.4byte	0xa4
+ 555 00a4 05       		.uleb128 0x5
+ 556 00a5 6B000000 		.4byte	0x6b
+ 557 00a9 04       		.uleb128 0x4
+ 558 00aa 00000000 		.4byte	.LASF15
+ 559 00ae 02       		.byte	0x2
+ 560 00af 8F02     		.2byte	0x28f
+ 561 00b1 B5000000 		.4byte	0xb5
+ 562 00b5 05       		.uleb128 0x5
+ 563 00b6 77000000 		.4byte	0x77
+ 564 00ba 02       		.uleb128 0x2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 19
+
+
+ 565 00bb 08       		.byte	0x8
+ 566 00bc 04       		.byte	0x4
+ 567 00bd 26030000 		.4byte	.LASF16
+ 568 00c1 02       		.uleb128 0x2
+ 569 00c2 04       		.byte	0x4
+ 570 00c3 07       		.byte	0x7
+ 571 00c4 0B020000 		.4byte	.LASF17
+ 572 00c8 06       		.uleb128 0x6
+ 573 00c9 AD020000 		.4byte	.LASF18
+ 574 00cd 01       		.byte	0x1
+ 575 00ce 8F       		.byte	0x8f
+ 576 00cf 00000000 		.4byte	.LFB1
+ 577 00d3 28000000 		.4byte	.LFE1-.LFB1
+ 578 00d7 01       		.uleb128 0x1
+ 579 00d8 9C       		.byte	0x9c
+ 580 00d9 06       		.uleb128 0x6
+ 581 00da CC020000 		.4byte	.LASF19
+ 582 00de 01       		.byte	0x1
+ 583 00df D0       		.byte	0xd0
+ 584 00e0 00000000 		.4byte	.LFB3
+ 585 00e4 28000000 		.4byte	.LFE3-.LFB3
+ 586 00e8 01       		.uleb128 0x1
+ 587 00e9 9C       		.byte	0x9c
+ 588 00ea 07       		.uleb128 0x7
+ 589 00eb 07030000 		.4byte	.LASF22
+ 590 00ef 01       		.byte	0x1
+ 591 00f0 ED       		.byte	0xed
+ 592 00f1 00000000 		.4byte	.LFB4
+ 593 00f5 0C000000 		.4byte	.LFE4-.LFB4
+ 594 00f9 01       		.uleb128 0x1
+ 595 00fa 9C       		.byte	0x9c
+ 596 00fb 0D010000 		.4byte	0x10d
+ 597 00ff 08       		.uleb128 0x8
+ 598 0100 67010000 		.4byte	.LASF24
+ 599 0104 01       		.byte	0x1
+ 600 0105 ED       		.byte	0xed
+ 601 0106 6B000000 		.4byte	0x6b
+ 602 010a 01       		.uleb128 0x1
+ 603 010b 50       		.byte	0x50
+ 604 010c 00       		.byte	0
+ 605 010d 09       		.uleb128 0x9
+ 606 010e 7D010000 		.4byte	.LASF20
+ 607 0112 01       		.byte	0x1
+ 608 0113 0501     		.2byte	0x105
+ 609 0115 6B000000 		.4byte	0x6b
+ 610 0119 00000000 		.4byte	.LFB5
+ 611 011d 0C000000 		.4byte	.LFE5-.LFB5
+ 612 0121 01       		.uleb128 0x1
+ 613 0122 9C       		.byte	0x9c
+ 614 0123 09       		.uleb128 0x9
+ 615 0124 5D000000 		.4byte	.LASF21
+ 616 0128 01       		.byte	0x1
+ 617 0129 1B01     		.2byte	0x11b
+ 618 012b 6B000000 		.4byte	0x6b
+ 619 012f 00000000 		.4byte	.LFB6
+ 620 0133 0C000000 		.4byte	.LFE6-.LFB6
+ 621 0137 01       		.uleb128 0x1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 20
+
+
+ 622 0138 9C       		.byte	0x9c
+ 623 0139 0A       		.uleb128 0xa
+ 624 013a 14020000 		.4byte	.LASF23
+ 625 013e 01       		.byte	0x1
+ 626 013f 3001     		.2byte	0x130
+ 627 0141 00000000 		.4byte	.LFB7
+ 628 0145 0C000000 		.4byte	.LFE7-.LFB7
+ 629 0149 01       		.uleb128 0x1
+ 630 014a 9C       		.byte	0x9c
+ 631 014b 5E010000 		.4byte	0x15e
+ 632 014f 0B       		.uleb128 0xb
+ 633 0150 5F010000 		.4byte	.LASF25
+ 634 0154 01       		.byte	0x1
+ 635 0155 3001     		.2byte	0x130
+ 636 0157 6B000000 		.4byte	0x6b
+ 637 015b 01       		.uleb128 0x1
+ 638 015c 50       		.byte	0x50
+ 639 015d 00       		.byte	0
+ 640 015e 0A       		.uleb128 0xa
+ 641 015f B8010000 		.4byte	.LASF26
+ 642 0163 01       		.byte	0x1
+ 643 0164 4601     		.2byte	0x146
+ 644 0166 00000000 		.4byte	.LFB8
+ 645 016a 34000000 		.4byte	.LFE8-.LFB8
+ 646 016e 01       		.uleb128 0x1
+ 647 016f 9C       		.byte	0x9c
+ 648 0170 94010000 		.4byte	0x194
+ 649 0174 0C       		.uleb128 0xc
+ 650 0175 9E000000 		.4byte	.LASF27
+ 651 0179 01       		.byte	0x1
+ 652 017a 4601     		.2byte	0x146
+ 653 017c 77000000 		.4byte	0x77
+ 654 0180 00000000 		.4byte	.LLST0
+ 655 0184 0D       		.uleb128 0xd
+ 656 0185 14000000 		.4byte	.LVL4
+ 657 0189 81020000 		.4byte	0x281
+ 658 018d 0E       		.uleb128 0xe
+ 659 018e 01       		.uleb128 0x1
+ 660 018f 50       		.byte	0x50
+ 661 0190 01       		.uleb128 0x1
+ 662 0191 30       		.byte	0x30
+ 663 0192 00       		.byte	0
+ 664 0193 00       		.byte	0
+ 665 0194 09       		.uleb128 0x9
+ 666 0195 DF020000 		.4byte	.LASF28
+ 667 0199 01       		.byte	0x1
+ 668 019a 6501     		.2byte	0x165
+ 669 019c 77000000 		.4byte	0x77
+ 670 01a0 00000000 		.4byte	.LFB9
+ 671 01a4 14000000 		.4byte	.LFE9-.LFB9
+ 672 01a8 01       		.uleb128 0x1
+ 673 01a9 9C       		.byte	0x9c
+ 674 01aa 09       		.uleb128 0x9
+ 675 01ab D3010000 		.4byte	.LASF29
+ 676 01af 01       		.byte	0x1
+ 677 01b0 8601     		.2byte	0x186
+ 678 01b2 77000000 		.4byte	0x77
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 21
+
+
+ 679 01b6 00000000 		.4byte	.LFB10
+ 680 01ba 0C000000 		.4byte	.LFE10-.LFB10
+ 681 01be 01       		.uleb128 0x1
+ 682 01bf 9C       		.byte	0x9c
+ 683 01c0 0A       		.uleb128 0xa
+ 684 01c1 06000000 		.4byte	.LASF30
+ 685 01c5 01       		.byte	0x1
+ 686 01c6 9F01     		.2byte	0x19f
+ 687 01c8 00000000 		.4byte	.LFB11
+ 688 01cc 0C000000 		.4byte	.LFE11-.LFB11
+ 689 01d0 01       		.uleb128 0x1
+ 690 01d1 9C       		.byte	0x9c
+ 691 01d2 E5010000 		.4byte	0x1e5
+ 692 01d6 0B       		.uleb128 0xb
+ 693 01d7 36000000 		.4byte	.LASF31
+ 694 01db 01       		.byte	0x1
+ 695 01dc 9F01     		.2byte	0x19f
+ 696 01de 77000000 		.4byte	0x77
+ 697 01e2 01       		.uleb128 0x1
+ 698 01e3 50       		.byte	0x50
+ 699 01e4 00       		.byte	0
+ 700 01e5 07       		.uleb128 0x7
+ 701 01e6 9E010000 		.4byte	.LASF32
+ 702 01ea 01       		.byte	0x1
+ 703 01eb 25       		.byte	0x25
+ 704 01ec 00000000 		.4byte	.LFB0
+ 705 01f0 70000000 		.4byte	.LFE0-.LFB0
+ 706 01f4 01       		.uleb128 0x1
+ 707 01f5 9C       		.byte	0x9c
+ 708 01f6 32020000 		.4byte	0x232
+ 709 01fa 0F       		.uleb128 0xf
+ 710 01fb 52000000 		.4byte	.LVL6
+ 711 01ff C0010000 		.4byte	0x1c0
+ 712 0203 0F020000 		.4byte	0x20f
+ 713 0207 0E       		.uleb128 0xe
+ 714 0208 01       		.uleb128 0x1
+ 715 0209 50       		.byte	0x50
+ 716 020a 03       		.uleb128 0x3
+ 717 020b 0A       		.byte	0xa
+ 718 020c 1027     		.2byte	0x2710
+ 719 020e 00       		.byte	0
+ 720 020f 0F       		.uleb128 0xf
+ 721 0210 58000000 		.4byte	.LVL7
+ 722 0214 5E010000 		.4byte	0x15e
+ 723 0218 22020000 		.4byte	0x222
+ 724 021c 0E       		.uleb128 0xe
+ 725 021d 01       		.uleb128 0x1
+ 726 021e 50       		.byte	0x50
+ 727 021f 01       		.uleb128 0x1
+ 728 0220 30       		.byte	0x30
+ 729 0221 00       		.byte	0
+ 730 0222 0D       		.uleb128 0xd
+ 731 0223 5E000000 		.4byte	.LVL8
+ 732 0227 EA000000 		.4byte	0xea
+ 733 022b 0E       		.uleb128 0xe
+ 734 022c 01       		.uleb128 0x1
+ 735 022d 50       		.byte	0x50
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 22
+
+
+ 736 022e 01       		.uleb128 0x1
+ 737 022f 38       		.byte	0x38
+ 738 0230 00       		.byte	0
+ 739 0231 00       		.byte	0
+ 740 0232 07       		.uleb128 0x7
+ 741 0233 65030000 		.4byte	.LASF33
+ 742 0237 01       		.byte	0x1
+ 743 0238 B2       		.byte	0xb2
+ 744 0239 00000000 		.4byte	.LFB2
+ 745 023d 1C000000 		.4byte	.LFE2-.LFB2
+ 746 0241 01       		.uleb128 0x1
+ 747 0242 9C       		.byte	0x9c
+ 748 0243 5A020000 		.4byte	0x25a
+ 749 0247 10       		.uleb128 0x10
+ 750 0248 0C000000 		.4byte	.LVL9
+ 751 024c E5010000 		.4byte	0x1e5
+ 752 0250 10       		.uleb128 0x10
+ 753 0251 16000000 		.4byte	.LVL10
+ 754 0255 C8000000 		.4byte	0xc8
+ 755 0259 00       		.byte	0
+ 756 025a 09       		.uleb128 0x9
+ 757 025b 7F000000 		.4byte	.LASF34
+ 758 025f 01       		.byte	0x1
+ 759 0260 B601     		.2byte	0x1b6
+ 760 0262 77000000 		.4byte	0x77
+ 761 0266 00000000 		.4byte	.LFB12
+ 762 026a 0C000000 		.4byte	.LFE12-.LFB12
+ 763 026e 01       		.uleb128 0x1
+ 764 026f 9C       		.byte	0x9c
+ 765 0270 11       		.uleb128 0x11
+ 766 0271 20000000 		.4byte	.LASF38
+ 767 0275 01       		.byte	0x1
+ 768 0276 15       		.byte	0x15
+ 769 0277 6B000000 		.4byte	0x6b
+ 770 027b 05       		.uleb128 0x5
+ 771 027c 03       		.byte	0x3
+ 772 027d 00000000 		.4byte	Counter_RESET_initVar
+ 773 0281 12       		.uleb128 0x12
+ 774 0282 04020000 		.4byte	.LASF39
+ 775 0286 04020000 		.4byte	.LASF39
+ 776 028a 03       		.byte	0x3
+ 777 028b 7F       		.byte	0x7f
+ 778 028c 00       		.byte	0
+ 779              		.section	.debug_abbrev,"",%progbits
+ 780              	.Ldebug_abbrev0:
+ 781 0000 01       		.uleb128 0x1
+ 782 0001 11       		.uleb128 0x11
+ 783 0002 01       		.byte	0x1
+ 784 0003 25       		.uleb128 0x25
+ 785 0004 0E       		.uleb128 0xe
+ 786 0005 13       		.uleb128 0x13
+ 787 0006 0B       		.uleb128 0xb
+ 788 0007 03       		.uleb128 0x3
+ 789 0008 0E       		.uleb128 0xe
+ 790 0009 1B       		.uleb128 0x1b
+ 791 000a 0E       		.uleb128 0xe
+ 792 000b 55       		.uleb128 0x55
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 23
+
+
+ 793 000c 17       		.uleb128 0x17
+ 794 000d 11       		.uleb128 0x11
+ 795 000e 01       		.uleb128 0x1
+ 796 000f 10       		.uleb128 0x10
+ 797 0010 17       		.uleb128 0x17
+ 798 0011 00       		.byte	0
+ 799 0012 00       		.byte	0
+ 800 0013 02       		.uleb128 0x2
+ 801 0014 24       		.uleb128 0x24
+ 802 0015 00       		.byte	0
+ 803 0016 0B       		.uleb128 0xb
+ 804 0017 0B       		.uleb128 0xb
+ 805 0018 3E       		.uleb128 0x3e
+ 806 0019 0B       		.uleb128 0xb
+ 807 001a 03       		.uleb128 0x3
+ 808 001b 0E       		.uleb128 0xe
+ 809 001c 00       		.byte	0
+ 810 001d 00       		.byte	0
+ 811 001e 03       		.uleb128 0x3
+ 812 001f 24       		.uleb128 0x24
+ 813 0020 00       		.byte	0
+ 814 0021 0B       		.uleb128 0xb
+ 815 0022 0B       		.uleb128 0xb
+ 816 0023 3E       		.uleb128 0x3e
+ 817 0024 0B       		.uleb128 0xb
+ 818 0025 03       		.uleb128 0x3
+ 819 0026 08       		.uleb128 0x8
+ 820 0027 00       		.byte	0
+ 821 0028 00       		.byte	0
+ 822 0029 04       		.uleb128 0x4
+ 823 002a 16       		.uleb128 0x16
+ 824 002b 00       		.byte	0
+ 825 002c 03       		.uleb128 0x3
+ 826 002d 0E       		.uleb128 0xe
+ 827 002e 3A       		.uleb128 0x3a
+ 828 002f 0B       		.uleb128 0xb
+ 829 0030 3B       		.uleb128 0x3b
+ 830 0031 05       		.uleb128 0x5
+ 831 0032 49       		.uleb128 0x49
+ 832 0033 13       		.uleb128 0x13
+ 833 0034 00       		.byte	0
+ 834 0035 00       		.byte	0
+ 835 0036 05       		.uleb128 0x5
+ 836 0037 35       		.uleb128 0x35
+ 837 0038 00       		.byte	0
+ 838 0039 49       		.uleb128 0x49
+ 839 003a 13       		.uleb128 0x13
+ 840 003b 00       		.byte	0
+ 841 003c 00       		.byte	0
+ 842 003d 06       		.uleb128 0x6
+ 843 003e 2E       		.uleb128 0x2e
+ 844 003f 00       		.byte	0
+ 845 0040 3F       		.uleb128 0x3f
+ 846 0041 19       		.uleb128 0x19
+ 847 0042 03       		.uleb128 0x3
+ 848 0043 0E       		.uleb128 0xe
+ 849 0044 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 24
+
+
+ 850 0045 0B       		.uleb128 0xb
+ 851 0046 3B       		.uleb128 0x3b
+ 852 0047 0B       		.uleb128 0xb
+ 853 0048 27       		.uleb128 0x27
+ 854 0049 19       		.uleb128 0x19
+ 855 004a 11       		.uleb128 0x11
+ 856 004b 01       		.uleb128 0x1
+ 857 004c 12       		.uleb128 0x12
+ 858 004d 06       		.uleb128 0x6
+ 859 004e 40       		.uleb128 0x40
+ 860 004f 18       		.uleb128 0x18
+ 861 0050 9742     		.uleb128 0x2117
+ 862 0052 19       		.uleb128 0x19
+ 863 0053 00       		.byte	0
+ 864 0054 00       		.byte	0
+ 865 0055 07       		.uleb128 0x7
+ 866 0056 2E       		.uleb128 0x2e
+ 867 0057 01       		.byte	0x1
+ 868 0058 3F       		.uleb128 0x3f
+ 869 0059 19       		.uleb128 0x19
+ 870 005a 03       		.uleb128 0x3
+ 871 005b 0E       		.uleb128 0xe
+ 872 005c 3A       		.uleb128 0x3a
+ 873 005d 0B       		.uleb128 0xb
+ 874 005e 3B       		.uleb128 0x3b
+ 875 005f 0B       		.uleb128 0xb
+ 876 0060 27       		.uleb128 0x27
+ 877 0061 19       		.uleb128 0x19
+ 878 0062 11       		.uleb128 0x11
+ 879 0063 01       		.uleb128 0x1
+ 880 0064 12       		.uleb128 0x12
+ 881 0065 06       		.uleb128 0x6
+ 882 0066 40       		.uleb128 0x40
+ 883 0067 18       		.uleb128 0x18
+ 884 0068 9742     		.uleb128 0x2117
+ 885 006a 19       		.uleb128 0x19
+ 886 006b 01       		.uleb128 0x1
+ 887 006c 13       		.uleb128 0x13
+ 888 006d 00       		.byte	0
+ 889 006e 00       		.byte	0
+ 890 006f 08       		.uleb128 0x8
+ 891 0070 05       		.uleb128 0x5
+ 892 0071 00       		.byte	0
+ 893 0072 03       		.uleb128 0x3
+ 894 0073 0E       		.uleb128 0xe
+ 895 0074 3A       		.uleb128 0x3a
+ 896 0075 0B       		.uleb128 0xb
+ 897 0076 3B       		.uleb128 0x3b
+ 898 0077 0B       		.uleb128 0xb
+ 899 0078 49       		.uleb128 0x49
+ 900 0079 13       		.uleb128 0x13
+ 901 007a 02       		.uleb128 0x2
+ 902 007b 18       		.uleb128 0x18
+ 903 007c 00       		.byte	0
+ 904 007d 00       		.byte	0
+ 905 007e 09       		.uleb128 0x9
+ 906 007f 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 25
+
+
+ 907 0080 00       		.byte	0
+ 908 0081 3F       		.uleb128 0x3f
+ 909 0082 19       		.uleb128 0x19
+ 910 0083 03       		.uleb128 0x3
+ 911 0084 0E       		.uleb128 0xe
+ 912 0085 3A       		.uleb128 0x3a
+ 913 0086 0B       		.uleb128 0xb
+ 914 0087 3B       		.uleb128 0x3b
+ 915 0088 05       		.uleb128 0x5
+ 916 0089 27       		.uleb128 0x27
+ 917 008a 19       		.uleb128 0x19
+ 918 008b 49       		.uleb128 0x49
+ 919 008c 13       		.uleb128 0x13
+ 920 008d 11       		.uleb128 0x11
+ 921 008e 01       		.uleb128 0x1
+ 922 008f 12       		.uleb128 0x12
+ 923 0090 06       		.uleb128 0x6
+ 924 0091 40       		.uleb128 0x40
+ 925 0092 18       		.uleb128 0x18
+ 926 0093 9742     		.uleb128 0x2117
+ 927 0095 19       		.uleb128 0x19
+ 928 0096 00       		.byte	0
+ 929 0097 00       		.byte	0
+ 930 0098 0A       		.uleb128 0xa
+ 931 0099 2E       		.uleb128 0x2e
+ 932 009a 01       		.byte	0x1
+ 933 009b 3F       		.uleb128 0x3f
+ 934 009c 19       		.uleb128 0x19
+ 935 009d 03       		.uleb128 0x3
+ 936 009e 0E       		.uleb128 0xe
+ 937 009f 3A       		.uleb128 0x3a
+ 938 00a0 0B       		.uleb128 0xb
+ 939 00a1 3B       		.uleb128 0x3b
+ 940 00a2 05       		.uleb128 0x5
+ 941 00a3 27       		.uleb128 0x27
+ 942 00a4 19       		.uleb128 0x19
+ 943 00a5 11       		.uleb128 0x11
+ 944 00a6 01       		.uleb128 0x1
+ 945 00a7 12       		.uleb128 0x12
+ 946 00a8 06       		.uleb128 0x6
+ 947 00a9 40       		.uleb128 0x40
+ 948 00aa 18       		.uleb128 0x18
+ 949 00ab 9742     		.uleb128 0x2117
+ 950 00ad 19       		.uleb128 0x19
+ 951 00ae 01       		.uleb128 0x1
+ 952 00af 13       		.uleb128 0x13
+ 953 00b0 00       		.byte	0
+ 954 00b1 00       		.byte	0
+ 955 00b2 0B       		.uleb128 0xb
+ 956 00b3 05       		.uleb128 0x5
+ 957 00b4 00       		.byte	0
+ 958 00b5 03       		.uleb128 0x3
+ 959 00b6 0E       		.uleb128 0xe
+ 960 00b7 3A       		.uleb128 0x3a
+ 961 00b8 0B       		.uleb128 0xb
+ 962 00b9 3B       		.uleb128 0x3b
+ 963 00ba 05       		.uleb128 0x5
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 26
+
+
+ 964 00bb 49       		.uleb128 0x49
+ 965 00bc 13       		.uleb128 0x13
+ 966 00bd 02       		.uleb128 0x2
+ 967 00be 18       		.uleb128 0x18
+ 968 00bf 00       		.byte	0
+ 969 00c0 00       		.byte	0
+ 970 00c1 0C       		.uleb128 0xc
+ 971 00c2 05       		.uleb128 0x5
+ 972 00c3 00       		.byte	0
+ 973 00c4 03       		.uleb128 0x3
+ 974 00c5 0E       		.uleb128 0xe
+ 975 00c6 3A       		.uleb128 0x3a
+ 976 00c7 0B       		.uleb128 0xb
+ 977 00c8 3B       		.uleb128 0x3b
+ 978 00c9 05       		.uleb128 0x5
+ 979 00ca 49       		.uleb128 0x49
+ 980 00cb 13       		.uleb128 0x13
+ 981 00cc 02       		.uleb128 0x2
+ 982 00cd 17       		.uleb128 0x17
+ 983 00ce 00       		.byte	0
+ 984 00cf 00       		.byte	0
+ 985 00d0 0D       		.uleb128 0xd
+ 986 00d1 898201   		.uleb128 0x4109
+ 987 00d4 01       		.byte	0x1
+ 988 00d5 11       		.uleb128 0x11
+ 989 00d6 01       		.uleb128 0x1
+ 990 00d7 31       		.uleb128 0x31
+ 991 00d8 13       		.uleb128 0x13
+ 992 00d9 00       		.byte	0
+ 993 00da 00       		.byte	0
+ 994 00db 0E       		.uleb128 0xe
+ 995 00dc 8A8201   		.uleb128 0x410a
+ 996 00df 00       		.byte	0
+ 997 00e0 02       		.uleb128 0x2
+ 998 00e1 18       		.uleb128 0x18
+ 999 00e2 9142     		.uleb128 0x2111
+ 1000 00e4 18       		.uleb128 0x18
+ 1001 00e5 00       		.byte	0
+ 1002 00e6 00       		.byte	0
+ 1003 00e7 0F       		.uleb128 0xf
+ 1004 00e8 898201   		.uleb128 0x4109
+ 1005 00eb 01       		.byte	0x1
+ 1006 00ec 11       		.uleb128 0x11
+ 1007 00ed 01       		.uleb128 0x1
+ 1008 00ee 31       		.uleb128 0x31
+ 1009 00ef 13       		.uleb128 0x13
+ 1010 00f0 01       		.uleb128 0x1
+ 1011 00f1 13       		.uleb128 0x13
+ 1012 00f2 00       		.byte	0
+ 1013 00f3 00       		.byte	0
+ 1014 00f4 10       		.uleb128 0x10
+ 1015 00f5 898201   		.uleb128 0x4109
+ 1016 00f8 00       		.byte	0
+ 1017 00f9 11       		.uleb128 0x11
+ 1018 00fa 01       		.uleb128 0x1
+ 1019 00fb 31       		.uleb128 0x31
+ 1020 00fc 13       		.uleb128 0x13
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 27
+
+
+ 1021 00fd 00       		.byte	0
+ 1022 00fe 00       		.byte	0
+ 1023 00ff 11       		.uleb128 0x11
+ 1024 0100 34       		.uleb128 0x34
+ 1025 0101 00       		.byte	0
+ 1026 0102 03       		.uleb128 0x3
+ 1027 0103 0E       		.uleb128 0xe
+ 1028 0104 3A       		.uleb128 0x3a
+ 1029 0105 0B       		.uleb128 0xb
+ 1030 0106 3B       		.uleb128 0x3b
+ 1031 0107 0B       		.uleb128 0xb
+ 1032 0108 49       		.uleb128 0x49
+ 1033 0109 13       		.uleb128 0x13
+ 1034 010a 3F       		.uleb128 0x3f
+ 1035 010b 19       		.uleb128 0x19
+ 1036 010c 02       		.uleb128 0x2
+ 1037 010d 18       		.uleb128 0x18
+ 1038 010e 00       		.byte	0
+ 1039 010f 00       		.byte	0
+ 1040 0110 12       		.uleb128 0x12
+ 1041 0111 2E       		.uleb128 0x2e
+ 1042 0112 00       		.byte	0
+ 1043 0113 3F       		.uleb128 0x3f
+ 1044 0114 19       		.uleb128 0x19
+ 1045 0115 3C       		.uleb128 0x3c
+ 1046 0116 19       		.uleb128 0x19
+ 1047 0117 6E       		.uleb128 0x6e
+ 1048 0118 0E       		.uleb128 0xe
+ 1049 0119 03       		.uleb128 0x3
+ 1050 011a 0E       		.uleb128 0xe
+ 1051 011b 3A       		.uleb128 0x3a
+ 1052 011c 0B       		.uleb128 0xb
+ 1053 011d 3B       		.uleb128 0x3b
+ 1054 011e 0B       		.uleb128 0xb
+ 1055 011f 00       		.byte	0
+ 1056 0120 00       		.byte	0
+ 1057 0121 00       		.byte	0
+ 1058              		.section	.debug_loc,"",%progbits
+ 1059              	.Ldebug_loc0:
+ 1060              	.LLST0:
+ 1061 0000 00000000 		.4byte	.LVL2
+ 1062 0004 10000000 		.4byte	.LVL3
+ 1063 0008 0100     		.2byte	0x1
+ 1064 000a 50       		.byte	0x50
+ 1065 000b 10000000 		.4byte	.LVL3
+ 1066 000f 34000000 		.4byte	.LFE8
+ 1067 0013 0400     		.2byte	0x4
+ 1068 0015 F3       		.byte	0xf3
+ 1069 0016 01       		.uleb128 0x1
+ 1070 0017 50       		.byte	0x50
+ 1071 0018 9F       		.byte	0x9f
+ 1072 0019 00000000 		.4byte	0
+ 1073 001d 00000000 		.4byte	0
+ 1074              		.section	.debug_aranges,"",%progbits
+ 1075 0000 7C000000 		.4byte	0x7c
+ 1076 0004 0200     		.2byte	0x2
+ 1077 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 28
+
+
+ 1078 000a 04       		.byte	0x4
+ 1079 000b 00       		.byte	0
+ 1080 000c 0000     		.2byte	0
+ 1081 000e 0000     		.2byte	0
+ 1082 0010 00000000 		.4byte	.LFB1
+ 1083 0014 28000000 		.4byte	.LFE1-.LFB1
+ 1084 0018 00000000 		.4byte	.LFB3
+ 1085 001c 28000000 		.4byte	.LFE3-.LFB3
+ 1086 0020 00000000 		.4byte	.LFB4
+ 1087 0024 0C000000 		.4byte	.LFE4-.LFB4
+ 1088 0028 00000000 		.4byte	.LFB5
+ 1089 002c 0C000000 		.4byte	.LFE5-.LFB5
+ 1090 0030 00000000 		.4byte	.LFB6
+ 1091 0034 0C000000 		.4byte	.LFE6-.LFB6
+ 1092 0038 00000000 		.4byte	.LFB7
+ 1093 003c 0C000000 		.4byte	.LFE7-.LFB7
+ 1094 0040 00000000 		.4byte	.LFB8
+ 1095 0044 34000000 		.4byte	.LFE8-.LFB8
+ 1096 0048 00000000 		.4byte	.LFB9
+ 1097 004c 14000000 		.4byte	.LFE9-.LFB9
+ 1098 0050 00000000 		.4byte	.LFB10
+ 1099 0054 0C000000 		.4byte	.LFE10-.LFB10
+ 1100 0058 00000000 		.4byte	.LFB11
+ 1101 005c 0C000000 		.4byte	.LFE11-.LFB11
+ 1102 0060 00000000 		.4byte	.LFB0
+ 1103 0064 70000000 		.4byte	.LFE0-.LFB0
+ 1104 0068 00000000 		.4byte	.LFB2
+ 1105 006c 1C000000 		.4byte	.LFE2-.LFB2
+ 1106 0070 00000000 		.4byte	.LFB12
+ 1107 0074 0C000000 		.4byte	.LFE12-.LFB12
+ 1108 0078 00000000 		.4byte	0
+ 1109 007c 00000000 		.4byte	0
+ 1110              		.section	.debug_ranges,"",%progbits
+ 1111              	.Ldebug_ranges0:
+ 1112 0000 00000000 		.4byte	.LFB1
+ 1113 0004 28000000 		.4byte	.LFE1
+ 1114 0008 00000000 		.4byte	.LFB3
+ 1115 000c 28000000 		.4byte	.LFE3
+ 1116 0010 00000000 		.4byte	.LFB4
+ 1117 0014 0C000000 		.4byte	.LFE4
+ 1118 0018 00000000 		.4byte	.LFB5
+ 1119 001c 0C000000 		.4byte	.LFE5
+ 1120 0020 00000000 		.4byte	.LFB6
+ 1121 0024 0C000000 		.4byte	.LFE6
+ 1122 0028 00000000 		.4byte	.LFB7
+ 1123 002c 0C000000 		.4byte	.LFE7
+ 1124 0030 00000000 		.4byte	.LFB8
+ 1125 0034 34000000 		.4byte	.LFE8
+ 1126 0038 00000000 		.4byte	.LFB9
+ 1127 003c 14000000 		.4byte	.LFE9
+ 1128 0040 00000000 		.4byte	.LFB10
+ 1129 0044 0C000000 		.4byte	.LFE10
+ 1130 0048 00000000 		.4byte	.LFB11
+ 1131 004c 0C000000 		.4byte	.LFE11
+ 1132 0050 00000000 		.4byte	.LFB0
+ 1133 0054 70000000 		.4byte	.LFE0
+ 1134 0058 00000000 		.4byte	.LFB2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 29
+
+
+ 1135 005c 1C000000 		.4byte	.LFE2
+ 1136 0060 00000000 		.4byte	.LFB12
+ 1137 0064 0C000000 		.4byte	.LFE12
+ 1138 0068 00000000 		.4byte	0
+ 1139 006c 00000000 		.4byte	0
+ 1140              		.section	.debug_line,"",%progbits
+ 1141              	.Ldebug_line0:
+ 1142 0000 5C010000 		.section	.debug_str,"MS",%progbits,1
+ 1142      02005500 
+ 1142      00000201 
+ 1142      FB0E0D00 
+ 1142      01010101 
+ 1143              	.LASF15:
+ 1144 0000 72656731 		.ascii	"reg16\000"
+ 1144      3600
+ 1145              	.LASF30:
+ 1146 0006 436F756E 		.ascii	"Counter_RESET_WritePeriod\000"
+ 1146      7465725F 
+ 1146      52455345 
+ 1146      545F5772 
+ 1146      69746550 
+ 1147              	.LASF38:
+ 1148 0020 436F756E 		.ascii	"Counter_RESET_initVar\000"
+ 1148      7465725F 
+ 1148      52455345 
+ 1148      545F696E 
+ 1148      69745661 
+ 1149              	.LASF31:
+ 1150 0036 70657269 		.ascii	"period\000"
+ 1150      6F6400
+ 1151              	.LASF3:
+ 1152 003d 73686F72 		.ascii	"short unsigned int\000"
+ 1152      7420756E 
+ 1152      7369676E 
+ 1152      65642069 
+ 1152      6E7400
+ 1153              	.LASF8:
+ 1154 0050 756E7369 		.ascii	"unsigned int\000"
+ 1154      676E6564 
+ 1154      20696E74 
+ 1154      00
+ 1155              	.LASF21:
+ 1156 005d 436F756E 		.ascii	"Counter_RESET_ReadControlRegister\000"
+ 1156      7465725F 
+ 1156      52455345 
+ 1156      545F5265 
+ 1156      6164436F 
+ 1157              	.LASF34:
+ 1158 007f 436F756E 		.ascii	"Counter_RESET_ReadPeriod\000"
+ 1158      7465725F 
+ 1158      52455345 
+ 1158      545F5265 
+ 1158      61645065 
+ 1159              	.LASF11:
+ 1160 0098 666C6F61 		.ascii	"float\000"
+ 1160      7400
+ 1161              	.LASF27:
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 30
+
+
+ 1162 009e 636F756E 		.ascii	"counter\000"
+ 1162      74657200 
+ 1163              	.LASF1:
+ 1164 00a6 756E7369 		.ascii	"unsigned char\000"
+ 1164      676E6564 
+ 1164      20636861 
+ 1164      7200
+ 1165              	.LASF35:
+ 1166 00b4 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1166      43313120 
+ 1166      352E342E 
+ 1166      31203230 
+ 1166      31363036 
+ 1167 00e7 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1167      20726576 
+ 1167      6973696F 
+ 1167      6E203233 
+ 1167      37373135 
+ 1168 011a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1168      66756E63 
+ 1168      74696F6E 
+ 1168      2D736563 
+ 1168      74696F6E 
+ 1169              	.LASF14:
+ 1170 0142 72656738 		.ascii	"reg8\000"
+ 1170      00
+ 1171              	.LASF5:
+ 1172 0147 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1172      20756E73 
+ 1172      69676E65 
+ 1172      6420696E 
+ 1172      7400
+ 1173              	.LASF9:
+ 1174 0159 75696E74 		.ascii	"uint8\000"
+ 1174      3800
+ 1175              	.LASF25:
+ 1176 015f 636F6E74 		.ascii	"control\000"
+ 1176      726F6C00 
+ 1177              	.LASF24:
+ 1178 0167 696E7465 		.ascii	"interruptsMask\000"
+ 1178      72727570 
+ 1178      74734D61 
+ 1178      736B00
+ 1179              	.LASF12:
+ 1180 0176 646F7562 		.ascii	"double\000"
+ 1180      6C6500
+ 1181              	.LASF20:
+ 1182 017d 436F756E 		.ascii	"Counter_RESET_ReadStatusRegister\000"
+ 1182      7465725F 
+ 1182      52455345 
+ 1182      545F5265 
+ 1182      61645374 
+ 1183              	.LASF32:
+ 1184 019e 436F756E 		.ascii	"Counter_RESET_Init\000"
+ 1184      7465725F 
+ 1184      52455345 
+ 1184      545F496E 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 31
+
+
+ 1184      697400
+ 1185              	.LASF10:
+ 1186 01b1 75696E74 		.ascii	"uint16\000"
+ 1186      313600
+ 1187              	.LASF26:
+ 1188 01b8 436F756E 		.ascii	"Counter_RESET_WriteCounter\000"
+ 1188      7465725F 
+ 1188      52455345 
+ 1188      545F5772 
+ 1188      69746543 
+ 1189              	.LASF29:
+ 1190 01d3 436F756E 		.ascii	"Counter_RESET_ReadCapture\000"
+ 1190      7465725F 
+ 1190      52455345 
+ 1190      545F5265 
+ 1190      61644361 
+ 1191              	.LASF7:
+ 1192 01ed 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1192      206C6F6E 
+ 1192      6720756E 
+ 1192      7369676E 
+ 1192      65642069 
+ 1193              	.LASF39:
+ 1194 0204 43794861 		.ascii	"CyHalt\000"
+ 1194      6C7400
+ 1195              	.LASF17:
+ 1196 020b 73697A65 		.ascii	"sizetype\000"
+ 1196      74797065 
+ 1196      00
+ 1197              	.LASF23:
+ 1198 0214 436F756E 		.ascii	"Counter_RESET_WriteControlRegister\000"
+ 1198      7465725F 
+ 1198      52455345 
+ 1198      545F5772 
+ 1198      69746543 
+ 1199              	.LASF6:
+ 1200 0237 6C6F6E67 		.ascii	"long long int\000"
+ 1200      206C6F6E 
+ 1200      6720696E 
+ 1200      7400
+ 1201              	.LASF37:
+ 1202 0245 433A5C55 		.ascii	"C:\\Users\\aless\\Documents\\PSoC_Creator\\AY1920_I"
+ 1202      73657273 
+ 1202      5C616C65 
+ 1202      73735C44 
+ 1202      6F63756D 
+ 1203 0273 495F3032 		.ascii	"I_02_RATTI_SINATRA_QUARANTA\\AY1920_II_FINAL_PROJEC"
+ 1203      5F524154 
+ 1203      54495F53 
+ 1203      494E4154 
+ 1203      52415F51 
+ 1204 02a5 542E6379 		.ascii	"T.cydsn\000"
+ 1204      64736E00 
+ 1205              	.LASF18:
+ 1206 02ad 436F756E 		.ascii	"Counter_RESET_Enable\000"
+ 1206      7465725F 
+ 1206      52455345 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccTUkFaq.s 			page 32
+
+
+ 1206      545F456E 
+ 1206      61626C65 
+ 1207              	.LASF2:
+ 1208 02c2 73686F72 		.ascii	"short int\000"
+ 1208      7420696E 
+ 1208      7400
+ 1209              	.LASF19:
+ 1210 02cc 436F756E 		.ascii	"Counter_RESET_Stop\000"
+ 1210      7465725F 
+ 1210      52455345 
+ 1210      545F5374 
+ 1210      6F7000
+ 1211              	.LASF28:
+ 1212 02df 436F756E 		.ascii	"Counter_RESET_ReadCounter\000"
+ 1212      7465725F 
+ 1212      52455345 
+ 1212      545F5265 
+ 1212      6164436F 
+ 1213              	.LASF4:
+ 1214 02f9 6C6F6E67 		.ascii	"long int\000"
+ 1214      20696E74 
+ 1214      00
+ 1215              	.LASF13:
+ 1216 0302 63686172 		.ascii	"char\000"
+ 1216      00
+ 1217              	.LASF22:
+ 1218 0307 436F756E 		.ascii	"Counter_RESET_SetInterruptMode\000"
+ 1218      7465725F 
+ 1218      52455345 
+ 1218      545F5365 
+ 1218      74496E74 
+ 1219              	.LASF16:
+ 1220 0326 6C6F6E67 		.ascii	"long double\000"
+ 1220      20646F75 
+ 1220      626C6500 
+ 1221              	.LASF0:
+ 1222 0332 7369676E 		.ascii	"signed char\000"
+ 1222      65642063 
+ 1222      68617200 
+ 1223              	.LASF36:
+ 1224 033e 47656E65 		.ascii	"Generated_Source\\PSoC5\\Counter_RESET.c\000"
+ 1224      72617465 
+ 1224      645F536F 
+ 1224      75726365 
+ 1224      5C50536F 
+ 1225              	.LASF33:
+ 1226 0365 436F756E 		.ascii	"Counter_RESET_Start\000"
+ 1226      7465725F 
+ 1226      52455345 
+ 1226      545F5374 
+ 1226      61727400 
+ 1227              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

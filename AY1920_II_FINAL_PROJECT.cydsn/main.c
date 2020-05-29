@@ -41,7 +41,7 @@ union t_data{                                     // union of float matched with
     };
 
 // Custom functions prototipes
-void CompressData(uint8_t* dataInAcc, uint8_t* dataInADC, uint8_t* dataOut);
+void CompressData(uint8_t* dataInAcc, uint8_t* dataInADC, uint8_t SizeBuffer,  uint8_t* dataOut);
 void DeCompressData(uint8_t* dataIn, uint8_t* dataOut);
 void SampledToBridge(uint8_t* dataIn, union t_data* dataOut);
 
@@ -64,9 +64,9 @@ extern uint8_t ResetButton;
 
 const uint16_t Timer_Period[4] = {1000, 100, 40, 20};
 
-
 // Global in main.c
-extern uint16_t indexEEPROM;
+uint16_t indexEEPROM;
+uint16_t indexEEPROM_BCP;
 uint8_t dataFIFO[SPI_LIS3DH_SIZE_BYTE]; // store data from readpage in LIS3DH
 uint8_t reg_value;  // temp
 uint16_t indexSTREAM = DATA_START;
@@ -75,12 +75,9 @@ uint8_t  memoryFull = 0;
 uint8_t dataReady_DMA = 0; // extern in InterruptRoutines.h
 
 //stream
-extern uint8_t Startstream;
-extern uint8_t Stopstream;
 uint8_t frequency;
 int main(void)
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
     
     uint8_t     EEPROMBuffer[ACC_PLUS_ANALOG_SIZE];
     
@@ -103,19 +100,38 @@ int main(void)
     blink_clock_Start();
     PWM_BLINK_Start();
     
+    /* Start Counter_RESET */
+    Counter_INDEX_Start();
+    Counter_RESET_Start();
+    
     /* Start SPI Masters */
     SPIM_EEPROM_Start();
     CyDelay(10);
     SPIM_LIS3DH_Start();
     CyDelay(10);
     
+    CyGlobalIntEnable; /* Enable global interrupts. */
+    
+    /*----------------------------------------------*/
+    /*              Setup ADC and DMA               */
+    /*----------------------------------------------*/
+    
+    /* MUX, ADC and DMA */
+    AMux_Start();
+    AMux_Select((cfg_reg>>4)&0x01); // select analog source
+    
+    ADC_DelSig_Start();     // Start ADC
+    ADC_DelSig_IRQ_Start(); // Enable ISR on EOC
+    
+    DMA_Config();           // Start DMA
+    
     /*----------------------------------------------*/
     /*                Setup 25LC256                 */
     /*----------------------------------------------*/
     EEPROM_loadSettings(&cfg_reg, &indexEEPROM);
-    indexEEPROM = DATA_START;
+    //indexEEPROM = DATA_START;
     
-    sprintf(bufferUART, "** EEPROM Read\r\nconfig_reg = 0x%02x\r\n", cfg_reg);
+    sprintf(bufferUART, "** EEPROM Read\r\nconfig_reg = 0x%02x\r\nindexEEPROM = %d\r\n", cfg_reg, indexEEPROM);
     UART_PutString(bufferUART);
     
     UART_PutString("*************************************\r\n");
@@ -132,6 +148,7 @@ int main(void)
     
     LIS3DH_Init(); // set minimum settings
     LIS3DH_setConfig(data_config); // set user-dependent settings
+    //CyDelay(50);
     
     UART_PutString("** LIS3DH Read **\r\n");
     
@@ -157,18 +174,7 @@ int main(void)
     
     UART_PutString("*************************************\r\n");
     
-    /*----------------------------------------------*/
-    /*              Setup ADC and DMA               */
-    /*----------------------------------------------*/
     
-    /* MUX, ADC and DMA */
-    AMux_Start();
-    AMux_Select((cfg_reg>>4)&0x01); // select analog source
-    
-    ADC_DelSig_Start();     // Start ADC
-    ADC_DelSig_IRQ_Start(); // Enable ISR on EOC
-    
-    DMA_Config();           // Start DMA
     
     /*----------------------------------------------*/
     /*              Setup ISR routines              */
@@ -178,91 +184,28 @@ int main(void)
     isr_RX_StartEx(Custom_ISR_RX);              // enable ISR from UART RX
     isr_DMA_StartEx(Custom_ISR_DMA);            // ISR every 32 EOC
     isr_TIMER_ADC_StartEx(Custom_ISR_TIMER);    // ISR on SOC
-    SW1_ISR_StartEx(Custome_ISR_DEBOUNCE);      // ISR Reset button
+    isr_INDEX_StartEx(Custom_ISR_INDEX);        // ISR INDEX (5s)
+    isr_RESET_StartEx(Custom_ISR_RESET);        // ISR RESET (10s)
     
+    if(((cfg_reg>>5) & 0x01) ==1) { // In case of acquisition from previous run
+        PWM_BLINK_WritePeriod(199);//Turn off built-in led
+        PWM_BLINK_WriteCompare(100);
+        
+        frequency=((data_config[0]>>4)&0x0F)-1;
+        Timer_ADC_Start();
+        Timer_ADC_WritePeriod(Timer_Period[frequency]); //cfg_reg&MASK_FS
+    }
+    
+    
+    //UART_PutChar(0x0C); // Clear CoolTerm
     // Begin by showing main interface
     ShowMenu();
 
   
     for(;;)
     {
-        if(ResetButton==1){
-            cfg_reg=0x00;
-            LIS3DH_unzipConfig(cfg_reg, data_config);
-            LIS3DH_setConfig(data_config);
-            
-            indexEEPROM=DATA_START;
-            EEPROM_writePage(0x0000, (uint8_t*)&indexEEPROM, 2);
-            EEPROM_waitForWriteComplete();
-            indexSTREAM=DATA_START;
-            
-            memoryFull=0;
-            
-            PWM_BLINK_WritePeriod(0);
-            PWM_BLINK_WriteCompare(0);
-            Pin_LED_ext_Write(LED_OFF);
-            
-            Timer_ADC_Stop();
-            Timer_STREAM_Stop();
-            
-            sprintf(bufferUART, "** EEPROM Read\r\nconfig_reg = 0x%02x\r\n", cfg_reg);
-            UART_PutString(bufferUART);
-            
-            reg_value = LIS3DH_readByte(FIFO_CTRL_REG);
-            sprintf(bufferUART, "FIFO_CTRL_REG = 0x%02x\r\n", reg_value);
-            UART_PutString(bufferUART);
-            
-            reg_value = LIS3DH_readByte(CTRL_REG1);
-            sprintf(bufferUART, "CTRL_REG1     = 0x%02x\r\n", reg_value);
-            UART_PutString(bufferUART);
-            
-            reg_value = LIS3DH_readByte(CTRL_REG4);
-            sprintf(bufferUART, "CTRL_REG4     = 0x%02x\r\n", reg_value);
-            UART_PutString(bufferUART);
-            
-            sprintf(bufferUART, "** EEPROM Read\r\nconfig_reg = 0x%02x\r\n", cfg_reg);
-            UART_PutString(bufferUART);
-            
-            sprintf(bufferUART, "** IndexEEPROM= 0x%02x, IndexSTREAM= 0x%02x\r\n", indexEEPROM, indexSTREAM);
-            UART_PutString(bufferUART);
-            
-            ResetButton=0;
-            
-        }
-        
-        if(update_cfg_reg) {
-            
-            EEPROM_writeByte(CFG_REG, cfg_reg);
-            EEPROM_waitForWriteComplete();
-            reg_value = EEPROM_readByte(CFG_REG);
-            sprintf(bufferUART, "** UPDATED config_reg = 0x%02x, 0x%02x\r\n", reg_value, cfg_reg);
-            UART_PutString(bufferUART);
-            
-            // Start/Stop ISR from LIS3DH
-            LIS3DH_setConfig(data_config); // set user-dependent settings
-            
-            // Start/Stop Timer_ADC
-            frequency=((data_config[0]>>4)&0x0F)-1;
-            
-            //(((cfg_reg>>5)&0x01) ==1 ? Timer_ADC_Start() : Timer_ADC_Stop());
-            if(((cfg_reg>>5) & 0x01) ==1) {
-                Timer_ADC_Start();
-            }
-            else {
-                Timer_ADC_Stop();
-            }
-            
-            Timer_ADC_WritePeriod(Timer_Period[frequency]); //cfg_reg&MASK_FS
-            
-            //sprintf(bufferUART, "DATACONFIG ADC = %d\r\n", Timer_Period[frequency]);
-            //UART_PutString(bufferUART);
-            
-            update_cfg_reg = 0;
-            
-        }
-        
         // go into configuration mode
-        if ((configSets[0]!=0) && (configSets[1]<5) ) {
+        if (configSets[0] && configSets[1]) {
             
             cfg_reg_old = cfg_reg;
             
@@ -275,14 +218,7 @@ int main(void)
             UART_PutString(bufferUART);
             
             if (cfg_reg_old!=cfg_reg) {
-                PWM_BLINK_WritePeriod(0);
-                PWM_BLINK_WriteCompare(0);
-                indexEEPROM = DATA_START; // bring index back to start
-                memoryFull = 0;
-                
                 data_config[3] = 0x00; // Stop acquisition
-                LIS3DH_setConfig(data_config);
-                Timer_ADC_Stop();
                 
                 reg_value = LIS3DH_readByte(FIFO_CTRL_REG);
                 sprintf(bufferUART, "FIFO control after stop = %02x\r\n", reg_value);
@@ -290,52 +226,70 @@ int main(void)
                 
                 // Store new config in EEPROM
                 cfg_reg = LIS3DH_zipConfig(data_config);
-                EEPROM_writeByte(CFG_REG, cfg_reg);
-                EEPROM_waitForWriteComplete();
+                
+                update_cfg_reg=1;
             }
             // Set RX default
             configSets[0]=0;
-            configSets[1]=5;  
+            configSets[1]=0;
         }
         
-        if(Startstream==1) {
-            sprintf(bufferUART, "DATACONFIG = 0x%02x\r\n", data_config[0]);
+        if(update_cfg_reg & (!dataReady_FIFO) & (!dataReady_DMA)) {
+            EEPROM_writeByte(CFG_REG, cfg_reg);
+            EEPROM_waitForWriteComplete();
+            
+            LIS3DH_unzipConfig(cfg_reg, data_config);//in case of push button
+            
+            reg_value = EEPROM_readByte(CFG_REG);
+            sprintf(bufferUART, "** UPDATED config_reg = 0x%02x, 0x%02x\r\n", reg_value, cfg_reg);
             UART_PutString(bufferUART);
             
-            frequency=((data_config[0]>>4)&0x0F)-1;
+            // Start/Stop ISR from LIS3DH
+            LIS3DH_setConfig(data_config); // set user-dependent settings
             
-            sprintf(bufferUART, "DATACONFIG = 0x%02x\r\n", frequency);
-            UART_PutString(bufferUART);
+            //Analog sensor
+            AMux_Select(data_config[2]);
             
-            // if b then v
-            //EEPROM_writePage(0x0000, (uint8_t*)&indexEEPROM, 2);
-            //EEPROM_waitForWriteComplete();
-            
-            Timer_STREAM_Start();
-            Timer_STREAM_WritePeriod(Timer_Period[frequency]); //cfg_reg&MASK_FS
-            
-            Startstream=0;
+            if(((cfg_reg>>5) & 0x01) ==1) { // Start
+                // Start/Stop Timer_ADC
+                frequency=((data_config[0]>>4)&0x0F)-1;
+                PWM_BLINK_WritePeriod(199);//Turn off built-in led
+                PWM_BLINK_WriteCompare(100);
+                
+                Timer_ADC_Start();
+                Timer_ADC_WritePeriod(Timer_Period[frequency]); //cfg_reg&MASK_FS
+            }
+            else { // Stop
+                Timer_ADC_Stop();//Stop ADC
+                
+                PWM_BLINK_WritePeriod(0);//Turn off built-in led
+                PWM_BLINK_WriteCompare(0);
+                
+                indexEEPROM_BCP = indexEEPROM; //Copy for stream
+                
+                indexEEPROM = DATA_START; // bring index back to start
+                EEPROM_writePage(0x0000, (uint8_t*) &indexEEPROM, 2);
+                EEPROM_waitForWriteComplete();
+                
+                if (memoryFull){
+                    PWM_BLINK_WritePeriod(49);//Turn off built-in led
+                    PWM_BLINK_WriteCompare(25);
+                }
+                
+                
+                
+                memoryFull = 0;
+            }
+            update_cfg_reg = 0;
         }
-        
-        if(Stopstream==1) {
-            indexSTREAM  = DATA_START;
-            indexEEPROM = DATA_START;
-            memoryFull = 0;
-            
-            
-            
-            Stopstream=0;
-        }
+      
         // Visualize data in BCP
-        if(dataReady_STREAM & !dataReady_FIFO) {
+        if(dataReady_STREAM & (!dataReady_FIFO) & (!dataReady_DMA)) {
             
-            /*
-            reg_value = EEPROM_readStatus();
-            sprintf(bufferUART, "STATUS REG STR = 0x%02x\r\n", reg_value);
-            UART_PutString(bufferUART);
-            */
-            if(indexSTREAM >= indexEEPROM) {
+            if(indexSTREAM >= indexEEPROM_BCP) {
                 indexSTREAM  = DATA_START;
+                uint8_t temp[8] = {0xE8, 0x03, 0xE8, 0x03, 0xE8, 0x03, 0x10, 0x27};
+                UART_Debug_BCP(temp, 8, HEAD, TAIL);
             }
             
             EEPROM_readPage(indexSTREAM, STREAMBufferIn, 6);
@@ -347,8 +301,6 @@ int main(void)
             if (dataSample[3].sample < MIN)    dataSample[3].sample = MIN;
             if (dataSample[3].sample > MAX)    dataSample[3].sample = MAX;
             
-            
-            
             UART_Debug_BCP(dataSample[0].bytes, 8, HEAD, TAIL);
             
             indexSTREAM +=6;
@@ -358,37 +310,26 @@ int main(void)
         
         if(dataReady_FIFO & dataReady_DMA & (!memoryFull)) {
             
-            sprintf(bufferUART, "config_reg = 0x%02x\r\n", cfg_reg);
-            //UART_PutString(bufferUART);
-            
             /* Release INT line */
             reg_value = LIS3DH_readByte(INT1_SRC);
-            //sprintf(bufferUART, "INT1 src loop = %02x\r\n", reg_value);
-            //UART_PutString(bufferUART);
             
-            //reg_value = LIS3DH_readByte(FIFO_CTRL_REG);
-            //sprintf(bufferUART, "FIFO src before read = %02x\r\n", reg_value);
-            //UART_PutString(bufferUART);
-            
-            reg_value = LIS3DH_readByte(FIFO_SRC_REG);
-            //sprintf(bufferUART, "FIFO src before read = %02x\r\n", reg_value);
-            //UART_PutString(bufferUART);
-            
-            LIS3DH_readPage(OUT_X_L, dataFIFO, 96);
-            while(LIS3DH_readStatus() & SPI_LIS3DH_OVRN_FIFO);
-            LIS3DH_readPage(OUT_X_L, &dataFIFO[96], 96);
-            while(LIS3DH_readStatus() & SPI_LIS3DH_OVRN_FIFO);
-            
-            CompressData(dataFIFO, ADCBuffer, EEPROMBuffer); // TODO add size of dataFIFO if variable
-            
-            sprintf(bufferUART, "indexEEPROM = %d\r\n", indexEEPROM);
-            //UART_PutString(bufferUART);
-            
-            /* Write compressed data on EEPROM */
+            //How many data 
+            //reg_value = LIS3DH_readByte(FIFO_SRC_REG);
+            reg_value=LIS3DH_readStatus();
             
             indexEEPROMbuffer = 0;
             // From LIS3DH application note (2/3 * 3/2)
             sizeEEPROMBuffer = ((reg_value & 0x5F) == 0x5F ? 0x20*6 : (reg_value & 0x1F)*6);
+            
+            //Data acquisition
+            //TODO funzione per usare la size
+            LIS3DH_readPage(OUT_X_L, dataFIFO, 96);
+            //while(LIS3DH_readStatus() & SPI_LIS3DH_OVRN_FIFO);
+            LIS3DH_readPage(OUT_X_L, &dataFIFO[96], 96);
+            //while(LIS3DH_readStatus() & SPI_LIS3DH_OVRN_FIFO);
+            
+            /* Write compressed data on EEPROM */
+            CompressData(dataFIFO, ADCBuffer, sizeEEPROMBuffer, EEPROMBuffer); // TODO forzare "acquisizione" DMA su INT prima di OVRN
             
             while((indexEEPROMbuffer < sizeEEPROMBuffer) && (indexEEPROM <SPI_EEPROM_SIZE_BYTE)) {
                 toNextPage = (indexEEPROM/SPI_EEPROM_PAGE_SIZE+1)*SPI_EEPROM_PAGE_SIZE - indexEEPROM;
@@ -410,9 +351,6 @@ int main(void)
                 data_config[3]=0x00; // bypass mode
                 cfg_reg = LIS3DH_zipConfig(data_config);
                 update_cfg_reg = 1; // write on EEPROM new config
-                
-                PWM_BLINK_WritePeriod(49);
-                PWM_BLINK_WriteCompare(25);
             }
             
             dataReady_FIFO = 0; // acknowledge FIFO
@@ -421,9 +359,9 @@ int main(void)
     }
 }
 
-void CompressData(uint8_t* dataInAcc, uint8_t* dataInADC, uint8_t* dataOut) {
+void CompressData(uint8_t* dataInAcc, uint8_t* dataInADC, uint8_t SizeBuffer, uint8_t* dataOut) {
     // Compress data to required format
-    for(uint8_t i=0; i<ACC_PLUS_ANALOG_SIZE; i+=6) {
+    for(uint8_t i=0; i<SizeBuffer; i+=6) {
         dataOut[i+0] = ((dataInAcc[i+1]  >>2));
         dataOut[i+1] = ((dataInAcc[i+1]  <<6) | (dataInAcc[i]>>2) | (dataInAcc[i+3]>>4));
         dataOut[i+2] = ((dataInAcc[i+3]<<4) | (dataInAcc[i+2]>>4) | (dataInAcc[i+5]>>6));
@@ -444,13 +382,6 @@ void DeCompressData(uint8_t* dataIn, uint8_t* dataOut) {
     dataOut[6] = (dataIn[4]);                       // ADC-low
     dataOut[7] = (dataIn[5]);                       // ADC-high
 }
-
-/*void SampledToBridge(uint8_t* dataIn, union t_data* dataOut){
-    dataOut[0].sample = (float) (((int16_t) (dataIn[0] | (dataIn[1]<<8))>>6)*g_CONST*100/(0x100>>(cfg_reg>>2 & 0x03)));
-    dataOut[1].sample = (float) (((int16_t) (dataIn[2] | (dataIn[3]<<8))>>6)*g_CONST*100/(0x100>>(cfg_reg>>2 & 0x03)));
-    dataOut[2].sample = (float) (((int16_t) (dataIn[4] | (dataIn[5]<<8))>>6)*g_CONST*100/(0x100>>(cfg_reg>>2 & 0x03)));
-    dataOut[3].sample =          ((int16_t) (dataIn[6] | (dataIn[7]<<8)));
-}*/
 
 void SampledToBridge(uint8_t* dataIn, union t_data* dataOut){
     const uint8_t SampledTomg[4] = {4, 8, 16, 48};
