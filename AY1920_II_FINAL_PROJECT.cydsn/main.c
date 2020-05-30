@@ -44,6 +44,7 @@ union t_data{                                     // union of float matched with
 void CompressData(uint8_t* dataInAcc, uint8_t* dataInADC, uint8_t SizeBuffer,  uint8_t* dataOut);
 void DeCompressData(uint8_t* dataIn, uint8_t* dataOut);
 void SampledToBridge(uint8_t* dataIn, union t_data* dataOut);
+void ShowMenu(void);
 
 void UART_Debug_BCP(const uint8 string[], uint8 byteCount, uint8 head, uint8 tail);
 //void exitSettingsMenu(void);
@@ -410,6 +411,36 @@ void UART_Debug_BCP(const uint8 string[], uint8 byteCount, uint8 head, uint8 tai
     }
 }
 
+void ShowMenu(void) {
+    configSets[0] = 0;
+    configSets[1] = 0;
+    UART_PutString("                        <<--- PORTABLE DATA ACQUISITION BOARD --->>                \r\nPlease select your personal settings\r\n");
+    UART_PutString("    Legend:\r\n");
+    UART_PutString("        B/b --> Start Data Acquisition\r\n"
+                   "        F/f --> Select Full Scale Range\r\n"
+                   "        P/p --> Select Sampling Frequency\r\n"
+                   "        L/l --> Select Analog Sensor\r\n"
+                   "        S/s --> Stop data acquisition\r\n"
+                   "        V/v --> Visualize data in BCP\r\n"
+                   "        U/u --> Exit data visualization\r\n"
+                   "         ?  --> Main Menu\r\n");
+    const uint8_t freqz[4] = {1, 10, 25, 50};
+    const uint8_t FSR[4]   = {2, 4, 8, 16};
+    const char *sensor[2];
+    sensor[0] = "Photoresistor";
+    sensor[1] = "Potentiometer";
+    const char *state[2];
+    state[0] = "Idling";
+    state[1] = "Acquiring";
+    sprintf(bufferUART, "Sampling frequency = %d Hz | ", freqz[(cfg_reg&0x03)]);
+    UART_PutString(bufferUART);
+    sprintf(bufferUART, "Full scale range = +-%d g\r\n", FSR[((cfg_reg>>2)&0x03)]);
+    UART_PutString(bufferUART);
+    sprintf(bufferUART, "Analog sensor = %s | ", sensor[((cfg_reg>>4)&0x01)]);
+    UART_PutString(bufferUART);
+    sprintf(bufferUART, "State = %s \r\n", state[((cfg_reg>>5)&0x01)]);
+    UART_PutString(bufferUART);
+}
 
 
 /* [] END OF FILE */

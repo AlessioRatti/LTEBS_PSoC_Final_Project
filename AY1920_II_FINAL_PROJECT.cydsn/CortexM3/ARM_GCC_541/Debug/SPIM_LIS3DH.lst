@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
   28:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     volatile uint8 SPIM_LIS3DH_rxBuffer[SPIM_LIS3DH_RX_BUFFER_SIZE];
   29:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     volatile uint8 SPIM_LIS3DH_rxBufferFull;
   30:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     volatile uint8 SPIM_LIS3DH_rxBufferRead;
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 2
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 2
 
 
   31:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     volatile uint8 SPIM_LIS3DH_rxBufferWrite;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
   85:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #if(SPIM_LIS3DH_RX_SOFTWARE_BUF_ENABLED)
   86:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_rxBufferFull  = 0u;
   87:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_rxBufferRead  = 0u;
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 3
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 3
 
 
   88:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_rxBufferWrite = 0u;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  142:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
  143:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Summary:
  144:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  Initialize and Enable the SPI Master component.
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 4
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 4
 
 
  145:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  199:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     CyExitCriticalSection(enableInterrupts);
  200:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
  201:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #if(0u != SPIM_LIS3DH_INTERNAL_CLOCK)
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 5
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 5
 
 
  202:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_IntClock_Disable();
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  231:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #endif /* (0u != SPIM_LIS3DH_INTERNAL_TX_INT_ENABLED) */
  232:Generated_Source\PSoC5/SPIM_LIS3DH.c **** }
  233:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 6
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 6
 
 
  234:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
   84              		.cfi_offset 3, -8
   85              		.cfi_offset 14, -4
  124:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_COUNTER_CONTROL_REG |= SPIM_LIS3DH_CNTR_ENABLE;
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 7
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 7
 
 
   86              		.loc 1 124 0
@@ -372,37 +372,37 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
   93 000e 1370     		strb	r3, [r2]
  126:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_RX_STATUS_ACTL_REG  |= SPIM_LIS3DH_INT_ENABLE;
   94              		.loc 1 126 0
-  95 0010 013A     		subs	r2, r2, #1
+  95 0010 0232     		adds	r2, r2, #2
   96 0012 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
   97 0014 43F01003 		orr	r3, r3, #16
   98 0018 1370     		strb	r3, [r2]
  127:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     CyExitCriticalSection(enableInterrupts);
   99              		.loc 1 127 0
- 100 001a 0332     		adds	r2, r2, #3
- 101 001c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 102 001e 43F01003 		orr	r3, r3, #16
- 103 0022 1370     		strb	r3, [r2]
+ 100 001a A2F20112 		subw	r2, r2, #257
+ 101 001e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 102 0020 43F01003 		orr	r3, r3, #16
+ 103 0024 1370     		strb	r3, [r2]
  128:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
  104              		.loc 1 128 0
- 105 0024 FFF7FEFF 		bl	CyExitCriticalSection
+ 105 0026 FFF7FEFF 		bl	CyExitCriticalSection
  106              	.LVL1:
  131:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #endif /* (0u != SPIM_LIS3DH_INTERNAL_CLOCK) */
  107              		.loc 1 131 0
- 108 0028 FFF7FEFF 		bl	SPIM_LIS3DH_IntClock_Start
+ 108 002a FFF7FEFF 		bl	SPIM_LIS3DH_IntClock_Start
  109              	.LVL2:
  134:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_EnableRxInt();
  110              		.loc 1 134 0
- 111 002c FFF7FEFF 		bl	SPIM_LIS3DH_EnableTxInt
+ 111 002e FFF7FEFF 		bl	SPIM_LIS3DH_EnableTxInt
  112              	.LVL3:
  135:Generated_Source\PSoC5/SPIM_LIS3DH.c **** }
  113              		.loc 1 135 0
- 114 0030 FFF7FEFF 		bl	SPIM_LIS3DH_EnableRxInt
+ 114 0032 FFF7FEFF 		bl	SPIM_LIS3DH_EnableRxInt
  115              	.LVL4:
- 116 0034 08BD     		pop	{r3, pc}
+ 116 0036 08BD     		pop	{r3, pc}
  117              	.L10:
- 118 0036 00BF     		.align	2
+ 118              		.align	2
  119              	.L9:
- 120 0038 9A640040 		.word	1073767578
+ 120 0038 95650040 		.word	1073767829
  121              		.cfi_endproc
  122              	.LFE1:
  123              		.size	SPIM_LIS3DH_Enable, .-SPIM_LIS3DH_Enable
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  257:Generated_Source\PSoC5/SPIM_LIS3DH.c **** }
  258:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
  259:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 8
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 8
 
 
  260:Generated_Source\PSoC5/SPIM_LIS3DH.c **** /*******************************************************************************
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  289:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Summary:
  290:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  Disable internal Rx interrupt generation.
  291:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 9
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 9
 
 
  292:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Parameters:
@@ -535,40 +535,40 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  192              	.LVL5:
  197:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_RX_STATUS_ACTL_REG &= ((uint8) ~SPIM_LIS3DH_INT_ENABLE);
  193              		.loc 1 197 0
- 194 0006 094A     		ldr	r2, .L19
+ 194 0006 0A4A     		ldr	r2, .L19
  195 0008 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  196 000a 03F0EF03 		and	r3, r3, #239
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 10
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 10
 
 
  197 000e 1370     		strb	r3, [r2]
  198:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     CyExitCriticalSection(enableInterrupts);
  198              		.loc 1 198 0
- 199 0010 0332     		adds	r2, r2, #3
- 200 0012 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 201 0014 03F0EF03 		and	r3, r3, #239
- 202 0018 1370     		strb	r3, [r2]
+ 199 0010 A2F20112 		subw	r2, r2, #257
+ 200 0014 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 201 0016 03F0EF03 		and	r3, r3, #239
+ 202 001a 1370     		strb	r3, [r2]
  199:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
  203              		.loc 1 199 0
- 204 001a FFF7FEFF 		bl	CyExitCriticalSection
+ 204 001c FFF7FEFF 		bl	CyExitCriticalSection
  205              	.LVL6:
  202:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #endif /* (0u != SPIM_LIS3DH_INTERNAL_CLOCK) */
  206              		.loc 1 202 0
- 207 001e FFF7FEFF 		bl	SPIM_LIS3DH_IntClock_Stop
+ 207 0020 FFF7FEFF 		bl	SPIM_LIS3DH_IntClock_Stop
  208              	.LVL7:
  205:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_DisableRxInt();
  209              		.loc 1 205 0
- 210 0022 FFF7FEFF 		bl	SPIM_LIS3DH_DisableTxInt
+ 210 0024 FFF7FEFF 		bl	SPIM_LIS3DH_DisableTxInt
  211              	.LVL8:
  206:Generated_Source\PSoC5/SPIM_LIS3DH.c **** }
  212              		.loc 1 206 0
- 213 0026 FFF7FEFF 		bl	SPIM_LIS3DH_DisableRxInt
+ 213 0028 FFF7FEFF 		bl	SPIM_LIS3DH_DisableRxInt
  214              	.LVL9:
- 215 002a 08BD     		pop	{r3, pc}
+ 215 002c 08BD     		pop	{r3, pc}
  216              	.L20:
- 217              		.align	2
+ 217 002e 00BF     		.align	2
  218              	.L19:
- 219 002c 99640040 		.word	1073767577
+ 219 0030 97650040 		.word	1073767831
  220              		.cfi_endproc
  221              	.LFE3:
  222              		.size	SPIM_LIS3DH_Stop, .-SPIM_LIS3DH_Stop
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  321:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Return:
  322:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  None.
  323:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 11
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 11
 
 
  324:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Theory:
@@ -621,7 +621,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  241              	.L23:
  242 0006 00BF     		.align	2
  243              	.L22:
- 244 0008 89640040 		.word	1073767561
+ 244 0008 87650040 		.word	1073767815
  245              		.cfi_endproc
  246              	.LFE8:
  247              		.size	SPIM_LIS3DH_SetTxInterruptMode, .-SPIM_LIS3DH_SetTxInterruptMode
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  353:Generated_Source\PSoC5/SPIM_LIS3DH.c **** {
  256              		.loc 1 353 0
  257              		.cfi_startproc
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 12
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 12
 
 
  258              		@ args = 0, pretend = 0, frame = 0
@@ -673,7 +673,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  266              	.L26:
  267 0006 00BF     		.align	2
  268              	.L25:
- 269 0008 8C640040 		.word	1073767564
+ 269 0008 86640040 		.word	1073767558
  270              		.cfi_endproc
  271              	.LFE9:
  272              		.size	SPIM_LIS3DH_SetRxInterruptMode, .-SPIM_LIS3DH_SetRxInterruptMode
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  385:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *******************************************************************************/
  386:Generated_Source\PSoC5/SPIM_LIS3DH.c **** uint8 SPIM_LIS3DH_ReadTxStatus(void) 
  387:Generated_Source\PSoC5/SPIM_LIS3DH.c **** {
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 13
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 13
 
 
  281              		.loc 1 387 0
@@ -772,13 +772,13 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  310              	.L30:
  311              		.align	2
  312              	.L29:
- 313 0020 69640040 		.word	1073767529
+ 313 0020 67650040 		.word	1073767783
  314 0024 00000000 		.word	SPIM_LIS3DH_swStatusTx
  315              		.cfi_endproc
  316              	.LFE10:
  317              		.size	SPIM_LIS3DH_ReadTxStatus, .-SPIM_LIS3DH_ReadTxStatus
  318              		.section	.text.SPIM_LIS3DH_ReadRxStatus,"ax",%progbits
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 14
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 14
 
 
  319              		.align	2
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  336              	.LVL16:
  444:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
  445:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         tmpStatus = SPIM_LIS3DH_GET_STATUS_RX(SPIM_LIS3DH_swStatusRx);
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 15
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 15
 
 
  337              		.loc 1 445 0
@@ -874,7 +874,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  355              	.L34:
  356              		.align	2
  357              	.L33:
- 358 0020 6C640040 		.word	1073767532
+ 358 0020 66640040 		.word	1073767526
  359 0024 00000000 		.word	SPIM_LIS3DH_swStatusRx
  360              		.cfi_endproc
  361              	.LFE11:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  466:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
  467:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Parameters:
  468:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  txDataByte: The data value to send across the SPI.
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 16
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 16
 
 
  469:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  388 000c 12B1     		cbz	r2, .L43
  506:Generated_Source\PSoC5/SPIM_LIS3DH.c ****             {
  507:Generated_Source\PSoC5/SPIM_LIS3DH.c ****                 tmpTxBufferRead = (SPIM_LIS3DH_TX_BUFFER_SIZE - 1u);
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 17
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 17
 
 
  508:Generated_Source\PSoC5/SPIM_LIS3DH.c ****             }
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  426 003e DBB2     		uxtb	r3, r3
  427 0040 9A42     		cmp	r2, r3
  428 0042 07D1     		bne	.L38
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 18
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 18
 
 
  524:Generated_Source\PSoC5/SPIM_LIS3DH.c ****            (0u != (SPIM_LIS3DH_swStatusTx & SPIM_LIS3DH_STS_TX_FIFO_NOT_FULL)))
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  467 007a 0ED1     		bne	.L41
  539:Generated_Source\PSoC5/SPIM_LIS3DH.c ****             {
  540:Generated_Source\PSoC5/SPIM_LIS3DH.c ****                 SPIM_LIS3DH_txBufferRead++;
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 19
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 19
 
 
  468              		.loc 1 540 0
@@ -1136,15 +1136,15 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  507              	.L45:
  508 00b4 00000000 		.word	SPIM_LIS3DH_txBufferRead
  509 00b8 00000000 		.word	SPIM_LIS3DH_txBufferWrite
- 510 00bc 69640040 		.word	1073767529
+ 510 00bc 67650040 		.word	1073767783
  511 00c0 00000000 		.word	SPIM_LIS3DH_swStatusTx
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 20
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 20
 
 
- 512 00c4 4B640040 		.word	1073767499
+ 512 00c4 44650040 		.word	1073767748
  513 00c8 00000000 		.word	SPIM_LIS3DH_txBufferFull
  514 00cc 00000000 		.word	SPIM_LIS3DH_txBuffer
- 515 00d0 89640040 		.word	1073767561
+ 515 00d0 87650040 		.word	1073767815
  516              		.cfi_endproc
  517              	.LFE12:
  518              		.size	SPIM_LIS3DH_WriteTxData, .-SPIM_LIS3DH_WriteTxData
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  593:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Side Effects:
  594:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  Will return invalid data if the FIFO is empty. The user should Call
  595:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  GetRxBufferSize() and if it returns a non-zero value then it is safe to call
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 21
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 21
 
 
  596:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  ReadByte() function.
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  560 002c DBB2     		uxtb	r3, r3
  561 002e 072B     		cmp	r3, #7
  562 0030 06D9     		bls	.L48
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 22
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 22
 
 
  617:Generated_Source\PSoC5/SPIM_LIS3DH.c ****                 {
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  595 0060 00000000 		.word	SPIM_LIS3DH_rxBuffer
  596              		.cfi_endproc
  597              	.LFE13:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 23
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 23
 
 
  598              		.size	SPIM_LIS3DH_ReadRxData, .-SPIM_LIS3DH_ReadRxData
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  617              	.LVL36:
  674:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
  675:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         if(SPIM_LIS3DH_rxBufferRead == SPIM_LIS3DH_rxBufferWrite)
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 24
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 24
 
 
  618              		.loc 1 675 0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  661              	.L54:
  662              	.LVL41:
  686:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         }
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 25
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 25
 
 
  687:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  718:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  SPIM_LIS3DH_txBufferWrite - used for the account of the bytes which
  719:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  have been written down in the TX software buffer.
  720:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  SPIM_LIS3DH_txBufferRead - used for the account of the bytes which
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 26
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 26
 
 
  721:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *  have been read from the TX software buffer.
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  719 002c 1478     		ldrb	r4, [r2]	@ zero_extendqisi2
  720 002e 1C1B     		subs	r4, r3, r4
  721 0030 E4B2     		uxtb	r4, r4
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 27
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 27
 
 
  722              	.LVL45:
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  746 004a 2046     		mov	r0, r4
  747 004c 10BD     		pop	{r4, pc}
  748              	.LVL51:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 28
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 28
 
 
  749              	.L66:
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  766              		.cfi_startproc
  767              		@ args = 0, pretend = 0, frame = 0
  768              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 29
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 29
 
 
  769 0000 08B5     		push	{r3, lr}
@@ -1733,12 +1733,12 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  802              	.L72:
  803 002a 00BF     		.align	2
  804              	.L71:
- 805 002c 5B640040 		.word	1073767515
- 806 0030 6C640040 		.word	1073767532
+ 805 002c 54650040 		.word	1073767764
+ 806 0030 66640040 		.word	1073767526
  807 0034 00000000 		.word	SPIM_LIS3DH_rxBufferFull
  808 0038 00000000 		.word	SPIM_LIS3DH_rxBufferRead
  809 003c 00000000 		.word	SPIM_LIS3DH_rxBufferWrite
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 30
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 30
 
 
  810              		.cfi_endproc
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  824              		@ frame_needed = 0, uses_anonymous_args = 0
  825 0000 08B5     		push	{r3, lr}
  826              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 31
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 31
 
 
  827              		.cfi_offset 3, -8
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  857              		.loc 1 886 0
  858 002e 084A     		ldr	r2, .L75+16
  859 0030 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 32
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 32
 
 
  860 0032 03F0FB03 		and	r3, r3, #251
@@ -1872,11 +1872,11 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  866              	.L76:
  867 003e 00BF     		.align	2
  868              	.L75:
- 869 0040 9B640040 		.word	1073767579
+ 869 0040 94650040 		.word	1073767828
  870 0044 00000000 		.word	SPIM_LIS3DH_txBufferFull
  871 0048 00000000 		.word	SPIM_LIS3DH_txBufferRead
  872 004c 00000000 		.word	SPIM_LIS3DH_txBufferWrite
- 873 0050 89640040 		.word	1073767561
+ 873 0050 87650040 		.word	1073767815
  874              		.cfi_endproc
  875              	.LFE17:
  876              		.size	SPIM_LIS3DH_ClearTxBuffer, .-SPIM_LIS3DH_ClearTxBuffer
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  916:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     * Function Name: SPIM_LIS3DH_TxDisable
  917:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     ********************************************************************************
  918:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     *
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 33
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 33
 
 
  919:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     * Summary:
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  893              		.cfi_offset 5, -12
  894              		.cfi_offset 6, -8
  895              		.cfi_offset 14, -4
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 34
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 34
 
 
  896 0002 0646     		mov	r6, r0
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  978:Generated_Source\PSoC5/SPIM_LIS3DH.c **** /*******************************************************************************
  979:Generated_Source\PSoC5/SPIM_LIS3DH.c **** * Function Name: SPIM_LIS3DH_ClearFIFO
  980:Generated_Source\PSoC5/SPIM_LIS3DH.c **** ********************************************************************************
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 35
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 35
 
 
  981:Generated_Source\PSoC5/SPIM_LIS3DH.c **** *
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  962 001a 42F00102 		orr	r2, r2, #1
  963 001e 1A70     		strb	r2, [r3]
 1008:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_AUX_CONTROL_DP0_REG &= ((uint8) ~SPIM_LIS3DH_TX_FIFO_CLR);
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 36
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 36
 
 
  964              		.loc 1 1008 0
@@ -2119,9 +2119,9 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  972              	.L86:
  973 002e 00BF     		.align	2
  974              	.L85:
- 975 0030 5B640040 		.word	1073767515
- 976 0034 6C640040 		.word	1073767532
- 977 0038 9B640040 		.word	1073767579
+ 975 0030 54650040 		.word	1073767764
+ 976 0034 66640040 		.word	1073767526
+ 977 0038 94650040 		.word	1073767828
  978              		.cfi_endproc
  979              	.LFE19:
  980              		.size	SPIM_LIS3DH_ClearFIFO, .-SPIM_LIS3DH_ClearFIFO
@@ -2145,11 +2145,11 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
   66:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
  997              		.loc 1 66 0
  998 0002 0F22     		movs	r2, #15
- 999 0004 174B     		ldr	r3, .L89
+ 999 0004 184B     		ldr	r3, .L89
  1000 0006 1A70     		strb	r2, [r3]
   70:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         CyIntSetPriority     (SPIM_LIS3DH_TX_ISR_NUMBER,  SPIM_LIS3DH_TX_ISR_PRIORITY);
  1001              		.loc 1 70 0
- 1002 0008 174C     		ldr	r4, .L89+4
+ 1002 0008 184C     		ldr	r4, .L89+4
  1003 000a 0823     		movs	r3, #8
  1004 000c 2360     		str	r3, [r4]
   71:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         (void) CyIntSetVector(SPIM_LIS3DH_TX_ISR_NUMBER, &SPIM_LIS3DH_TX_ISR);
@@ -2158,12 +2158,12 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1007 0010 0320     		movs	r0, #3
  1008 0012 FFF7FEFF 		bl	CyIntSetPriority
  1009              	.LVL68:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 37
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 37
 
 
   72:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #endif /* (0u != SPIM_LIS3DH_INTERNAL_TX_INT_ENABLED) */
  1010              		.loc 1 72 0
- 1011 0016 1549     		ldr	r1, .L89+8
+ 1011 0016 1649     		ldr	r1, .L89+8
  1012 0018 0320     		movs	r0, #3
  1013 001a FFF7FEFF 		bl	CyIntSetVector
  1014              	.LVL69:
@@ -2179,7 +2179,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1022              	.LVL70:
   79:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #endif /* (0u != SPIM_LIS3DH_INTERNAL_RX_INT_ENABLED) */
  1023              		.loc 1 79 0
- 1024 002a 1149     		ldr	r1, .L89+12
+ 1024 002a 1249     		ldr	r1, .L89+12
  1025 002c 0220     		movs	r0, #2
  1026 002e FFF7FEFF 		bl	CyIntSetVector
  1027              	.LVL71:
@@ -2190,27 +2190,27 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
   86:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_rxBufferRead  = 0u;
  1031              		.loc 1 86 0
  1032 0036 0024     		movs	r4, #0
- 1033 0038 0E4B     		ldr	r3, .L89+16
+ 1033 0038 0F4B     		ldr	r3, .L89+16
  1034 003a 1C70     		strb	r4, [r3]
   87:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_rxBufferWrite = 0u;
  1035              		.loc 1 87 0
- 1036 003c 0E4B     		ldr	r3, .L89+20
+ 1036 003c 0F4B     		ldr	r3, .L89+20
  1037 003e 1C70     		strb	r4, [r3]
   88:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #endif /* (SPIM_LIS3DH_RX_SOFTWARE_BUF_ENABLED) */
  1038              		.loc 1 88 0
- 1039 0040 0E4B     		ldr	r3, .L89+24
+ 1039 0040 0F4B     		ldr	r3, .L89+24
  1040 0042 1C70     		strb	r4, [r3]
   92:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_txBufferRead  = 0u;
  1041              		.loc 1 92 0
- 1042 0044 0E4B     		ldr	r3, .L89+28
+ 1042 0044 0F4B     		ldr	r3, .L89+28
  1043 0046 1C70     		strb	r4, [r3]
   93:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_txBufferWrite = 0u;
  1044              		.loc 1 93 0
- 1045 0048 0E4B     		ldr	r3, .L89+32
+ 1045 0048 0F4B     		ldr	r3, .L89+32
  1046 004a 1C70     		strb	r4, [r3]
   94:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #endif /* (SPIM_LIS3DH_TX_SOFTWARE_BUF_ENABLED) */
  1047              		.loc 1 94 0
- 1048 004c 0E4B     		ldr	r3, .L89+36
+ 1048 004c 0F4B     		ldr	r3, .L89+36
  1049 004e 1C70     		strb	r4, [r3]
   97:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     (void) SPIM_LIS3DH_ReadRxStatus(); /* Clear Rx status and swStatusRx */
  1050              		.loc 1 97 0
@@ -2218,35 +2218,35 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1052              	.LVL73:
   98:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
  1053              		.loc 1 98 0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 38
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 38
 
 
  1054 0054 FFF7FEFF 		bl	SPIM_LIS3DH_ReadRxStatus
  1055              	.LVL74:
  101:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_RX_STATUS_MASK_REG = SPIM_LIS3DH_RX_INIT_INTERRUPTS_MASK;
  1056              		.loc 1 101 0
- 1057 0058 0C4B     		ldr	r3, .L89+40
+ 1057 0058 0D4B     		ldr	r3, .L89+40
  1058 005a 1C70     		strb	r4, [r3]
  102:Generated_Source\PSoC5/SPIM_LIS3DH.c **** }
  1059              		.loc 1 102 0
  1060 005c 2022     		movs	r2, #32
- 1061 005e 0333     		adds	r3, r3, #3
- 1062 0060 1A70     		strb	r2, [r3]
- 1063 0062 10BD     		pop	{r4, pc}
+ 1061 005e A3F20113 		subw	r3, r3, #257
+ 1062 0062 1A70     		strb	r2, [r3]
+ 1063 0064 10BD     		pop	{r4, pc}
  1064              	.L90:
- 1065              		.align	2
+ 1065 0066 00BF     		.align	2
  1066              	.L89:
- 1067 0064 8A640040 		.word	1073767562
- 1068 0068 80E100E0 		.word	-536813184
- 1069 006c 00000000 		.word	SPIM_LIS3DH_TX_ISR
- 1070 0070 00000000 		.word	SPIM_LIS3DH_RX_ISR
- 1071 0074 00000000 		.word	SPIM_LIS3DH_rxBufferFull
- 1072 0078 00000000 		.word	SPIM_LIS3DH_rxBufferRead
- 1073 007c 00000000 		.word	SPIM_LIS3DH_rxBufferWrite
- 1074 0080 00000000 		.word	SPIM_LIS3DH_txBufferFull
- 1075 0084 00000000 		.word	SPIM_LIS3DH_txBufferRead
- 1076 0088 00000000 		.word	SPIM_LIS3DH_txBufferWrite
- 1077 008c 89640040 		.word	1073767561
+ 1067 0068 85650040 		.word	1073767813
+ 1068 006c 80E100E0 		.word	-536813184
+ 1069 0070 00000000 		.word	SPIM_LIS3DH_TX_ISR
+ 1070 0074 00000000 		.word	SPIM_LIS3DH_RX_ISR
+ 1071 0078 00000000 		.word	SPIM_LIS3DH_rxBufferFull
+ 1072 007c 00000000 		.word	SPIM_LIS3DH_rxBufferRead
+ 1073 0080 00000000 		.word	SPIM_LIS3DH_rxBufferWrite
+ 1074 0084 00000000 		.word	SPIM_LIS3DH_txBufferFull
+ 1075 0088 00000000 		.word	SPIM_LIS3DH_txBufferRead
+ 1076 008c 00000000 		.word	SPIM_LIS3DH_txBufferWrite
+ 1077 0090 87650040 		.word	1073767815
  1078              		.cfi_endproc
  1079              	.LFE0:
  1080              		.size	SPIM_LIS3DH_Init, .-SPIM_LIS3DH_Init
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1103              	.LVL75:
  168:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     }
  1104              		.loc 1 168 0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 39
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 39
 
 
  1105 000c 0122     		movs	r2, #1
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1131              		@ frame_needed = 0, uses_anonymous_args = 0
  1132 0000 08B5     		push	{r3, lr}
  1133              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 40
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 40
 
 
  1134              		.cfi_offset 3, -8
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1163 0002 FFF7FEFF 		bl	SPIM_LIS3DH_DisableTxInt
  1164              	.LVL79:
 1068:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_DisableRxInt();
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 41
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 41
 
 
  1165              		.loc 1 1068 0
@@ -2452,16 +2452,16 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1189 0006 1A70     		strb	r2, [r3]
 1093:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     SPIM_LIS3DH_RX_STATUS_MASK_REG  =  intSrc;
  1190              		.loc 1 1093 0
- 1191 0008 0333     		adds	r3, r3, #3
- 1192 000a 1870     		strb	r0, [r3]
- 1193 000c 7047     		bx	lr
+ 1191 0008 A3F20113 		subw	r3, r3, #257
+ 1192 000c 1870     		strb	r0, [r3]
+ 1193 000e 7047     		bx	lr
  1194              	.L102:
- 1195 000e 00BF     		.align	2
+ 1195              		.align	2
  1196              	.L101:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 42
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 42
 
 
- 1197 0010 89640040 		.word	1073767561
+ 1197 0010 87650040 		.word	1073767815
  1198              		.cfi_endproc
  1199              	.LFE22:
  1200              		.size	SPIM_LIS3DH_SetInterruptMode, .-SPIM_LIS3DH_SetInterruptMode
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
 1128:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
 1129:Generated_Source\PSoC5/SPIM_LIS3DH.c ****     #if(SPIM_LIS3DH_TX_SOFTWARE_BUF_ENABLED || SPIM_LIS3DH_RX_SOFTWARE_BUF_ENABLED)
 1130:Generated_Source\PSoC5/SPIM_LIS3DH.c **** 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 43
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 43
 
 
 1131:Generated_Source\PSoC5/SPIM_LIS3DH.c ****         SPIM_LIS3DH_DisableInt();
@@ -2578,14 +2578,14 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1250 0034 10BD     		pop	{r4, pc}
  1251              	.LVL87:
  1252              	.L106:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 44
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 44
 
 
  1253 0036 00BF     		.align	2
  1254              	.L105:
- 1255 0038 6C640040 		.word	1073767532
+ 1255 0038 66640040 		.word	1073767526
  1256 003c 00000000 		.word	SPIM_LIS3DH_swStatusRx
- 1257 0040 69640040 		.word	1073767529
+ 1257 0040 67650040 		.word	1073767783
  1258 0044 00000000 		.word	SPIM_LIS3DH_swStatusTx
  1259              		.cfi_endproc
  1260              	.LFE23:
@@ -2619,10 +2619,10 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1288 0006 00000000 		.4byte	.Ldebug_abbrev0
  1289 000a 04       		.byte	0x4
  1290 000b 01       		.uleb128 0x1
- 1291 000c DE030000 		.4byte	.LASF70
+ 1291 000c DD030000 		.4byte	.LASF70
  1292 0010 0C       		.byte	0xc
- 1293 0011 E9040000 		.4byte	.LASF71
- 1294 0015 01010000 		.4byte	.LASF72
+ 1293 0011 E8040000 		.4byte	.LASF71
+ 1294 0015 9B020000 		.4byte	.LASF72
  1295 0019 00000000 		.4byte	.Ldebug_ranges0+0
  1296 001d 00000000 		.4byte	0
  1297 0021 00000000 		.4byte	.Ldebug_line0
@@ -2633,26 +2633,26 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1302 002c 02       		.uleb128 0x2
  1303 002d 01       		.byte	0x1
  1304 002e 08       		.byte	0x8
- 1305 002f AD030000 		.4byte	.LASF1
+ 1305 002f AC030000 		.4byte	.LASF1
  1306 0033 02       		.uleb128 0x2
  1307 0034 02       		.byte	0x2
  1308 0035 05       		.byte	0x5
- 1309 0036 D4030000 		.4byte	.LASF2
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 45
+ 1309 0036 D3030000 		.4byte	.LASF2
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 45
 
 
  1310 003a 02       		.uleb128 0x2
  1311 003b 02       		.byte	0x2
  1312 003c 07       		.byte	0x7
- 1313 003d 76020000 		.4byte	.LASF3
+ 1313 003d 0E020000 		.4byte	.LASF3
  1314 0041 02       		.uleb128 0x2
  1315 0042 04       		.byte	0x4
  1316 0043 05       		.byte	0x5
- 1317 0044 83010000 		.4byte	.LASF4
+ 1317 0044 1B010000 		.4byte	.LASF4
  1318 0048 02       		.uleb128 0x2
  1319 0049 04       		.byte	0x4
  1320 004a 07       		.byte	0x7
- 1321 004b 48020000 		.4byte	.LASF5
+ 1321 004b E0010000 		.4byte	.LASF5
  1322 004f 02       		.uleb128 0x2
  1323 0050 08       		.byte	0x8
  1324 0051 05       		.byte	0x5
@@ -2668,41 +2668,41 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1334 0064 02       		.uleb128 0x2
  1335 0065 04       		.byte	0x4
  1336 0066 07       		.byte	0x7
- 1337 0067 0E020000 		.4byte	.LASF8
+ 1337 0067 A6010000 		.4byte	.LASF8
  1338 006b 04       		.uleb128 0x4
- 1339 006c B5010000 		.4byte	.LASF9
+ 1339 006c 4D010000 		.4byte	.LASF9
  1340 0070 02       		.byte	0x2
  1341 0071 E401     		.2byte	0x1e4
  1342 0073 2C000000 		.4byte	0x2c
  1343 0077 04       		.uleb128 0x4
- 1344 0078 C2010000 		.4byte	.LASF10
+ 1344 0078 5A010000 		.4byte	.LASF10
  1345 007c 02       		.byte	0x2
  1346 007d E601     		.2byte	0x1e6
  1347 007f 48000000 		.4byte	0x48
  1348 0083 02       		.uleb128 0x2
  1349 0084 04       		.byte	0x4
  1350 0085 04       		.byte	0x4
- 1351 0086 59030000 		.4byte	.LASF11
+ 1351 0086 58030000 		.4byte	.LASF11
  1352 008a 02       		.uleb128 0x2
  1353 008b 08       		.byte	0x8
  1354 008c 04       		.byte	0x4
- 1355 008d BB010000 		.4byte	.LASF12
+ 1355 008d 53010000 		.4byte	.LASF12
  1356 0091 02       		.uleb128 0x2
  1357 0092 01       		.byte	0x1
  1358 0093 08       		.byte	0x8
- 1359 0094 E4040000 		.4byte	.LASF13
+ 1359 0094 E3040000 		.4byte	.LASF13
  1360 0098 04       		.uleb128 0x4
- 1361 0099 A8030000 		.4byte	.LASF14
+ 1361 0099 A7030000 		.4byte	.LASF14
  1362 009d 02       		.byte	0x2
  1363 009e 8E02     		.2byte	0x28e
  1364 00a0 A4000000 		.4byte	0xa4
  1365 00a4 05       		.uleb128 0x5
  1366 00a5 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 46
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 46
 
 
  1367 00a9 04       		.uleb128 0x4
- 1368 00aa FD020000 		.4byte	.LASF15
+ 1368 00aa 95020000 		.4byte	.LASF15
  1369 00ae 02       		.byte	0x2
  1370 00af 9002     		.2byte	0x290
  1371 00b1 B5000000 		.4byte	0xb5
@@ -2711,13 +2711,13 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1374 00ba 02       		.uleb128 0x2
  1375 00bb 08       		.byte	0x8
  1376 00bc 04       		.byte	0x4
- 1377 00bd 1D030000 		.4byte	.LASF16
+ 1377 00bd 1C030000 		.4byte	.LASF16
  1378 00c1 02       		.uleb128 0x2
  1379 00c2 04       		.byte	0x4
  1380 00c3 07       		.byte	0x7
- 1381 00c4 03030000 		.4byte	.LASF17
+ 1381 00c4 02030000 		.4byte	.LASF17
  1382 00c8 06       		.uleb128 0x6
- 1383 00c9 5F030000 		.4byte	.LASF18
+ 1383 00c9 5E030000 		.4byte	.LASF18
  1384 00cd 01       		.byte	0x1
  1385 00ce E3       		.byte	0xe3
  1386 00cf 00000000 		.4byte	.LFB4
@@ -2725,7 +2725,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1388 00d7 01       		.uleb128 0x1
  1389 00d8 9C       		.byte	0x9c
  1390 00d9 06       		.uleb128 0x6
- 1391 00da 1B020000 		.4byte	.LASF19
+ 1391 00da B3010000 		.4byte	.LASF19
  1392 00de 01       		.byte	0x1
  1393 00df FC       		.byte	0xfc
  1394 00e0 00000000 		.4byte	.LFB5
@@ -2733,7 +2733,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1396 00e8 01       		.uleb128 0x1
  1397 00e9 9C       		.byte	0x9c
  1398 00ea 07       		.uleb128 0x7
- 1399 00eb E2050000 		.4byte	.LASF22
+ 1399 00eb E1050000 		.4byte	.LASF22
  1400 00ef 01       		.byte	0x1
  1401 00f0 78       		.byte	0x78
  1402 00f1 00000000 		.4byte	.LFB1
@@ -2742,7 +2742,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1405 00fa 9C       		.byte	0x9c
  1406 00fb 3C010000 		.4byte	0x13c
  1407 00ff 08       		.uleb128 0x8
- 1408 0100 5F050000 		.4byte	.LASF24
+ 1408 0100 5E050000 		.4byte	.LASF24
  1409 0104 01       		.byte	0x1
  1410 0105 7A       		.byte	0x7a
  1411 0106 6B000000 		.4byte	0x6b
@@ -2751,19 +2751,19 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1414 010f 06000000 		.4byte	.LVL0
  1415 0113 C6060000 		.4byte	0x6c6
  1416 0117 09       		.uleb128 0x9
- 1417 0118 28000000 		.4byte	.LVL1
+ 1417 0118 2A000000 		.4byte	.LVL1
  1418 011c D1060000 		.4byte	0x6d1
  1419 0120 09       		.uleb128 0x9
- 1420 0121 2C000000 		.4byte	.LVL2
+ 1420 0121 2E000000 		.4byte	.LVL2
  1421 0125 DC060000 		.4byte	0x6dc
  1422 0129 09       		.uleb128 0x9
- 1423 012a 30000000 		.4byte	.LVL3
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 47
+ 1423 012a 32000000 		.4byte	.LVL3
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 47
 
 
  1424 012e C8000000 		.4byte	0xc8
  1425 0132 09       		.uleb128 0x9
- 1426 0133 34000000 		.4byte	.LVL4
+ 1426 0133 36000000 		.4byte	.LVL4
  1427 0137 D9000000 		.4byte	0xd9
  1428 013b 00       		.byte	0
  1429 013c 0A       		.uleb128 0xa
@@ -2775,7 +2775,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1435 014c 01       		.uleb128 0x1
  1436 014d 9C       		.byte	0x9c
  1437 014e 0A       		.uleb128 0xa
- 1438 014f 3F050000 		.4byte	.LASF21
+ 1438 014f 3E050000 		.4byte	.LASF21
  1439 0153 01       		.byte	0x1
  1440 0154 2E01     		.2byte	0x12e
  1441 0156 00000000 		.4byte	.LFB7
@@ -2783,16 +2783,16 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1443 015e 01       		.uleb128 0x1
  1444 015f 9C       		.byte	0x9c
  1445 0160 07       		.uleb128 0x7
- 1446 0161 0C030000 		.4byte	.LASF23
+ 1446 0161 0B030000 		.4byte	.LASF23
  1447 0165 01       		.byte	0x1
  1448 0166 C0       		.byte	0xc0
  1449 0167 00000000 		.4byte	.LFB3
- 1450 016b 30000000 		.4byte	.LFE3-.LFB3
+ 1450 016b 34000000 		.4byte	.LFE3-.LFB3
  1451 016f 01       		.uleb128 0x1
  1452 0170 9C       		.byte	0x9c
  1453 0171 B2010000 		.4byte	0x1b2
  1454 0175 08       		.uleb128 0x8
- 1455 0176 5F050000 		.4byte	.LASF24
+ 1455 0176 5E050000 		.4byte	.LASF24
  1456 017a 01       		.byte	0x1
  1457 017b C2       		.byte	0xc2
  1458 017c 6B000000 		.4byte	0x6b
@@ -2801,24 +2801,24 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1461 0185 06000000 		.4byte	.LVL5
  1462 0189 C6060000 		.4byte	0x6c6
  1463 018d 09       		.uleb128 0x9
- 1464 018e 1E000000 		.4byte	.LVL6
+ 1464 018e 20000000 		.4byte	.LVL6
  1465 0192 D1060000 		.4byte	0x6d1
  1466 0196 09       		.uleb128 0x9
- 1467 0197 22000000 		.4byte	.LVL7
+ 1467 0197 24000000 		.4byte	.LVL7
  1468 019b E7060000 		.4byte	0x6e7
  1469 019f 09       		.uleb128 0x9
- 1470 01a0 26000000 		.4byte	.LVL8
+ 1470 01a0 28000000 		.4byte	.LVL8
  1471 01a4 3C010000 		.4byte	0x13c
  1472 01a8 09       		.uleb128 0x9
- 1473 01a9 2A000000 		.4byte	.LVL9
+ 1473 01a9 2C000000 		.4byte	.LVL9
  1474 01ad 4E010000 		.4byte	0x14e
  1475 01b1 00       		.byte	0
  1476 01b2 0B       		.uleb128 0xb
- 1477 01b3 A1020000 		.4byte	.LASF25
+ 1477 01b3 39020000 		.4byte	.LASF25
  1478 01b7 01       		.byte	0x1
  1479 01b8 4801     		.2byte	0x148
  1480 01ba 00000000 		.4byte	.LFB8
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 48
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 48
 
 
  1481 01be 0C000000 		.4byte	.LFE8-.LFB8
@@ -2826,7 +2826,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1483 01c3 9C       		.byte	0x9c
  1484 01c4 D7010000 		.4byte	0x1d7
  1485 01c8 0C       		.uleb128 0xc
- 1486 01c9 DA020000 		.4byte	.LASF27
+ 1486 01c9 72020000 		.4byte	.LASF27
  1487 01cd 01       		.byte	0x1
  1488 01ce 4801     		.2byte	0x148
  1489 01d0 6B000000 		.4byte	0x6b
@@ -2843,7 +2843,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1500 01e8 9C       		.byte	0x9c
  1501 01e9 FC010000 		.4byte	0x1fc
  1502 01ed 0C       		.uleb128 0xc
- 1503 01ee DA020000 		.4byte	.LASF27
+ 1503 01ee 72020000 		.4byte	.LASF27
  1504 01f2 01       		.byte	0x1
  1505 01f3 6001     		.2byte	0x160
  1506 01f5 6B000000 		.4byte	0x6b
@@ -2874,11 +2874,11 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1531 0234 C8000000 		.4byte	0xc8
  1532 0238 00       		.byte	0
  1533 0239 0D       		.uleb128 0xd
- 1534 023a BB030000 		.4byte	.LASF30
+ 1534 023a BA030000 		.4byte	.LASF30
  1535 023e 01       		.byte	0x1
  1536 023f B501     		.2byte	0x1b5
  1537 0241 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 49
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 49
 
 
  1538 0245 00000000 		.4byte	.LFB11
@@ -2909,19 +2909,19 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1563 0287 9C       		.byte	0x9c
  1564 0288 CF020000 		.4byte	0x2cf
  1565 028c 0F       		.uleb128 0xf
- 1566 028d 07060000 		.4byte	.LASF32
+ 1566 028d 06060000 		.4byte	.LASF32
  1567 0291 01       		.byte	0x1
  1568 0292 EE01     		.2byte	0x1ee
  1569 0294 6B000000 		.4byte	0x6b
  1570 0298 62000000 		.4byte	.LLST4
  1571 029c 0E       		.uleb128 0xe
- 1572 029d 29030000 		.4byte	.LASF33
+ 1572 029d 28030000 		.4byte	.LASF33
  1573 02a1 01       		.byte	0x1
  1574 02a2 F201     		.2byte	0x1f2
  1575 02a4 6B000000 		.4byte	0x6b
  1576 02a8 83000000 		.4byte	.LLST5
  1577 02ac 0E       		.uleb128 0xe
- 1578 02ad A5010000 		.4byte	.LASF34
+ 1578 02ad 3D010000 		.4byte	.LASF34
  1579 02b1 01       		.byte	0x1
  1580 02b2 F301     		.2byte	0x1f3
  1581 02b4 6B000000 		.4byte	0x6b
@@ -2934,11 +2934,11 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1588 02ca C8000000 		.4byte	0xc8
  1589 02ce 00       		.byte	0
  1590 02cf 0D       		.uleb128 0xd
- 1591 02d0 DE010000 		.4byte	.LASF35
+ 1591 02d0 76010000 		.4byte	.LASF35
  1592 02d4 01       		.byte	0x1
  1593 02d5 5A02     		.2byte	0x25a
  1594 02d7 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 50
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 50
 
 
  1595 02db 00000000 		.4byte	.LFB13
@@ -2947,7 +2947,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1598 02e4 9C       		.byte	0x9c
  1599 02e5 0C030000 		.4byte	0x30c
  1600 02e9 0E       		.uleb128 0xe
- 1601 02ea A9040000 		.4byte	.LASF36
+ 1601 02ea A8040000 		.4byte	.LASF36
  1602 02ee 01       		.byte	0x1
  1603 02ef 5C02     		.2byte	0x25c
  1604 02f1 6B000000 		.4byte	0x6b
@@ -2960,7 +2960,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1611 0307 D9000000 		.4byte	0xd9
  1612 030b 00       		.byte	0
  1613 030c 0D       		.uleb128 0xd
- 1614 030d 8D040000 		.4byte	.LASF37
+ 1614 030d 8C040000 		.4byte	.LASF37
  1615 0311 01       		.byte	0x1
  1616 0312 9A02     		.2byte	0x29a
  1617 0314 6B000000 		.4byte	0x6b
@@ -2970,7 +2970,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1621 0321 9C       		.byte	0x9c
  1622 0322 49030000 		.4byte	0x349
  1623 0326 0E       		.uleb128 0xe
- 1624 0327 71020000 		.4byte	.LASF38
+ 1624 0327 09020000 		.4byte	.LASF38
  1625 032b 01       		.byte	0x1
  1626 032c 9C02     		.2byte	0x29c
  1627 032e 6B000000 		.4byte	0x6b
@@ -2983,7 +2983,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1634 0344 D9000000 		.4byte	0xd9
  1635 0348 00       		.byte	0
  1636 0349 0D       		.uleb128 0xd
- 1637 034a E1020000 		.4byte	.LASF39
+ 1637 034a 79020000 		.4byte	.LASF39
  1638 034e 01       		.byte	0x1
  1639 034f D702     		.2byte	0x2d7
  1640 0351 6B000000 		.4byte	0x6b
@@ -2993,12 +2993,12 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1644 035e 9C       		.byte	0x9c
  1645 035f 86030000 		.4byte	0x386
  1646 0363 0E       		.uleb128 0xe
- 1647 0364 71020000 		.4byte	.LASF38
+ 1647 0364 09020000 		.4byte	.LASF38
  1648 0368 01       		.byte	0x1
  1649 0369 D902     		.2byte	0x2d9
  1650 036b 6B000000 		.4byte	0x6b
  1651 036f 2F010000 		.4byte	.LLST9
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 51
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 51
 
 
  1652 0373 09       		.uleb128 0x9
@@ -3009,7 +3009,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1657 0381 C8000000 		.4byte	0xc8
  1658 0385 00       		.byte	0
  1659 0386 0B       		.uleb128 0xb
- 1660 0387 25050000 		.4byte	.LASF40
+ 1660 0387 24050000 		.4byte	.LASF40
  1661 038b 01       		.byte	0x1
  1662 038c 2603     		.2byte	0x326
  1663 038e 00000000 		.4byte	.LFB16
@@ -3025,7 +3025,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1673 03aa D9000000 		.4byte	0xd9
  1674 03ae 00       		.byte	0
  1675 03af 0B       		.uleb128 0xb
- 1676 03b0 69010000 		.4byte	.LASF41
+ 1676 03b0 01010000 		.4byte	.LASF41
  1677 03b4 01       		.byte	0x1
  1678 03b5 5D03     		.2byte	0x35d
  1679 03b7 00000000 		.4byte	.LFB17
@@ -3034,7 +3034,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1682 03c0 9C       		.byte	0x9c
  1683 03c1 FA030000 		.4byte	0x3fa
  1684 03c5 0E       		.uleb128 0xe
- 1685 03c6 5F050000 		.4byte	.LASF24
+ 1685 03c6 5E050000 		.4byte	.LASF24
  1686 03ca 01       		.byte	0x1
  1687 03cb 5F03     		.2byte	0x35f
  1688 03cd 6B000000 		.4byte	0x6b
@@ -3053,31 +3053,31 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1701 03f5 C8000000 		.4byte	0xc8
  1702 03f9 00       		.byte	0
  1703 03fa 0B       		.uleb128 0xb
- 1704 03fb 33020000 		.4byte	.LASF42
+ 1704 03fb CB010000 		.4byte	.LASF42
  1705 03ff 01       		.byte	0x1
  1706 0400 C203     		.2byte	0x3c2
  1707 0402 00000000 		.4byte	.LFB18
  1708 0406 1E000000 		.4byte	.LFE18-.LFB18
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 52
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 52
 
 
  1709 040a 01       		.uleb128 0x1
  1710 040b 9C       		.byte	0x9c
  1711 040c 4A040000 		.4byte	0x44a
  1712 0410 0F       		.uleb128 0xf
- 1713 0411 58050000 		.4byte	.LASF43
+ 1713 0411 57050000 		.4byte	.LASF43
  1714 0415 01       		.byte	0x1
  1715 0416 C203     		.2byte	0x3c2
  1716 0418 4A040000 		.4byte	0x44a
  1717 041c 6B010000 		.4byte	.LLST11
  1718 0420 0F       		.uleb128 0xf
- 1719 0421 6C040000 		.4byte	.LASF44
+ 1719 0421 6B040000 		.4byte	.LASF44
  1720 0425 01       		.byte	0x1
  1721 0426 C203     		.2byte	0x3c2
  1722 0428 6B000000 		.4byte	0x6b
  1723 042c 89010000 		.4byte	.LLST12
  1724 0430 0E       		.uleb128 0xe
- 1725 0431 98020000 		.4byte	.LASF45
+ 1725 0431 30020000 		.4byte	.LASF45
  1726 0435 01       		.byte	0x1
  1727 0436 C503     		.2byte	0x3c5
  1728 0438 6B000000 		.4byte	0x6b
@@ -3092,7 +3092,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1737 0450 11       		.uleb128 0x11
  1738 0451 6B000000 		.4byte	0x6b
  1739 0455 0B       		.uleb128 0xb
- 1740 0456 A2050000 		.4byte	.LASF46
+ 1740 0456 A1050000 		.4byte	.LASF46
  1741 045a 01       		.byte	0x1
  1742 045b E303     		.2byte	0x3e3
  1743 045d 00000000 		.4byte	.LFB19
@@ -3101,7 +3101,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1746 0466 9C       		.byte	0x9c
  1747 0467 8E040000 		.4byte	0x48e
  1748 046b 0E       		.uleb128 0xe
- 1749 046c 5F050000 		.4byte	.LASF24
+ 1749 046c 5E050000 		.4byte	.LASF24
  1750 0470 01       		.byte	0x1
  1751 0471 E503     		.2byte	0x3e5
  1752 0473 6B000000 		.4byte	0x6b
@@ -3114,14 +3114,14 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1759 0489 D1060000 		.4byte	0x6d1
  1760 048d 00       		.byte	0
  1761 048e 07       		.uleb128 0x7
- 1762 048f B8050000 		.4byte	.LASF47
+ 1762 048f B7050000 		.4byte	.LASF47
  1763 0493 01       		.byte	0x1
  1764 0494 3F       		.byte	0x3f
  1765 0495 00000000 		.4byte	.LFB0
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 53
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 53
 
 
- 1766 0499 90000000 		.4byte	.LFE0-.LFB0
+ 1766 0499 94000000 		.4byte	.LFE0-.LFB0
  1767 049d 01       		.uleb128 0x1
  1768 049e 9C       		.byte	0x9c
  1769 049f 15050000 		.4byte	0x515
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1820 04f9 09       		.uleb128 0x9
  1821 04fa 36000000 		.4byte	.LVL72
  1822 04fe 55040000 		.4byte	0x455
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 54
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 54
 
 
  1823 0502 09       		.uleb128 0x9
@@ -3189,7 +3189,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1828 0510 39020000 		.4byte	0x239
  1829 0514 00       		.byte	0
  1830 0515 07       		.uleb128 0x7
- 1831 0516 F5050000 		.4byte	.LASF48
+ 1831 0516 F4050000 		.4byte	.LASF48
  1832 051a 01       		.byte	0x1
  1833 051b A3       		.byte	0xa3
  1834 051c 00000000 		.4byte	.LFB2
@@ -3221,7 +3221,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1860 0561 C8000000 		.4byte	0xc8
  1861 0565 00       		.byte	0
  1862 0566 0B       		.uleb128 0xb
- 1863 0567 76040000 		.4byte	.LASF50
+ 1863 0567 75040000 		.4byte	.LASF50
  1864 056b 01       		.byte	0x1
  1865 056c 2904     		.2byte	0x429
  1866 056e 00000000 		.4byte	.LFB21
@@ -3237,8 +3237,8 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1876 058a 4E010000 		.4byte	0x14e
  1877 058e 00       		.byte	0
  1878 058f 0B       		.uleb128 0xb
- 1879 0590 70050000 		.4byte	.LASF51
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 55
+ 1879 0590 6F050000 		.4byte	.LASF51
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 55
 
 
  1880 0594 01       		.byte	0x1
@@ -3249,7 +3249,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1885 05a0 9C       		.byte	0x9c
  1886 05a1 B4050000 		.4byte	0x5b4
  1887 05a5 0C       		.uleb128 0xc
- 1888 05a6 DA020000 		.4byte	.LASF27
+ 1888 05a6 72020000 		.4byte	.LASF27
  1889 05aa 01       		.byte	0x1
  1890 05ab 4204     		.2byte	0x442
  1891 05ad 6B000000 		.4byte	0x6b
@@ -3280,7 +3280,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1916 05ec 3D050000 		.4byte	0x53d
  1917 05f0 00       		.byte	0
  1918 05f1 14       		.uleb128 0x14
- 1919 05f2 34030000 		.4byte	.LASF53
+ 1919 05f2 33030000 		.4byte	.LASF53
  1920 05f6 01       		.byte	0x1
  1921 05f7 22       		.byte	0x22
  1922 05f8 6B000000 		.4byte	0x6b
@@ -3288,7 +3288,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1924 05fd 03       		.byte	0x3
  1925 05fe 00000000 		.4byte	SPIM_LIS3DH_initVar
  1926 0602 14       		.uleb128 0x14
- 1927 0603 77030000 		.4byte	.LASF54
+ 1927 0603 76030000 		.4byte	.LASF54
  1928 0607 01       		.byte	0x1
  1929 0608 24       		.byte	0x24
  1930 0609 A4000000 		.4byte	0xa4
@@ -3296,9 +3296,9 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1932 060e 03       		.byte	0x3
  1933 060f 00000000 		.4byte	SPIM_LIS3DH_swStatusTx
  1934 0613 14       		.uleb128 0x14
- 1935 0614 0E050000 		.4byte	.LASF55
+ 1935 0614 0D050000 		.4byte	.LASF55
  1936 0618 01       		.byte	0x1
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 56
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 56
 
 
  1937 0619 25       		.byte	0x25
@@ -3314,7 +3314,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1947 0632 07       		.byte	0x7
  1948 0633 00       		.byte	0
  1949 0634 14       		.uleb128 0x14
- 1950 0635 C9010000 		.4byte	.LASF56
+ 1950 0635 61010000 		.4byte	.LASF56
  1951 0639 01       		.byte	0x1
  1952 063a 15       		.byte	0x15
  1953 063b 45060000 		.4byte	0x645
@@ -3324,7 +3324,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1957 0645 05       		.uleb128 0x5
  1958 0646 24060000 		.4byte	0x624
  1959 064a 14       		.uleb128 0x14
- 1960 064b B0040000 		.4byte	.LASF57
+ 1960 064b AF040000 		.4byte	.LASF57
  1961 064f 01       		.byte	0x1
  1962 0650 17       		.byte	0x17
  1963 0651 A4000000 		.4byte	0xa4
@@ -3332,7 +3332,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1965 0656 03       		.byte	0x3
  1966 0657 00000000 		.4byte	SPIM_LIS3DH_txBufferRead
  1967 065b 14       		.uleb128 0x14
- 1968 065c 8E030000 		.4byte	.LASF58
+ 1968 065c 8D030000 		.4byte	.LASF58
  1969 0660 01       		.byte	0x1
  1970 0661 18       		.byte	0x18
  1971 0662 A4000000 		.4byte	0xa4
@@ -3340,7 +3340,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1973 0667 03       		.byte	0x3
  1974 0668 00000000 		.4byte	SPIM_LIS3DH_txBufferWrite
  1975 066c 14       		.uleb128 0x14
- 1976 066d C9050000 		.4byte	.LASF59
+ 1976 066d C8050000 		.4byte	.LASF59
  1977 0671 01       		.byte	0x1
  1978 0672 16       		.byte	0x16
  1979 0673 A4000000 		.4byte	0xa4
@@ -3348,7 +3348,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1981 0678 03       		.byte	0x3
  1982 0679 00000000 		.4byte	SPIM_LIS3DH_txBufferFull
  1983 067d 14       		.uleb128 0x14
- 1984 067e 8D050000 		.4byte	.LASF60
+ 1984 067e 8C050000 		.4byte	.LASF60
  1985 0682 01       		.byte	0x1
  1986 0683 1C       		.byte	0x1c
  1987 0684 8E060000 		.4byte	0x68e
@@ -3358,10 +3358,10 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  1991 068e 05       		.uleb128 0x5
  1992 068f 24060000 		.4byte	0x624
  1993 0693 14       		.uleb128 0x14
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 57
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 57
 
 
- 1994 0694 F5010000 		.4byte	.LASF61
+ 1994 0694 8D010000 		.4byte	.LASF61
  1995 0698 01       		.byte	0x1
  1996 0699 1E       		.byte	0x1e
  1997 069a A4000000 		.4byte	0xa4
@@ -3377,7 +3377,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2007 06b0 03       		.byte	0x3
  2008 06b1 00000000 		.4byte	SPIM_LIS3DH_rxBufferWrite
  2009 06b5 14       		.uleb128 0x14
- 2010 06b6 8C010000 		.4byte	.LASF63
+ 2010 06b6 24010000 		.4byte	.LASF63
  2011 06ba 01       		.byte	0x1
  2012 06bb 1D       		.byte	0x1d
  2013 06bc A4000000 		.4byte	0xa4
@@ -3385,8 +3385,8 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2015 06c1 03       		.byte	0x3
  2016 06c2 00000000 		.4byte	SPIM_LIS3DH_rxBufferFull
  2017 06c6 17       		.uleb128 0x17
- 2018 06c7 5A020000 		.4byte	.LASF64
- 2019 06cb 5A020000 		.4byte	.LASF64
+ 2018 06c7 F2010000 		.4byte	.LASF64
+ 2019 06cb F2010000 		.4byte	.LASF64
  2020 06cf 03       		.byte	0x3
  2021 06d0 7D       		.byte	0x7d
  2022 06d1 17       		.uleb128 0x17
@@ -3395,30 +3395,30 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2025 06da 03       		.byte	0x3
  2026 06db 7E       		.byte	0x7e
  2027 06dc 17       		.uleb128 0x17
- 2028 06dd C9040000 		.4byte	.LASF66
- 2029 06e1 C9040000 		.4byte	.LASF66
+ 2028 06dd C8040000 		.4byte	.LASF66
+ 2029 06e1 C8040000 		.4byte	.LASF66
  2030 06e5 04       		.byte	0x4
  2031 06e6 27       		.byte	0x27
  2032 06e7 17       		.uleb128 0x17
- 2033 06e8 C0020000 		.4byte	.LASF67
- 2034 06ec C0020000 		.4byte	.LASF67
+ 2033 06e8 58020000 		.4byte	.LASF67
+ 2034 06ec 58020000 		.4byte	.LASF67
  2035 06f0 04       		.byte	0x4
  2036 06f1 28       		.byte	0x28
  2037 06f2 17       		.uleb128 0x17
- 2038 06f3 48030000 		.4byte	.LASF68
- 2039 06f7 48030000 		.4byte	.LASF68
+ 2038 06f3 47030000 		.4byte	.LASF68
+ 2039 06f7 47030000 		.4byte	.LASF68
  2040 06fb 03       		.byte	0x3
  2041 06fc 8B       		.byte	0x8b
  2042 06fd 17       		.uleb128 0x17
- 2043 06fe 89020000 		.4byte	.LASF69
- 2044 0702 89020000 		.4byte	.LASF69
+ 2043 06fe 21020000 		.4byte	.LASF69
+ 2044 0702 21020000 		.4byte	.LASF69
  2045 0706 03       		.byte	0x3
  2046 0707 88       		.byte	0x88
  2047 0708 00       		.byte	0
  2048              		.section	.debug_abbrev,"",%progbits
  2049              	.Ldebug_abbrev0:
  2050 0000 01       		.uleb128 0x1
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 58
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 58
 
 
  2051 0001 11       		.uleb128 0x11
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2105 0037 35       		.uleb128 0x35
  2106 0038 00       		.byte	0
  2107 0039 49       		.uleb128 0x49
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 59
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 59
 
 
  2108 003a 13       		.uleb128 0x13
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2162 0072 03       		.uleb128 0x3
  2163 0073 0E       		.uleb128 0xe
  2164 0074 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 60
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 60
 
 
  2165 0075 0B       		.uleb128 0xb
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2219 00ae 11       		.uleb128 0x11
  2220 00af 01       		.uleb128 0x1
  2221 00b0 12       		.uleb128 0x12
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 61
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 61
 
 
  2222 00b1 06       		.uleb128 0x6
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2276 00e9 03       		.uleb128 0x3
  2277 00ea 0E       		.uleb128 0xe
  2278 00eb 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 62
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 62
 
 
  2279 00ec 0B       		.uleb128 0xb
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2333 0126 02       		.uleb128 0x2
  2334 0127 18       		.uleb128 0x18
  2335 0128 9142     		.uleb128 0x2111
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 63
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 63
 
 
  2336 012a 18       		.uleb128 0x18
@@ -3778,20 +3778,20 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2390 0160 00       		.byte	0
  2391 0161 00       		.byte	0
  2392              		.section	.debug_loc,"",%progbits
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 64
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 64
 
 
  2393              	.Ldebug_loc0:
  2394              	.LLST0:
  2395 0000 06000000 		.4byte	.LVL0
- 2396 0004 27000000 		.4byte	.LVL1-1
+ 2396 0004 29000000 		.4byte	.LVL1-1
  2397 0008 0100     		.2byte	0x1
  2398 000a 50       		.byte	0x50
  2399 000b 00000000 		.4byte	0
  2400 000f 00000000 		.4byte	0
  2401              	.LLST1:
  2402 0013 06000000 		.4byte	.LVL5
- 2403 0017 1D000000 		.4byte	.LVL6-1
+ 2403 0017 1F000000 		.4byte	.LVL6-1
  2404 001b 0100     		.2byte	0x1
  2405 001d 50       		.byte	0x50
  2406 001e 00000000 		.4byte	0
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2447 008b 0100     		.2byte	0x1
  2448 008d 53       		.byte	0x53
  2449 008e 36000000 		.4byte	.LVL27
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 65
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 65
 
 
  2450 0092 52000000 		.4byte	.LVL28
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2504 0127 00000000 		.4byte	0
  2505 012b 00000000 		.4byte	0
  2506              	.LLST9:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 66
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 66
 
 
  2507 012f 32000000 		.4byte	.LVL45
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2561 01c2 12000000 		.4byte	.LVL62
  2562 01c6 0100     		.2byte	0x1
  2563 01c8 55       		.byte	0x55
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 67
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 67
 
 
  2564 01c9 14000000 		.4byte	.LVL63
@@ -4004,7 +4004,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2604 0030 00000000 		.4byte	.LFB7
  2605 0034 0C000000 		.4byte	.LFE7-.LFB7
  2606 0038 00000000 		.4byte	.LFB3
- 2607 003c 30000000 		.4byte	.LFE3-.LFB3
+ 2607 003c 34000000 		.4byte	.LFE3-.LFB3
  2608 0040 00000000 		.4byte	.LFB8
  2609 0044 0C000000 		.4byte	.LFE8-.LFB8
  2610 0048 00000000 		.4byte	.LFB9
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2618 0068 00000000 		.4byte	.LFB13
  2619 006c 64000000 		.4byte	.LFE13-.LFB13
  2620 0070 00000000 		.4byte	.LFB14
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 68
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 68
 
 
  2621 0074 58000000 		.4byte	.LFE14-.LFB14
@@ -4033,7 +4033,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2630 0098 00000000 		.4byte	.LFB19
  2631 009c 3C000000 		.4byte	.LFE19-.LFB19
  2632 00a0 00000000 		.4byte	.LFB0
- 2633 00a4 90000000 		.4byte	.LFE0-.LFB0
+ 2633 00a4 94000000 		.4byte	.LFE0-.LFB0
  2634 00a8 00000000 		.4byte	.LFB2
  2635 00ac 1C000000 		.4byte	.LFE2-.LFB2
  2636 00b0 00000000 		.4byte	.LFB20
@@ -4059,7 +4059,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2656 0020 00000000 		.4byte	.LFB7
  2657 0024 0C000000 		.4byte	.LFE7
  2658 0028 00000000 		.4byte	.LFB3
- 2659 002c 30000000 		.4byte	.LFE3
+ 2659 002c 34000000 		.4byte	.LFE3
  2660 0030 00000000 		.4byte	.LFB8
  2661 0034 0C000000 		.4byte	.LFE8
  2662 0038 00000000 		.4byte	.LFB9
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2675 006c 58000000 		.4byte	.LFE15
  2676 0070 00000000 		.4byte	.LFB16
  2677 0074 40000000 		.4byte	.LFE16
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 69
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 69
 
 
  2678 0078 00000000 		.4byte	.LFB17
@@ -4088,7 +4088,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2682 0088 00000000 		.4byte	.LFB19
  2683 008c 3C000000 		.4byte	.LFE19
  2684 0090 00000000 		.4byte	.LFB0
- 2685 0094 90000000 		.4byte	.LFE0
+ 2685 0094 94000000 		.4byte	.LFE0
  2686 0098 00000000 		.4byte	.LFB2
  2687 009c 1C000000 		.4byte	.LFE2
  2688 00a0 00000000 		.4byte	.LFB20
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2710      7300
  2711              	.LASF52:
  2712 0069 5350494D 		.ascii	"SPIM_LIS3DH_ReadStatus\000"
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 70
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 70
 
 
  2712      5F4C4953 
@@ -4178,351 +4178,351 @@ ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 1
  2724 00f5 7369676E 		.ascii	"signed char\000"
  2724      65642063 
  2724      68617200 
- 2725              	.LASF72:
- 2726 0101 433A5C55 		.ascii	"C:\\Users\\aless\\Documents\\PSoC_Creator\\AY1920_I"
- 2726      73657273 
- 2726      5C616C65 
- 2726      73735C44 
- 2726      6F63756D 
- 2727 012f 495F3032 		.ascii	"I_02_RATTI_SINATRA_QUARANTA\\AY1920_II_FINAL_PROJEC"
- 2727      5F524154 
- 2727      54495F53 
- 2727      494E4154 
- 2727      52415F51 
- 2728 0161 542E6379 		.ascii	"T.cydsn\000"
- 2728      64736E00 
- 2729              	.LASF41:
- 2730 0169 5350494D 		.ascii	"SPIM_LIS3DH_ClearTxBuffer\000"
+ 2725              	.LASF41:
+ 2726 0101 5350494D 		.ascii	"SPIM_LIS3DH_ClearTxBuffer\000"
+ 2726      5F4C4953 
+ 2726      3344485F 
+ 2726      436C6561 
+ 2726      72547842 
+ 2727              	.LASF4:
+ 2728 011b 6C6F6E67 		.ascii	"long int\000"
+ 2728      20696E74 
+ 2728      00
+ 2729              	.LASF63:
+ 2730 0124 5350494D 		.ascii	"SPIM_LIS3DH_rxBufferFull\000"
  2730      5F4C4953 
  2730      3344485F 
- 2730      436C6561 
- 2730      72547842 
- 2731              	.LASF4:
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 71
+ 2730      72784275 
+ 2730      66666572 
+ 2731              	.LASF34:
+ 2732 013d 746D7054 		.ascii	"tmpTxBufferRead\000"
+ 2732      78427566 
+ 2732      66657252 
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 71
 
 
- 2732 0183 6C6F6E67 		.ascii	"long int\000"
- 2732      20696E74 
- 2732      00
- 2733              	.LASF63:
- 2734 018c 5350494D 		.ascii	"SPIM_LIS3DH_rxBufferFull\000"
- 2734      5F4C4953 
- 2734      3344485F 
- 2734      72784275 
- 2734      66666572 
- 2735              	.LASF34:
- 2736 01a5 746D7054 		.ascii	"tmpTxBufferRead\000"
- 2736      78427566 
- 2736      66657252 
- 2736      65616400 
- 2737              	.LASF9:
- 2738 01b5 75696E74 		.ascii	"uint8\000"
- 2738      3800
- 2739              	.LASF12:
- 2740 01bb 646F7562 		.ascii	"double\000"
- 2740      6C6500
- 2741              	.LASF10:
- 2742 01c2 75696E74 		.ascii	"uint32\000"
- 2742      333200
- 2743              	.LASF56:
- 2744 01c9 5350494D 		.ascii	"SPIM_LIS3DH_txBuffer\000"
+ 2732      65616400 
+ 2733              	.LASF9:
+ 2734 014d 75696E74 		.ascii	"uint8\000"
+ 2734      3800
+ 2735              	.LASF12:
+ 2736 0153 646F7562 		.ascii	"double\000"
+ 2736      6C6500
+ 2737              	.LASF10:
+ 2738 015a 75696E74 		.ascii	"uint32\000"
+ 2738      333200
+ 2739              	.LASF56:
+ 2740 0161 5350494D 		.ascii	"SPIM_LIS3DH_txBuffer\000"
+ 2740      5F4C4953 
+ 2740      3344485F 
+ 2740      74784275 
+ 2740      66666572 
+ 2741              	.LASF35:
+ 2742 0176 5350494D 		.ascii	"SPIM_LIS3DH_ReadRxData\000"
+ 2742      5F4C4953 
+ 2742      3344485F 
+ 2742      52656164 
+ 2742      52784461 
+ 2743              	.LASF61:
+ 2744 018d 5350494D 		.ascii	"SPIM_LIS3DH_rxBufferRead\000"
  2744      5F4C4953 
  2744      3344485F 
- 2744      74784275 
+ 2744      72784275 
  2744      66666572 
- 2745              	.LASF35:
- 2746 01de 5350494D 		.ascii	"SPIM_LIS3DH_ReadRxData\000"
- 2746      5F4C4953 
- 2746      3344485F 
- 2746      52656164 
- 2746      52784461 
- 2747              	.LASF61:
- 2748 01f5 5350494D 		.ascii	"SPIM_LIS3DH_rxBufferRead\000"
+ 2745              	.LASF8:
+ 2746 01a6 756E7369 		.ascii	"unsigned int\000"
+ 2746      676E6564 
+ 2746      20696E74 
+ 2746      00
+ 2747              	.LASF19:
+ 2748 01b3 5350494D 		.ascii	"SPIM_LIS3DH_EnableRxInt\000"
  2748      5F4C4953 
  2748      3344485F 
- 2748      72784275 
- 2748      66666572 
- 2749              	.LASF8:
- 2750 020e 756E7369 		.ascii	"unsigned int\000"
- 2750      676E6564 
- 2750      20696E74 
- 2750      00
- 2751              	.LASF19:
- 2752 021b 5350494D 		.ascii	"SPIM_LIS3DH_EnableRxInt\000"
- 2752      5F4C4953 
- 2752      3344485F 
- 2752      456E6162 
- 2752      6C655278 
- 2753              	.LASF42:
- 2754 0233 5350494D 		.ascii	"SPIM_LIS3DH_PutArray\000"
- 2754      5F4C4953 
- 2754      3344485F 
- 2754      50757441 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 72
+ 2748      456E6162 
+ 2748      6C655278 
+ 2749              	.LASF42:
+ 2750 01cb 5350494D 		.ascii	"SPIM_LIS3DH_PutArray\000"
+ 2750      5F4C4953 
+ 2750      3344485F 
+ 2750      50757441 
+ 2750      72726179 
+ 2751              	.LASF5:
+ 2752 01e0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2752      20756E73 
+ 2752      69676E65 
+ 2752      6420696E 
+ 2752      7400
+ 2753              	.LASF64:
+ 2754 01f2 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 2754      74657243 
+ 2754      72697469 
+ 2754      63616C53 
+ 2754      65637469 
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 72
 
 
- 2754      72726179 
- 2755              	.LASF5:
- 2756 0248 6C6F6E67 		.ascii	"long unsigned int\000"
- 2756      20756E73 
- 2756      69676E65 
- 2756      6420696E 
- 2756      7400
- 2757              	.LASF64:
- 2758 025a 4379456E 		.ascii	"CyEnterCriticalSection\000"
- 2758      74657243 
- 2758      72697469 
- 2758      63616C53 
- 2758      65637469 
- 2759              	.LASF38:
- 2760 0271 73697A65 		.ascii	"size\000"
- 2760      00
- 2761              	.LASF3:
- 2762 0276 73686F72 		.ascii	"short unsigned int\000"
- 2762      7420756E 
- 2762      7369676E 
- 2762      65642069 
- 2762      6E7400
- 2763              	.LASF69:
- 2764 0289 4379496E 		.ascii	"CyIntSetVector\000"
- 2764      74536574 
- 2764      56656374 
- 2764      6F7200
- 2765              	.LASF45:
- 2766 0298 62756649 		.ascii	"bufIndex\000"
- 2766      6E646578 
- 2766      00
- 2767              	.LASF25:
- 2768 02a1 5350494D 		.ascii	"SPIM_LIS3DH_SetTxInterruptMode\000"
- 2768      5F4C4953 
- 2768      3344485F 
- 2768      53657454 
- 2768      78496E74 
- 2769              	.LASF67:
- 2770 02c0 5350494D 		.ascii	"SPIM_LIS3DH_IntClock_Stop\000"
+ 2755              	.LASF38:
+ 2756 0209 73697A65 		.ascii	"size\000"
+ 2756      00
+ 2757              	.LASF3:
+ 2758 020e 73686F72 		.ascii	"short unsigned int\000"
+ 2758      7420756E 
+ 2758      7369676E 
+ 2758      65642069 
+ 2758      6E7400
+ 2759              	.LASF69:
+ 2760 0221 4379496E 		.ascii	"CyIntSetVector\000"
+ 2760      74536574 
+ 2760      56656374 
+ 2760      6F7200
+ 2761              	.LASF45:
+ 2762 0230 62756649 		.ascii	"bufIndex\000"
+ 2762      6E646578 
+ 2762      00
+ 2763              	.LASF25:
+ 2764 0239 5350494D 		.ascii	"SPIM_LIS3DH_SetTxInterruptMode\000"
+ 2764      5F4C4953 
+ 2764      3344485F 
+ 2764      53657454 
+ 2764      78496E74 
+ 2765              	.LASF67:
+ 2766 0258 5350494D 		.ascii	"SPIM_LIS3DH_IntClock_Stop\000"
+ 2766      5F4C4953 
+ 2766      3344485F 
+ 2766      496E7443 
+ 2766      6C6F636B 
+ 2767              	.LASF27:
+ 2768 0272 696E7453 		.ascii	"intSrc\000"
+ 2768      726300
+ 2769              	.LASF39:
+ 2770 0279 5350494D 		.ascii	"SPIM_LIS3DH_GetTxBufferSize\000"
  2770      5F4C4953 
  2770      3344485F 
- 2770      496E7443 
- 2770      6C6F636B 
- 2771              	.LASF27:
- 2772 02da 696E7453 		.ascii	"intSrc\000"
- 2772      726300
- 2773              	.LASF39:
- 2774 02e1 5350494D 		.ascii	"SPIM_LIS3DH_GetTxBufferSize\000"
- 2774      5F4C4953 
- 2774      3344485F 
- 2774      47657454 
- 2774      78427566 
- 2775              	.LASF15:
- 2776 02fd 72656733 		.ascii	"reg32\000"
- 2776      3200
+ 2770      47657454 
+ 2770      78427566 
+ 2771              	.LASF15:
+ 2772 0295 72656733 		.ascii	"reg32\000"
+ 2772      3200
+ 2773              	.LASF72:
+ 2774 029b 433A5C55 		.ascii	"C:\\Users\\Mattia40\\Desktop\\AY1920_II_FINAL_PROJE"
+ 2774      73657273 
+ 2774      5C4D6174 
+ 2774      74696134 
+ 2774      305C4465 
+ 2775 02ca 43545C47 		.ascii	"CT\\Group_02_Final_Project\\AY1920_II_FINAL_PROJECT"
+ 2775      726F7570 
+ 2775      5F30325F 
+ 2775      46696E61 
+ 2775      6C5F5072 
+ 2776 02fb 2E637964 		.ascii	".cydsn\000"
+ 2776      736E00
  2777              	.LASF17:
- 2778 0303 73697A65 		.ascii	"sizetype\000"
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 73
+ 2778 0302 73697A65 		.ascii	"sizetype\000"
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 73
 
 
  2778      74797065 
  2778      00
  2779              	.LASF23:
- 2780 030c 5350494D 		.ascii	"SPIM_LIS3DH_Stop\000"
+ 2780 030b 5350494D 		.ascii	"SPIM_LIS3DH_Stop\000"
  2780      5F4C4953 
  2780      3344485F 
  2780      53746F70 
  2780      00
  2781              	.LASF16:
- 2782 031d 6C6F6E67 		.ascii	"long double\000"
+ 2782 031c 6C6F6E67 		.ascii	"long double\000"
  2782      20646F75 
  2782      626C6500 
  2783              	.LASF33:
- 2784 0329 74656D70 		.ascii	"tempStatus\000"
+ 2784 0328 74656D70 		.ascii	"tempStatus\000"
  2784      53746174 
  2784      757300
  2785              	.LASF53:
- 2786 0334 5350494D 		.ascii	"SPIM_LIS3DH_initVar\000"
+ 2786 0333 5350494D 		.ascii	"SPIM_LIS3DH_initVar\000"
  2786      5F4C4953 
  2786      3344485F 
  2786      696E6974 
  2786      56617200 
  2787              	.LASF68:
- 2788 0348 4379496E 		.ascii	"CyIntSetPriority\000"
+ 2788 0347 4379496E 		.ascii	"CyIntSetPriority\000"
  2788      74536574 
  2788      5072696F 
  2788      72697479 
  2788      00
  2789              	.LASF11:
- 2790 0359 666C6F61 		.ascii	"float\000"
+ 2790 0358 666C6F61 		.ascii	"float\000"
  2790      7400
  2791              	.LASF18:
- 2792 035f 5350494D 		.ascii	"SPIM_LIS3DH_EnableTxInt\000"
+ 2792 035e 5350494D 		.ascii	"SPIM_LIS3DH_EnableTxInt\000"
  2792      5F4C4953 
  2792      3344485F 
  2792      456E6162 
  2792      6C655478 
  2793              	.LASF54:
- 2794 0377 5350494D 		.ascii	"SPIM_LIS3DH_swStatusTx\000"
+ 2794 0376 5350494D 		.ascii	"SPIM_LIS3DH_swStatusTx\000"
  2794      5F4C4953 
  2794      3344485F 
  2794      73775374 
  2794      61747573 
  2795              	.LASF58:
- 2796 038e 5350494D 		.ascii	"SPIM_LIS3DH_txBufferWrite\000"
+ 2796 038d 5350494D 		.ascii	"SPIM_LIS3DH_txBufferWrite\000"
  2796      5F4C4953 
  2796      3344485F 
  2796      74784275 
  2796      66666572 
  2797              	.LASF14:
- 2798 03a8 72656738 		.ascii	"reg8\000"
+ 2798 03a7 72656738 		.ascii	"reg8\000"
  2798      00
  2799              	.LASF1:
- 2800 03ad 756E7369 		.ascii	"unsigned char\000"
+ 2800 03ac 756E7369 		.ascii	"unsigned char\000"
  2800      676E6564 
  2800      20636861 
  2800      7200
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 74
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 74
 
 
  2801              	.LASF30:
- 2802 03bb 5350494D 		.ascii	"SPIM_LIS3DH_ReadRxStatus\000"
+ 2802 03ba 5350494D 		.ascii	"SPIM_LIS3DH_ReadRxStatus\000"
  2802      5F4C4953 
  2802      3344485F 
  2802      52656164 
  2802      52785374 
  2803              	.LASF2:
- 2804 03d4 73686F72 		.ascii	"short int\000"
+ 2804 03d3 73686F72 		.ascii	"short int\000"
  2804      7420696E 
  2804      7400
  2805              	.LASF70:
- 2806 03de 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2806 03dd 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  2806      43313120 
  2806      352E342E 
  2806      31203230 
  2806      31363036 
- 2807 0411 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2807 0410 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
  2807      20726576 
  2807      6973696F 
  2807      6E203233 
  2807      37373135 
- 2808 0444 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2808 0443 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  2808      66756E63 
  2808      74696F6E 
  2808      2D736563 
  2808      74696F6E 
  2809              	.LASF44:
- 2810 046c 62797465 		.ascii	"byteCount\000"
+ 2810 046b 62797465 		.ascii	"byteCount\000"
  2810      436F756E 
  2810      7400
  2811              	.LASF50:
- 2812 0476 5350494D 		.ascii	"SPIM_LIS3DH_DisableInt\000"
+ 2812 0475 5350494D 		.ascii	"SPIM_LIS3DH_DisableInt\000"
  2812      5F4C4953 
  2812      3344485F 
  2812      44697361 
  2812      626C6549 
  2813              	.LASF37:
- 2814 048d 5350494D 		.ascii	"SPIM_LIS3DH_GetRxBufferSize\000"
+ 2814 048c 5350494D 		.ascii	"SPIM_LIS3DH_GetRxBufferSize\000"
  2814      5F4C4953 
  2814      3344485F 
  2814      47657452 
  2814      78427566 
  2815              	.LASF36:
- 2816 04a9 72784461 		.ascii	"rxData\000"
+ 2816 04a8 72784461 		.ascii	"rxData\000"
  2816      746100
  2817              	.LASF57:
- 2818 04b0 5350494D 		.ascii	"SPIM_LIS3DH_txBufferRead\000"
+ 2818 04af 5350494D 		.ascii	"SPIM_LIS3DH_txBufferRead\000"
  2818      5F4C4953 
  2818      3344485F 
  2818      74784275 
  2818      66666572 
  2819              	.LASF66:
- 2820 04c9 5350494D 		.ascii	"SPIM_LIS3DH_IntClock_Start\000"
+ 2820 04c8 5350494D 		.ascii	"SPIM_LIS3DH_IntClock_Start\000"
  2820      5F4C4953 
  2820      3344485F 
  2820      496E7443 
  2820      6C6F636B 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 75
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 75
 
 
  2821              	.LASF13:
- 2822 04e4 63686172 		.ascii	"char\000"
+ 2822 04e3 63686172 		.ascii	"char\000"
  2822      00
  2823              	.LASF71:
- 2824 04e9 47656E65 		.ascii	"Generated_Source\\PSoC5\\SPIM_LIS3DH.c\000"
+ 2824 04e8 47656E65 		.ascii	"Generated_Source\\PSoC5\\SPIM_LIS3DH.c\000"
  2824      72617465 
  2824      645F536F 
  2824      75726365 
  2824      5C50536F 
  2825              	.LASF55:
- 2826 050e 5350494D 		.ascii	"SPIM_LIS3DH_swStatusRx\000"
+ 2826 050d 5350494D 		.ascii	"SPIM_LIS3DH_swStatusRx\000"
  2826      5F4C4953 
  2826      3344485F 
  2826      73775374 
  2826      61747573 
  2827              	.LASF40:
- 2828 0525 5350494D 		.ascii	"SPIM_LIS3DH_ClearRxBuffer\000"
+ 2828 0524 5350494D 		.ascii	"SPIM_LIS3DH_ClearRxBuffer\000"
  2828      5F4C4953 
  2828      3344485F 
  2828      436C6561 
  2828      72527842 
  2829              	.LASF21:
- 2830 053f 5350494D 		.ascii	"SPIM_LIS3DH_DisableRxInt\000"
+ 2830 053e 5350494D 		.ascii	"SPIM_LIS3DH_DisableRxInt\000"
  2830      5F4C4953 
  2830      3344485F 
  2830      44697361 
  2830      626C6552 
  2831              	.LASF43:
- 2832 0558 62756666 		.ascii	"buffer\000"
+ 2832 0557 62756666 		.ascii	"buffer\000"
  2832      657200
  2833              	.LASF24:
- 2834 055f 656E6162 		.ascii	"enableInterrupts\000"
+ 2834 055e 656E6162 		.ascii	"enableInterrupts\000"
  2834      6C65496E 
  2834      74657272 
  2834      75707473 
  2834      00
  2835              	.LASF51:
- 2836 0570 5350494D 		.ascii	"SPIM_LIS3DH_SetInterruptMode\000"
+ 2836 056f 5350494D 		.ascii	"SPIM_LIS3DH_SetInterruptMode\000"
  2836      5F4C4953 
  2836      3344485F 
  2836      53657449 
  2836      6E746572 
  2837              	.LASF60:
- 2838 058d 5350494D 		.ascii	"SPIM_LIS3DH_rxBuffer\000"
+ 2838 058c 5350494D 		.ascii	"SPIM_LIS3DH_rxBuffer\000"
  2838      5F4C4953 
  2838      3344485F 
  2838      72784275 
  2838      66666572 
  2839              	.LASF46:
- 2840 05a2 5350494D 		.ascii	"SPIM_LIS3DH_ClearFIFO\000"
+ 2840 05a1 5350494D 		.ascii	"SPIM_LIS3DH_ClearFIFO\000"
  2840      5F4C4953 
  2840      3344485F 
  2840      436C6561 
  2840      72464946 
  2841              	.LASF47:
- 2842 05b8 5350494D 		.ascii	"SPIM_LIS3DH_Init\000"
+ 2842 05b7 5350494D 		.ascii	"SPIM_LIS3DH_Init\000"
  2842      5F4C4953 
-ARM GAS  C:\Users\aless\AppData\Local\Temp\ccXtURTs.s 			page 76
+ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccWlrC1m.s 			page 76
 
 
  2842      3344485F 
  2842      496E6974 
  2842      00
  2843              	.LASF59:
- 2844 05c9 5350494D 		.ascii	"SPIM_LIS3DH_txBufferFull\000"
+ 2844 05c8 5350494D 		.ascii	"SPIM_LIS3DH_txBufferFull\000"
  2844      5F4C4953 
  2844      3344485F 
  2844      74784275 
  2844      66666572 
  2845              	.LASF22:
- 2846 05e2 5350494D 		.ascii	"SPIM_LIS3DH_Enable\000"
+ 2846 05e1 5350494D 		.ascii	"SPIM_LIS3DH_Enable\000"
  2846      5F4C4953 
  2846      3344485F 
  2846      456E6162 
  2846      6C6500
  2847              	.LASF48:
- 2848 05f5 5350494D 		.ascii	"SPIM_LIS3DH_Start\000"
+ 2848 05f4 5350494D 		.ascii	"SPIM_LIS3DH_Start\000"
  2848      5F4C4953 
  2848      3344485F 
  2848      53746172 
  2848      7400
  2849              	.LASF32:
- 2850 0607 74784461 		.ascii	"txData\000"
+ 2850 0606 74784461 		.ascii	"txData\000"
  2850      746100
  2851              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

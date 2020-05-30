@@ -268,7 +268,7 @@ CY_ISR(Custom_ISR_STREAM) {
     // Raise flag
     dataReady_STREAM = 1;
 }
-
+/*
 void ShowMenu(void) {
     configSets[0] = 0;
     configSets[1] = 0;
@@ -278,13 +278,14 @@ void ShowMenu(void) {
                    "        P/p-->Select Sampling Frequency\r\n        L/l-->Select Analog Sensor\r\n"
                    "        S/s-->Stop data acquisition\r\n");
 }
+*/
 
 /*----------------------------------------------*/
 /*               ISR for STREAM                 */
 /*----------------------------------------------*/
 CY_ISR (Custom_ISR_DMA) {
     dataReady_DMA = 1;
-    Pin_DEBUG_Write(!Pin_DEBUG_Read());
+    //Pin_DEBUG_Write(!Pin_DEBUG_Read());
     //UART_PutString("DMA\r\n");
     /*
     uint8_t UARTarray[4];
