@@ -15,54 +15,38 @@
     #define __INTERRUPT_ROUTINES_H
     
     //Include header 
+    #include "project.h"
     #include "cytypes.h"
     #include "stdio.h"
+    #include "string.h"
     #include "LIS3DH.h"
     #include "25LC256.h"
-    #include "project.h"
     #include "DMARoutines.h"
-    //#include "LIS3DH_Regs.h"
     
-    //Define some constant
-    #define BYTE_TO_SEND 4 //Information about the photoresist and the potentiometer
-    #define TRANSMIT_BUFFER_SIZE 1+BYTE_TO_SEND+1 //Buffer size
-    #define LED_OFF 0 //Switch off the LED
-    #define LED_ON  1 //Switch on the LED
-    #define MAX 5000 //Maximum value for the ADC
-    #define MIN 0 //Minimum value for the ADC
-    #define THRESHOLD 25000 //Set arbitrary threshold for the light intensity
-    #define PHOTORESISTOR 0 //Photoresist's channel into the AMux
-    #define POTENTIOMETER 1 //Potentiometer's channel into the AMux
+    //Define some constans
+    #define LED_OFF 0           // Switch off the LED
+    #define LED_ON  1           // Switch on the LED
+    #define MAX 5000            // Maximum value for the ADC
+    #define MIN 0               // Minimum value for the ADC
+    #define PHOTORESISTOR 0     // Photoresist's channel into the AMux
+    #define POTENTIOMETER 1     // Potentiometer's channel into the AMux
     
-    #define CFG_REG 0x0002 // location where permanent settings are saved
-
+    #define CFG_REG 0x0002      // location where permanent settings are saved
+    #define INDEX_REG 0x0000    // location where permanent EEPROMIndex is saved
     
     /*
     *   \brief ISR Code.
     */
-    CY_ISR_PROTO (Custom_ISR_RESET);
     CY_ISR_PROTO (Custom_ISR_RX);
-    CY_ISR_PROTO (Custom_ISR_OVRN);
-    CY_ISR_PROTO (Custom_ISR_STREAM);
-    CY_ISR_PROTO (Custom_ISR_DMA);
     CY_ISR_PROTO (Custom_ISR_TIMER);
-    CY_ISR_PROTO (Custome_ISR_DEBOUNCE);
+    CY_ISR_PROTO (Custom_ISR_OVRN);
+    CY_ISR_PROTO (Custom_ISR_DMA);
+    CY_ISR_PROTO (Custom_ISR_STREAM);
     CY_ISR_PROTO (Custom_ISR_INDEX);
+    CY_ISR_PROTO (Custom_ISR_RESET);
     
     /* Functions */
     void ShowMenu(void);
-    
-    /*reset*/
-    uint8_t ResetButton;
-    
-    // Bring out extern vars
-    extern uint8_t data_config[4];
-    extern uint8_t cfg_reg;
-    extern uint8_t cfg_reg_old;
-    extern uint8_t dataReady_FIFO;
-    extern uint8_t dataReady_STREAM;
-    extern uint8_t configSets[2];
-    extern uint8_t update_cfg_reg;
     
 #endif
 

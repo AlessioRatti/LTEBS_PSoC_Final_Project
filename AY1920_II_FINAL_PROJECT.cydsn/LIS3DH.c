@@ -11,13 +11,13 @@
 */
 
 #include "LIS3DH.h"
-#include "project.h"
 
 const uint8_t lis3dh_dataRate_t[4]  = {0b00010000, 0b00100000, 0b00110000, 0b01000000};
 const uint8_t lis3dh_dataRange_t[4] = {0b00000000, 0b00010000, 0b00100000, 0b00110000};
 
 /** ====== Setup Functions ====== **/
 
+// Go from compressed codec (1 byte) to uncompressed codec (4 bytes)
 void LIS3DH_unzipConfig(uint8_t config_reg, volatile uint8_t* data) {
     
     switch (config_reg & MASK_FS) { // FS
@@ -64,6 +64,7 @@ void LIS3DH_unzipConfig(uint8_t config_reg, volatile uint8_t* data) {
         default:
             break;
     }
+    
     switch ((config_reg & MASK_START_STOP) >> 5) { // START/STOP
         case 0:     // STOP
             data[3] = 0x00;
@@ -76,6 +77,7 @@ void LIS3DH_unzipConfig(uint8_t config_reg, volatile uint8_t* data) {
     }
 }
 
+// Go from uncompressed codec (4 bytes) to compressed codec (1 byte)
 uint8 LIS3DH_zipConfig(volatile uint8_t* data ) {
     uint8_t config_reg=0;
     switch (data[0]) { // FS
@@ -122,6 +124,7 @@ uint8 LIS3DH_zipConfig(volatile uint8_t* data ) {
         default:
             break;
     }
+    
     switch (data[3]) { // START/STOP
         case 0x00:     // STOP
             config_reg= config_reg | 0x00;
@@ -135,39 +138,30 @@ uint8 LIS3DH_zipConfig(volatile uint8_t* data ) {
     return config_reg;
 }
 
+// Set default registers
 void LIS3DH_Init(void) {
     
     // Set CTRL_REG5 | Reboot
     LIS3DH_writeByte(CTRL_REG5, CTRL_REG5_REBOOT);
-    // Clear LIS3DH FIFO
-    LIS3DH_writeByte(FIFO_CTRL_REG, FIFO_CTRL_REG_BYPASS);
-    
     // Set CTRL_REG3
     LIS3DH_writeByte(CTRL_REG3, CTRL_REG3_I1_OVERRUN);
     // Set CTRL_REG5
     LIS3DH_writeByte(CTRL_REG5, CTRL_REG5_FIFO_EN);
-    // Set FIFO_CTRL_REG
-    //LIS3DH_writeByte(FIFO_CTRL_REG, FIFO_CTRL_REG_BYPASS);
-    UART_PutString("START\r\n");
-}
-
-void LIS3DH_Stop(void) {
-    
-    // Set CTRL_REG5 | Reboot
-    //LIS3DH_writeByte(CTRL_REG5, CTRL_REG5_REBOOT);
     // Clear LIS3DH FIFO
     LIS3DH_writeByte(FIFO_CTRL_REG, FIFO_CTRL_REG_BYPASS);
+    
 }
 
+// Set user-dependent registers
 void LIS3DH_setConfig(volatile uint8_t* data){
     
-    // Set CTRL_REG1
+    // Set CTRL_REG1 (FS)
     LIS3DH_writeByte(CTRL_REG1, data[0]);
-    // Set CTRL_REG4
+    // Set CTRL_REG4 (FSR)
     LIS3DH_writeByte(CTRL_REG4, data[1]);
-    //Set LIS3DH FIFO
-    LIS3DH_writeByte(FIFO_CTRL_REG,data[3] );
-    UART_PutString("SET CONFIG\r\n");
+    //Set LIS3DH FIFO (bypass/stream)
+    LIS3DH_writeByte(FIFO_CTRL_REG, data[3]);
+    
 }
 
 /** ====== Helper Functions ====== **/
@@ -175,6 +169,7 @@ void LIS3DH_setConfig(volatile uint8_t* data){
 uint8_t LIS3DH_readStatus() {
     
 	return SPI_Interface_ReadByte_LIS3DH(SPI_LIS3DH_READ | FIFO_SRC_REG);
+    
 }
 
 /** ====== User-level Functions ====== **/
@@ -189,12 +184,15 @@ uint8_t LIS3DH_readByte(uint8_t addr) {
 	
 	/* Read 1 byte from addr */
 	dataRX = SPI_Interface_ReadByte_LIS3DH(dataTX);
-	//LIS3DH_waitForReadComplete();
+    
 	return dataRX;
 }
 
-/*
 void LIS3DH_writeByte(uint8_t addr, uint8_t dataByte) {
+    
+    // Save current global interrupt enable and disable it 
+    uint8 interruptState;
+    interruptState = CyEnterCriticalSection();
 	
 	// Prepare the TX packet
     uint8_t dataTX[2] = {SPI_LIS3DH_WRITE | addr, dataByte};
@@ -203,16 +201,9 @@ void LIS3DH_writeByte(uint8_t addr, uint8_t dataByte) {
 	
 	// Write 1 byte to addr
 	SPI_Interface_Multi_RW_LIS3DH(dataTX, 2, &temp, 0);
-}
-*/
-
-void LIS3DH_writeByte(uint8_t addr, uint8_t dataByte) {
-	
-	// Prepare the TX packet
-    uint8_t dataTX[2] = {SPI_LIS3DH_WRITE | addr, dataByte};
-	
-	// Write 1 byte to addr
-	SPI_Interface_WriteByte_LIS3DH(dataTX);
+    
+    // Restore global interrupt enable state
+    CyExitCriticalSection(interruptState);
 }
 
 void LIS3DH_readPage(uint8_t addr, uint8_t* dataRX, uint8_t nBytes) {
@@ -222,31 +213,7 @@ void LIS3DH_readPage(uint8_t addr, uint8_t* dataRX, uint8_t nBytes) {
 	
 	/* Read the nBytes */
 	SPI_Interface_Multi_RW_LIS3DH(&dataTX, 1, dataRX, nBytes);
-}
-
-void LIS3DH_writePage(uint8_t addr, uint8_t* data, uint8_t nBytes) {
-
-	/* Prepare the TX packet of size nBytes+3 
-       [ Write Instruction - Address MSB - Address LSB - +++data+++ ]
-    */
-    
-	uint8_t dataTX[1+nBytes];
-    dataTX[0] = (SPI_LIS3DH_WRITE_MULTI | addr);
-    /* Copy the input data in the memory */
-	memcpy(&dataTX[1], data, nBytes);
-	
-	/* Nothing to RX: point to a dummy variable */
-	uint8_t temp = 0;
-	
-	SPI_Interface_Multi_RW_LIS3DH(dataTX, 1+nBytes, &temp, 0);
-	
-}
-/*
-void LIS3DH_waitForReadComplete() {
-    
-    while( LIS3DH_readStatus() & SPI_LIS3DH_EMPTY );
     
 }
-*/
 
 /* [] END OF FILE */

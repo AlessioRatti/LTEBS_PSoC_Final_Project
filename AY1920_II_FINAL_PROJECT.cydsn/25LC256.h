@@ -14,9 +14,6 @@
 
 #include "SPI_Interface.h" // also include the SPI interface
 
-//#define SLAVE_CS_Write CS_2_Write
-//#define SPIM           SPIM_1 // in case you have more than one master
-
 /*
  * EEPROM status, extern allows us to share the var in other source codes
  * without having to include the whole header file
@@ -63,7 +60,7 @@ extern uint8_t eeprom_Status;
 * @param[in]: number of bites used to unpack the information
 * @param[out]: 8-bit array to write the configurations of the LIS3DH registers.
 */
-void EEPROM_loadSettings(uint8_t* config_reg, uint16_t* index_eeprom);
+void EEPROM_loadSettings(volatile uint8_t* config_reg, uint16_t* index_eeprom);
 
 void EEPROM_writeIndex(uint16_t* index_eeprom);
 

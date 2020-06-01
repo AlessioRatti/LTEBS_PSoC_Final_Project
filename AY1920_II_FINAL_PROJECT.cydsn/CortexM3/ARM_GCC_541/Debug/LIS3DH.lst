@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 1
 
 
    1              		.syntax unified
@@ -26,7 +26,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
   23              		.thumb_func
   24              		.type	LIS3DH_unzipConfig, %function
   25              	LIS3DH_unzipConfig:
-  26              	.LFB63:
+  26              	.LFB0:
   27              		.file 1 "LIS3DH.c"
    1:LIS3DH.c      **** /* ========================================
    2:LIS3DH.c      ****  *
@@ -41,13 +41,13 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
   11:LIS3DH.c      **** */
   12:LIS3DH.c      **** 
   13:LIS3DH.c      **** #include "LIS3DH.h"
-  14:LIS3DH.c      **** #include "project.h"
-  15:LIS3DH.c      **** 
-  16:LIS3DH.c      **** const uint8_t lis3dh_dataRate_t[4]  = {0b00010000, 0b00100000, 0b00110000, 0b01000000};
-  17:LIS3DH.c      **** const uint8_t lis3dh_dataRange_t[4] = {0b00000000, 0b00010000, 0b00100000, 0b00110000};
-  18:LIS3DH.c      **** 
-  19:LIS3DH.c      **** /** ====== Setup Functions ====== **/
-  20:LIS3DH.c      **** 
+  14:LIS3DH.c      **** 
+  15:LIS3DH.c      **** const uint8_t lis3dh_dataRate_t[4]  = {0b00010000, 0b00100000, 0b00110000, 0b01000000};
+  16:LIS3DH.c      **** const uint8_t lis3dh_dataRange_t[4] = {0b00000000, 0b00010000, 0b00100000, 0b00110000};
+  17:LIS3DH.c      **** 
+  18:LIS3DH.c      **** /** ====== Setup Functions ====== **/
+  19:LIS3DH.c      **** 
+  20:LIS3DH.c      **** // Go from compressed codec (1 byte) to uncompressed codec (4 bytes)
   21:LIS3DH.c      **** void LIS3DH_unzipConfig(uint8_t config_reg, volatile uint8_t* data) {
   28              		.loc 1 21 0
   29              		.cfi_startproc
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
   22:LIS3DH.c      ****     
   23:LIS3DH.c      ****     switch (config_reg & MASK_FS) { // FS
   34              		.loc 1 23 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 2
 
 
   35 0000 00F00303 		and	r3, r0, #3
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
   72 002e DFE803F0 		tbb	[pc, r3]
   73              	.L10:
   74 0032 02       		.byte	(.L9-.L10)/2
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 3
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 3
 
 
   75 0033 05       		.byte	(.L11-.L10)/2
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
  110 0058 8B70     		strb	r3, [r1, #2]
   60:LIS3DH.c      ****             break;
  111              		.loc 1 60 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 4
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 4
 
 
  112 005a 01E0     		b	.L14
@@ -193,31 +193,32 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
   64:LIS3DH.c      ****         default:
   65:LIS3DH.c      ****             break;
   66:LIS3DH.c      ****     }
-  67:LIS3DH.c      ****     switch ((config_reg & MASK_START_STOP) >> 5) { // START/STOP
- 118              		.loc 1 67 0
+  67:LIS3DH.c      ****     
+  68:LIS3DH.c      ****     switch ((config_reg & MASK_START_STOP) >> 5) { // START/STOP
+ 118              		.loc 1 68 0
  119 0060 C0F34010 		ubfx	r0, r0, #5, #1
  120              	.LVL1:
  121 0064 08B1     		cbz	r0, .L18
  122 0066 18B9     		cbnz	r0, .L19
  123 0068 7047     		bx	lr
  124              	.L18:
-  68:LIS3DH.c      ****         case 0:     // STOP
-  69:LIS3DH.c      ****             data[3] = 0x00;
- 125              		.loc 1 69 0
+  69:LIS3DH.c      ****         case 0:     // STOP
+  70:LIS3DH.c      ****             data[3] = 0x00;
+ 125              		.loc 1 70 0
  126 006a 0023     		movs	r3, #0
  127 006c CB70     		strb	r3, [r1, #3]
-  70:LIS3DH.c      ****             break;
- 128              		.loc 1 70 0
+  71:LIS3DH.c      ****             break;
+ 128              		.loc 1 71 0
  129 006e 7047     		bx	lr
  130              	.L19:
-  71:LIS3DH.c      ****         case 1:     // START
-  72:LIS3DH.c      ****             data[3] = 0x80;
- 131              		.loc 1 72 0
+  72:LIS3DH.c      ****         case 1:     // START
+  73:LIS3DH.c      ****             data[3] = 0x80;
+ 131              		.loc 1 73 0
  132 0070 8023     		movs	r3, #128
  133 0072 CB70     		strb	r3, [r1, #3]
  134 0074 7047     		bx	lr
  135              		.cfi_endproc
- 136              	.LFE63:
+ 136              	.LFE0:
  137              		.size	LIS3DH_unzipConfig, .-LIS3DH_unzipConfig
  138 0076 00BF     		.section	.text.LIS3DH_zipConfig,"ax",%progbits
  139              		.align	2
@@ -226,26 +227,27 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
  142              		.thumb_func
  143              		.type	LIS3DH_zipConfig, %function
  144              	LIS3DH_zipConfig:
- 145              	.LFB64:
-  73:LIS3DH.c      ****             break;
-  74:LIS3DH.c      ****         default:
-  75:LIS3DH.c      ****             break;
-  76:LIS3DH.c      ****     }
-  77:LIS3DH.c      **** }
-  78:LIS3DH.c      **** 
-  79:LIS3DH.c      **** uint8 LIS3DH_zipConfig(volatile uint8_t* data ) {
- 146              		.loc 1 79 0
+ 145              	.LFB1:
+  74:LIS3DH.c      ****             break;
+  75:LIS3DH.c      ****         default:
+  76:LIS3DH.c      ****             break;
+  77:LIS3DH.c      ****     }
+  78:LIS3DH.c      **** }
+  79:LIS3DH.c      **** 
+  80:LIS3DH.c      **** // Go from uncompressed codec (4 bytes) to compressed codec (1 byte)
+  81:LIS3DH.c      **** uint8 LIS3DH_zipConfig(volatile uint8_t* data ) {
+ 146              		.loc 1 81 0
  147              		.cfi_startproc
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 5
+
+
  148              		@ args = 0, pretend = 0, frame = 0
  149              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 5
-
-
  150              		@ link register save eliminated.
  151              	.LVL2:
-  80:LIS3DH.c      ****     uint8_t config_reg=0;
-  81:LIS3DH.c      ****     switch (data[0]) { // FS
- 152              		.loc 1 81 0
+  82:LIS3DH.c      ****     uint8_t config_reg=0;
+  83:LIS3DH.c      ****     switch (data[0]) { // FS
+ 152              		.loc 1 83 0
  153 0000 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
  154 0002 DBB2     		uxtb	r3, r3
  155 0004 372B     		cmp	r3, #55
@@ -254,139 +256,140 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
  158 000a 05D0     		beq	.L23
  159 000c 272B     		cmp	r3, #39
  160 000e 05D0     		beq	.L33
-  80:LIS3DH.c      ****     uint8_t config_reg=0;
- 161              		.loc 1 80 0
+  82:LIS3DH.c      ****     uint8_t config_reg=0;
+ 161              		.loc 1 82 0
  162 0010 0023     		movs	r3, #0
  163 0012 04E0     		b	.L24
  164              	.L22:
  165              	.LVL3:
-  82:LIS3DH.c      ****         case 0x17:     //  1Hz
-  83:LIS3DH.c      ****             config_reg= 0;
-  84:LIS3DH.c      ****             break;
-  85:LIS3DH.c      ****         case 0x27:     // 10Hz
-  86:LIS3DH.c      ****             config_reg= 1;
-  87:LIS3DH.c      ****             break;
-  88:LIS3DH.c      ****         case 0x37:     // 25Hz
-  89:LIS3DH.c      ****             config_reg= 2;
- 166              		.loc 1 89 0
+  84:LIS3DH.c      ****         case 0x17:     //  1Hz
+  85:LIS3DH.c      ****             config_reg= 0;
+  86:LIS3DH.c      ****             break;
+  87:LIS3DH.c      ****         case 0x27:     // 10Hz
+  88:LIS3DH.c      ****             config_reg= 1;
+  89:LIS3DH.c      ****             break;
+  90:LIS3DH.c      ****         case 0x37:     // 25Hz
+  91:LIS3DH.c      ****             config_reg= 2;
+ 166              		.loc 1 91 0
  167 0014 0223     		movs	r3, #2
-  90:LIS3DH.c      ****             break;
- 168              		.loc 1 90 0
+  92:LIS3DH.c      ****             break;
+ 168              		.loc 1 92 0
  169 0016 02E0     		b	.L24
  170              	.LVL4:
  171              	.L23:
-  91:LIS3DH.c      ****         case 0x47:     // 50Hz
-  92:LIS3DH.c      ****             config_reg= 3;
- 172              		.loc 1 92 0
+  93:LIS3DH.c      ****         case 0x47:     // 50Hz
+  94:LIS3DH.c      ****             config_reg= 3;
+ 172              		.loc 1 94 0
  173 0018 0323     		movs	r3, #3
-  93:LIS3DH.c      ****             break;
- 174              		.loc 1 93 0
+  95:LIS3DH.c      ****             break;
+ 174              		.loc 1 95 0
  175 001a 00E0     		b	.L24
  176              	.LVL5:
  177              	.L33:
-  86:LIS3DH.c      ****             break;
- 178              		.loc 1 86 0
+  88:LIS3DH.c      ****             break;
+ 178              		.loc 1 88 0
  179 001c 0123     		movs	r3, #1
  180              	.LVL6:
  181              	.L24:
-  94:LIS3DH.c      ****         default:
-  95:LIS3DH.c      ****             break;
-  96:LIS3DH.c      ****     }
-  97:LIS3DH.c      ****     
-  98:LIS3DH.c      ****     switch (data[1]) { // FSR
- 182              		.loc 1 98 0
+  96:LIS3DH.c      ****         default:
+  97:LIS3DH.c      ****             break;
+  98:LIS3DH.c      ****     }
+  99:LIS3DH.c      ****     
+ 100:LIS3DH.c      ****     switch (data[1]) { // FSR
+ 182              		.loc 1 100 0
  183 001e 4278     		ldrb	r2, [r0, #1]	@ zero_extendqisi2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 6
+
+
  184 0020 D2B2     		uxtb	r2, r2
  185 0022 202A     		cmp	r2, #32
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 6
-
-
  186 0024 06D0     		beq	.L26
  187 0026 302A     		cmp	r2, #48
  188 0028 07D0     		beq	.L27
  189 002a 102A     		cmp	r2, #16
  190 002c 07D1     		bne	.L25
-  99:LIS3DH.c      ****         case 0x00:     // +- 2g
- 100:LIS3DH.c      ****             config_reg= config_reg | 0x00;
- 101:LIS3DH.c      ****             break;
- 102:LIS3DH.c      ****         case 0x10:     // +- 4g
- 103:LIS3DH.c      ****             config_reg= config_reg | 0x04;
- 191              		.loc 1 103 0
+ 101:LIS3DH.c      ****         case 0x00:     // +- 2g
+ 102:LIS3DH.c      ****             config_reg= config_reg | 0x00;
+ 103:LIS3DH.c      ****             break;
+ 104:LIS3DH.c      ****         case 0x10:     // +- 4g
+ 105:LIS3DH.c      ****             config_reg= config_reg | 0x04;
+ 191              		.loc 1 105 0
  192 002e 43F00403 		orr	r3, r3, #4
  193              	.LVL7:
- 104:LIS3DH.c      ****             break;
- 194              		.loc 1 104 0
+ 106:LIS3DH.c      ****             break;
+ 194              		.loc 1 106 0
  195 0032 04E0     		b	.L25
  196              	.L26:
- 105:LIS3DH.c      ****         case 0x20:     // +- 8g
- 106:LIS3DH.c      ****             config_reg= config_reg | 0x08;
- 197              		.loc 1 106 0
+ 107:LIS3DH.c      ****         case 0x20:     // +- 8g
+ 108:LIS3DH.c      ****             config_reg= config_reg | 0x08;
+ 197              		.loc 1 108 0
  198 0034 43F00803 		orr	r3, r3, #8
  199              	.LVL8:
- 107:LIS3DH.c      ****             break;
- 200              		.loc 1 107 0
+ 109:LIS3DH.c      ****             break;
+ 200              		.loc 1 109 0
  201 0038 01E0     		b	.L25
  202              	.L27:
- 108:LIS3DH.c      ****         case 0x30:     // +-16g
- 109:LIS3DH.c      ****             config_reg= config_reg | 0x0C;
- 203              		.loc 1 109 0
+ 110:LIS3DH.c      ****         case 0x30:     // +-16g
+ 111:LIS3DH.c      ****             config_reg= config_reg | 0x0C;
+ 203              		.loc 1 111 0
  204 003a 43F00C03 		orr	r3, r3, #12
  205              	.LVL9:
  206              	.L25:
- 110:LIS3DH.c      ****             break;
- 111:LIS3DH.c      ****         default:
  112:LIS3DH.c      ****             break;
- 113:LIS3DH.c      ****     }
- 114:LIS3DH.c      ****     
- 115:LIS3DH.c      ****     switch (data[2]) { // ANALOG
- 207              		.loc 1 115 0
+ 113:LIS3DH.c      ****         default:
+ 114:LIS3DH.c      ****             break;
+ 115:LIS3DH.c      ****     }
+ 116:LIS3DH.c      ****     
+ 117:LIS3DH.c      ****     switch (data[2]) { // ANALOG
+ 207              		.loc 1 117 0
  208 003e 8278     		ldrb	r2, [r0, #2]	@ zero_extendqisi2
  209 0040 D2B2     		uxtb	r2, r2
  210 0042 012A     		cmp	r2, #1
  211 0044 01D1     		bne	.L29
- 116:LIS3DH.c      ****         case 0:     // LDR
- 117:LIS3DH.c      ****             config_reg= config_reg | 0x00;
- 118:LIS3DH.c      ****             break;
- 119:LIS3DH.c      ****         case 1:     // POT
- 120:LIS3DH.c      ****             config_reg= config_reg | 0x10;
- 212              		.loc 1 120 0
+ 118:LIS3DH.c      ****         case 0:     // LDR
+ 119:LIS3DH.c      ****             config_reg= config_reg | 0x00;
+ 120:LIS3DH.c      ****             break;
+ 121:LIS3DH.c      ****         case 1:     // POT
+ 122:LIS3DH.c      ****             config_reg= config_reg | 0x10;
+ 212              		.loc 1 122 0
  213 0046 43F01003 		orr	r3, r3, #16
  214              	.LVL10:
  215              	.L29:
- 121:LIS3DH.c      ****             break;
- 122:LIS3DH.c      ****         default:
  123:LIS3DH.c      ****             break;
- 124:LIS3DH.c      ****     }
- 125:LIS3DH.c      ****     switch (data[3]) { // START/STOP
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 7
+ 124:LIS3DH.c      ****         default:
+ 125:LIS3DH.c      ****             break;
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 7
 
 
- 216              		.loc 1 125 0
+ 126:LIS3DH.c      ****     }
+ 127:LIS3DH.c      ****     
+ 128:LIS3DH.c      ****     switch (data[3]) { // START/STOP
+ 216              		.loc 1 128 0
  217 004a C278     		ldrb	r2, [r0, #3]	@ zero_extendqisi2
  218 004c D2B2     		uxtb	r2, r2
  219 004e 802A     		cmp	r2, #128
  220 0050 01D1     		bne	.L31
- 126:LIS3DH.c      ****         case 0x00:     // STOP
- 127:LIS3DH.c      ****             config_reg= config_reg | 0x00;
- 128:LIS3DH.c      ****             break;
- 129:LIS3DH.c      ****         case 0x80:     // START
- 130:LIS3DH.c      ****             config_reg= config_reg | 0x20;
- 221              		.loc 1 130 0
+ 129:LIS3DH.c      ****         case 0x00:     // STOP
+ 130:LIS3DH.c      ****             config_reg= config_reg | 0x00;
+ 131:LIS3DH.c      ****             break;
+ 132:LIS3DH.c      ****         case 0x80:     // START
+ 133:LIS3DH.c      ****             config_reg= config_reg | 0x20;
+ 221              		.loc 1 133 0
  222 0052 43F02003 		orr	r3, r3, #32
  223              	.LVL11:
  224              	.L31:
- 131:LIS3DH.c      ****             break;
- 132:LIS3DH.c      ****         default:
- 133:LIS3DH.c      ****             break;
- 134:LIS3DH.c      ****     }
- 135:LIS3DH.c      ****     return config_reg;
- 136:LIS3DH.c      **** }
- 225              		.loc 1 136 0
+ 134:LIS3DH.c      ****             break;
+ 135:LIS3DH.c      ****         default:
+ 136:LIS3DH.c      ****             break;
+ 137:LIS3DH.c      ****     }
+ 138:LIS3DH.c      ****     return config_reg;
+ 139:LIS3DH.c      **** }
+ 225              		.loc 1 139 0
  226 0056 1846     		mov	r0, r3
  227              	.LVL12:
  228 0058 7047     		bx	lr
  229              		.cfi_endproc
- 230              	.LFE64:
+ 230              	.LFE1:
  231              		.size	LIS3DH_zipConfig, .-LIS3DH_zipConfig
  232 005a 00BF     		.section	.text.LIS3DH_readStatus,"ax",%progbits
  233              		.align	2
@@ -395,50 +398,41 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
  236              		.thumb_func
  237              		.type	LIS3DH_readStatus, %function
  238              	LIS3DH_readStatus:
- 239              	.LFB68:
- 137:LIS3DH.c      **** 
- 138:LIS3DH.c      **** void LIS3DH_Init(void) {
- 139:LIS3DH.c      ****     
- 140:LIS3DH.c      ****     // Set CTRL_REG5 | Reboot
- 141:LIS3DH.c      ****     LIS3DH_writeByte(CTRL_REG5, CTRL_REG5_REBOOT);
- 142:LIS3DH.c      ****     // Clear LIS3DH FIFO
- 143:LIS3DH.c      ****     LIS3DH_writeByte(FIFO_CTRL_REG, FIFO_CTRL_REG_BYPASS);
- 144:LIS3DH.c      ****     
- 145:LIS3DH.c      ****     // Set CTRL_REG3
- 146:LIS3DH.c      ****     LIS3DH_writeByte(CTRL_REG3, CTRL_REG3_I1_OVERRUN);
- 147:LIS3DH.c      ****     // Set CTRL_REG5
- 148:LIS3DH.c      ****     LIS3DH_writeByte(CTRL_REG5, CTRL_REG5_FIFO_EN);
- 149:LIS3DH.c      ****     // Set FIFO_CTRL_REG
- 150:LIS3DH.c      ****     //LIS3DH_writeByte(FIFO_CTRL_REG, FIFO_CTRL_REG_BYPASS);
- 151:LIS3DH.c      ****     UART_PutString("START\r\n");
- 152:LIS3DH.c      **** }
- 153:LIS3DH.c      **** 
- 154:LIS3DH.c      **** void LIS3DH_Stop(void) {
- 155:LIS3DH.c      ****     
- 156:LIS3DH.c      ****     // Set CTRL_REG5 | Reboot
- 157:LIS3DH.c      ****     //LIS3DH_writeByte(CTRL_REG5, CTRL_REG5_REBOOT);
- 158:LIS3DH.c      ****     // Clear LIS3DH FIFO
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 8
+ 239              	.LFB4:
+ 140:LIS3DH.c      **** 
+ 141:LIS3DH.c      **** // Set default registers
+ 142:LIS3DH.c      **** void LIS3DH_Init(void) {
+ 143:LIS3DH.c      ****     
+ 144:LIS3DH.c      ****     // Set CTRL_REG5 | Reboot
+ 145:LIS3DH.c      ****     LIS3DH_writeByte(CTRL_REG5, CTRL_REG5_REBOOT);
+ 146:LIS3DH.c      ****     // Set CTRL_REG3
+ 147:LIS3DH.c      ****     LIS3DH_writeByte(CTRL_REG3, CTRL_REG3_I1_OVERRUN);
+ 148:LIS3DH.c      ****     // Set CTRL_REG5
+ 149:LIS3DH.c      ****     LIS3DH_writeByte(CTRL_REG5, CTRL_REG5_FIFO_EN);
+ 150:LIS3DH.c      ****     // Clear LIS3DH FIFO
+ 151:LIS3DH.c      ****     LIS3DH_writeByte(FIFO_CTRL_REG, FIFO_CTRL_REG_BYPASS);
+ 152:LIS3DH.c      ****     
+ 153:LIS3DH.c      **** }
+ 154:LIS3DH.c      **** 
+ 155:LIS3DH.c      **** // Set user-dependent registers
+ 156:LIS3DH.c      **** void LIS3DH_setConfig(volatile uint8_t* data){
+ 157:LIS3DH.c      ****     
+ 158:LIS3DH.c      ****     // Set CTRL_REG1 (FS)
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 8
 
 
- 159:LIS3DH.c      ****     LIS3DH_writeByte(FIFO_CTRL_REG, FIFO_CTRL_REG_BYPASS);
- 160:LIS3DH.c      **** }
- 161:LIS3DH.c      **** 
- 162:LIS3DH.c      **** void LIS3DH_setConfig(volatile uint8_t* data){
- 163:LIS3DH.c      ****     
- 164:LIS3DH.c      ****     // Set CTRL_REG1
- 165:LIS3DH.c      ****     LIS3DH_writeByte(CTRL_REG1, data[0]);
- 166:LIS3DH.c      ****     // Set CTRL_REG4
- 167:LIS3DH.c      ****     LIS3DH_writeByte(CTRL_REG4, data[1]);
- 168:LIS3DH.c      ****     //Set LIS3DH FIFO
- 169:LIS3DH.c      ****     LIS3DH_writeByte(FIFO_CTRL_REG,data[3] );
- 170:LIS3DH.c      ****     UART_PutString("SET CONFIG\r\n");
- 171:LIS3DH.c      **** }
- 172:LIS3DH.c      **** 
- 173:LIS3DH.c      **** /** ====== Helper Functions ====== **/
- 174:LIS3DH.c      **** 
- 175:LIS3DH.c      **** uint8_t LIS3DH_readStatus() {
- 240              		.loc 1 175 0
+ 159:LIS3DH.c      ****     LIS3DH_writeByte(CTRL_REG1, data[0]);
+ 160:LIS3DH.c      ****     // Set CTRL_REG4 (FSR)
+ 161:LIS3DH.c      ****     LIS3DH_writeByte(CTRL_REG4, data[1]);
+ 162:LIS3DH.c      ****     //Set LIS3DH FIFO (bypass/stream)
+ 163:LIS3DH.c      ****     LIS3DH_writeByte(FIFO_CTRL_REG, data[3]);
+ 164:LIS3DH.c      ****     
+ 165:LIS3DH.c      **** }
+ 166:LIS3DH.c      **** 
+ 167:LIS3DH.c      **** /** ====== Helper Functions ====== **/
+ 168:LIS3DH.c      **** 
+ 169:LIS3DH.c      **** uint8_t LIS3DH_readStatus() {
+ 240              		.loc 1 169 0
  241              		.cfi_startproc
  242              		@ args = 0, pretend = 0, frame = 0
  243              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -446,17 +440,18 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
  245              		.cfi_def_cfa_offset 8
  246              		.cfi_offset 3, -8
  247              		.cfi_offset 14, -4
- 176:LIS3DH.c      ****     
- 177:LIS3DH.c      **** 	return SPI_Interface_ReadByte_LIS3DH(SPI_LIS3DH_READ | FIFO_SRC_REG);
- 248              		.loc 1 177 0
+ 170:LIS3DH.c      ****     
+ 171:LIS3DH.c      **** 	return SPI_Interface_ReadByte_LIS3DH(SPI_LIS3DH_READ | FIFO_SRC_REG);
+ 248              		.loc 1 171 0
  249 0002 AF20     		movs	r0, #175
  250 0004 FFF7FEFF 		bl	SPI_Interface_ReadByte_LIS3DH
  251              	.LVL13:
- 178:LIS3DH.c      **** }
- 252              		.loc 1 178 0
+ 172:LIS3DH.c      ****     
+ 173:LIS3DH.c      **** }
+ 252              		.loc 1 173 0
  253 0008 08BD     		pop	{r3, pc}
  254              		.cfi_endproc
- 255              	.LFE68:
+ 255              	.LFE4:
  256              		.size	LIS3DH_readStatus, .-LIS3DH_readStatus
  257 000a 00BF     		.section	.text.LIS3DH_readByte,"ax",%progbits
  258              		.align	2
@@ -465,12 +460,12 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
  261              		.thumb_func
  262              		.type	LIS3DH_readByte, %function
  263              	LIS3DH_readByte:
- 264              	.LFB69:
- 179:LIS3DH.c      **** 
- 180:LIS3DH.c      **** /** ====== User-level Functions ====== **/
- 181:LIS3DH.c      **** 
- 182:LIS3DH.c      **** uint8_t LIS3DH_readByte(uint8_t addr) {
- 265              		.loc 1 182 0
+ 264              	.LFB5:
+ 174:LIS3DH.c      **** 
+ 175:LIS3DH.c      **** /** ====== User-level Functions ====== **/
+ 176:LIS3DH.c      **** 
+ 177:LIS3DH.c      **** uint8_t LIS3DH_readByte(uint8_t addr) {
+ 265              		.loc 1 177 0
  266              		.cfi_startproc
  267              		@ args = 0, pretend = 0, frame = 0
  268              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -478,32 +473,32 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
  270 0000 08B5     		push	{r3, lr}
  271              		.cfi_def_cfa_offset 8
  272              		.cfi_offset 3, -8
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 9
-
-
  273              		.cfi_offset 14, -4
  274              	.LVL15:
- 183:LIS3DH.c      ****     
- 184:LIS3DH.c      **** 	/* Prepare the TX data packet: instruction + address */
- 185:LIS3DH.c      **** 	uint8_t dataTX = {SPI_LIS3DH_READ | addr};
- 186:LIS3DH.c      **** 	
- 187:LIS3DH.c      **** 	/* Prepare the RX byte */
- 188:LIS3DH.c      **** 	uint8_t dataRX;
- 189:LIS3DH.c      **** 	
- 190:LIS3DH.c      **** 	/* Read 1 byte from addr */
- 191:LIS3DH.c      **** 	dataRX = SPI_Interface_ReadByte_LIS3DH(dataTX);
- 275              		.loc 1 191 0
+ 178:LIS3DH.c      ****     
+ 179:LIS3DH.c      **** 	/* Prepare the TX data packet: instruction + address */
+ 180:LIS3DH.c      **** 	uint8_t dataTX = {SPI_LIS3DH_READ | addr};
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 9
+
+
+ 181:LIS3DH.c      **** 	
+ 182:LIS3DH.c      **** 	/* Prepare the RX byte */
+ 183:LIS3DH.c      **** 	uint8_t dataRX;
+ 184:LIS3DH.c      **** 	
+ 185:LIS3DH.c      **** 	/* Read 1 byte from addr */
+ 186:LIS3DH.c      **** 	dataRX = SPI_Interface_ReadByte_LIS3DH(dataTX);
+ 275              		.loc 1 186 0
  276 0002 40F08000 		orr	r0, r0, #128
  277              	.LVL16:
  278 0006 FFF7FEFF 		bl	SPI_Interface_ReadByte_LIS3DH
  279              	.LVL17:
- 192:LIS3DH.c      **** 	//LIS3DH_waitForReadComplete();
- 193:LIS3DH.c      **** 	return dataRX;
- 194:LIS3DH.c      **** }
- 280              		.loc 1 194 0
+ 187:LIS3DH.c      ****     
+ 188:LIS3DH.c      **** 	return dataRX;
+ 189:LIS3DH.c      **** }
+ 280              		.loc 1 189 0
  281 000a 08BD     		pop	{r3, pc}
  282              		.cfi_endproc
- 283              	.LFE69:
+ 283              	.LFE5:
  284              		.size	LIS3DH_readByte, .-LIS3DH_readByte
  285              		.section	.text.LIS3DH_writeByte,"ax",%progbits
  286              		.align	2
@@ -512,2022 +507,1583 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 1
  289              		.thumb_func
  290              		.type	LIS3DH_writeByte, %function
  291              	LIS3DH_writeByte:
- 292              	.LFB70:
- 195:LIS3DH.c      **** 
- 196:LIS3DH.c      **** /*
- 197:LIS3DH.c      **** void LIS3DH_writeByte(uint8_t addr, uint8_t dataByte) {
- 198:LIS3DH.c      **** 	
- 199:LIS3DH.c      **** 	// Prepare the TX packet
- 200:LIS3DH.c      ****     uint8_t dataTX[2] = {SPI_LIS3DH_WRITE | addr, dataByte};
- 201:LIS3DH.c      **** 	// Nothing to RX... 
- 202:LIS3DH.c      **** 	uint8_t temp = 0;
- 203:LIS3DH.c      **** 	
- 204:LIS3DH.c      **** 	// Write 1 byte to addr
- 205:LIS3DH.c      **** 	SPI_Interface_Multi_RW_LIS3DH(dataTX, 2, &temp, 0);
- 206:LIS3DH.c      **** }
- 207:LIS3DH.c      **** */
- 208:LIS3DH.c      **** 
- 209:LIS3DH.c      **** void LIS3DH_writeByte(uint8_t addr, uint8_t dataByte) {
- 293              		.loc 1 209 0
+ 292              	.LFB6:
+ 190:LIS3DH.c      **** 
+ 191:LIS3DH.c      **** void LIS3DH_writeByte(uint8_t addr, uint8_t dataByte) {
+ 293              		.loc 1 191 0
  294              		.cfi_startproc
  295              		@ args = 0, pretend = 0, frame = 8
  296              		@ frame_needed = 0, uses_anonymous_args = 0
  297              	.LVL18:
- 298 0000 00B5     		push	{lr}
- 299              		.cfi_def_cfa_offset 4
- 300              		.cfi_offset 14, -4
- 301 0002 83B0     		sub	sp, sp, #12
- 302              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 10
+ 298 0000 70B5     		push	{r4, r5, r6, lr}
+ 299              		.cfi_def_cfa_offset 16
+ 300              		.cfi_offset 4, -16
+ 301              		.cfi_offset 5, -12
+ 302              		.cfi_offset 6, -8
+ 303              		.cfi_offset 14, -4
+ 304 0002 82B0     		sub	sp, sp, #8
+ 305              		.cfi_def_cfa_offset 24
+ 306 0004 0646     		mov	r6, r0
+ 307 0006 0D46     		mov	r5, r1
+ 192:LIS3DH.c      ****     
+ 193:LIS3DH.c      ****     // Save current global interrupt enable and disable it 
+ 194:LIS3DH.c      ****     uint8 interruptState;
+ 195:LIS3DH.c      ****     interruptState = CyEnterCriticalSection();
+ 308              		.loc 1 195 0
+ 309 0008 FFF7FEFF 		bl	CyEnterCriticalSection
+ 310              	.LVL19:
+ 311 000c 0446     		mov	r4, r0
+ 312              	.LVL20:
+ 196:LIS3DH.c      **** 	
+ 197:LIS3DH.c      **** 	// Prepare the TX packet
+ 198:LIS3DH.c      ****     uint8_t dataTX[2] = {SPI_LIS3DH_WRITE | addr, dataByte};
+ 313              		.loc 1 198 0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 10
 
 
- 210:LIS3DH.c      **** 	
- 211:LIS3DH.c      **** 	// Prepare the TX packet
- 212:LIS3DH.c      ****     uint8_t dataTX[2] = {SPI_LIS3DH_WRITE | addr, dataByte};
- 303              		.loc 1 212 0
- 304 0004 8DF80400 		strb	r0, [sp, #4]
- 305 0008 8DF80510 		strb	r1, [sp, #5]
+ 314 000e 8DF80460 		strb	r6, [sp, #4]
+ 315 0012 8DF80550 		strb	r5, [sp, #5]
+ 199:LIS3DH.c      **** 	// Nothing to RX... 
+ 200:LIS3DH.c      **** 	uint8_t temp = 0;
+ 316              		.loc 1 200 0
+ 317 0016 0023     		movs	r3, #0
+ 318 0018 02AA     		add	r2, sp, #8
+ 319 001a 02F8053D 		strb	r3, [r2, #-5]!
+ 201:LIS3DH.c      **** 	
+ 202:LIS3DH.c      **** 	// Write 1 byte to addr
+ 203:LIS3DH.c      **** 	SPI_Interface_Multi_RW_LIS3DH(dataTX, 2, &temp, 0);
+ 320              		.loc 1 203 0
+ 321 001e 0221     		movs	r1, #2
+ 322 0020 01A8     		add	r0, sp, #4
+ 323 0022 FFF7FEFF 		bl	SPI_Interface_Multi_RW_LIS3DH
+ 324              	.LVL21:
+ 204:LIS3DH.c      ****     
+ 205:LIS3DH.c      ****     // Restore global interrupt enable state
+ 206:LIS3DH.c      ****     CyExitCriticalSection(interruptState);
+ 325              		.loc 1 206 0
+ 326 0026 2046     		mov	r0, r4
+ 327 0028 FFF7FEFF 		bl	CyExitCriticalSection
+ 328              	.LVL22:
+ 207:LIS3DH.c      **** }
+ 329              		.loc 1 207 0
+ 330 002c 02B0     		add	sp, sp, #8
+ 331              		.cfi_def_cfa_offset 16
+ 332              		@ sp needed
+ 333 002e 70BD     		pop	{r4, r5, r6, pc}
+ 334              		.cfi_endproc
+ 335              	.LFE6:
+ 336              		.size	LIS3DH_writeByte, .-LIS3DH_writeByte
+ 337              		.section	.text.LIS3DH_Init,"ax",%progbits
+ 338              		.align	2
+ 339              		.global	LIS3DH_Init
+ 340              		.thumb
+ 341              		.thumb_func
+ 342              		.type	LIS3DH_Init, %function
+ 343              	LIS3DH_Init:
+ 344              	.LFB2:
+ 142:LIS3DH.c      ****     
+ 345              		.loc 1 142 0
+ 346              		.cfi_startproc
+ 347              		@ args = 0, pretend = 0, frame = 0
+ 348              		@ frame_needed = 0, uses_anonymous_args = 0
+ 349 0000 08B5     		push	{r3, lr}
+ 350              		.cfi_def_cfa_offset 8
+ 351              		.cfi_offset 3, -8
+ 352              		.cfi_offset 14, -4
+ 145:LIS3DH.c      ****     // Set CTRL_REG3
+ 353              		.loc 1 145 0
+ 354 0002 8021     		movs	r1, #128
+ 355 0004 2420     		movs	r0, #36
+ 356 0006 FFF7FEFF 		bl	LIS3DH_writeByte
+ 357              	.LVL23:
+ 147:LIS3DH.c      ****     // Set CTRL_REG5
+ 358              		.loc 1 147 0
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 11
+
+
+ 359 000a 0221     		movs	r1, #2
+ 360 000c 2220     		movs	r0, #34
+ 361 000e FFF7FEFF 		bl	LIS3DH_writeByte
+ 362              	.LVL24:
+ 149:LIS3DH.c      ****     // Clear LIS3DH FIFO
+ 363              		.loc 1 149 0
+ 364 0012 4821     		movs	r1, #72
+ 365 0014 2420     		movs	r0, #36
+ 366 0016 FFF7FEFF 		bl	LIS3DH_writeByte
+ 367              	.LVL25:
+ 151:LIS3DH.c      ****     
+ 368              		.loc 1 151 0
+ 369 001a 0021     		movs	r1, #0
+ 370 001c 2E20     		movs	r0, #46
+ 371 001e FFF7FEFF 		bl	LIS3DH_writeByte
+ 372              	.LVL26:
+ 373 0022 08BD     		pop	{r3, pc}
+ 374              		.cfi_endproc
+ 375              	.LFE2:
+ 376              		.size	LIS3DH_Init, .-LIS3DH_Init
+ 377              		.section	.text.LIS3DH_setConfig,"ax",%progbits
+ 378              		.align	2
+ 379              		.global	LIS3DH_setConfig
+ 380              		.thumb
+ 381              		.thumb_func
+ 382              		.type	LIS3DH_setConfig, %function
+ 383              	LIS3DH_setConfig:
+ 384              	.LFB3:
+ 156:LIS3DH.c      ****     
+ 385              		.loc 1 156 0
+ 386              		.cfi_startproc
+ 387              		@ args = 0, pretend = 0, frame = 0
+ 388              		@ frame_needed = 0, uses_anonymous_args = 0
+ 389              	.LVL27:
+ 390 0000 10B5     		push	{r4, lr}
+ 391              		.cfi_def_cfa_offset 8
+ 392              		.cfi_offset 4, -8
+ 393              		.cfi_offset 14, -4
+ 394 0002 0446     		mov	r4, r0
+ 159:LIS3DH.c      ****     // Set CTRL_REG4 (FSR)
+ 395              		.loc 1 159 0
+ 396 0004 0178     		ldrb	r1, [r0]	@ zero_extendqisi2
+ 397 0006 2020     		movs	r0, #32
+ 398              	.LVL28:
+ 399 0008 FFF7FEFF 		bl	LIS3DH_writeByte
+ 400              	.LVL29:
+ 161:LIS3DH.c      ****     //Set LIS3DH FIFO (bypass/stream)
+ 401              		.loc 1 161 0
+ 402 000c 6178     		ldrb	r1, [r4, #1]	@ zero_extendqisi2
+ 403 000e 2320     		movs	r0, #35
+ 404 0010 FFF7FEFF 		bl	LIS3DH_writeByte
+ 405              	.LVL30:
+ 163:LIS3DH.c      ****     
+ 406              		.loc 1 163 0
+ 407 0014 E178     		ldrb	r1, [r4, #3]	@ zero_extendqisi2
+ 408 0016 2E20     		movs	r0, #46
+ 409 0018 FFF7FEFF 		bl	LIS3DH_writeByte
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 12
+
+
+ 410              	.LVL31:
+ 411 001c 10BD     		pop	{r4, pc}
+ 412              		.cfi_endproc
+ 413              	.LFE3:
+ 414              		.size	LIS3DH_setConfig, .-LIS3DH_setConfig
+ 415 001e 00BF     		.section	.text.LIS3DH_readPage,"ax",%progbits
+ 416              		.align	2
+ 417              		.global	LIS3DH_readPage
+ 418              		.thumb
+ 419              		.thumb_func
+ 420              		.type	LIS3DH_readPage, %function
+ 421              	LIS3DH_readPage:
+ 422              	.LFB7:
+ 208:LIS3DH.c      **** 
+ 209:LIS3DH.c      **** void LIS3DH_readPage(uint8_t addr, uint8_t* dataRX, uint8_t nBytes) {
+ 423              		.loc 1 209 0
+ 424              		.cfi_startproc
+ 425              		@ args = 0, pretend = 0, frame = 8
+ 426              		@ frame_needed = 0, uses_anonymous_args = 0
+ 427              	.LVL32:
+ 428 0000 00B5     		push	{lr}
+ 429              		.cfi_def_cfa_offset 4
+ 430              		.cfi_offset 14, -4
+ 431 0002 83B0     		sub	sp, sp, #12
+ 432              		.cfi_def_cfa_offset 16
+ 210:LIS3DH.c      ****     
+ 211:LIS3DH.c      **** 	/* Prepare the TX data packet: instruction + address */
+ 212:LIS3DH.c      **** 	uint8_t dataTX = {SPI_LIS3DH_READ_MULTI | addr};
+ 433              		.loc 1 212 0
+ 434 0004 60F03F03 		orn	r3, r0, #63
+ 435 0008 02A8     		add	r0, sp, #8
+ 436              	.LVL33:
+ 437 000a 00F8013D 		strb	r3, [r0, #-1]!
  213:LIS3DH.c      **** 	
- 214:LIS3DH.c      **** 	// Write 1 byte to addr
- 215:LIS3DH.c      **** 	SPI_Interface_WriteByte_LIS3DH(dataTX);
- 306              		.loc 1 215 0
- 307 000c 01A8     		add	r0, sp, #4
- 308              	.LVL19:
- 309 000e FFF7FEFF 		bl	SPI_Interface_WriteByte_LIS3DH
- 310              	.LVL20:
- 216:LIS3DH.c      **** }
- 311              		.loc 1 216 0
- 312 0012 03B0     		add	sp, sp, #12
- 313              		.cfi_def_cfa_offset 4
- 314              		@ sp needed
- 315 0014 5DF804FB 		ldr	pc, [sp], #4
- 316              		.cfi_endproc
- 317              	.LFE70:
- 318              		.size	LIS3DH_writeByte, .-LIS3DH_writeByte
- 319              		.section	.text.LIS3DH_Init,"ax",%progbits
- 320              		.align	2
- 321              		.global	LIS3DH_Init
- 322              		.thumb
- 323              		.thumb_func
- 324              		.type	LIS3DH_Init, %function
- 325              	LIS3DH_Init:
- 326              	.LFB65:
- 138:LIS3DH.c      ****     
- 327              		.loc 1 138 0
- 328              		.cfi_startproc
- 329              		@ args = 0, pretend = 0, frame = 0
- 330              		@ frame_needed = 0, uses_anonymous_args = 0
- 331 0000 08B5     		push	{r3, lr}
- 332              		.cfi_def_cfa_offset 8
- 333              		.cfi_offset 3, -8
- 334              		.cfi_offset 14, -4
- 141:LIS3DH.c      ****     // Clear LIS3DH FIFO
- 335              		.loc 1 141 0
- 336 0002 8021     		movs	r1, #128
- 337 0004 2420     		movs	r0, #36
- 338 0006 FFF7FEFF 		bl	LIS3DH_writeByte
- 339              	.LVL21:
- 143:LIS3DH.c      ****     
- 340              		.loc 1 143 0
- 341 000a 0021     		movs	r1, #0
- 342 000c 2E20     		movs	r0, #46
- 343 000e FFF7FEFF 		bl	LIS3DH_writeByte
- 344              	.LVL22:
- 146:LIS3DH.c      ****     // Set CTRL_REG5
- 345              		.loc 1 146 0
- 346 0012 0221     		movs	r1, #2
- 347 0014 2220     		movs	r0, #34
- 348 0016 FFF7FEFF 		bl	LIS3DH_writeByte
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 11
-
-
- 349              	.LVL23:
- 148:LIS3DH.c      ****     // Set FIFO_CTRL_REG
- 350              		.loc 1 148 0
- 351 001a 4821     		movs	r1, #72
- 352 001c 2420     		movs	r0, #36
- 353 001e FFF7FEFF 		bl	LIS3DH_writeByte
- 354              	.LVL24:
- 151:LIS3DH.c      **** }
- 355              		.loc 1 151 0
- 356 0022 0248     		ldr	r0, .L42
- 357 0024 FFF7FEFF 		bl	UART_PutString
- 358              	.LVL25:
- 359 0028 08BD     		pop	{r3, pc}
- 360              	.L43:
- 361 002a 00BF     		.align	2
- 362              	.L42:
- 363 002c 00000000 		.word	.LC0
- 364              		.cfi_endproc
- 365              	.LFE65:
- 366              		.size	LIS3DH_Init, .-LIS3DH_Init
- 367              		.section	.text.LIS3DH_Stop,"ax",%progbits
- 368              		.align	2
- 369              		.global	LIS3DH_Stop
- 370              		.thumb
- 371              		.thumb_func
- 372              		.type	LIS3DH_Stop, %function
- 373              	LIS3DH_Stop:
- 374              	.LFB66:
- 154:LIS3DH.c      ****     
- 375              		.loc 1 154 0
- 376              		.cfi_startproc
- 377              		@ args = 0, pretend = 0, frame = 0
- 378              		@ frame_needed = 0, uses_anonymous_args = 0
- 379 0000 08B5     		push	{r3, lr}
- 380              		.cfi_def_cfa_offset 8
- 381              		.cfi_offset 3, -8
- 382              		.cfi_offset 14, -4
- 159:LIS3DH.c      **** }
- 383              		.loc 1 159 0
- 384 0002 0021     		movs	r1, #0
- 385 0004 2E20     		movs	r0, #46
- 386 0006 FFF7FEFF 		bl	LIS3DH_writeByte
- 387              	.LVL26:
- 388 000a 08BD     		pop	{r3, pc}
- 389              		.cfi_endproc
- 390              	.LFE66:
- 391              		.size	LIS3DH_Stop, .-LIS3DH_Stop
- 392              		.section	.text.LIS3DH_setConfig,"ax",%progbits
- 393              		.align	2
- 394              		.global	LIS3DH_setConfig
- 395              		.thumb
- 396              		.thumb_func
- 397              		.type	LIS3DH_setConfig, %function
- 398              	LIS3DH_setConfig:
- 399              	.LFB67:
- 162:LIS3DH.c      ****     
- 400              		.loc 1 162 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 12
-
-
- 401              		.cfi_startproc
- 402              		@ args = 0, pretend = 0, frame = 0
- 403              		@ frame_needed = 0, uses_anonymous_args = 0
- 404              	.LVL27:
- 405 0000 10B5     		push	{r4, lr}
- 406              		.cfi_def_cfa_offset 8
- 407              		.cfi_offset 4, -8
- 408              		.cfi_offset 14, -4
- 409 0002 0446     		mov	r4, r0
- 165:LIS3DH.c      ****     // Set CTRL_REG4
- 410              		.loc 1 165 0
- 411 0004 0178     		ldrb	r1, [r0]	@ zero_extendqisi2
- 412 0006 2020     		movs	r0, #32
- 413              	.LVL28:
- 414 0008 FFF7FEFF 		bl	LIS3DH_writeByte
- 415              	.LVL29:
- 167:LIS3DH.c      ****     //Set LIS3DH FIFO
- 416              		.loc 1 167 0
- 417 000c 6178     		ldrb	r1, [r4, #1]	@ zero_extendqisi2
- 418 000e 2320     		movs	r0, #35
- 419 0010 FFF7FEFF 		bl	LIS3DH_writeByte
- 420              	.LVL30:
- 169:LIS3DH.c      ****     UART_PutString("SET CONFIG\r\n");
- 421              		.loc 1 169 0
- 422 0014 E178     		ldrb	r1, [r4, #3]	@ zero_extendqisi2
- 423 0016 2E20     		movs	r0, #46
- 424 0018 FFF7FEFF 		bl	LIS3DH_writeByte
- 425              	.LVL31:
- 170:LIS3DH.c      **** }
- 426              		.loc 1 170 0
- 427 001c 0148     		ldr	r0, .L48
- 428 001e FFF7FEFF 		bl	UART_PutString
- 429              	.LVL32:
- 430 0022 10BD     		pop	{r4, pc}
- 431              	.LVL33:
- 432              	.L49:
- 433              		.align	2
- 434              	.L48:
- 435 0024 08000000 		.word	.LC1
- 436              		.cfi_endproc
- 437              	.LFE67:
- 438              		.size	LIS3DH_setConfig, .-LIS3DH_setConfig
- 439              		.section	.text.LIS3DH_readPage,"ax",%progbits
- 440              		.align	2
- 441              		.global	LIS3DH_readPage
- 442              		.thumb
- 443              		.thumb_func
- 444              		.type	LIS3DH_readPage, %function
- 445              	LIS3DH_readPage:
- 446              	.LFB71:
- 217:LIS3DH.c      **** 
- 218:LIS3DH.c      **** void LIS3DH_readPage(uint8_t addr, uint8_t* dataRX, uint8_t nBytes) {
- 447              		.loc 1 218 0
- 448              		.cfi_startproc
- 449              		@ args = 0, pretend = 0, frame = 8
- 450              		@ frame_needed = 0, uses_anonymous_args = 0
- 451              	.LVL34:
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 13
-
-
- 452 0000 00B5     		push	{lr}
- 453              		.cfi_def_cfa_offset 4
- 454              		.cfi_offset 14, -4
- 455 0002 83B0     		sub	sp, sp, #12
- 456              		.cfi_def_cfa_offset 16
- 219:LIS3DH.c      ****     
- 220:LIS3DH.c      **** 	/* Prepare the TX data packet: instruction + address */
- 221:LIS3DH.c      **** 	uint8_t dataTX = {SPI_LIS3DH_READ_MULTI | addr};
- 457              		.loc 1 221 0
- 458 0004 60F03F03 		orn	r3, r0, #63
- 459 0008 02A8     		add	r0, sp, #8
- 460              	.LVL35:
- 461 000a 00F8013D 		strb	r3, [r0, #-1]!
- 222:LIS3DH.c      **** 	
- 223:LIS3DH.c      **** 	/* Read the nBytes */
- 224:LIS3DH.c      **** 	SPI_Interface_Multi_RW_LIS3DH(&dataTX, 1, dataRX, nBytes);
- 462              		.loc 1 224 0
- 463 000e 1346     		mov	r3, r2
- 464 0010 0A46     		mov	r2, r1
- 465              	.LVL36:
- 466 0012 0121     		movs	r1, #1
- 467              	.LVL37:
- 468 0014 FFF7FEFF 		bl	SPI_Interface_Multi_RW_LIS3DH
- 469              	.LVL38:
- 225:LIS3DH.c      **** }
- 470              		.loc 1 225 0
- 471 0018 03B0     		add	sp, sp, #12
- 472              		.cfi_def_cfa_offset 4
- 473              		@ sp needed
- 474 001a 5DF804FB 		ldr	pc, [sp], #4
- 475              		.cfi_endproc
- 476              	.LFE71:
- 477              		.size	LIS3DH_readPage, .-LIS3DH_readPage
- 478 001e 00BF     		.section	.text.LIS3DH_writePage,"ax",%progbits
- 479              		.align	2
- 480              		.global	LIS3DH_writePage
- 481              		.thumb
- 482              		.thumb_func
- 483              		.type	LIS3DH_writePage, %function
- 484              	LIS3DH_writePage:
- 485              	.LFB72:
- 226:LIS3DH.c      **** 
- 227:LIS3DH.c      **** void LIS3DH_writePage(uint8_t addr, uint8_t* data, uint8_t nBytes) {
- 486              		.loc 1 227 0
- 487              		.cfi_startproc
- 488              		@ args = 0, pretend = 0, frame = 8
- 489              		@ frame_needed = 1, uses_anonymous_args = 0
- 490              	.LVL39:
- 491 0000 90B5     		push	{r4, r7, lr}
- 492              		.cfi_def_cfa_offset 12
- 493              		.cfi_offset 4, -12
- 494              		.cfi_offset 7, -8
- 495              		.cfi_offset 14, -4
- 496 0002 83B0     		sub	sp, sp, #12
- 497              		.cfi_def_cfa_offset 24
- 498 0004 00AF     		add	r7, sp, #0
- 499              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 14
-
-
- 500 0006 1346     		mov	r3, r2
- 228:LIS3DH.c      **** 
- 229:LIS3DH.c      **** 	/* Prepare the TX packet of size nBytes+3 
- 230:LIS3DH.c      ****        [ Write Instruction - Address MSB - Address LSB - +++data+++ ]
- 231:LIS3DH.c      ****     */
- 232:LIS3DH.c      ****     
- 233:LIS3DH.c      **** 	uint8_t dataTX[1+nBytes];
- 501              		.loc 1 233 0
- 502 0008 541C     		adds	r4, r2, #1
- 503              	.LVL40:
- 504 000a 0833     		adds	r3, r3, #8
- 505              	.LVL41:
- 506 000c 23F00703 		bic	r3, r3, #7
- 507 0010 ADEB030D 		sub	sp, sp, r3
- 508              	.LVL42:
- 234:LIS3DH.c      ****     dataTX[0] = (SPI_LIS3DH_WRITE_MULTI | addr);
- 509              		.loc 1 234 0
- 510 0014 40F04003 		orr	r3, r0, #64
- 511 0018 6846     		mov	r0, sp
- 512              	.LVL43:
- 513 001a 00F8013B 		strb	r3, [r0], #1
- 235:LIS3DH.c      ****     /* Copy the input data in the memory */
- 236:LIS3DH.c      **** 	memcpy(&dataTX[1], data, nBytes);
- 514              		.loc 1 236 0
- 515 001e FFF7FEFF 		bl	memcpy
- 516              	.LVL44:
- 237:LIS3DH.c      **** 	
- 238:LIS3DH.c      **** 	/* Nothing to RX: point to a dummy variable */
- 239:LIS3DH.c      **** 	uint8_t temp = 0;
- 517              		.loc 1 239 0
- 518 0022 0023     		movs	r3, #0
- 519 0024 07F10802 		add	r2, r7, #8
- 520 0028 02F8013D 		strb	r3, [r2, #-1]!
- 240:LIS3DH.c      **** 	
- 241:LIS3DH.c      **** 	SPI_Interface_Multi_RW_LIS3DH(dataTX, 1+nBytes, &temp, 0);
- 521              		.loc 1 241 0
- 522 002c E1B2     		uxtb	r1, r4
- 523 002e 6846     		mov	r0, sp
- 524 0030 FFF7FEFF 		bl	SPI_Interface_Multi_RW_LIS3DH
- 525              	.LVL45:
- 242:LIS3DH.c      **** 	
- 243:LIS3DH.c      **** }
- 526              		.loc 1 243 0
- 527 0034 0C37     		adds	r7, r7, #12
- 528              		.cfi_def_cfa_offset 12
- 529 0036 BD46     		mov	sp, r7
- 530              		.cfi_def_cfa_register 13
- 531              	.LVL46:
- 532              		@ sp needed
- 533 0038 90BD     		pop	{r4, r7, pc}
- 534              		.cfi_endproc
- 535              	.LFE72:
- 536              		.size	LIS3DH_writePage, .-LIS3DH_writePage
- 537              		.global	lis3dh_dataRange_t
- 538              		.global	lis3dh_dataRate_t
- 539 003a 00BF     		.section	.rodata
- 540              		.align	2
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 15
-
-
- 541              		.type	lis3dh_dataRange_t, %object
- 542              		.size	lis3dh_dataRange_t, 4
- 543              	lis3dh_dataRange_t:
- 544 0000 00       		.byte	0
- 545 0001 10       		.byte	16
- 546 0002 20       		.byte	32
- 547 0003 30       		.byte	48
- 548              		.type	lis3dh_dataRate_t, %object
- 549              		.size	lis3dh_dataRate_t, 4
- 550              	lis3dh_dataRate_t:
- 551 0004 10       		.byte	16
- 552 0005 20       		.byte	32
- 553 0006 30       		.byte	48
- 554 0007 40       		.byte	64
- 555              		.section	.rodata.str1.4,"aMS",%progbits,1
- 556              		.align	2
- 557              	.LC0:
- 558 0000 53544152 		.ascii	"START\015\012\000"
- 558      540D0A00 
- 559              	.LC1:
- 560 0008 53455420 		.ascii	"SET CONFIG\015\012\000"
- 560      434F4E46 
- 560      49470D0A 
- 560      00
- 561              		.text
- 562              	.Letext0:
- 563              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 564              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 565              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 566              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
- 567              		.file 6 "SPI_Interface.h"
- 568              		.file 7 "Generated_Source\\PSoC5/UART.h"
- 569              		.section	.debug_info,"",%progbits
- 570              	.Ldebug_info0:
- 571 0000 FD040000 		.4byte	0x4fd
- 572 0004 0400     		.2byte	0x4
- 573 0006 00000000 		.4byte	.Ldebug_abbrev0
- 574 000a 04       		.byte	0x4
- 575 000b 01       		.uleb128 0x1
- 576 000c 04010000 		.4byte	.LASF44
- 577 0010 0C       		.byte	0xc
- 578 0011 BF020000 		.4byte	.LASF45
- 579 0015 51000000 		.4byte	.LASF46
- 580 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 581 001d 00000000 		.4byte	0
- 582 0021 00000000 		.4byte	.Ldebug_line0
- 583 0025 02       		.uleb128 0x2
- 584 0026 01       		.byte	0x1
- 585 0027 06       		.byte	0x6
- 586 0028 34030000 		.4byte	.LASF0
- 587 002c 03       		.uleb128 0x3
- 588 002d 29000000 		.4byte	.LASF4
- 589 0031 02       		.byte	0x2
- 590 0032 1D       		.byte	0x1d
- 591 0033 37000000 		.4byte	0x37
- 592 0037 02       		.uleb128 0x2
- 593 0038 01       		.byte	0x1
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 16
-
-
- 594 0039 08       		.byte	0x8
- 595 003a 0A020000 		.4byte	.LASF1
- 596 003e 02       		.uleb128 0x2
- 597 003f 02       		.byte	0x2
- 598 0040 05       		.byte	0x5
- 599 0041 CF020000 		.4byte	.LASF2
- 600 0045 02       		.uleb128 0x2
- 601 0046 02       		.byte	0x2
- 602 0047 07       		.byte	0x7
- 603 0048 C9000000 		.4byte	.LASF3
- 604 004c 03       		.uleb128 0x3
- 605 004d B8000000 		.4byte	.LASF5
- 606 0051 02       		.byte	0x2
- 607 0052 3F       		.byte	0x3f
- 608 0053 57000000 		.4byte	0x57
- 609 0057 02       		.uleb128 0x2
- 610 0058 04       		.byte	0x4
- 611 0059 05       		.byte	0x5
- 612 005a 00030000 		.4byte	.LASF6
- 613 005e 02       		.uleb128 0x2
- 614 005f 04       		.byte	0x4
- 615 0060 07       		.byte	0x7
- 616 0061 A5010000 		.4byte	.LASF7
- 617 0065 02       		.uleb128 0x2
- 618 0066 08       		.byte	0x8
- 619 0067 05       		.byte	0x5
- 620 0068 00000000 		.4byte	.LASF8
- 621 006c 02       		.uleb128 0x2
- 622 006d 08       		.byte	0x8
- 623 006e 07       		.byte	0x7
- 624 006f 2A020000 		.4byte	.LASF9
- 625 0073 04       		.uleb128 0x4
- 626 0074 04       		.byte	0x4
- 627 0075 05       		.byte	0x5
- 628 0076 696E7400 		.ascii	"int\000"
- 629 007a 02       		.uleb128 0x2
- 630 007b 04       		.byte	0x4
- 631 007c 07       		.byte	0x7
- 632 007d 18020000 		.4byte	.LASF10
- 633 0081 03       		.uleb128 0x3
- 634 0082 41020000 		.4byte	.LASF11
- 635 0086 03       		.byte	0x3
- 636 0087 18       		.byte	0x18
- 637 0088 2C000000 		.4byte	0x2c
- 638 008c 03       		.uleb128 0x3
- 639 008d 72020000 		.4byte	.LASF12
- 640 0091 03       		.byte	0x3
- 641 0092 2C       		.byte	0x2c
- 642 0093 4C000000 		.4byte	0x4c
- 643 0097 05       		.uleb128 0x5
- 644 0098 E9020000 		.4byte	.LASF13
- 645 009c 04       		.byte	0x4
- 646 009d E401     		.2byte	0x1e4
- 647 009f 37000000 		.4byte	0x37
- 648 00a3 02       		.uleb128 0x2
- 649 00a4 04       		.byte	0x4
- 650 00a5 04       		.byte	0x4
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 17
-
-
- 651 00a6 E8000000 		.4byte	.LASF14
- 652 00aa 02       		.uleb128 0x2
- 653 00ab 08       		.byte	0x8
- 654 00ac 04       		.byte	0x4
- 655 00ad F7010000 		.4byte	.LASF15
- 656 00b1 02       		.uleb128 0x2
- 657 00b2 01       		.byte	0x1
- 658 00b3 08       		.byte	0x8
- 659 00b4 8A020000 		.4byte	.LASF16
- 660 00b8 02       		.uleb128 0x2
- 661 00b9 08       		.byte	0x8
- 662 00ba 04       		.byte	0x4
- 663 00bb 09030000 		.4byte	.LASF17
- 664 00bf 02       		.uleb128 0x2
- 665 00c0 04       		.byte	0x4
- 666 00c1 07       		.byte	0x7
- 667 00c2 7A020000 		.4byte	.LASF18
- 668 00c6 06       		.uleb128 0x6
- 669 00c7 81000000 		.4byte	0x81
- 670 00cb 07       		.uleb128 0x7
- 671 00cc 92010000 		.4byte	.LASF21
- 672 00d0 01       		.byte	0x1
- 673 00d1 15       		.byte	0x15
- 674 00d2 00000000 		.4byte	.LFB63
- 675 00d6 76000000 		.4byte	.LFE63-.LFB63
- 676 00da 01       		.uleb128 0x1
- 677 00db 9C       		.byte	0x9c
- 678 00dc FD000000 		.4byte	0xfd
- 679 00e0 08       		.uleb128 0x8
- 680 00e1 1E000000 		.4byte	.LASF19
- 681 00e5 01       		.byte	0x1
- 682 00e6 15       		.byte	0x15
- 683 00e7 81000000 		.4byte	0x81
- 684 00eb 00000000 		.4byte	.LLST0
- 685 00ef 09       		.uleb128 0x9
- 686 00f0 EE000000 		.4byte	.LASF20
- 687 00f4 01       		.byte	0x1
- 688 00f5 15       		.byte	0x15
- 689 00f6 FD000000 		.4byte	0xfd
- 690 00fa 01       		.uleb128 0x1
- 691 00fb 51       		.byte	0x51
- 692 00fc 00       		.byte	0
- 693 00fd 0A       		.uleb128 0xa
- 694 00fe 04       		.byte	0x4
- 695 00ff C6000000 		.4byte	0xc6
- 696 0103 0B       		.uleb128 0xb
- 697 0104 F3000000 		.4byte	.LASF23
- 698 0108 01       		.byte	0x1
- 699 0109 4F       		.byte	0x4f
- 700 010a 97000000 		.4byte	0x97
- 701 010e 00000000 		.4byte	.LFB64
- 702 0112 5A000000 		.4byte	.LFE64-.LFB64
- 703 0116 01       		.uleb128 0x1
- 704 0117 9C       		.byte	0x9c
- 705 0118 3B010000 		.4byte	0x13b
- 706 011c 08       		.uleb128 0x8
- 707 011d EE000000 		.4byte	.LASF20
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 18
-
-
- 708 0121 01       		.byte	0x1
- 709 0122 4F       		.byte	0x4f
- 710 0123 FD000000 		.4byte	0xfd
- 711 0127 21000000 		.4byte	.LLST1
- 712 012b 0C       		.uleb128 0xc
- 713 012c 1E000000 		.4byte	.LASF19
- 714 0130 01       		.byte	0x1
- 715 0131 50       		.byte	0x50
- 716 0132 81000000 		.4byte	0x81
- 717 0136 42000000 		.4byte	.LLST2
- 718 013a 00       		.byte	0
- 719 013b 0D       		.uleb128 0xd
- 720 013c 8F020000 		.4byte	.LASF22
- 721 0140 01       		.byte	0x1
- 722 0141 AF       		.byte	0xaf
- 723 0142 81000000 		.4byte	0x81
- 724 0146 00000000 		.4byte	.LFB68
- 725 014a 0A000000 		.4byte	.LFE68-.LFB68
- 726 014e 01       		.uleb128 0x1
- 727 014f 9C       		.byte	0x9c
- 728 0150 65010000 		.4byte	0x165
- 729 0154 0E       		.uleb128 0xe
- 730 0155 08000000 		.4byte	.LVL13
- 731 0159 CB040000 		.4byte	0x4cb
- 732 015d 0F       		.uleb128 0xf
- 733 015e 01       		.uleb128 0x1
- 734 015f 50       		.byte	0x50
- 735 0160 02       		.uleb128 0x2
- 736 0161 09       		.byte	0x9
- 737 0162 AF       		.byte	0xaf
- 738 0163 00       		.byte	0
- 739 0164 00       		.byte	0
- 740 0165 0B       		.uleb128 0xb
- 741 0166 0E000000 		.4byte	.LASF24
- 742 016a 01       		.byte	0x1
- 743 016b B6       		.byte	0xb6
- 744 016c 81000000 		.4byte	0x81
- 745 0170 00000000 		.4byte	.LFB69
- 746 0174 0C000000 		.4byte	.LFE69-.LFB69
- 747 0178 01       		.uleb128 0x1
- 748 0179 9C       		.byte	0x9c
- 749 017a B3010000 		.4byte	0x1b3
- 750 017e 08       		.uleb128 0x8
- 751 017f C9010000 		.4byte	.LASF25
- 752 0183 01       		.byte	0x1
- 753 0184 B6       		.byte	0xb6
- 754 0185 81000000 		.4byte	0x81
- 755 0189 85000000 		.4byte	.LLST3
- 756 018d 0C       		.uleb128 0xc
- 757 018e 83020000 		.4byte	.LASF26
- 758 0192 01       		.byte	0x1
- 759 0193 B9       		.byte	0xb9
- 760 0194 81000000 		.4byte	0x81
- 761 0198 A6000000 		.4byte	.LLST4
- 762 019c 10       		.uleb128 0x10
- 763 019d 5A020000 		.4byte	.LASF27
- 764 01a1 01       		.byte	0x1
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 19
-
-
- 765 01a2 BC       		.byte	0xbc
- 766 01a3 81000000 		.4byte	0x81
- 767 01a7 01       		.uleb128 0x1
- 768 01a8 50       		.byte	0x50
- 769 01a9 11       		.uleb128 0x11
- 770 01aa 0A000000 		.4byte	.LVL17
- 771 01ae CB040000 		.4byte	0x4cb
- 772 01b2 00       		.byte	0
- 773 01b3 07       		.uleb128 0x7
- 774 01b4 EF020000 		.4byte	.LASF28
- 775 01b8 01       		.byte	0x1
- 776 01b9 D1       		.byte	0xd1
- 777 01ba 00000000 		.4byte	.LFB70
- 778 01be 18000000 		.4byte	.LFE70-.LFB70
- 779 01c2 01       		.uleb128 0x1
- 780 01c3 9C       		.byte	0x9c
- 781 01c4 05020000 		.4byte	0x205
- 782 01c8 08       		.uleb128 0x8
- 783 01c9 C9010000 		.4byte	.LASF25
- 784 01cd 01       		.byte	0x1
- 785 01ce D1       		.byte	0xd1
- 786 01cf 81000000 		.4byte	0x81
- 787 01d3 BE000000 		.4byte	.LLST5
- 788 01d7 08       		.uleb128 0x8
- 789 01d8 DB010000 		.4byte	.LASF29
- 790 01dc 01       		.byte	0x1
- 791 01dd D1       		.byte	0xd1
- 792 01de 81000000 		.4byte	0x81
- 793 01e2 EB000000 		.4byte	.LLST6
- 794 01e6 10       		.uleb128 0x10
- 795 01e7 83020000 		.4byte	.LASF26
- 796 01eb 01       		.byte	0x1
- 797 01ec D4       		.byte	0xd4
- 798 01ed 05020000 		.4byte	0x205
- 799 01f1 02       		.uleb128 0x2
- 800 01f2 91       		.byte	0x91
- 801 01f3 74       		.sleb128 -12
- 802 01f4 0E       		.uleb128 0xe
- 803 01f5 12000000 		.4byte	.LVL20
- 804 01f9 D6040000 		.4byte	0x4d6
- 805 01fd 0F       		.uleb128 0xf
- 806 01fe 01       		.uleb128 0x1
- 807 01ff 50       		.byte	0x50
- 808 0200 02       		.uleb128 0x2
- 809 0201 91       		.byte	0x91
- 810 0202 74       		.sleb128 -12
- 811 0203 00       		.byte	0
- 812 0204 00       		.byte	0
- 813 0205 12       		.uleb128 0x12
- 814 0206 81000000 		.4byte	0x81
- 815 020a 15020000 		.4byte	0x215
- 816 020e 13       		.uleb128 0x13
- 817 020f BF000000 		.4byte	0xbf
- 818 0213 01       		.byte	0x1
- 819 0214 00       		.byte	0
- 820 0215 07       		.uleb128 0x7
- 821 0216 DC000000 		.4byte	.LASF30
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 20
-
-
- 822 021a 01       		.byte	0x1
- 823 021b 8A       		.byte	0x8a
- 824 021c 00000000 		.4byte	.LFB65
- 825 0220 30000000 		.4byte	.LFE65-.LFB65
- 826 0224 01       		.uleb128 0x1
- 827 0225 9C       		.byte	0x9c
- 828 0226 A4020000 		.4byte	0x2a4
- 829 022a 14       		.uleb128 0x14
- 830 022b 0A000000 		.4byte	.LVL21
- 831 022f B3010000 		.4byte	0x1b3
- 832 0233 44020000 		.4byte	0x244
- 833 0237 0F       		.uleb128 0xf
- 834 0238 01       		.uleb128 0x1
- 835 0239 50       		.byte	0x50
- 836 023a 02       		.uleb128 0x2
- 837 023b 08       		.byte	0x8
- 838 023c 24       		.byte	0x24
- 839 023d 0F       		.uleb128 0xf
- 840 023e 01       		.uleb128 0x1
- 841 023f 51       		.byte	0x51
- 842 0240 02       		.uleb128 0x2
- 843 0241 09       		.byte	0x9
- 844 0242 80       		.byte	0x80
- 845 0243 00       		.byte	0
- 846 0244 14       		.uleb128 0x14
- 847 0245 12000000 		.4byte	.LVL22
- 848 0249 B3010000 		.4byte	0x1b3
- 849 024d 5D020000 		.4byte	0x25d
- 850 0251 0F       		.uleb128 0xf
- 851 0252 01       		.uleb128 0x1
- 852 0253 50       		.byte	0x50
- 853 0254 02       		.uleb128 0x2
- 854 0255 08       		.byte	0x8
- 855 0256 2E       		.byte	0x2e
- 856 0257 0F       		.uleb128 0xf
- 857 0258 01       		.uleb128 0x1
- 858 0259 51       		.byte	0x51
- 859 025a 01       		.uleb128 0x1
- 860 025b 30       		.byte	0x30
- 861 025c 00       		.byte	0
- 862 025d 14       		.uleb128 0x14
- 863 025e 1A000000 		.4byte	.LVL23
- 864 0262 B3010000 		.4byte	0x1b3
- 865 0266 76020000 		.4byte	0x276
- 866 026a 0F       		.uleb128 0xf
- 867 026b 01       		.uleb128 0x1
- 868 026c 50       		.byte	0x50
- 869 026d 02       		.uleb128 0x2
- 870 026e 08       		.byte	0x8
- 871 026f 22       		.byte	0x22
- 872 0270 0F       		.uleb128 0xf
- 873 0271 01       		.uleb128 0x1
- 874 0272 51       		.byte	0x51
- 875 0273 01       		.uleb128 0x1
- 876 0274 32       		.byte	0x32
- 877 0275 00       		.byte	0
- 878 0276 14       		.uleb128 0x14
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 21
-
-
- 879 0277 22000000 		.4byte	.LVL24
- 880 027b B3010000 		.4byte	0x1b3
- 881 027f 90020000 		.4byte	0x290
- 882 0283 0F       		.uleb128 0xf
- 883 0284 01       		.uleb128 0x1
- 884 0285 50       		.byte	0x50
- 885 0286 02       		.uleb128 0x2
- 886 0287 08       		.byte	0x8
- 887 0288 24       		.byte	0x24
- 888 0289 0F       		.uleb128 0xf
- 889 028a 01       		.uleb128 0x1
- 890 028b 51       		.byte	0x51
- 891 028c 02       		.uleb128 0x2
- 892 028d 08       		.byte	0x8
- 893 028e 48       		.byte	0x48
- 894 028f 00       		.byte	0
- 895 0290 0E       		.uleb128 0xe
- 896 0291 28000000 		.4byte	.LVL25
- 897 0295 E1040000 		.4byte	0x4e1
- 898 0299 0F       		.uleb128 0xf
- 899 029a 01       		.uleb128 0x1
- 900 029b 50       		.byte	0x50
- 901 029c 05       		.uleb128 0x5
- 902 029d 03       		.byte	0x3
- 903 029e 00000000 		.4byte	.LC0
- 904 02a2 00       		.byte	0
- 905 02a3 00       		.byte	0
- 906 02a4 07       		.uleb128 0x7
- 907 02a5 FE010000 		.4byte	.LASF31
- 908 02a9 01       		.byte	0x1
- 909 02aa 9A       		.byte	0x9a
- 910 02ab 00000000 		.4byte	.LFB66
- 911 02af 0C000000 		.4byte	.LFE66-.LFB66
- 912 02b3 01       		.uleb128 0x1
- 913 02b4 9C       		.byte	0x9c
- 914 02b5 CF020000 		.4byte	0x2cf
- 915 02b9 0E       		.uleb128 0xe
- 916 02ba 0A000000 		.4byte	.LVL26
- 917 02be B3010000 		.4byte	0x1b3
- 918 02c2 0F       		.uleb128 0xf
- 919 02c3 01       		.uleb128 0x1
- 920 02c4 50       		.byte	0x50
- 921 02c5 02       		.uleb128 0x2
- 922 02c6 08       		.byte	0x8
- 923 02c7 2E       		.byte	0x2e
- 924 02c8 0F       		.uleb128 0xf
- 925 02c9 01       		.uleb128 0x1
- 926 02ca 51       		.byte	0x51
- 927 02cb 01       		.uleb128 0x1
- 928 02cc 30       		.byte	0x30
- 929 02cd 00       		.byte	0
- 930 02ce 00       		.byte	0
- 931 02cf 07       		.uleb128 0x7
- 932 02d0 61020000 		.4byte	.LASF32
- 933 02d4 01       		.byte	0x1
- 934 02d5 A2       		.byte	0xa2
- 935 02d6 00000000 		.4byte	.LFB67
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 22
-
-
- 936 02da 28000000 		.4byte	.LFE67-.LFB67
- 937 02de 01       		.uleb128 0x1
- 938 02df 9C       		.byte	0x9c
- 939 02e0 43030000 		.4byte	0x343
- 940 02e4 08       		.uleb128 0x8
- 941 02e5 EE000000 		.4byte	.LASF20
- 942 02e9 01       		.byte	0x1
- 943 02ea A2       		.byte	0xa2
- 944 02eb FD000000 		.4byte	0xfd
- 945 02ef 0C010000 		.4byte	.LLST7
- 946 02f3 14       		.uleb128 0x14
- 947 02f4 0C000000 		.4byte	.LVL29
- 948 02f8 B3010000 		.4byte	0x1b3
- 949 02fc 07030000 		.4byte	0x307
- 950 0300 0F       		.uleb128 0xf
- 951 0301 01       		.uleb128 0x1
- 952 0302 50       		.byte	0x50
- 953 0303 02       		.uleb128 0x2
- 954 0304 08       		.byte	0x8
- 955 0305 20       		.byte	0x20
- 956 0306 00       		.byte	0
- 957 0307 14       		.uleb128 0x14
- 958 0308 14000000 		.4byte	.LVL30
- 959 030c B3010000 		.4byte	0x1b3
- 960 0310 1B030000 		.4byte	0x31b
- 961 0314 0F       		.uleb128 0xf
- 962 0315 01       		.uleb128 0x1
- 963 0316 50       		.byte	0x50
- 964 0317 02       		.uleb128 0x2
- 965 0318 08       		.byte	0x8
- 966 0319 23       		.byte	0x23
- 967 031a 00       		.byte	0
- 968 031b 14       		.uleb128 0x14
- 969 031c 1C000000 		.4byte	.LVL31
- 970 0320 B3010000 		.4byte	0x1b3
- 971 0324 2F030000 		.4byte	0x32f
- 972 0328 0F       		.uleb128 0xf
- 973 0329 01       		.uleb128 0x1
- 974 032a 50       		.byte	0x50
- 975 032b 02       		.uleb128 0x2
- 976 032c 08       		.byte	0x8
- 977 032d 2E       		.byte	0x2e
- 978 032e 00       		.byte	0
- 979 032f 0E       		.uleb128 0xe
- 980 0330 22000000 		.4byte	.LVL32
- 981 0334 E1040000 		.4byte	0x4e1
- 982 0338 0F       		.uleb128 0xf
- 983 0339 01       		.uleb128 0x1
- 984 033a 50       		.byte	0x50
- 985 033b 05       		.uleb128 0x5
- 986 033c 03       		.byte	0x3
- 987 033d 08000000 		.4byte	.LC1
- 988 0341 00       		.byte	0
- 989 0342 00       		.byte	0
- 990 0343 07       		.uleb128 0x7
- 991 0344 D9020000 		.4byte	.LASF33
- 992 0348 01       		.byte	0x1
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 23
-
-
- 993 0349 DA       		.byte	0xda
- 994 034a 00000000 		.4byte	.LFB71
- 995 034e 1E000000 		.4byte	.LFE71-.LFB71
- 996 0352 01       		.uleb128 0x1
- 997 0353 9C       		.byte	0x9c
- 998 0354 B0030000 		.4byte	0x3b0
- 999 0358 08       		.uleb128 0x8
- 1000 0359 C9010000 		.4byte	.LASF25
- 1001 035d 01       		.byte	0x1
- 1002 035e DA       		.byte	0xda
- 1003 035f 81000000 		.4byte	0x81
- 1004 0363 38010000 		.4byte	.LLST8
- 1005 0367 08       		.uleb128 0x8
- 1006 0368 5A020000 		.4byte	.LASF27
- 1007 036c 01       		.byte	0x1
- 1008 036d DA       		.byte	0xda
- 1009 036e B0030000 		.4byte	0x3b0
- 1010 0372 59010000 		.4byte	.LLST9
- 1011 0376 08       		.uleb128 0x8
- 1012 0377 C2000000 		.4byte	.LASF34
- 1013 037b 01       		.byte	0x1
- 1014 037c DA       		.byte	0xda
- 1015 037d 81000000 		.4byte	0x81
- 1016 0381 85010000 		.4byte	.LLST10
- 1017 0385 10       		.uleb128 0x10
- 1018 0386 83020000 		.4byte	.LASF26
- 1019 038a 01       		.byte	0x1
- 1020 038b DD       		.byte	0xdd
- 1021 038c 81000000 		.4byte	0x81
- 1022 0390 02       		.uleb128 0x2
- 1023 0391 91       		.byte	0x91
- 1024 0392 77       		.sleb128 -9
- 1025 0393 0E       		.uleb128 0xe
- 1026 0394 18000000 		.4byte	.LVL38
- 1027 0398 EC040000 		.4byte	0x4ec
- 1028 039c 0F       		.uleb128 0xf
- 1029 039d 01       		.uleb128 0x1
- 1030 039e 50       		.byte	0x50
- 1031 039f 02       		.uleb128 0x2
- 1032 03a0 91       		.byte	0x91
- 1033 03a1 77       		.sleb128 -9
- 1034 03a2 0F       		.uleb128 0xf
- 1035 03a3 01       		.uleb128 0x1
- 1036 03a4 51       		.byte	0x51
- 1037 03a5 01       		.uleb128 0x1
- 1038 03a6 31       		.byte	0x31
- 1039 03a7 0F       		.uleb128 0xf
- 1040 03a8 01       		.uleb128 0x1
- 1041 03a9 52       		.byte	0x52
- 1042 03aa 03       		.uleb128 0x3
- 1043 03ab F3       		.byte	0xf3
- 1044 03ac 01       		.uleb128 0x1
- 1045 03ad 51       		.byte	0x51
- 1046 03ae 00       		.byte	0
- 1047 03af 00       		.byte	0
- 1048 03b0 0A       		.uleb128 0xa
- 1049 03b1 04       		.byte	0x4
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 24
-
-
- 1050 03b2 81000000 		.4byte	0x81
- 1051 03b6 07       		.uleb128 0x7
- 1052 03b7 49020000 		.4byte	.LASF35
- 1053 03bb 01       		.byte	0x1
- 1054 03bc E3       		.byte	0xe3
- 1055 03bd 00000000 		.4byte	.LFB72
- 1056 03c1 3A000000 		.4byte	.LFE72-.LFB72
- 1057 03c5 01       		.uleb128 0x1
- 1058 03c6 9C       		.byte	0x9c
- 1059 03c7 61040000 		.4byte	0x461
- 1060 03cb 08       		.uleb128 0x8
- 1061 03cc C9010000 		.4byte	.LASF25
- 1062 03d0 01       		.byte	0x1
- 1063 03d1 E3       		.byte	0xe3
- 1064 03d2 81000000 		.4byte	0x81
- 1065 03d6 A6010000 		.4byte	.LLST11
- 1066 03da 08       		.uleb128 0x8
- 1067 03db EE000000 		.4byte	.LASF20
- 1068 03df 01       		.byte	0x1
- 1069 03e0 E3       		.byte	0xe3
- 1070 03e1 B0030000 		.4byte	0x3b0
- 1071 03e5 C7010000 		.4byte	.LLST12
- 1072 03e9 08       		.uleb128 0x8
- 1073 03ea C2000000 		.4byte	.LASF34
- 1074 03ee 01       		.byte	0x1
- 1075 03ef E3       		.byte	0xe3
- 1076 03f0 81000000 		.4byte	0x81
- 1077 03f4 E8010000 		.4byte	.LLST13
- 1078 03f8 15       		.uleb128 0x15
- 1079 03f9 74040000 		.4byte	0x474
- 1080 03fd 09020000 		.4byte	.LLST14
- 1081 0401 0C       		.uleb128 0xc
- 1082 0402 83020000 		.4byte	.LASF26
- 1083 0406 01       		.byte	0x1
- 1084 0407 E9       		.byte	0xe9
- 1085 0408 61040000 		.4byte	0x461
- 1086 040c 41020000 		.4byte	.LLST15
- 1087 0410 10       		.uleb128 0x10
- 1088 0411 25020000 		.4byte	.LASF36
- 1089 0415 01       		.byte	0x1
- 1090 0416 EF       		.byte	0xef
- 1091 0417 81000000 		.4byte	0x81
- 1092 041b 02       		.uleb128 0x2
- 1093 041c 91       		.byte	0x91
- 1094 041d 6F       		.sleb128 -17
- 1095 041e 14       		.uleb128 0x14
- 1096 041f 22000000 		.4byte	.LVL44
- 1097 0423 F7040000 		.4byte	0x4f7
- 1098 0427 3F040000 		.4byte	0x43f
- 1099 042b 0F       		.uleb128 0xf
- 1100 042c 01       		.uleb128 0x1
- 1101 042d 50       		.byte	0x50
- 1102 042e 02       		.uleb128 0x2
- 1103 042f 7D       		.byte	0x7d
- 1104 0430 01       		.sleb128 1
- 1105 0431 0F       		.uleb128 0xf
- 1106 0432 01       		.uleb128 0x1
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 25
-
-
- 1107 0433 51       		.byte	0x51
- 1108 0434 03       		.uleb128 0x3
- 1109 0435 F3       		.byte	0xf3
- 1110 0436 01       		.uleb128 0x1
- 1111 0437 51       		.byte	0x51
- 1112 0438 0F       		.uleb128 0xf
- 1113 0439 01       		.uleb128 0x1
- 1114 043a 52       		.byte	0x52
- 1115 043b 02       		.uleb128 0x2
- 1116 043c 74       		.byte	0x74
- 1117 043d 7F       		.sleb128 -1
- 1118 043e 00       		.byte	0
- 1119 043f 0E       		.uleb128 0xe
- 1120 0440 34000000 		.4byte	.LVL45
- 1121 0444 EC040000 		.4byte	0x4ec
- 1122 0448 0F       		.uleb128 0xf
- 1123 0449 01       		.uleb128 0x1
- 1124 044a 50       		.byte	0x50
- 1125 044b 02       		.uleb128 0x2
- 1126 044c 7D       		.byte	0x7d
- 1127 044d 00       		.sleb128 0
- 1128 044e 0F       		.uleb128 0xf
- 1129 044f 01       		.uleb128 0x1
- 1130 0450 51       		.byte	0x51
- 1131 0451 02       		.uleb128 0x2
- 1132 0452 74       		.byte	0x74
- 1133 0453 00       		.sleb128 0
- 1134 0454 0F       		.uleb128 0xf
- 1135 0455 01       		.uleb128 0x1
- 1136 0456 52       		.byte	0x52
- 1137 0457 02       		.uleb128 0x2
- 1138 0458 77       		.byte	0x77
- 1139 0459 0F       		.sleb128 15
- 1140 045a 0F       		.uleb128 0xf
- 1141 045b 01       		.uleb128 0x1
- 1142 045c 53       		.byte	0x53
- 1143 045d 01       		.uleb128 0x1
- 1144 045e 30       		.byte	0x30
- 1145 045f 00       		.byte	0
- 1146 0460 00       		.byte	0
- 1147 0461 12       		.uleb128 0x12
- 1148 0462 81000000 		.4byte	0x81
- 1149 0466 74040000 		.4byte	0x474
- 1150 046a 16       		.uleb128 0x16
- 1151 046b BF000000 		.4byte	0xbf
- 1152 046f F8030000 		.4byte	0x3f8
- 1153 0473 00       		.byte	0
- 1154 0474 17       		.uleb128 0x17
- 1155 0475 BF000000 		.4byte	0xbf
- 1156 0479 12       		.uleb128 0x12
- 1157 047a 89040000 		.4byte	0x489
- 1158 047e 89040000 		.4byte	0x489
- 1159 0482 13       		.uleb128 0x13
- 1160 0483 BF000000 		.4byte	0xbf
- 1161 0487 03       		.byte	0x3
- 1162 0488 00       		.byte	0
- 1163 0489 17       		.uleb128 0x17
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 26
-
-
- 1164 048a 81000000 		.4byte	0x81
- 1165 048e 18       		.uleb128 0x18
- 1166 048f B7010000 		.4byte	.LASF37
- 1167 0493 01       		.byte	0x1
- 1168 0494 10       		.byte	0x10
- 1169 0495 9F040000 		.4byte	0x49f
- 1170 0499 05       		.uleb128 0x5
- 1171 049a 03       		.byte	0x3
- 1172 049b 00000000 		.4byte	lis3dh_dataRate_t
- 1173 049f 17       		.uleb128 0x17
- 1174 04a0 79040000 		.4byte	0x479
- 1175 04a4 18       		.uleb128 0x18
- 1176 04a5 E4010000 		.4byte	.LASF38
- 1177 04a9 01       		.byte	0x1
- 1178 04aa 11       		.byte	0x11
- 1179 04ab B5040000 		.4byte	0x4b5
- 1180 04af 05       		.uleb128 0x5
- 1181 04b0 03       		.byte	0x3
- 1182 04b1 00000000 		.4byte	lis3dh_dataRange_t
- 1183 04b5 17       		.uleb128 0x17
- 1184 04b6 79040000 		.4byte	0x479
- 1185 04ba 19       		.uleb128 0x19
- 1186 04bb CE010000 		.4byte	.LASF39
- 1187 04bf 05       		.byte	0x5
- 1188 04c0 1207     		.2byte	0x712
- 1189 04c2 C6040000 		.4byte	0x4c6
- 1190 04c6 06       		.uleb128 0x6
- 1191 04c7 8C000000 		.4byte	0x8c
- 1192 04cb 1A       		.uleb128 0x1a
- 1193 04cc A1020000 		.4byte	.LASF40
- 1194 04d0 A1020000 		.4byte	.LASF40
- 1195 04d4 06       		.byte	0x6
- 1196 04d5 40       		.byte	0x40
- 1197 04d6 1A       		.uleb128 0x1a
- 1198 04d7 15030000 		.4byte	.LASF41
- 1199 04db 15030000 		.4byte	.LASF41
- 1200 04df 06       		.byte	0x6
- 1201 04e0 43       		.byte	0x43
- 1202 04e1 1A       		.uleb128 0x1a
- 1203 04e2 40030000 		.4byte	.LASF42
- 1204 04e6 40030000 		.4byte	.LASF42
- 1205 04ea 07       		.byte	0x7
- 1206 04eb 8B       		.byte	0x8b
- 1207 04ec 1A       		.uleb128 0x1a
- 1208 04ed 33000000 		.4byte	.LASF43
- 1209 04f1 33000000 		.4byte	.LASF43
- 1210 04f5 06       		.byte	0x6
- 1211 04f6 60       		.byte	0x60
- 1212 04f7 1B       		.uleb128 0x1b
- 1213 04f8 C8020000 		.4byte	.LASF47
- 1214 04fc C8020000 		.4byte	.LASF47
- 1215 0500 00       		.byte	0
- 1216              		.section	.debug_abbrev,"",%progbits
- 1217              	.Ldebug_abbrev0:
- 1218 0000 01       		.uleb128 0x1
- 1219 0001 11       		.uleb128 0x11
- 1220 0002 01       		.byte	0x1
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 27
-
-
- 1221 0003 25       		.uleb128 0x25
- 1222 0004 0E       		.uleb128 0xe
- 1223 0005 13       		.uleb128 0x13
- 1224 0006 0B       		.uleb128 0xb
- 1225 0007 03       		.uleb128 0x3
- 1226 0008 0E       		.uleb128 0xe
- 1227 0009 1B       		.uleb128 0x1b
- 1228 000a 0E       		.uleb128 0xe
- 1229 000b 55       		.uleb128 0x55
- 1230 000c 17       		.uleb128 0x17
- 1231 000d 11       		.uleb128 0x11
- 1232 000e 01       		.uleb128 0x1
- 1233 000f 10       		.uleb128 0x10
- 1234 0010 17       		.uleb128 0x17
- 1235 0011 00       		.byte	0
- 1236 0012 00       		.byte	0
- 1237 0013 02       		.uleb128 0x2
- 1238 0014 24       		.uleb128 0x24
- 1239 0015 00       		.byte	0
- 1240 0016 0B       		.uleb128 0xb
- 1241 0017 0B       		.uleb128 0xb
- 1242 0018 3E       		.uleb128 0x3e
- 1243 0019 0B       		.uleb128 0xb
- 1244 001a 03       		.uleb128 0x3
- 1245 001b 0E       		.uleb128 0xe
- 1246 001c 00       		.byte	0
- 1247 001d 00       		.byte	0
- 1248 001e 03       		.uleb128 0x3
- 1249 001f 16       		.uleb128 0x16
- 1250 0020 00       		.byte	0
- 1251 0021 03       		.uleb128 0x3
- 1252 0022 0E       		.uleb128 0xe
- 1253 0023 3A       		.uleb128 0x3a
- 1254 0024 0B       		.uleb128 0xb
- 1255 0025 3B       		.uleb128 0x3b
- 1256 0026 0B       		.uleb128 0xb
- 1257 0027 49       		.uleb128 0x49
- 1258 0028 13       		.uleb128 0x13
- 1259 0029 00       		.byte	0
- 1260 002a 00       		.byte	0
- 1261 002b 04       		.uleb128 0x4
- 1262 002c 24       		.uleb128 0x24
- 1263 002d 00       		.byte	0
- 1264 002e 0B       		.uleb128 0xb
- 1265 002f 0B       		.uleb128 0xb
- 1266 0030 3E       		.uleb128 0x3e
- 1267 0031 0B       		.uleb128 0xb
- 1268 0032 03       		.uleb128 0x3
- 1269 0033 08       		.uleb128 0x8
- 1270 0034 00       		.byte	0
- 1271 0035 00       		.byte	0
- 1272 0036 05       		.uleb128 0x5
- 1273 0037 16       		.uleb128 0x16
- 1274 0038 00       		.byte	0
- 1275 0039 03       		.uleb128 0x3
- 1276 003a 0E       		.uleb128 0xe
- 1277 003b 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 28
-
-
- 1278 003c 0B       		.uleb128 0xb
- 1279 003d 3B       		.uleb128 0x3b
- 1280 003e 05       		.uleb128 0x5
- 1281 003f 49       		.uleb128 0x49
- 1282 0040 13       		.uleb128 0x13
- 1283 0041 00       		.byte	0
- 1284 0042 00       		.byte	0
- 1285 0043 06       		.uleb128 0x6
- 1286 0044 35       		.uleb128 0x35
- 1287 0045 00       		.byte	0
- 1288 0046 49       		.uleb128 0x49
- 1289 0047 13       		.uleb128 0x13
- 1290 0048 00       		.byte	0
- 1291 0049 00       		.byte	0
- 1292 004a 07       		.uleb128 0x7
- 1293 004b 2E       		.uleb128 0x2e
- 1294 004c 01       		.byte	0x1
- 1295 004d 3F       		.uleb128 0x3f
- 1296 004e 19       		.uleb128 0x19
- 1297 004f 03       		.uleb128 0x3
- 1298 0050 0E       		.uleb128 0xe
- 1299 0051 3A       		.uleb128 0x3a
- 1300 0052 0B       		.uleb128 0xb
- 1301 0053 3B       		.uleb128 0x3b
- 1302 0054 0B       		.uleb128 0xb
- 1303 0055 27       		.uleb128 0x27
- 1304 0056 19       		.uleb128 0x19
- 1305 0057 11       		.uleb128 0x11
- 1306 0058 01       		.uleb128 0x1
- 1307 0059 12       		.uleb128 0x12
- 1308 005a 06       		.uleb128 0x6
- 1309 005b 40       		.uleb128 0x40
- 1310 005c 18       		.uleb128 0x18
- 1311 005d 9742     		.uleb128 0x2117
- 1312 005f 19       		.uleb128 0x19
- 1313 0060 01       		.uleb128 0x1
- 1314 0061 13       		.uleb128 0x13
- 1315 0062 00       		.byte	0
- 1316 0063 00       		.byte	0
- 1317 0064 08       		.uleb128 0x8
- 1318 0065 05       		.uleb128 0x5
- 1319 0066 00       		.byte	0
- 1320 0067 03       		.uleb128 0x3
- 1321 0068 0E       		.uleb128 0xe
- 1322 0069 3A       		.uleb128 0x3a
- 1323 006a 0B       		.uleb128 0xb
- 1324 006b 3B       		.uleb128 0x3b
- 1325 006c 0B       		.uleb128 0xb
- 1326 006d 49       		.uleb128 0x49
- 1327 006e 13       		.uleb128 0x13
- 1328 006f 02       		.uleb128 0x2
- 1329 0070 17       		.uleb128 0x17
- 1330 0071 00       		.byte	0
- 1331 0072 00       		.byte	0
- 1332 0073 09       		.uleb128 0x9
- 1333 0074 05       		.uleb128 0x5
- 1334 0075 00       		.byte	0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 29
-
-
- 1335 0076 03       		.uleb128 0x3
- 1336 0077 0E       		.uleb128 0xe
- 1337 0078 3A       		.uleb128 0x3a
- 1338 0079 0B       		.uleb128 0xb
- 1339 007a 3B       		.uleb128 0x3b
- 1340 007b 0B       		.uleb128 0xb
- 1341 007c 49       		.uleb128 0x49
- 1342 007d 13       		.uleb128 0x13
- 1343 007e 02       		.uleb128 0x2
- 1344 007f 18       		.uleb128 0x18
- 1345 0080 00       		.byte	0
- 1346 0081 00       		.byte	0
- 1347 0082 0A       		.uleb128 0xa
- 1348 0083 0F       		.uleb128 0xf
- 1349 0084 00       		.byte	0
- 1350 0085 0B       		.uleb128 0xb
- 1351 0086 0B       		.uleb128 0xb
- 1352 0087 49       		.uleb128 0x49
- 1353 0088 13       		.uleb128 0x13
- 1354 0089 00       		.byte	0
- 1355 008a 00       		.byte	0
- 1356 008b 0B       		.uleb128 0xb
- 1357 008c 2E       		.uleb128 0x2e
- 1358 008d 01       		.byte	0x1
- 1359 008e 3F       		.uleb128 0x3f
- 1360 008f 19       		.uleb128 0x19
- 1361 0090 03       		.uleb128 0x3
- 1362 0091 0E       		.uleb128 0xe
- 1363 0092 3A       		.uleb128 0x3a
- 1364 0093 0B       		.uleb128 0xb
- 1365 0094 3B       		.uleb128 0x3b
- 1366 0095 0B       		.uleb128 0xb
- 1367 0096 27       		.uleb128 0x27
- 1368 0097 19       		.uleb128 0x19
- 1369 0098 49       		.uleb128 0x49
- 1370 0099 13       		.uleb128 0x13
- 1371 009a 11       		.uleb128 0x11
- 1372 009b 01       		.uleb128 0x1
- 1373 009c 12       		.uleb128 0x12
- 1374 009d 06       		.uleb128 0x6
- 1375 009e 40       		.uleb128 0x40
- 1376 009f 18       		.uleb128 0x18
- 1377 00a0 9742     		.uleb128 0x2117
- 1378 00a2 19       		.uleb128 0x19
- 1379 00a3 01       		.uleb128 0x1
- 1380 00a4 13       		.uleb128 0x13
- 1381 00a5 00       		.byte	0
- 1382 00a6 00       		.byte	0
- 1383 00a7 0C       		.uleb128 0xc
- 1384 00a8 34       		.uleb128 0x34
- 1385 00a9 00       		.byte	0
- 1386 00aa 03       		.uleb128 0x3
- 1387 00ab 0E       		.uleb128 0xe
- 1388 00ac 3A       		.uleb128 0x3a
- 1389 00ad 0B       		.uleb128 0xb
- 1390 00ae 3B       		.uleb128 0x3b
- 1391 00af 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 30
-
-
- 1392 00b0 49       		.uleb128 0x49
- 1393 00b1 13       		.uleb128 0x13
- 1394 00b2 02       		.uleb128 0x2
- 1395 00b3 17       		.uleb128 0x17
- 1396 00b4 00       		.byte	0
- 1397 00b5 00       		.byte	0
- 1398 00b6 0D       		.uleb128 0xd
- 1399 00b7 2E       		.uleb128 0x2e
- 1400 00b8 01       		.byte	0x1
- 1401 00b9 3F       		.uleb128 0x3f
- 1402 00ba 19       		.uleb128 0x19
- 1403 00bb 03       		.uleb128 0x3
- 1404 00bc 0E       		.uleb128 0xe
- 1405 00bd 3A       		.uleb128 0x3a
- 1406 00be 0B       		.uleb128 0xb
- 1407 00bf 3B       		.uleb128 0x3b
- 1408 00c0 0B       		.uleb128 0xb
- 1409 00c1 49       		.uleb128 0x49
- 1410 00c2 13       		.uleb128 0x13
- 1411 00c3 11       		.uleb128 0x11
- 1412 00c4 01       		.uleb128 0x1
- 1413 00c5 12       		.uleb128 0x12
- 1414 00c6 06       		.uleb128 0x6
- 1415 00c7 40       		.uleb128 0x40
- 1416 00c8 18       		.uleb128 0x18
- 1417 00c9 9742     		.uleb128 0x2117
- 1418 00cb 19       		.uleb128 0x19
- 1419 00cc 01       		.uleb128 0x1
- 1420 00cd 13       		.uleb128 0x13
- 1421 00ce 00       		.byte	0
- 1422 00cf 00       		.byte	0
- 1423 00d0 0E       		.uleb128 0xe
- 1424 00d1 898201   		.uleb128 0x4109
- 1425 00d4 01       		.byte	0x1
- 1426 00d5 11       		.uleb128 0x11
- 1427 00d6 01       		.uleb128 0x1
- 1428 00d7 31       		.uleb128 0x31
- 1429 00d8 13       		.uleb128 0x13
- 1430 00d9 00       		.byte	0
- 1431 00da 00       		.byte	0
- 1432 00db 0F       		.uleb128 0xf
- 1433 00dc 8A8201   		.uleb128 0x410a
- 1434 00df 00       		.byte	0
- 1435 00e0 02       		.uleb128 0x2
- 1436 00e1 18       		.uleb128 0x18
- 1437 00e2 9142     		.uleb128 0x2111
- 1438 00e4 18       		.uleb128 0x18
- 1439 00e5 00       		.byte	0
- 1440 00e6 00       		.byte	0
- 1441 00e7 10       		.uleb128 0x10
- 1442 00e8 34       		.uleb128 0x34
- 1443 00e9 00       		.byte	0
- 1444 00ea 03       		.uleb128 0x3
- 1445 00eb 0E       		.uleb128 0xe
- 1446 00ec 3A       		.uleb128 0x3a
- 1447 00ed 0B       		.uleb128 0xb
- 1448 00ee 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 31
-
-
- 1449 00ef 0B       		.uleb128 0xb
- 1450 00f0 49       		.uleb128 0x49
- 1451 00f1 13       		.uleb128 0x13
- 1452 00f2 02       		.uleb128 0x2
- 1453 00f3 18       		.uleb128 0x18
- 1454 00f4 00       		.byte	0
- 1455 00f5 00       		.byte	0
- 1456 00f6 11       		.uleb128 0x11
- 1457 00f7 898201   		.uleb128 0x4109
- 1458 00fa 00       		.byte	0
- 1459 00fb 11       		.uleb128 0x11
- 1460 00fc 01       		.uleb128 0x1
- 1461 00fd 31       		.uleb128 0x31
- 1462 00fe 13       		.uleb128 0x13
- 1463 00ff 00       		.byte	0
- 1464 0100 00       		.byte	0
- 1465 0101 12       		.uleb128 0x12
- 1466 0102 01       		.uleb128 0x1
- 1467 0103 01       		.byte	0x1
- 1468 0104 49       		.uleb128 0x49
- 1469 0105 13       		.uleb128 0x13
- 1470 0106 01       		.uleb128 0x1
- 1471 0107 13       		.uleb128 0x13
- 1472 0108 00       		.byte	0
- 1473 0109 00       		.byte	0
- 1474 010a 13       		.uleb128 0x13
- 1475 010b 21       		.uleb128 0x21
- 1476 010c 00       		.byte	0
- 1477 010d 49       		.uleb128 0x49
- 1478 010e 13       		.uleb128 0x13
- 1479 010f 2F       		.uleb128 0x2f
- 1480 0110 0B       		.uleb128 0xb
- 1481 0111 00       		.byte	0
- 1482 0112 00       		.byte	0
- 1483 0113 14       		.uleb128 0x14
- 1484 0114 898201   		.uleb128 0x4109
- 1485 0117 01       		.byte	0x1
- 1486 0118 11       		.uleb128 0x11
- 1487 0119 01       		.uleb128 0x1
- 1488 011a 31       		.uleb128 0x31
- 1489 011b 13       		.uleb128 0x13
- 1490 011c 01       		.uleb128 0x1
- 1491 011d 13       		.uleb128 0x13
- 1492 011e 00       		.byte	0
- 1493 011f 00       		.byte	0
- 1494 0120 15       		.uleb128 0x15
- 1495 0121 34       		.uleb128 0x34
- 1496 0122 00       		.byte	0
- 1497 0123 34       		.uleb128 0x34
- 1498 0124 19       		.uleb128 0x19
- 1499 0125 49       		.uleb128 0x49
- 1500 0126 13       		.uleb128 0x13
- 1501 0127 02       		.uleb128 0x2
- 1502 0128 17       		.uleb128 0x17
- 1503 0129 00       		.byte	0
- 1504 012a 00       		.byte	0
- 1505 012b 16       		.uleb128 0x16
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 32
-
-
- 1506 012c 21       		.uleb128 0x21
- 1507 012d 00       		.byte	0
- 1508 012e 49       		.uleb128 0x49
- 1509 012f 13       		.uleb128 0x13
- 1510 0130 2F       		.uleb128 0x2f
- 1511 0131 13       		.uleb128 0x13
- 1512 0132 00       		.byte	0
- 1513 0133 00       		.byte	0
- 1514 0134 17       		.uleb128 0x17
- 1515 0135 26       		.uleb128 0x26
- 1516 0136 00       		.byte	0
- 1517 0137 49       		.uleb128 0x49
- 1518 0138 13       		.uleb128 0x13
- 1519 0139 00       		.byte	0
- 1520 013a 00       		.byte	0
- 1521 013b 18       		.uleb128 0x18
- 1522 013c 34       		.uleb128 0x34
- 1523 013d 00       		.byte	0
- 1524 013e 03       		.uleb128 0x3
- 1525 013f 0E       		.uleb128 0xe
- 1526 0140 3A       		.uleb128 0x3a
- 1527 0141 0B       		.uleb128 0xb
- 1528 0142 3B       		.uleb128 0x3b
- 1529 0143 0B       		.uleb128 0xb
- 1530 0144 49       		.uleb128 0x49
- 1531 0145 13       		.uleb128 0x13
- 1532 0146 3F       		.uleb128 0x3f
- 1533 0147 19       		.uleb128 0x19
- 1534 0148 02       		.uleb128 0x2
- 1535 0149 18       		.uleb128 0x18
- 1536 014a 00       		.byte	0
- 1537 014b 00       		.byte	0
- 1538 014c 19       		.uleb128 0x19
- 1539 014d 34       		.uleb128 0x34
- 1540 014e 00       		.byte	0
- 1541 014f 03       		.uleb128 0x3
- 1542 0150 0E       		.uleb128 0xe
- 1543 0151 3A       		.uleb128 0x3a
- 1544 0152 0B       		.uleb128 0xb
- 1545 0153 3B       		.uleb128 0x3b
- 1546 0154 05       		.uleb128 0x5
- 1547 0155 49       		.uleb128 0x49
- 1548 0156 13       		.uleb128 0x13
- 1549 0157 3F       		.uleb128 0x3f
- 1550 0158 19       		.uleb128 0x19
- 1551 0159 3C       		.uleb128 0x3c
- 1552 015a 19       		.uleb128 0x19
- 1553 015b 00       		.byte	0
- 1554 015c 00       		.byte	0
- 1555 015d 1A       		.uleb128 0x1a
- 1556 015e 2E       		.uleb128 0x2e
- 1557 015f 00       		.byte	0
- 1558 0160 3F       		.uleb128 0x3f
- 1559 0161 19       		.uleb128 0x19
- 1560 0162 3C       		.uleb128 0x3c
- 1561 0163 19       		.uleb128 0x19
- 1562 0164 6E       		.uleb128 0x6e
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 33
-
-
- 1563 0165 0E       		.uleb128 0xe
- 1564 0166 03       		.uleb128 0x3
- 1565 0167 0E       		.uleb128 0xe
- 1566 0168 3A       		.uleb128 0x3a
- 1567 0169 0B       		.uleb128 0xb
- 1568 016a 3B       		.uleb128 0x3b
- 1569 016b 0B       		.uleb128 0xb
- 1570 016c 00       		.byte	0
- 1571 016d 00       		.byte	0
- 1572 016e 1B       		.uleb128 0x1b
- 1573 016f 2E       		.uleb128 0x2e
- 1574 0170 00       		.byte	0
- 1575 0171 3F       		.uleb128 0x3f
- 1576 0172 19       		.uleb128 0x19
- 1577 0173 3C       		.uleb128 0x3c
- 1578 0174 19       		.uleb128 0x19
- 1579 0175 6E       		.uleb128 0x6e
- 1580 0176 0E       		.uleb128 0xe
- 1581 0177 03       		.uleb128 0x3
- 1582 0178 0E       		.uleb128 0xe
- 1583 0179 00       		.byte	0
- 1584 017a 00       		.byte	0
- 1585 017b 00       		.byte	0
- 1586              		.section	.debug_loc,"",%progbits
- 1587              	.Ldebug_loc0:
- 1588              	.LLST0:
- 1589 0000 00000000 		.4byte	.LVL0
- 1590 0004 64000000 		.4byte	.LVL1
- 1591 0008 0100     		.2byte	0x1
- 1592 000a 50       		.byte	0x50
- 1593 000b 64000000 		.4byte	.LVL1
- 1594 000f 76000000 		.4byte	.LFE63
- 1595 0013 0400     		.2byte	0x4
- 1596 0015 F3       		.byte	0xf3
- 1597 0016 01       		.uleb128 0x1
- 1598 0017 50       		.byte	0x50
- 1599 0018 9F       		.byte	0x9f
- 1600 0019 00000000 		.4byte	0
- 1601 001d 00000000 		.4byte	0
- 1602              	.LLST1:
- 1603 0021 00000000 		.4byte	.LVL2
- 1604 0025 58000000 		.4byte	.LVL12
- 1605 0029 0100     		.2byte	0x1
- 1606 002b 50       		.byte	0x50
- 1607 002c 58000000 		.4byte	.LVL12
- 1608 0030 5A000000 		.4byte	.LFE64
- 1609 0034 0400     		.2byte	0x4
- 1610 0036 F3       		.byte	0xf3
- 1611 0037 01       		.uleb128 0x1
- 1612 0038 50       		.byte	0x50
- 1613 0039 9F       		.byte	0x9f
- 1614 003a 00000000 		.4byte	0
- 1615 003e 00000000 		.4byte	0
- 1616              	.LLST2:
- 1617 0042 00000000 		.4byte	.LVL2
- 1618 0046 14000000 		.4byte	.LVL3
- 1619 004a 0200     		.2byte	0x2
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 34
-
-
- 1620 004c 30       		.byte	0x30
- 1621 004d 9F       		.byte	0x9f
- 1622 004e 14000000 		.4byte	.LVL3
- 1623 0052 18000000 		.4byte	.LVL4
- 1624 0056 0200     		.2byte	0x2
- 1625 0058 32       		.byte	0x32
- 1626 0059 9F       		.byte	0x9f
- 1627 005a 18000000 		.4byte	.LVL4
- 1628 005e 1C000000 		.4byte	.LVL5
- 1629 0062 0200     		.2byte	0x2
- 1630 0064 33       		.byte	0x33
- 1631 0065 9F       		.byte	0x9f
- 1632 0066 1C000000 		.4byte	.LVL5
- 1633 006a 1E000000 		.4byte	.LVL6
- 1634 006e 0200     		.2byte	0x2
- 1635 0070 30       		.byte	0x30
- 1636 0071 9F       		.byte	0x9f
- 1637 0072 1E000000 		.4byte	.LVL6
- 1638 0076 5A000000 		.4byte	.LFE64
- 1639 007a 0100     		.2byte	0x1
- 1640 007c 53       		.byte	0x53
- 1641 007d 00000000 		.4byte	0
- 1642 0081 00000000 		.4byte	0
- 1643              	.LLST3:
- 1644 0085 00000000 		.4byte	.LVL14
- 1645 0089 06000000 		.4byte	.LVL16
- 1646 008d 0100     		.2byte	0x1
- 1647 008f 50       		.byte	0x50
- 1648 0090 06000000 		.4byte	.LVL16
- 1649 0094 0C000000 		.4byte	.LFE69
- 1650 0098 0400     		.2byte	0x4
- 1651 009a F3       		.byte	0xf3
- 1652 009b 01       		.uleb128 0x1
- 1653 009c 50       		.byte	0x50
- 1654 009d 9F       		.byte	0x9f
- 1655 009e 00000000 		.4byte	0
- 1656 00a2 00000000 		.4byte	0
- 1657              	.LLST4:
- 1658 00a6 02000000 		.4byte	.LVL15
- 1659 00aa 06000000 		.4byte	.LVL16
- 1660 00ae 0600     		.2byte	0x6
- 1661 00b0 70       		.byte	0x70
- 1662 00b1 00       		.sleb128 0
- 1663 00b2 08       		.byte	0x8
- 1664 00b3 80       		.byte	0x80
- 1665 00b4 21       		.byte	0x21
- 1666 00b5 9F       		.byte	0x9f
- 1667 00b6 00000000 		.4byte	0
- 1668 00ba 00000000 		.4byte	0
- 1669              	.LLST5:
- 1670 00be 00000000 		.4byte	.LVL18
- 1671 00c2 0E000000 		.4byte	.LVL19
- 1672 00c6 0100     		.2byte	0x1
- 1673 00c8 50       		.byte	0x50
- 1674 00c9 0E000000 		.4byte	.LVL19
- 1675 00cd 11000000 		.4byte	.LVL20-1
- 1676 00d1 0200     		.2byte	0x2
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 35
-
-
- 1677 00d3 70       		.byte	0x70
- 1678 00d4 00       		.sleb128 0
- 1679 00d5 11000000 		.4byte	.LVL20-1
- 1680 00d9 18000000 		.4byte	.LFE70
- 1681 00dd 0400     		.2byte	0x4
- 1682 00df F3       		.byte	0xf3
- 1683 00e0 01       		.uleb128 0x1
- 1684 00e1 50       		.byte	0x50
- 1685 00e2 9F       		.byte	0x9f
- 1686 00e3 00000000 		.4byte	0
- 1687 00e7 00000000 		.4byte	0
- 1688              	.LLST6:
- 1689 00eb 00000000 		.4byte	.LVL18
- 1690 00ef 11000000 		.4byte	.LVL20-1
- 1691 00f3 0100     		.2byte	0x1
- 1692 00f5 51       		.byte	0x51
- 1693 00f6 11000000 		.4byte	.LVL20-1
- 1694 00fa 18000000 		.4byte	.LFE70
- 1695 00fe 0400     		.2byte	0x4
- 1696 0100 F3       		.byte	0xf3
- 1697 0101 01       		.uleb128 0x1
- 1698 0102 51       		.byte	0x51
- 1699 0103 9F       		.byte	0x9f
- 1700 0104 00000000 		.4byte	0
- 1701 0108 00000000 		.4byte	0
- 1702              	.LLST7:
- 1703 010c 00000000 		.4byte	.LVL27
- 1704 0110 08000000 		.4byte	.LVL28
- 1705 0114 0100     		.2byte	0x1
- 1706 0116 50       		.byte	0x50
- 1707 0117 08000000 		.4byte	.LVL28
- 1708 011b 24000000 		.4byte	.LVL33
- 1709 011f 0100     		.2byte	0x1
- 1710 0121 54       		.byte	0x54
- 1711 0122 24000000 		.4byte	.LVL33
- 1712 0126 28000000 		.4byte	.LFE67
- 1713 012a 0400     		.2byte	0x4
- 1714 012c F3       		.byte	0xf3
- 1715 012d 01       		.uleb128 0x1
- 1716 012e 50       		.byte	0x50
- 1717 012f 9F       		.byte	0x9f
- 1718 0130 00000000 		.4byte	0
- 1719 0134 00000000 		.4byte	0
- 1720              	.LLST8:
- 1721 0138 00000000 		.4byte	.LVL34
- 1722 013c 0A000000 		.4byte	.LVL35
- 1723 0140 0100     		.2byte	0x1
- 1724 0142 50       		.byte	0x50
- 1725 0143 0A000000 		.4byte	.LVL35
- 1726 0147 1E000000 		.4byte	.LFE71
- 1727 014b 0400     		.2byte	0x4
- 1728 014d F3       		.byte	0xf3
- 1729 014e 01       		.uleb128 0x1
- 1730 014f 50       		.byte	0x50
- 1731 0150 9F       		.byte	0x9f
- 1732 0151 00000000 		.4byte	0
- 1733 0155 00000000 		.4byte	0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 36
-
-
- 1734              	.LLST9:
- 1735 0159 00000000 		.4byte	.LVL34
- 1736 015d 14000000 		.4byte	.LVL37
- 1737 0161 0100     		.2byte	0x1
- 1738 0163 51       		.byte	0x51
- 1739 0164 14000000 		.4byte	.LVL37
- 1740 0168 17000000 		.4byte	.LVL38-1
- 1741 016c 0100     		.2byte	0x1
- 1742 016e 52       		.byte	0x52
- 1743 016f 17000000 		.4byte	.LVL38-1
- 1744 0173 1E000000 		.4byte	.LFE71
- 1745 0177 0400     		.2byte	0x4
- 1746 0179 F3       		.byte	0xf3
- 1747 017a 01       		.uleb128 0x1
- 1748 017b 51       		.byte	0x51
- 1749 017c 9F       		.byte	0x9f
- 1750 017d 00000000 		.4byte	0
- 1751 0181 00000000 		.4byte	0
- 1752              	.LLST10:
- 1753 0185 00000000 		.4byte	.LVL34
- 1754 0189 12000000 		.4byte	.LVL36
- 1755 018d 0100     		.2byte	0x1
- 1756 018f 52       		.byte	0x52
- 1757 0190 12000000 		.4byte	.LVL36
- 1758 0194 1E000000 		.4byte	.LFE71
- 1759 0198 0400     		.2byte	0x4
- 1760 019a F3       		.byte	0xf3
- 1761 019b 01       		.uleb128 0x1
- 1762 019c 52       		.byte	0x52
- 1763 019d 9F       		.byte	0x9f
- 1764 019e 00000000 		.4byte	0
- 1765 01a2 00000000 		.4byte	0
- 1766              	.LLST11:
- 1767 01a6 00000000 		.4byte	.LVL39
- 1768 01aa 1A000000 		.4byte	.LVL43
- 1769 01ae 0100     		.2byte	0x1
- 1770 01b0 50       		.byte	0x50
- 1771 01b1 1A000000 		.4byte	.LVL43
- 1772 01b5 3A000000 		.4byte	.LFE72
- 1773 01b9 0400     		.2byte	0x4
- 1774 01bb F3       		.byte	0xf3
- 1775 01bc 01       		.uleb128 0x1
- 1776 01bd 50       		.byte	0x50
- 1777 01be 9F       		.byte	0x9f
- 1778 01bf 00000000 		.4byte	0
- 1779 01c3 00000000 		.4byte	0
- 1780              	.LLST12:
- 1781 01c7 00000000 		.4byte	.LVL39
- 1782 01cb 21000000 		.4byte	.LVL44-1
- 1783 01cf 0100     		.2byte	0x1
- 1784 01d1 51       		.byte	0x51
- 1785 01d2 21000000 		.4byte	.LVL44-1
- 1786 01d6 3A000000 		.4byte	.LFE72
- 1787 01da 0400     		.2byte	0x4
- 1788 01dc F3       		.byte	0xf3
- 1789 01dd 01       		.uleb128 0x1
- 1790 01de 51       		.byte	0x51
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 37
-
-
- 1791 01df 9F       		.byte	0x9f
- 1792 01e0 00000000 		.4byte	0
- 1793 01e4 00000000 		.4byte	0
- 1794              	.LLST13:
- 1795 01e8 00000000 		.4byte	.LVL39
- 1796 01ec 21000000 		.4byte	.LVL44-1
- 1797 01f0 0100     		.2byte	0x1
- 1798 01f2 52       		.byte	0x52
- 1799 01f3 21000000 		.4byte	.LVL44-1
- 1800 01f7 3A000000 		.4byte	.LFE72
- 1801 01fb 0400     		.2byte	0x4
- 1802 01fd F3       		.byte	0xf3
- 1803 01fe 01       		.uleb128 0x1
- 1804 01ff 52       		.byte	0x52
- 1805 0200 9F       		.byte	0x9f
- 1806 0201 00000000 		.4byte	0
- 1807 0205 00000000 		.4byte	0
- 1808              	.LLST14:
- 1809 0209 0A000000 		.4byte	.LVL40
- 1810 020d 0C000000 		.4byte	.LVL41
- 1811 0211 0600     		.2byte	0x6
- 1812 0213 73       		.byte	0x73
- 1813 0214 00       		.sleb128 0
- 1814 0215 08       		.byte	0x8
- 1815 0216 FF       		.byte	0xff
- 1816 0217 1A       		.byte	0x1a
- 1817 0218 9F       		.byte	0x9f
- 1818 0219 0C000000 		.4byte	.LVL41
- 1819 021d 21000000 		.4byte	.LVL44-1
- 1820 0221 0600     		.2byte	0x6
- 1821 0223 72       		.byte	0x72
- 1822 0224 00       		.sleb128 0
- 1823 0225 08       		.byte	0x8
- 1824 0226 FF       		.byte	0xff
- 1825 0227 1A       		.byte	0x1a
- 1826 0228 9F       		.byte	0x9f
- 1827 0229 21000000 		.4byte	.LVL44-1
- 1828 022d 3A000000 		.4byte	.LFE72
- 1829 0231 0600     		.2byte	0x6
- 1830 0233 74       		.byte	0x74
- 1831 0234 7F       		.sleb128 -1
- 1832 0235 08       		.byte	0x8
- 1833 0236 FF       		.byte	0xff
- 1834 0237 1A       		.byte	0x1a
- 1835 0238 9F       		.byte	0x9f
- 1836 0239 00000000 		.4byte	0
- 1837 023d 00000000 		.4byte	0
- 1838              	.LLST15:
- 1839 0241 14000000 		.4byte	.LVL42
- 1840 0245 38000000 		.4byte	.LVL46
- 1841 0249 0200     		.2byte	0x2
- 1842 024b 7D       		.byte	0x7d
- 1843 024c 00       		.sleb128 0
- 1844 024d 00000000 		.4byte	0
- 1845 0251 00000000 		.4byte	0
- 1846              		.section	.debug_aranges,"",%progbits
- 1847 0000 64000000 		.4byte	0x64
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 38
-
-
- 1848 0004 0200     		.2byte	0x2
- 1849 0006 00000000 		.4byte	.Ldebug_info0
- 1850 000a 04       		.byte	0x4
- 1851 000b 00       		.byte	0
- 1852 000c 0000     		.2byte	0
- 1853 000e 0000     		.2byte	0
- 1854 0010 00000000 		.4byte	.LFB63
- 1855 0014 76000000 		.4byte	.LFE63-.LFB63
- 1856 0018 00000000 		.4byte	.LFB64
- 1857 001c 5A000000 		.4byte	.LFE64-.LFB64
- 1858 0020 00000000 		.4byte	.LFB68
- 1859 0024 0A000000 		.4byte	.LFE68-.LFB68
- 1860 0028 00000000 		.4byte	.LFB69
- 1861 002c 0C000000 		.4byte	.LFE69-.LFB69
- 1862 0030 00000000 		.4byte	.LFB70
- 1863 0034 18000000 		.4byte	.LFE70-.LFB70
- 1864 0038 00000000 		.4byte	.LFB65
- 1865 003c 30000000 		.4byte	.LFE65-.LFB65
- 1866 0040 00000000 		.4byte	.LFB66
- 1867 0044 0C000000 		.4byte	.LFE66-.LFB66
- 1868 0048 00000000 		.4byte	.LFB67
- 1869 004c 28000000 		.4byte	.LFE67-.LFB67
- 1870 0050 00000000 		.4byte	.LFB71
- 1871 0054 1E000000 		.4byte	.LFE71-.LFB71
- 1872 0058 00000000 		.4byte	.LFB72
- 1873 005c 3A000000 		.4byte	.LFE72-.LFB72
- 1874 0060 00000000 		.4byte	0
- 1875 0064 00000000 		.4byte	0
- 1876              		.section	.debug_ranges,"",%progbits
- 1877              	.Ldebug_ranges0:
- 1878 0000 00000000 		.4byte	.LFB63
- 1879 0004 76000000 		.4byte	.LFE63
- 1880 0008 00000000 		.4byte	.LFB64
- 1881 000c 5A000000 		.4byte	.LFE64
- 1882 0010 00000000 		.4byte	.LFB68
- 1883 0014 0A000000 		.4byte	.LFE68
- 1884 0018 00000000 		.4byte	.LFB69
- 1885 001c 0C000000 		.4byte	.LFE69
- 1886 0020 00000000 		.4byte	.LFB70
- 1887 0024 18000000 		.4byte	.LFE70
- 1888 0028 00000000 		.4byte	.LFB65
- 1889 002c 30000000 		.4byte	.LFE65
- 1890 0030 00000000 		.4byte	.LFB66
- 1891 0034 0C000000 		.4byte	.LFE66
- 1892 0038 00000000 		.4byte	.LFB67
- 1893 003c 28000000 		.4byte	.LFE67
- 1894 0040 00000000 		.4byte	.LFB71
- 1895 0044 1E000000 		.4byte	.LFE71
- 1896 0048 00000000 		.4byte	.LFB72
- 1897 004c 3A000000 		.4byte	.LFE72
- 1898 0050 00000000 		.4byte	0
- 1899 0054 00000000 		.4byte	0
- 1900              		.section	.debug_line,"",%progbits
- 1901              	.Ldebug_line0:
- 1902 0000 5C020000 		.section	.debug_str,"MS",%progbits,1
- 1902      02006B01 
- 1902      00000201 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 39
-
-
- 1902      FB0E0D00 
- 1902      01010101 
- 1903              	.LASF8:
- 1904 0000 6C6F6E67 		.ascii	"long long int\000"
- 1904      206C6F6E 
- 1904      6720696E 
- 1904      7400
- 1905              	.LASF24:
- 1906 000e 4C495333 		.ascii	"LIS3DH_readByte\000"
- 1906      44485F72 
- 1906      65616442 
- 1906      79746500 
- 1907              	.LASF19:
- 1908 001e 636F6E66 		.ascii	"config_reg\000"
- 1908      69675F72 
- 1908      656700
- 1909              	.LASF4:
- 1910 0029 5F5F7569 		.ascii	"__uint8_t\000"
- 1910      6E74385F 
- 1910      7400
- 1911              	.LASF43:
- 1912 0033 5350495F 		.ascii	"SPI_Interface_Multi_RW_LIS3DH\000"
- 1912      496E7465 
- 1912      72666163 
- 1912      655F4D75 
- 1912      6C74695F 
- 1913              	.LASF46:
- 1914 0051 433A5C55 		.ascii	"C:\\Users\\Mattia40\\Desktop\\AY1920_II_FINAL_PROJE"
- 1914      73657273 
- 1914      5C4D6174 
- 1914      74696134 
- 1914      305C4465 
- 1915 0080 43545C47 		.ascii	"CT\\Group_02_Final_Project\\AY1920_II_FINAL_PROJECT"
- 1915      726F7570 
- 1915      5F30325F 
- 1915      46696E61 
- 1915      6C5F5072 
- 1916 00b1 2E637964 		.ascii	".cydsn\000"
- 1916      736E00
- 1917              	.LASF5:
- 1918 00b8 5F5F696E 		.ascii	"__int32_t\000"
- 1918      7433325F 
- 1918      7400
- 1919              	.LASF34:
- 1920 00c2 6E427974 		.ascii	"nBytes\000"
- 1920      657300
- 1921              	.LASF3:
- 1922 00c9 73686F72 		.ascii	"short unsigned int\000"
- 1922      7420756E 
- 1922      7369676E 
- 1922      65642069 
- 1922      6E7400
- 1923              	.LASF30:
- 1924 00dc 4C495333 		.ascii	"LIS3DH_Init\000"
- 1924      44485F49 
- 1924      6E697400 
- 1925              	.LASF14:
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 40
-
-
- 1926 00e8 666C6F61 		.ascii	"float\000"
- 1926      7400
- 1927              	.LASF20:
- 1928 00ee 64617461 		.ascii	"data\000"
- 1928      00
- 1929              	.LASF23:
- 1930 00f3 4C495333 		.ascii	"LIS3DH_zipConfig\000"
- 1930      44485F7A 
- 1930      6970436F 
- 1930      6E666967 
- 1930      00
- 1931              	.LASF44:
- 1932 0104 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1932      43313120 
- 1932      352E342E 
- 1932      31203230 
- 1932      31363036 
- 1933 0137 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1933      20726576 
- 1933      6973696F 
- 1933      6E203233 
- 1933      37373135 
- 1934 016a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1934      66756E63 
- 1934      74696F6E 
- 1934      2D736563 
- 1934      74696F6E 
- 1935              	.LASF21:
- 1936 0192 4C495333 		.ascii	"LIS3DH_unzipConfig\000"
- 1936      44485F75 
- 1936      6E7A6970 
- 1936      436F6E66 
- 1936      696700
- 1937              	.LASF7:
- 1938 01a5 6C6F6E67 		.ascii	"long unsigned int\000"
- 1938      20756E73 
- 1938      69676E65 
- 1938      6420696E 
- 1938      7400
- 1939              	.LASF37:
- 1940 01b7 6C697333 		.ascii	"lis3dh_dataRate_t\000"
- 1940      64685F64 
- 1940      61746152 
- 1940      6174655F 
- 1940      7400
- 1941              	.LASF25:
- 1942 01c9 61646472 		.ascii	"addr\000"
- 1942      00
- 1943              	.LASF39:
- 1944 01ce 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1944      52784275 
- 1944      66666572 
- 1944      00
- 1945              	.LASF29:
- 1946 01db 64617461 		.ascii	"dataByte\000"
- 1946      42797465 
- 1946      00
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 41
-
-
- 1947              	.LASF38:
- 1948 01e4 6C697333 		.ascii	"lis3dh_dataRange_t\000"
- 1948      64685F64 
- 1948      61746152 
- 1948      616E6765 
- 1948      5F7400
- 1949              	.LASF15:
- 1950 01f7 646F7562 		.ascii	"double\000"
- 1950      6C6500
- 1951              	.LASF31:
- 1952 01fe 4C495333 		.ascii	"LIS3DH_Stop\000"
- 1952      44485F53 
- 1952      746F7000 
- 1953              	.LASF1:
- 1954 020a 756E7369 		.ascii	"unsigned char\000"
- 1954      676E6564 
- 1954      20636861 
- 1954      7200
- 1955              	.LASF10:
- 1956 0218 756E7369 		.ascii	"unsigned int\000"
- 1956      676E6564 
- 1956      20696E74 
- 1956      00
- 1957              	.LASF36:
- 1958 0225 74656D70 		.ascii	"temp\000"
- 1958      00
- 1959              	.LASF9:
- 1960 022a 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1960      206C6F6E 
- 1960      6720756E 
- 1960      7369676E 
- 1960      65642069 
- 1961              	.LASF11:
- 1962 0241 75696E74 		.ascii	"uint8_t\000"
- 1962      385F7400 
- 1963              	.LASF35:
- 1964 0249 4C495333 		.ascii	"LIS3DH_writePage\000"
- 1964      44485F77 
- 1964      72697465 
- 1964      50616765 
- 1964      00
- 1965              	.LASF27:
- 1966 025a 64617461 		.ascii	"dataRX\000"
- 1966      525800
- 1967              	.LASF32:
- 1968 0261 4C495333 		.ascii	"LIS3DH_setConfig\000"
- 1968      44485F73 
- 1968      6574436F 
- 1968      6E666967 
- 1968      00
- 1969              	.LASF12:
- 1970 0272 696E7433 		.ascii	"int32_t\000"
- 1970      325F7400 
- 1971              	.LASF18:
- 1972 027a 73697A65 		.ascii	"sizetype\000"
- 1972      74797065 
- 1972      00
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 42
-
-
- 1973              	.LASF26:
- 1974 0283 64617461 		.ascii	"dataTX\000"
- 1974      545800
- 1975              	.LASF16:
- 1976 028a 63686172 		.ascii	"char\000"
- 1976      00
- 1977              	.LASF22:
- 1978 028f 4C495333 		.ascii	"LIS3DH_readStatus\000"
- 1978      44485F72 
- 1978      65616453 
- 1978      74617475 
- 1978      7300
- 1979              	.LASF40:
- 1980 02a1 5350495F 		.ascii	"SPI_Interface_ReadByte_LIS3DH\000"
- 1980      496E7465 
- 1980      72666163 
- 1980      655F5265 
- 1980      61644279 
- 1981              	.LASF45:
- 1982 02bf 4C495333 		.ascii	"LIS3DH.c\000"
- 1982      44482E63 
- 1982      00
- 1983              	.LASF47:
- 1984 02c8 6D656D63 		.ascii	"memcpy\000"
- 1984      707900
- 1985              	.LASF2:
- 1986 02cf 73686F72 		.ascii	"short int\000"
- 1986      7420696E 
- 1986      7400
- 1987              	.LASF33:
- 1988 02d9 4C495333 		.ascii	"LIS3DH_readPage\000"
- 1988      44485F72 
- 1988      65616450 
- 1988      61676500 
- 1989              	.LASF13:
- 1990 02e9 75696E74 		.ascii	"uint8\000"
- 1990      3800
- 1991              	.LASF28:
- 1992 02ef 4C495333 		.ascii	"LIS3DH_writeByte\000"
- 1992      44485F77 
- 1992      72697465 
- 1992      42797465 
- 1992      00
- 1993              	.LASF6:
- 1994 0300 6C6F6E67 		.ascii	"long int\000"
- 1994      20696E74 
- 1994      00
- 1995              	.LASF17:
- 1996 0309 6C6F6E67 		.ascii	"long double\000"
- 1996      20646F75 
- 1996      626C6500 
- 1997              	.LASF41:
- 1998 0315 5350495F 		.ascii	"SPI_Interface_WriteByte_LIS3DH\000"
- 1998      496E7465 
- 1998      72666163 
- 1998      655F5772 
- 1998      69746542 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccFDDZbr.s 			page 43
-
-
- 1999              	.LASF0:
- 2000 0334 7369676E 		.ascii	"signed char\000"
- 2000      65642063 
- 2000      68617200 
- 2001              	.LASF42:
- 2002 0340 55415254 		.ascii	"UART_PutString\000"
- 2002      5F507574 
- 2002      53747269 
- 2002      6E6700
- 2003              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 214:LIS3DH.c      **** 	/* Read the nBytes */
+ 215:LIS3DH.c      **** 	SPI_Interface_Multi_RW_LIS3DH(&dataTX, 1, dataRX, nBytes);
+ 438              		.loc 1 215 0
+ 439 000e 1346     		mov	r3, r2
+ 440 0010 0A46     		mov	r2, r1
+ 441              	.LVL34:
+ 442 0012 0121     		movs	r1, #1
+ 443              	.LVL35:
+ 444 0014 FFF7FEFF 		bl	SPI_Interface_Multi_RW_LIS3DH
+ 445              	.LVL36:
+ 216:LIS3DH.c      ****     
+ 217:LIS3DH.c      **** }
+ 446              		.loc 1 217 0
+ 447 0018 03B0     		add	sp, sp, #12
+ 448              		.cfi_def_cfa_offset 4
+ 449              		@ sp needed
+ 450 001a 5DF804FB 		ldr	pc, [sp], #4
+ 451              		.cfi_endproc
+ 452              	.LFE7:
+ 453              		.size	LIS3DH_readPage, .-LIS3DH_readPage
+ 454              		.global	lis3dh_dataRange_t
+ 455              		.global	lis3dh_dataRate_t
+ 456 001e 00BF     		.section	.rodata
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 13
+
+
+ 457              		.align	2
+ 458              		.type	lis3dh_dataRange_t, %object
+ 459              		.size	lis3dh_dataRange_t, 4
+ 460              	lis3dh_dataRange_t:
+ 461 0000 00       		.byte	0
+ 462 0001 10       		.byte	16
+ 463 0002 20       		.byte	32
+ 464 0003 30       		.byte	48
+ 465              		.type	lis3dh_dataRate_t, %object
+ 466              		.size	lis3dh_dataRate_t, 4
+ 467              	lis3dh_dataRate_t:
+ 468 0004 10       		.byte	16
+ 469 0005 20       		.byte	32
+ 470 0006 30       		.byte	48
+ 471 0007 40       		.byte	64
+ 472              		.text
+ 473              	.Letext0:
+ 474              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 475              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 476              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 477              		.file 5 "SPI_Interface.h"
+ 478              		.file 6 "Generated_Source\\PSoC5/CyLib.h"
+ 479              		.section	.debug_info,"",%progbits
+ 480              	.Ldebug_info0:
+ 481 0000 F9030000 		.4byte	0x3f9
+ 482 0004 0400     		.2byte	0x4
+ 483 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 484 000a 04       		.byte	0x4
+ 485 000b 01       		.uleb128 0x1
+ 486 000c 25000000 		.4byte	.LASF40
+ 487 0010 0C       		.byte	0xc
+ 488 0011 B4020000 		.4byte	.LASF41
+ 489 0015 1C020000 		.4byte	.LASF42
+ 490 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 491 001d 00000000 		.4byte	0
+ 492 0021 00000000 		.4byte	.Ldebug_line0
+ 493 0025 02       		.uleb128 0x2
+ 494 0026 01       		.byte	0x1
+ 495 0027 06       		.byte	0x6
+ 496 0028 08030000 		.4byte	.LASF0
+ 497 002c 03       		.uleb128 0x3
+ 498 002d 1B000000 		.4byte	.LASF9
+ 499 0031 02       		.byte	0x2
+ 500 0032 1D       		.byte	0x1d
+ 501 0033 37000000 		.4byte	0x37
+ 502 0037 02       		.uleb128 0x2
+ 503 0038 01       		.byte	0x1
+ 504 0039 08       		.byte	0x8
+ 505 003a 91010000 		.4byte	.LASF1
+ 506 003e 02       		.uleb128 0x2
+ 507 003f 02       		.byte	0x2
+ 508 0040 05       		.byte	0x5
+ 509 0041 BD020000 		.4byte	.LASF2
+ 510 0045 02       		.uleb128 0x2
+ 511 0046 02       		.byte	0x2
+ 512 0047 07       		.byte	0x7
+ 513 0048 D8000000 		.4byte	.LASF3
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 14
+
+
+ 514 004c 02       		.uleb128 0x2
+ 515 004d 04       		.byte	0x4
+ 516 004e 05       		.byte	0x5
+ 517 004f EE020000 		.4byte	.LASF4
+ 518 0053 02       		.uleb128 0x2
+ 519 0054 04       		.byte	0x4
+ 520 0055 07       		.byte	0x7
+ 521 0056 5F010000 		.4byte	.LASF5
+ 522 005a 02       		.uleb128 0x2
+ 523 005b 08       		.byte	0x8
+ 524 005c 05       		.byte	0x5
+ 525 005d 0E020000 		.4byte	.LASF6
+ 526 0061 02       		.uleb128 0x2
+ 527 0062 08       		.byte	0x8
+ 528 0063 07       		.byte	0x7
+ 529 0064 02010000 		.4byte	.LASF7
+ 530 0068 04       		.uleb128 0x4
+ 531 0069 04       		.byte	0x4
+ 532 006a 05       		.byte	0x5
+ 533 006b 696E7400 		.ascii	"int\000"
+ 534 006f 02       		.uleb128 0x2
+ 535 0070 04       		.byte	0x4
+ 536 0071 07       		.byte	0x7
+ 537 0072 BD010000 		.4byte	.LASF8
+ 538 0076 03       		.uleb128 0x3
+ 539 0077 E5010000 		.4byte	.LASF10
+ 540 007b 03       		.byte	0x3
+ 541 007c 18       		.byte	0x18
+ 542 007d 2C000000 		.4byte	0x2c
+ 543 0081 05       		.uleb128 0x5
+ 544 0082 D7020000 		.4byte	.LASF11
+ 545 0086 04       		.byte	0x4
+ 546 0087 E401     		.2byte	0x1e4
+ 547 0089 37000000 		.4byte	0x37
+ 548 008d 02       		.uleb128 0x2
+ 549 008e 04       		.byte	0x4
+ 550 008f 04       		.byte	0x4
+ 551 0090 F7000000 		.4byte	.LASF12
+ 552 0094 02       		.uleb128 0x2
+ 553 0095 08       		.byte	0x8
+ 554 0096 04       		.byte	0x4
+ 555 0097 9F010000 		.4byte	.LASF13
+ 556 009b 02       		.uleb128 0x2
+ 557 009c 01       		.byte	0x1
+ 558 009d 08       		.byte	0x8
+ 559 009e F7020000 		.4byte	.LASF14
+ 560 00a2 02       		.uleb128 0x2
+ 561 00a3 08       		.byte	0x8
+ 562 00a4 04       		.byte	0x4
+ 563 00a5 FC020000 		.4byte	.LASF15
+ 564 00a9 02       		.uleb128 0x2
+ 565 00aa 04       		.byte	0x4
+ 566 00ab 07       		.byte	0x7
+ 567 00ac 05020000 		.4byte	.LASF16
+ 568 00b0 06       		.uleb128 0x6
+ 569 00b1 3D010000 		.4byte	.LASF19
+ 570 00b5 01       		.byte	0x1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 15
+
+
+ 571 00b6 15       		.byte	0x15
+ 572 00b7 00000000 		.4byte	.LFB0
+ 573 00bb 76000000 		.4byte	.LFE0-.LFB0
+ 574 00bf 01       		.uleb128 0x1
+ 575 00c0 9C       		.byte	0x9c
+ 576 00c1 E2000000 		.4byte	0xe2
+ 577 00c5 07       		.uleb128 0x7
+ 578 00c6 10000000 		.4byte	.LASF17
+ 579 00ca 01       		.byte	0x1
+ 580 00cb 15       		.byte	0x15
+ 581 00cc 76000000 		.4byte	0x76
+ 582 00d0 00000000 		.4byte	.LLST0
+ 583 00d4 08       		.uleb128 0x8
+ 584 00d5 FD000000 		.4byte	.LASF18
+ 585 00d9 01       		.byte	0x1
+ 586 00da 15       		.byte	0x15
+ 587 00db E2000000 		.4byte	0xe2
+ 588 00df 01       		.uleb128 0x1
+ 589 00e0 51       		.byte	0x51
+ 590 00e1 00       		.byte	0
+ 591 00e2 09       		.uleb128 0x9
+ 592 00e3 04       		.byte	0x4
+ 593 00e4 E8000000 		.4byte	0xe8
+ 594 00e8 0A       		.uleb128 0xa
+ 595 00e9 76000000 		.4byte	0x76
+ 596 00ed 0B       		.uleb128 0xb
+ 597 00ee 19010000 		.4byte	.LASF21
+ 598 00f2 01       		.byte	0x1
+ 599 00f3 51       		.byte	0x51
+ 600 00f4 81000000 		.4byte	0x81
+ 601 00f8 00000000 		.4byte	.LFB1
+ 602 00fc 5A000000 		.4byte	.LFE1-.LFB1
+ 603 0100 01       		.uleb128 0x1
+ 604 0101 9C       		.byte	0x9c
+ 605 0102 25010000 		.4byte	0x125
+ 606 0106 07       		.uleb128 0x7
+ 607 0107 FD000000 		.4byte	.LASF18
+ 608 010b 01       		.byte	0x1
+ 609 010c 51       		.byte	0x51
+ 610 010d E2000000 		.4byte	0xe2
+ 611 0111 21000000 		.4byte	.LLST1
+ 612 0115 0C       		.uleb128 0xc
+ 613 0116 10000000 		.4byte	.LASF17
+ 614 011a 01       		.byte	0x1
+ 615 011b 52       		.byte	0x52
+ 616 011c 76000000 		.4byte	0x76
+ 617 0120 42000000 		.4byte	.LLST2
+ 618 0124 00       		.byte	0
+ 619 0125 0D       		.uleb128 0xd
+ 620 0126 84020000 		.4byte	.LASF20
+ 621 012a 01       		.byte	0x1
+ 622 012b A9       		.byte	0xa9
+ 623 012c 76000000 		.4byte	0x76
+ 624 0130 00000000 		.4byte	.LFB4
+ 625 0134 0A000000 		.4byte	.LFE4-.LFB4
+ 626 0138 01       		.uleb128 0x1
+ 627 0139 9C       		.byte	0x9c
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 16
+
+
+ 628 013a 4F010000 		.4byte	0x14f
+ 629 013e 0E       		.uleb128 0xe
+ 630 013f 08000000 		.4byte	.LVL13
+ 631 0143 D0030000 		.4byte	0x3d0
+ 632 0147 0F       		.uleb128 0xf
+ 633 0148 01       		.uleb128 0x1
+ 634 0149 50       		.byte	0x50
+ 635 014a 02       		.uleb128 0x2
+ 636 014b 09       		.byte	0x9
+ 637 014c AF       		.byte	0xaf
+ 638 014d 00       		.byte	0
+ 639 014e 00       		.byte	0
+ 640 014f 0B       		.uleb128 0xb
+ 641 0150 00000000 		.4byte	.LASF22
+ 642 0154 01       		.byte	0x1
+ 643 0155 B1       		.byte	0xb1
+ 644 0156 76000000 		.4byte	0x76
+ 645 015a 00000000 		.4byte	.LFB5
+ 646 015e 0C000000 		.4byte	.LFE5-.LFB5
+ 647 0162 01       		.uleb128 0x1
+ 648 0163 9C       		.byte	0x9c
+ 649 0164 9D010000 		.4byte	0x19d
+ 650 0168 07       		.uleb128 0x7
+ 651 0169 83010000 		.4byte	.LASF23
+ 652 016d 01       		.byte	0x1
+ 653 016e B1       		.byte	0xb1
+ 654 016f 76000000 		.4byte	0x76
+ 655 0173 85000000 		.4byte	.LLST3
+ 656 0177 0C       		.uleb128 0xc
+ 657 0178 14030000 		.4byte	.LASF24
+ 658 017c 01       		.byte	0x1
+ 659 017d B4       		.byte	0xb4
+ 660 017e 76000000 		.4byte	0x76
+ 661 0182 A6000000 		.4byte	.LLST4
+ 662 0186 10       		.uleb128 0x10
+ 663 0187 ED010000 		.4byte	.LASF25
+ 664 018b 01       		.byte	0x1
+ 665 018c B7       		.byte	0xb7
+ 666 018d 76000000 		.4byte	0x76
+ 667 0191 01       		.uleb128 0x1
+ 668 0192 50       		.byte	0x50
+ 669 0193 11       		.uleb128 0x11
+ 670 0194 0A000000 		.4byte	.LVL17
+ 671 0198 D0030000 		.4byte	0x3d0
+ 672 019c 00       		.byte	0
+ 673 019d 06       		.uleb128 0x6
+ 674 019e DD020000 		.4byte	.LASF26
+ 675 01a2 01       		.byte	0x1
+ 676 01a3 BF       		.byte	0xbf
+ 677 01a4 00000000 		.4byte	.LFB6
+ 678 01a8 30000000 		.4byte	.LFE6-.LFB6
+ 679 01ac 01       		.uleb128 0x1
+ 680 01ad 9C       		.byte	0x9c
+ 681 01ae 37020000 		.4byte	0x237
+ 682 01b2 07       		.uleb128 0x7
+ 683 01b3 83010000 		.4byte	.LASF23
+ 684 01b7 01       		.byte	0x1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 17
+
+
+ 685 01b8 BF       		.byte	0xbf
+ 686 01b9 76000000 		.4byte	0x76
+ 687 01bd BE000000 		.4byte	.LLST5
+ 688 01c1 07       		.uleb128 0x7
+ 689 01c2 88010000 		.4byte	.LASF27
+ 690 01c6 01       		.byte	0x1
+ 691 01c7 BF       		.byte	0xbf
+ 692 01c8 76000000 		.4byte	0x76
+ 693 01cc DF000000 		.4byte	.LLST6
+ 694 01d0 10       		.uleb128 0x10
+ 695 01d1 50010000 		.4byte	.LASF28
+ 696 01d5 01       		.byte	0x1
+ 697 01d6 C2       		.byte	0xc2
+ 698 01d7 81000000 		.4byte	0x81
+ 699 01db 01       		.uleb128 0x1
+ 700 01dc 54       		.byte	0x54
+ 701 01dd 10       		.uleb128 0x10
+ 702 01de 14030000 		.4byte	.LASF24
+ 703 01e2 01       		.byte	0x1
+ 704 01e3 C6       		.byte	0xc6
+ 705 01e4 37020000 		.4byte	0x237
+ 706 01e8 02       		.uleb128 0x2
+ 707 01e9 91       		.byte	0x91
+ 708 01ea 6C       		.sleb128 -20
+ 709 01eb 10       		.uleb128 0x10
+ 710 01ec CA010000 		.4byte	.LASF29
+ 711 01f0 01       		.byte	0x1
+ 712 01f1 C8       		.byte	0xc8
+ 713 01f2 76000000 		.4byte	0x76
+ 714 01f6 02       		.uleb128 0x2
+ 715 01f7 91       		.byte	0x91
+ 716 01f8 6B       		.sleb128 -21
+ 717 01f9 11       		.uleb128 0x11
+ 718 01fa 0C000000 		.4byte	.LVL19
+ 719 01fe DB030000 		.4byte	0x3db
+ 720 0202 12       		.uleb128 0x12
+ 721 0203 26000000 		.4byte	.LVL21
+ 722 0207 E6030000 		.4byte	0x3e6
+ 723 020b 26020000 		.4byte	0x226
+ 724 020f 0F       		.uleb128 0xf
+ 725 0210 01       		.uleb128 0x1
+ 726 0211 50       		.byte	0x50
+ 727 0212 02       		.uleb128 0x2
+ 728 0213 91       		.byte	0x91
+ 729 0214 6C       		.sleb128 -20
+ 730 0215 0F       		.uleb128 0xf
+ 731 0216 01       		.uleb128 0x1
+ 732 0217 51       		.byte	0x51
+ 733 0218 01       		.uleb128 0x1
+ 734 0219 32       		.byte	0x32
+ 735 021a 0F       		.uleb128 0xf
+ 736 021b 01       		.uleb128 0x1
+ 737 021c 52       		.byte	0x52
+ 738 021d 02       		.uleb128 0x2
+ 739 021e 91       		.byte	0x91
+ 740 021f 6B       		.sleb128 -21
+ 741 0220 0F       		.uleb128 0xf
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 18
+
+
+ 742 0221 01       		.uleb128 0x1
+ 743 0222 53       		.byte	0x53
+ 744 0223 01       		.uleb128 0x1
+ 745 0224 30       		.byte	0x30
+ 746 0225 00       		.byte	0
+ 747 0226 0E       		.uleb128 0xe
+ 748 0227 2C000000 		.4byte	.LVL22
+ 749 022b F1030000 		.4byte	0x3f1
+ 750 022f 0F       		.uleb128 0xf
+ 751 0230 01       		.uleb128 0x1
+ 752 0231 50       		.byte	0x50
+ 753 0232 02       		.uleb128 0x2
+ 754 0233 74       		.byte	0x74
+ 755 0234 00       		.sleb128 0
+ 756 0235 00       		.byte	0
+ 757 0236 00       		.byte	0
+ 758 0237 13       		.uleb128 0x13
+ 759 0238 76000000 		.4byte	0x76
+ 760 023c 47020000 		.4byte	0x247
+ 761 0240 14       		.uleb128 0x14
+ 762 0241 A9000000 		.4byte	0xa9
+ 763 0245 01       		.byte	0x1
+ 764 0246 00       		.byte	0
+ 765 0247 06       		.uleb128 0x6
+ 766 0248 EB000000 		.4byte	.LASF30
+ 767 024c 01       		.byte	0x1
+ 768 024d 8E       		.byte	0x8e
+ 769 024e 00000000 		.4byte	.LFB2
+ 770 0252 24000000 		.4byte	.LFE2-.LFB2
+ 771 0256 01       		.uleb128 0x1
+ 772 0257 9C       		.byte	0x9c
+ 773 0258 BF020000 		.4byte	0x2bf
+ 774 025c 12       		.uleb128 0x12
+ 775 025d 0A000000 		.4byte	.LVL23
+ 776 0261 9D010000 		.4byte	0x19d
+ 777 0265 76020000 		.4byte	0x276
+ 778 0269 0F       		.uleb128 0xf
+ 779 026a 01       		.uleb128 0x1
+ 780 026b 50       		.byte	0x50
+ 781 026c 02       		.uleb128 0x2
+ 782 026d 08       		.byte	0x8
+ 783 026e 24       		.byte	0x24
+ 784 026f 0F       		.uleb128 0xf
+ 785 0270 01       		.uleb128 0x1
+ 786 0271 51       		.byte	0x51
+ 787 0272 02       		.uleb128 0x2
+ 788 0273 09       		.byte	0x9
+ 789 0274 80       		.byte	0x80
+ 790 0275 00       		.byte	0
+ 791 0276 12       		.uleb128 0x12
+ 792 0277 12000000 		.4byte	.LVL24
+ 793 027b 9D010000 		.4byte	0x19d
+ 794 027f 8F020000 		.4byte	0x28f
+ 795 0283 0F       		.uleb128 0xf
+ 796 0284 01       		.uleb128 0x1
+ 797 0285 50       		.byte	0x50
+ 798 0286 02       		.uleb128 0x2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 19
+
+
+ 799 0287 08       		.byte	0x8
+ 800 0288 22       		.byte	0x22
+ 801 0289 0F       		.uleb128 0xf
+ 802 028a 01       		.uleb128 0x1
+ 803 028b 51       		.byte	0x51
+ 804 028c 01       		.uleb128 0x1
+ 805 028d 32       		.byte	0x32
+ 806 028e 00       		.byte	0
+ 807 028f 12       		.uleb128 0x12
+ 808 0290 1A000000 		.4byte	.LVL25
+ 809 0294 9D010000 		.4byte	0x19d
+ 810 0298 A9020000 		.4byte	0x2a9
+ 811 029c 0F       		.uleb128 0xf
+ 812 029d 01       		.uleb128 0x1
+ 813 029e 50       		.byte	0x50
+ 814 029f 02       		.uleb128 0x2
+ 815 02a0 08       		.byte	0x8
+ 816 02a1 24       		.byte	0x24
+ 817 02a2 0F       		.uleb128 0xf
+ 818 02a3 01       		.uleb128 0x1
+ 819 02a4 51       		.byte	0x51
+ 820 02a5 02       		.uleb128 0x2
+ 821 02a6 08       		.byte	0x8
+ 822 02a7 48       		.byte	0x48
+ 823 02a8 00       		.byte	0
+ 824 02a9 0E       		.uleb128 0xe
+ 825 02aa 22000000 		.4byte	.LVL26
+ 826 02ae 9D010000 		.4byte	0x19d
+ 827 02b2 0F       		.uleb128 0xf
+ 828 02b3 01       		.uleb128 0x1
+ 829 02b4 50       		.byte	0x50
+ 830 02b5 02       		.uleb128 0x2
+ 831 02b6 08       		.byte	0x8
+ 832 02b7 2E       		.byte	0x2e
+ 833 02b8 0F       		.uleb128 0xf
+ 834 02b9 01       		.uleb128 0x1
+ 835 02ba 51       		.byte	0x51
+ 836 02bb 01       		.uleb128 0x1
+ 837 02bc 30       		.byte	0x30
+ 838 02bd 00       		.byte	0
+ 839 02be 00       		.byte	0
+ 840 02bf 06       		.uleb128 0x6
+ 841 02c0 F4010000 		.4byte	.LASF31
+ 842 02c4 01       		.byte	0x1
+ 843 02c5 9C       		.byte	0x9c
+ 844 02c6 00000000 		.4byte	.LFB3
+ 845 02ca 1E000000 		.4byte	.LFE3-.LFB3
+ 846 02ce 01       		.uleb128 0x1
+ 847 02cf 9C       		.byte	0x9c
+ 848 02d0 1C030000 		.4byte	0x31c
+ 849 02d4 07       		.uleb128 0x7
+ 850 02d5 FD000000 		.4byte	.LASF18
+ 851 02d9 01       		.byte	0x1
+ 852 02da 9C       		.byte	0x9c
+ 853 02db E2000000 		.4byte	0xe2
+ 854 02df 00010000 		.4byte	.LLST7
+ 855 02e3 12       		.uleb128 0x12
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 20
+
+
+ 856 02e4 0C000000 		.4byte	.LVL29
+ 857 02e8 9D010000 		.4byte	0x19d
+ 858 02ec F7020000 		.4byte	0x2f7
+ 859 02f0 0F       		.uleb128 0xf
+ 860 02f1 01       		.uleb128 0x1
+ 861 02f2 50       		.byte	0x50
+ 862 02f3 02       		.uleb128 0x2
+ 863 02f4 08       		.byte	0x8
+ 864 02f5 20       		.byte	0x20
+ 865 02f6 00       		.byte	0
+ 866 02f7 12       		.uleb128 0x12
+ 867 02f8 14000000 		.4byte	.LVL30
+ 868 02fc 9D010000 		.4byte	0x19d
+ 869 0300 0B030000 		.4byte	0x30b
+ 870 0304 0F       		.uleb128 0xf
+ 871 0305 01       		.uleb128 0x1
+ 872 0306 50       		.byte	0x50
+ 873 0307 02       		.uleb128 0x2
+ 874 0308 08       		.byte	0x8
+ 875 0309 23       		.byte	0x23
+ 876 030a 00       		.byte	0
+ 877 030b 0E       		.uleb128 0xe
+ 878 030c 1C000000 		.4byte	.LVL31
+ 879 0310 9D010000 		.4byte	0x19d
+ 880 0314 0F       		.uleb128 0xf
+ 881 0315 01       		.uleb128 0x1
+ 882 0316 50       		.byte	0x50
+ 883 0317 02       		.uleb128 0x2
+ 884 0318 08       		.byte	0x8
+ 885 0319 2E       		.byte	0x2e
+ 886 031a 00       		.byte	0
+ 887 031b 00       		.byte	0
+ 888 031c 06       		.uleb128 0x6
+ 889 031d C7020000 		.4byte	.LASF32
+ 890 0321 01       		.byte	0x1
+ 891 0322 D1       		.byte	0xd1
+ 892 0323 00000000 		.4byte	.LFB7
+ 893 0327 1E000000 		.4byte	.LFE7-.LFB7
+ 894 032b 01       		.uleb128 0x1
+ 895 032c 9C       		.byte	0x9c
+ 896 032d 89030000 		.4byte	0x389
+ 897 0331 07       		.uleb128 0x7
+ 898 0332 83010000 		.4byte	.LASF23
+ 899 0336 01       		.byte	0x1
+ 900 0337 D1       		.byte	0xd1
+ 901 0338 76000000 		.4byte	0x76
+ 902 033c 1E010000 		.4byte	.LLST8
+ 903 0340 07       		.uleb128 0x7
+ 904 0341 ED010000 		.4byte	.LASF25
+ 905 0345 01       		.byte	0x1
+ 906 0346 D1       		.byte	0xd1
+ 907 0347 89030000 		.4byte	0x389
+ 908 034b 3F010000 		.4byte	.LLST9
+ 909 034f 07       		.uleb128 0x7
+ 910 0350 D1000000 		.4byte	.LASF33
+ 911 0354 01       		.byte	0x1
+ 912 0355 D1       		.byte	0xd1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 21
+
+
+ 913 0356 76000000 		.4byte	0x76
+ 914 035a 6B010000 		.4byte	.LLST10
+ 915 035e 10       		.uleb128 0x10
+ 916 035f 14030000 		.4byte	.LASF24
+ 917 0363 01       		.byte	0x1
+ 918 0364 D4       		.byte	0xd4
+ 919 0365 76000000 		.4byte	0x76
+ 920 0369 02       		.uleb128 0x2
+ 921 036a 91       		.byte	0x91
+ 922 036b 77       		.sleb128 -9
+ 923 036c 0E       		.uleb128 0xe
+ 924 036d 18000000 		.4byte	.LVL36
+ 925 0371 E6030000 		.4byte	0x3e6
+ 926 0375 0F       		.uleb128 0xf
+ 927 0376 01       		.uleb128 0x1
+ 928 0377 50       		.byte	0x50
+ 929 0378 02       		.uleb128 0x2
+ 930 0379 91       		.byte	0x91
+ 931 037a 77       		.sleb128 -9
+ 932 037b 0F       		.uleb128 0xf
+ 933 037c 01       		.uleb128 0x1
+ 934 037d 51       		.byte	0x51
+ 935 037e 01       		.uleb128 0x1
+ 936 037f 31       		.byte	0x31
+ 937 0380 0F       		.uleb128 0xf
+ 938 0381 01       		.uleb128 0x1
+ 939 0382 52       		.byte	0x52
+ 940 0383 03       		.uleb128 0x3
+ 941 0384 F3       		.byte	0xf3
+ 942 0385 01       		.uleb128 0x1
+ 943 0386 51       		.byte	0x51
+ 944 0387 00       		.byte	0
+ 945 0388 00       		.byte	0
+ 946 0389 09       		.uleb128 0x9
+ 947 038a 04       		.byte	0x4
+ 948 038b 76000000 		.4byte	0x76
+ 949 038f 13       		.uleb128 0x13
+ 950 0390 9F030000 		.4byte	0x39f
+ 951 0394 9F030000 		.4byte	0x39f
+ 952 0398 14       		.uleb128 0x14
+ 953 0399 A9000000 		.4byte	0xa9
+ 954 039d 03       		.byte	0x3
+ 955 039e 00       		.byte	0
+ 956 039f 15       		.uleb128 0x15
+ 957 03a0 76000000 		.4byte	0x76
+ 958 03a4 16       		.uleb128 0x16
+ 959 03a5 71010000 		.4byte	.LASF34
+ 960 03a9 01       		.byte	0x1
+ 961 03aa 0F       		.byte	0xf
+ 962 03ab B5030000 		.4byte	0x3b5
+ 963 03af 05       		.uleb128 0x5
+ 964 03b0 03       		.byte	0x3
+ 965 03b1 00000000 		.4byte	lis3dh_dataRate_t
+ 966 03b5 15       		.uleb128 0x15
+ 967 03b6 8F030000 		.4byte	0x38f
+ 968 03ba 16       		.uleb128 0x16
+ 969 03bb 2A010000 		.4byte	.LASF35
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 22
+
+
+ 970 03bf 01       		.byte	0x1
+ 971 03c0 10       		.byte	0x10
+ 972 03c1 CB030000 		.4byte	0x3cb
+ 973 03c5 05       		.uleb128 0x5
+ 974 03c6 03       		.byte	0x3
+ 975 03c7 00000000 		.4byte	lis3dh_dataRange_t
+ 976 03cb 15       		.uleb128 0x15
+ 977 03cc 8F030000 		.4byte	0x38f
+ 978 03d0 17       		.uleb128 0x17
+ 979 03d1 96020000 		.4byte	.LASF36
+ 980 03d5 96020000 		.4byte	.LASF36
+ 981 03d9 05       		.byte	0x5
+ 982 03da 40       		.byte	0x40
+ 983 03db 17       		.uleb128 0x17
+ 984 03dc A6010000 		.4byte	.LASF37
+ 985 03e0 A6010000 		.4byte	.LASF37
+ 986 03e4 06       		.byte	0x6
+ 987 03e5 7D       		.byte	0x7d
+ 988 03e6 17       		.uleb128 0x17
+ 989 03e7 B3000000 		.4byte	.LASF38
+ 990 03eb B3000000 		.4byte	.LASF38
+ 991 03ef 05       		.byte	0x5
+ 992 03f0 5F       		.byte	0x5f
+ 993 03f1 17       		.uleb128 0x17
+ 994 03f2 CF010000 		.4byte	.LASF39
+ 995 03f6 CF010000 		.4byte	.LASF39
+ 996 03fa 06       		.byte	0x6
+ 997 03fb 7E       		.byte	0x7e
+ 998 03fc 00       		.byte	0
+ 999              		.section	.debug_abbrev,"",%progbits
+ 1000              	.Ldebug_abbrev0:
+ 1001 0000 01       		.uleb128 0x1
+ 1002 0001 11       		.uleb128 0x11
+ 1003 0002 01       		.byte	0x1
+ 1004 0003 25       		.uleb128 0x25
+ 1005 0004 0E       		.uleb128 0xe
+ 1006 0005 13       		.uleb128 0x13
+ 1007 0006 0B       		.uleb128 0xb
+ 1008 0007 03       		.uleb128 0x3
+ 1009 0008 0E       		.uleb128 0xe
+ 1010 0009 1B       		.uleb128 0x1b
+ 1011 000a 0E       		.uleb128 0xe
+ 1012 000b 55       		.uleb128 0x55
+ 1013 000c 17       		.uleb128 0x17
+ 1014 000d 11       		.uleb128 0x11
+ 1015 000e 01       		.uleb128 0x1
+ 1016 000f 10       		.uleb128 0x10
+ 1017 0010 17       		.uleb128 0x17
+ 1018 0011 00       		.byte	0
+ 1019 0012 00       		.byte	0
+ 1020 0013 02       		.uleb128 0x2
+ 1021 0014 24       		.uleb128 0x24
+ 1022 0015 00       		.byte	0
+ 1023 0016 0B       		.uleb128 0xb
+ 1024 0017 0B       		.uleb128 0xb
+ 1025 0018 3E       		.uleb128 0x3e
+ 1026 0019 0B       		.uleb128 0xb
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 23
+
+
+ 1027 001a 03       		.uleb128 0x3
+ 1028 001b 0E       		.uleb128 0xe
+ 1029 001c 00       		.byte	0
+ 1030 001d 00       		.byte	0
+ 1031 001e 03       		.uleb128 0x3
+ 1032 001f 16       		.uleb128 0x16
+ 1033 0020 00       		.byte	0
+ 1034 0021 03       		.uleb128 0x3
+ 1035 0022 0E       		.uleb128 0xe
+ 1036 0023 3A       		.uleb128 0x3a
+ 1037 0024 0B       		.uleb128 0xb
+ 1038 0025 3B       		.uleb128 0x3b
+ 1039 0026 0B       		.uleb128 0xb
+ 1040 0027 49       		.uleb128 0x49
+ 1041 0028 13       		.uleb128 0x13
+ 1042 0029 00       		.byte	0
+ 1043 002a 00       		.byte	0
+ 1044 002b 04       		.uleb128 0x4
+ 1045 002c 24       		.uleb128 0x24
+ 1046 002d 00       		.byte	0
+ 1047 002e 0B       		.uleb128 0xb
+ 1048 002f 0B       		.uleb128 0xb
+ 1049 0030 3E       		.uleb128 0x3e
+ 1050 0031 0B       		.uleb128 0xb
+ 1051 0032 03       		.uleb128 0x3
+ 1052 0033 08       		.uleb128 0x8
+ 1053 0034 00       		.byte	0
+ 1054 0035 00       		.byte	0
+ 1055 0036 05       		.uleb128 0x5
+ 1056 0037 16       		.uleb128 0x16
+ 1057 0038 00       		.byte	0
+ 1058 0039 03       		.uleb128 0x3
+ 1059 003a 0E       		.uleb128 0xe
+ 1060 003b 3A       		.uleb128 0x3a
+ 1061 003c 0B       		.uleb128 0xb
+ 1062 003d 3B       		.uleb128 0x3b
+ 1063 003e 05       		.uleb128 0x5
+ 1064 003f 49       		.uleb128 0x49
+ 1065 0040 13       		.uleb128 0x13
+ 1066 0041 00       		.byte	0
+ 1067 0042 00       		.byte	0
+ 1068 0043 06       		.uleb128 0x6
+ 1069 0044 2E       		.uleb128 0x2e
+ 1070 0045 01       		.byte	0x1
+ 1071 0046 3F       		.uleb128 0x3f
+ 1072 0047 19       		.uleb128 0x19
+ 1073 0048 03       		.uleb128 0x3
+ 1074 0049 0E       		.uleb128 0xe
+ 1075 004a 3A       		.uleb128 0x3a
+ 1076 004b 0B       		.uleb128 0xb
+ 1077 004c 3B       		.uleb128 0x3b
+ 1078 004d 0B       		.uleb128 0xb
+ 1079 004e 27       		.uleb128 0x27
+ 1080 004f 19       		.uleb128 0x19
+ 1081 0050 11       		.uleb128 0x11
+ 1082 0051 01       		.uleb128 0x1
+ 1083 0052 12       		.uleb128 0x12
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 24
+
+
+ 1084 0053 06       		.uleb128 0x6
+ 1085 0054 40       		.uleb128 0x40
+ 1086 0055 18       		.uleb128 0x18
+ 1087 0056 9742     		.uleb128 0x2117
+ 1088 0058 19       		.uleb128 0x19
+ 1089 0059 01       		.uleb128 0x1
+ 1090 005a 13       		.uleb128 0x13
+ 1091 005b 00       		.byte	0
+ 1092 005c 00       		.byte	0
+ 1093 005d 07       		.uleb128 0x7
+ 1094 005e 05       		.uleb128 0x5
+ 1095 005f 00       		.byte	0
+ 1096 0060 03       		.uleb128 0x3
+ 1097 0061 0E       		.uleb128 0xe
+ 1098 0062 3A       		.uleb128 0x3a
+ 1099 0063 0B       		.uleb128 0xb
+ 1100 0064 3B       		.uleb128 0x3b
+ 1101 0065 0B       		.uleb128 0xb
+ 1102 0066 49       		.uleb128 0x49
+ 1103 0067 13       		.uleb128 0x13
+ 1104 0068 02       		.uleb128 0x2
+ 1105 0069 17       		.uleb128 0x17
+ 1106 006a 00       		.byte	0
+ 1107 006b 00       		.byte	0
+ 1108 006c 08       		.uleb128 0x8
+ 1109 006d 05       		.uleb128 0x5
+ 1110 006e 00       		.byte	0
+ 1111 006f 03       		.uleb128 0x3
+ 1112 0070 0E       		.uleb128 0xe
+ 1113 0071 3A       		.uleb128 0x3a
+ 1114 0072 0B       		.uleb128 0xb
+ 1115 0073 3B       		.uleb128 0x3b
+ 1116 0074 0B       		.uleb128 0xb
+ 1117 0075 49       		.uleb128 0x49
+ 1118 0076 13       		.uleb128 0x13
+ 1119 0077 02       		.uleb128 0x2
+ 1120 0078 18       		.uleb128 0x18
+ 1121 0079 00       		.byte	0
+ 1122 007a 00       		.byte	0
+ 1123 007b 09       		.uleb128 0x9
+ 1124 007c 0F       		.uleb128 0xf
+ 1125 007d 00       		.byte	0
+ 1126 007e 0B       		.uleb128 0xb
+ 1127 007f 0B       		.uleb128 0xb
+ 1128 0080 49       		.uleb128 0x49
+ 1129 0081 13       		.uleb128 0x13
+ 1130 0082 00       		.byte	0
+ 1131 0083 00       		.byte	0
+ 1132 0084 0A       		.uleb128 0xa
+ 1133 0085 35       		.uleb128 0x35
+ 1134 0086 00       		.byte	0
+ 1135 0087 49       		.uleb128 0x49
+ 1136 0088 13       		.uleb128 0x13
+ 1137 0089 00       		.byte	0
+ 1138 008a 00       		.byte	0
+ 1139 008b 0B       		.uleb128 0xb
+ 1140 008c 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 25
+
+
+ 1141 008d 01       		.byte	0x1
+ 1142 008e 3F       		.uleb128 0x3f
+ 1143 008f 19       		.uleb128 0x19
+ 1144 0090 03       		.uleb128 0x3
+ 1145 0091 0E       		.uleb128 0xe
+ 1146 0092 3A       		.uleb128 0x3a
+ 1147 0093 0B       		.uleb128 0xb
+ 1148 0094 3B       		.uleb128 0x3b
+ 1149 0095 0B       		.uleb128 0xb
+ 1150 0096 27       		.uleb128 0x27
+ 1151 0097 19       		.uleb128 0x19
+ 1152 0098 49       		.uleb128 0x49
+ 1153 0099 13       		.uleb128 0x13
+ 1154 009a 11       		.uleb128 0x11
+ 1155 009b 01       		.uleb128 0x1
+ 1156 009c 12       		.uleb128 0x12
+ 1157 009d 06       		.uleb128 0x6
+ 1158 009e 40       		.uleb128 0x40
+ 1159 009f 18       		.uleb128 0x18
+ 1160 00a0 9742     		.uleb128 0x2117
+ 1161 00a2 19       		.uleb128 0x19
+ 1162 00a3 01       		.uleb128 0x1
+ 1163 00a4 13       		.uleb128 0x13
+ 1164 00a5 00       		.byte	0
+ 1165 00a6 00       		.byte	0
+ 1166 00a7 0C       		.uleb128 0xc
+ 1167 00a8 34       		.uleb128 0x34
+ 1168 00a9 00       		.byte	0
+ 1169 00aa 03       		.uleb128 0x3
+ 1170 00ab 0E       		.uleb128 0xe
+ 1171 00ac 3A       		.uleb128 0x3a
+ 1172 00ad 0B       		.uleb128 0xb
+ 1173 00ae 3B       		.uleb128 0x3b
+ 1174 00af 0B       		.uleb128 0xb
+ 1175 00b0 49       		.uleb128 0x49
+ 1176 00b1 13       		.uleb128 0x13
+ 1177 00b2 02       		.uleb128 0x2
+ 1178 00b3 17       		.uleb128 0x17
+ 1179 00b4 00       		.byte	0
+ 1180 00b5 00       		.byte	0
+ 1181 00b6 0D       		.uleb128 0xd
+ 1182 00b7 2E       		.uleb128 0x2e
+ 1183 00b8 01       		.byte	0x1
+ 1184 00b9 3F       		.uleb128 0x3f
+ 1185 00ba 19       		.uleb128 0x19
+ 1186 00bb 03       		.uleb128 0x3
+ 1187 00bc 0E       		.uleb128 0xe
+ 1188 00bd 3A       		.uleb128 0x3a
+ 1189 00be 0B       		.uleb128 0xb
+ 1190 00bf 3B       		.uleb128 0x3b
+ 1191 00c0 0B       		.uleb128 0xb
+ 1192 00c1 49       		.uleb128 0x49
+ 1193 00c2 13       		.uleb128 0x13
+ 1194 00c3 11       		.uleb128 0x11
+ 1195 00c4 01       		.uleb128 0x1
+ 1196 00c5 12       		.uleb128 0x12
+ 1197 00c6 06       		.uleb128 0x6
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 26
+
+
+ 1198 00c7 40       		.uleb128 0x40
+ 1199 00c8 18       		.uleb128 0x18
+ 1200 00c9 9742     		.uleb128 0x2117
+ 1201 00cb 19       		.uleb128 0x19
+ 1202 00cc 01       		.uleb128 0x1
+ 1203 00cd 13       		.uleb128 0x13
+ 1204 00ce 00       		.byte	0
+ 1205 00cf 00       		.byte	0
+ 1206 00d0 0E       		.uleb128 0xe
+ 1207 00d1 898201   		.uleb128 0x4109
+ 1208 00d4 01       		.byte	0x1
+ 1209 00d5 11       		.uleb128 0x11
+ 1210 00d6 01       		.uleb128 0x1
+ 1211 00d7 31       		.uleb128 0x31
+ 1212 00d8 13       		.uleb128 0x13
+ 1213 00d9 00       		.byte	0
+ 1214 00da 00       		.byte	0
+ 1215 00db 0F       		.uleb128 0xf
+ 1216 00dc 8A8201   		.uleb128 0x410a
+ 1217 00df 00       		.byte	0
+ 1218 00e0 02       		.uleb128 0x2
+ 1219 00e1 18       		.uleb128 0x18
+ 1220 00e2 9142     		.uleb128 0x2111
+ 1221 00e4 18       		.uleb128 0x18
+ 1222 00e5 00       		.byte	0
+ 1223 00e6 00       		.byte	0
+ 1224 00e7 10       		.uleb128 0x10
+ 1225 00e8 34       		.uleb128 0x34
+ 1226 00e9 00       		.byte	0
+ 1227 00ea 03       		.uleb128 0x3
+ 1228 00eb 0E       		.uleb128 0xe
+ 1229 00ec 3A       		.uleb128 0x3a
+ 1230 00ed 0B       		.uleb128 0xb
+ 1231 00ee 3B       		.uleb128 0x3b
+ 1232 00ef 0B       		.uleb128 0xb
+ 1233 00f0 49       		.uleb128 0x49
+ 1234 00f1 13       		.uleb128 0x13
+ 1235 00f2 02       		.uleb128 0x2
+ 1236 00f3 18       		.uleb128 0x18
+ 1237 00f4 00       		.byte	0
+ 1238 00f5 00       		.byte	0
+ 1239 00f6 11       		.uleb128 0x11
+ 1240 00f7 898201   		.uleb128 0x4109
+ 1241 00fa 00       		.byte	0
+ 1242 00fb 11       		.uleb128 0x11
+ 1243 00fc 01       		.uleb128 0x1
+ 1244 00fd 31       		.uleb128 0x31
+ 1245 00fe 13       		.uleb128 0x13
+ 1246 00ff 00       		.byte	0
+ 1247 0100 00       		.byte	0
+ 1248 0101 12       		.uleb128 0x12
+ 1249 0102 898201   		.uleb128 0x4109
+ 1250 0105 01       		.byte	0x1
+ 1251 0106 11       		.uleb128 0x11
+ 1252 0107 01       		.uleb128 0x1
+ 1253 0108 31       		.uleb128 0x31
+ 1254 0109 13       		.uleb128 0x13
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 27
+
+
+ 1255 010a 01       		.uleb128 0x1
+ 1256 010b 13       		.uleb128 0x13
+ 1257 010c 00       		.byte	0
+ 1258 010d 00       		.byte	0
+ 1259 010e 13       		.uleb128 0x13
+ 1260 010f 01       		.uleb128 0x1
+ 1261 0110 01       		.byte	0x1
+ 1262 0111 49       		.uleb128 0x49
+ 1263 0112 13       		.uleb128 0x13
+ 1264 0113 01       		.uleb128 0x1
+ 1265 0114 13       		.uleb128 0x13
+ 1266 0115 00       		.byte	0
+ 1267 0116 00       		.byte	0
+ 1268 0117 14       		.uleb128 0x14
+ 1269 0118 21       		.uleb128 0x21
+ 1270 0119 00       		.byte	0
+ 1271 011a 49       		.uleb128 0x49
+ 1272 011b 13       		.uleb128 0x13
+ 1273 011c 2F       		.uleb128 0x2f
+ 1274 011d 0B       		.uleb128 0xb
+ 1275 011e 00       		.byte	0
+ 1276 011f 00       		.byte	0
+ 1277 0120 15       		.uleb128 0x15
+ 1278 0121 26       		.uleb128 0x26
+ 1279 0122 00       		.byte	0
+ 1280 0123 49       		.uleb128 0x49
+ 1281 0124 13       		.uleb128 0x13
+ 1282 0125 00       		.byte	0
+ 1283 0126 00       		.byte	0
+ 1284 0127 16       		.uleb128 0x16
+ 1285 0128 34       		.uleb128 0x34
+ 1286 0129 00       		.byte	0
+ 1287 012a 03       		.uleb128 0x3
+ 1288 012b 0E       		.uleb128 0xe
+ 1289 012c 3A       		.uleb128 0x3a
+ 1290 012d 0B       		.uleb128 0xb
+ 1291 012e 3B       		.uleb128 0x3b
+ 1292 012f 0B       		.uleb128 0xb
+ 1293 0130 49       		.uleb128 0x49
+ 1294 0131 13       		.uleb128 0x13
+ 1295 0132 3F       		.uleb128 0x3f
+ 1296 0133 19       		.uleb128 0x19
+ 1297 0134 02       		.uleb128 0x2
+ 1298 0135 18       		.uleb128 0x18
+ 1299 0136 00       		.byte	0
+ 1300 0137 00       		.byte	0
+ 1301 0138 17       		.uleb128 0x17
+ 1302 0139 2E       		.uleb128 0x2e
+ 1303 013a 00       		.byte	0
+ 1304 013b 3F       		.uleb128 0x3f
+ 1305 013c 19       		.uleb128 0x19
+ 1306 013d 3C       		.uleb128 0x3c
+ 1307 013e 19       		.uleb128 0x19
+ 1308 013f 6E       		.uleb128 0x6e
+ 1309 0140 0E       		.uleb128 0xe
+ 1310 0141 03       		.uleb128 0x3
+ 1311 0142 0E       		.uleb128 0xe
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 28
+
+
+ 1312 0143 3A       		.uleb128 0x3a
+ 1313 0144 0B       		.uleb128 0xb
+ 1314 0145 3B       		.uleb128 0x3b
+ 1315 0146 0B       		.uleb128 0xb
+ 1316 0147 00       		.byte	0
+ 1317 0148 00       		.byte	0
+ 1318 0149 00       		.byte	0
+ 1319              		.section	.debug_loc,"",%progbits
+ 1320              	.Ldebug_loc0:
+ 1321              	.LLST0:
+ 1322 0000 00000000 		.4byte	.LVL0
+ 1323 0004 64000000 		.4byte	.LVL1
+ 1324 0008 0100     		.2byte	0x1
+ 1325 000a 50       		.byte	0x50
+ 1326 000b 64000000 		.4byte	.LVL1
+ 1327 000f 76000000 		.4byte	.LFE0
+ 1328 0013 0400     		.2byte	0x4
+ 1329 0015 F3       		.byte	0xf3
+ 1330 0016 01       		.uleb128 0x1
+ 1331 0017 50       		.byte	0x50
+ 1332 0018 9F       		.byte	0x9f
+ 1333 0019 00000000 		.4byte	0
+ 1334 001d 00000000 		.4byte	0
+ 1335              	.LLST1:
+ 1336 0021 00000000 		.4byte	.LVL2
+ 1337 0025 58000000 		.4byte	.LVL12
+ 1338 0029 0100     		.2byte	0x1
+ 1339 002b 50       		.byte	0x50
+ 1340 002c 58000000 		.4byte	.LVL12
+ 1341 0030 5A000000 		.4byte	.LFE1
+ 1342 0034 0400     		.2byte	0x4
+ 1343 0036 F3       		.byte	0xf3
+ 1344 0037 01       		.uleb128 0x1
+ 1345 0038 50       		.byte	0x50
+ 1346 0039 9F       		.byte	0x9f
+ 1347 003a 00000000 		.4byte	0
+ 1348 003e 00000000 		.4byte	0
+ 1349              	.LLST2:
+ 1350 0042 00000000 		.4byte	.LVL2
+ 1351 0046 14000000 		.4byte	.LVL3
+ 1352 004a 0200     		.2byte	0x2
+ 1353 004c 30       		.byte	0x30
+ 1354 004d 9F       		.byte	0x9f
+ 1355 004e 14000000 		.4byte	.LVL3
+ 1356 0052 18000000 		.4byte	.LVL4
+ 1357 0056 0200     		.2byte	0x2
+ 1358 0058 32       		.byte	0x32
+ 1359 0059 9F       		.byte	0x9f
+ 1360 005a 18000000 		.4byte	.LVL4
+ 1361 005e 1C000000 		.4byte	.LVL5
+ 1362 0062 0200     		.2byte	0x2
+ 1363 0064 33       		.byte	0x33
+ 1364 0065 9F       		.byte	0x9f
+ 1365 0066 1C000000 		.4byte	.LVL5
+ 1366 006a 1E000000 		.4byte	.LVL6
+ 1367 006e 0200     		.2byte	0x2
+ 1368 0070 30       		.byte	0x30
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 29
+
+
+ 1369 0071 9F       		.byte	0x9f
+ 1370 0072 1E000000 		.4byte	.LVL6
+ 1371 0076 5A000000 		.4byte	.LFE1
+ 1372 007a 0100     		.2byte	0x1
+ 1373 007c 53       		.byte	0x53
+ 1374 007d 00000000 		.4byte	0
+ 1375 0081 00000000 		.4byte	0
+ 1376              	.LLST3:
+ 1377 0085 00000000 		.4byte	.LVL14
+ 1378 0089 06000000 		.4byte	.LVL16
+ 1379 008d 0100     		.2byte	0x1
+ 1380 008f 50       		.byte	0x50
+ 1381 0090 06000000 		.4byte	.LVL16
+ 1382 0094 0C000000 		.4byte	.LFE5
+ 1383 0098 0400     		.2byte	0x4
+ 1384 009a F3       		.byte	0xf3
+ 1385 009b 01       		.uleb128 0x1
+ 1386 009c 50       		.byte	0x50
+ 1387 009d 9F       		.byte	0x9f
+ 1388 009e 00000000 		.4byte	0
+ 1389 00a2 00000000 		.4byte	0
+ 1390              	.LLST4:
+ 1391 00a6 02000000 		.4byte	.LVL15
+ 1392 00aa 06000000 		.4byte	.LVL16
+ 1393 00ae 0600     		.2byte	0x6
+ 1394 00b0 70       		.byte	0x70
+ 1395 00b1 00       		.sleb128 0
+ 1396 00b2 08       		.byte	0x8
+ 1397 00b3 80       		.byte	0x80
+ 1398 00b4 21       		.byte	0x21
+ 1399 00b5 9F       		.byte	0x9f
+ 1400 00b6 00000000 		.4byte	0
+ 1401 00ba 00000000 		.4byte	0
+ 1402              	.LLST5:
+ 1403 00be 00000000 		.4byte	.LVL18
+ 1404 00c2 0B000000 		.4byte	.LVL19-1
+ 1405 00c6 0100     		.2byte	0x1
+ 1406 00c8 50       		.byte	0x50
+ 1407 00c9 0B000000 		.4byte	.LVL19-1
+ 1408 00cd 30000000 		.4byte	.LFE6
+ 1409 00d1 0400     		.2byte	0x4
+ 1410 00d3 F3       		.byte	0xf3
+ 1411 00d4 01       		.uleb128 0x1
+ 1412 00d5 50       		.byte	0x50
+ 1413 00d6 9F       		.byte	0x9f
+ 1414 00d7 00000000 		.4byte	0
+ 1415 00db 00000000 		.4byte	0
+ 1416              	.LLST6:
+ 1417 00df 00000000 		.4byte	.LVL18
+ 1418 00e3 0B000000 		.4byte	.LVL19-1
+ 1419 00e7 0100     		.2byte	0x1
+ 1420 00e9 51       		.byte	0x51
+ 1421 00ea 0B000000 		.4byte	.LVL19-1
+ 1422 00ee 30000000 		.4byte	.LFE6
+ 1423 00f2 0400     		.2byte	0x4
+ 1424 00f4 F3       		.byte	0xf3
+ 1425 00f5 01       		.uleb128 0x1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 30
+
+
+ 1426 00f6 51       		.byte	0x51
+ 1427 00f7 9F       		.byte	0x9f
+ 1428 00f8 00000000 		.4byte	0
+ 1429 00fc 00000000 		.4byte	0
+ 1430              	.LLST7:
+ 1431 0100 00000000 		.4byte	.LVL27
+ 1432 0104 08000000 		.4byte	.LVL28
+ 1433 0108 0100     		.2byte	0x1
+ 1434 010a 50       		.byte	0x50
+ 1435 010b 08000000 		.4byte	.LVL28
+ 1436 010f 1E000000 		.4byte	.LFE3
+ 1437 0113 0100     		.2byte	0x1
+ 1438 0115 54       		.byte	0x54
+ 1439 0116 00000000 		.4byte	0
+ 1440 011a 00000000 		.4byte	0
+ 1441              	.LLST8:
+ 1442 011e 00000000 		.4byte	.LVL32
+ 1443 0122 0A000000 		.4byte	.LVL33
+ 1444 0126 0100     		.2byte	0x1
+ 1445 0128 50       		.byte	0x50
+ 1446 0129 0A000000 		.4byte	.LVL33
+ 1447 012d 1E000000 		.4byte	.LFE7
+ 1448 0131 0400     		.2byte	0x4
+ 1449 0133 F3       		.byte	0xf3
+ 1450 0134 01       		.uleb128 0x1
+ 1451 0135 50       		.byte	0x50
+ 1452 0136 9F       		.byte	0x9f
+ 1453 0137 00000000 		.4byte	0
+ 1454 013b 00000000 		.4byte	0
+ 1455              	.LLST9:
+ 1456 013f 00000000 		.4byte	.LVL32
+ 1457 0143 14000000 		.4byte	.LVL35
+ 1458 0147 0100     		.2byte	0x1
+ 1459 0149 51       		.byte	0x51
+ 1460 014a 14000000 		.4byte	.LVL35
+ 1461 014e 17000000 		.4byte	.LVL36-1
+ 1462 0152 0100     		.2byte	0x1
+ 1463 0154 52       		.byte	0x52
+ 1464 0155 17000000 		.4byte	.LVL36-1
+ 1465 0159 1E000000 		.4byte	.LFE7
+ 1466 015d 0400     		.2byte	0x4
+ 1467 015f F3       		.byte	0xf3
+ 1468 0160 01       		.uleb128 0x1
+ 1469 0161 51       		.byte	0x51
+ 1470 0162 9F       		.byte	0x9f
+ 1471 0163 00000000 		.4byte	0
+ 1472 0167 00000000 		.4byte	0
+ 1473              	.LLST10:
+ 1474 016b 00000000 		.4byte	.LVL32
+ 1475 016f 12000000 		.4byte	.LVL34
+ 1476 0173 0100     		.2byte	0x1
+ 1477 0175 52       		.byte	0x52
+ 1478 0176 12000000 		.4byte	.LVL34
+ 1479 017a 1E000000 		.4byte	.LFE7
+ 1480 017e 0400     		.2byte	0x4
+ 1481 0180 F3       		.byte	0xf3
+ 1482 0181 01       		.uleb128 0x1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 31
+
+
+ 1483 0182 52       		.byte	0x52
+ 1484 0183 9F       		.byte	0x9f
+ 1485 0184 00000000 		.4byte	0
+ 1486 0188 00000000 		.4byte	0
+ 1487              		.section	.debug_aranges,"",%progbits
+ 1488 0000 54000000 		.4byte	0x54
+ 1489 0004 0200     		.2byte	0x2
+ 1490 0006 00000000 		.4byte	.Ldebug_info0
+ 1491 000a 04       		.byte	0x4
+ 1492 000b 00       		.byte	0
+ 1493 000c 0000     		.2byte	0
+ 1494 000e 0000     		.2byte	0
+ 1495 0010 00000000 		.4byte	.LFB0
+ 1496 0014 76000000 		.4byte	.LFE0-.LFB0
+ 1497 0018 00000000 		.4byte	.LFB1
+ 1498 001c 5A000000 		.4byte	.LFE1-.LFB1
+ 1499 0020 00000000 		.4byte	.LFB4
+ 1500 0024 0A000000 		.4byte	.LFE4-.LFB4
+ 1501 0028 00000000 		.4byte	.LFB5
+ 1502 002c 0C000000 		.4byte	.LFE5-.LFB5
+ 1503 0030 00000000 		.4byte	.LFB6
+ 1504 0034 30000000 		.4byte	.LFE6-.LFB6
+ 1505 0038 00000000 		.4byte	.LFB2
+ 1506 003c 24000000 		.4byte	.LFE2-.LFB2
+ 1507 0040 00000000 		.4byte	.LFB3
+ 1508 0044 1E000000 		.4byte	.LFE3-.LFB3
+ 1509 0048 00000000 		.4byte	.LFB7
+ 1510 004c 1E000000 		.4byte	.LFE7-.LFB7
+ 1511 0050 00000000 		.4byte	0
+ 1512 0054 00000000 		.4byte	0
+ 1513              		.section	.debug_ranges,"",%progbits
+ 1514              	.Ldebug_ranges0:
+ 1515 0000 00000000 		.4byte	.LFB0
+ 1516 0004 76000000 		.4byte	.LFE0
+ 1517 0008 00000000 		.4byte	.LFB1
+ 1518 000c 5A000000 		.4byte	.LFE1
+ 1519 0010 00000000 		.4byte	.LFB4
+ 1520 0014 0A000000 		.4byte	.LFE4
+ 1521 0018 00000000 		.4byte	.LFB5
+ 1522 001c 0C000000 		.4byte	.LFE5
+ 1523 0020 00000000 		.4byte	.LFB6
+ 1524 0024 30000000 		.4byte	.LFE6
+ 1525 0028 00000000 		.4byte	.LFB2
+ 1526 002c 24000000 		.4byte	.LFE2
+ 1527 0030 00000000 		.4byte	.LFB3
+ 1528 0034 1E000000 		.4byte	.LFE3
+ 1529 0038 00000000 		.4byte	.LFB7
+ 1530 003c 1E000000 		.4byte	.LFE7
+ 1531 0040 00000000 		.4byte	0
+ 1532 0044 00000000 		.4byte	0
+ 1533              		.section	.debug_line,"",%progbits
+ 1534              	.Ldebug_line0:
+ 1535 0000 29020000 		.section	.debug_str,"MS",%progbits,1
+ 1535      02005E01 
+ 1535      00000201 
+ 1535      FB0E0D00 
+ 1535      01010101 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 32
+
+
+ 1536              	.LASF22:
+ 1537 0000 4C495333 		.ascii	"LIS3DH_readByte\000"
+ 1537      44485F72 
+ 1537      65616442 
+ 1537      79746500 
+ 1538              	.LASF17:
+ 1539 0010 636F6E66 		.ascii	"config_reg\000"
+ 1539      69675F72 
+ 1539      656700
+ 1540              	.LASF9:
+ 1541 001b 5F5F7569 		.ascii	"__uint8_t\000"
+ 1541      6E74385F 
+ 1541      7400
+ 1542              	.LASF40:
+ 1543 0025 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1543      43313120 
+ 1543      352E342E 
+ 1543      31203230 
+ 1543      31363036 
+ 1544 0058 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1544      20726576 
+ 1544      6973696F 
+ 1544      6E203233 
+ 1544      37373135 
+ 1545 008b 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1545      66756E63 
+ 1545      74696F6E 
+ 1545      2D736563 
+ 1545      74696F6E 
+ 1546              	.LASF38:
+ 1547 00b3 5350495F 		.ascii	"SPI_Interface_Multi_RW_LIS3DH\000"
+ 1547      496E7465 
+ 1547      72666163 
+ 1547      655F4D75 
+ 1547      6C74695F 
+ 1548              	.LASF33:
+ 1549 00d1 6E427974 		.ascii	"nBytes\000"
+ 1549      657300
+ 1550              	.LASF3:
+ 1551 00d8 73686F72 		.ascii	"short unsigned int\000"
+ 1551      7420756E 
+ 1551      7369676E 
+ 1551      65642069 
+ 1551      6E7400
+ 1552              	.LASF30:
+ 1553 00eb 4C495333 		.ascii	"LIS3DH_Init\000"
+ 1553      44485F49 
+ 1553      6E697400 
+ 1554              	.LASF12:
+ 1555 00f7 666C6F61 		.ascii	"float\000"
+ 1555      7400
+ 1556              	.LASF18:
+ 1557 00fd 64617461 		.ascii	"data\000"
+ 1557      00
+ 1558              	.LASF7:
+ 1559 0102 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1559      206C6F6E 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 33
+
+
+ 1559      6720756E 
+ 1559      7369676E 
+ 1559      65642069 
+ 1560              	.LASF21:
+ 1561 0119 4C495333 		.ascii	"LIS3DH_zipConfig\000"
+ 1561      44485F7A 
+ 1561      6970436F 
+ 1561      6E666967 
+ 1561      00
+ 1562              	.LASF35:
+ 1563 012a 6C697333 		.ascii	"lis3dh_dataRange_t\000"
+ 1563      64685F64 
+ 1563      61746152 
+ 1563      616E6765 
+ 1563      5F7400
+ 1564              	.LASF19:
+ 1565 013d 4C495333 		.ascii	"LIS3DH_unzipConfig\000"
+ 1565      44485F75 
+ 1565      6E7A6970 
+ 1565      436F6E66 
+ 1565      696700
+ 1566              	.LASF28:
+ 1567 0150 696E7465 		.ascii	"interruptState\000"
+ 1567      72727570 
+ 1567      74537461 
+ 1567      746500
+ 1568              	.LASF5:
+ 1569 015f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1569      20756E73 
+ 1569      69676E65 
+ 1569      6420696E 
+ 1569      7400
+ 1570              	.LASF34:
+ 1571 0171 6C697333 		.ascii	"lis3dh_dataRate_t\000"
+ 1571      64685F64 
+ 1571      61746152 
+ 1571      6174655F 
+ 1571      7400
+ 1572              	.LASF23:
+ 1573 0183 61646472 		.ascii	"addr\000"
+ 1573      00
+ 1574              	.LASF27:
+ 1575 0188 64617461 		.ascii	"dataByte\000"
+ 1575      42797465 
+ 1575      00
+ 1576              	.LASF1:
+ 1577 0191 756E7369 		.ascii	"unsigned char\000"
+ 1577      676E6564 
+ 1577      20636861 
+ 1577      7200
+ 1578              	.LASF13:
+ 1579 019f 646F7562 		.ascii	"double\000"
+ 1579      6C6500
+ 1580              	.LASF37:
+ 1581 01a6 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1581      74657243 
+ 1581      72697469 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 34
+
+
+ 1581      63616C53 
+ 1581      65637469 
+ 1582              	.LASF8:
+ 1583 01bd 756E7369 		.ascii	"unsigned int\000"
+ 1583      676E6564 
+ 1583      20696E74 
+ 1583      00
+ 1584              	.LASF29:
+ 1585 01ca 74656D70 		.ascii	"temp\000"
+ 1585      00
+ 1586              	.LASF39:
+ 1587 01cf 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1587      69744372 
+ 1587      69746963 
+ 1587      616C5365 
+ 1587      6374696F 
+ 1588              	.LASF10:
+ 1589 01e5 75696E74 		.ascii	"uint8_t\000"
+ 1589      385F7400 
+ 1590              	.LASF25:
+ 1591 01ed 64617461 		.ascii	"dataRX\000"
+ 1591      525800
+ 1592              	.LASF31:
+ 1593 01f4 4C495333 		.ascii	"LIS3DH_setConfig\000"
+ 1593      44485F73 
+ 1593      6574436F 
+ 1593      6E666967 
+ 1593      00
+ 1594              	.LASF16:
+ 1595 0205 73697A65 		.ascii	"sizetype\000"
+ 1595      74797065 
+ 1595      00
+ 1596              	.LASF6:
+ 1597 020e 6C6F6E67 		.ascii	"long long int\000"
+ 1597      206C6F6E 
+ 1597      6720696E 
+ 1597      7400
+ 1598              	.LASF42:
+ 1599 021c 433A5C55 		.ascii	"C:\\Users\\aless\\Documents\\PSoC_Creator\\AY1920_I"
+ 1599      73657273 
+ 1599      5C616C65 
+ 1599      73735C44 
+ 1599      6F63756D 
+ 1600 024a 495F3032 		.ascii	"I_02_RATTI_SINATRA_QUARANTA\\AY1920_II_FINAL_PROJEC"
+ 1600      5F524154 
+ 1600      54495F53 
+ 1600      494E4154 
+ 1600      52415F51 
+ 1601 027c 542E6379 		.ascii	"T.cydsn\000"
+ 1601      64736E00 
+ 1602              	.LASF20:
+ 1603 0284 4C495333 		.ascii	"LIS3DH_readStatus\000"
+ 1603      44485F72 
+ 1603      65616453 
+ 1603      74617475 
+ 1603      7300
+ 1604              	.LASF36:
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccKBBmIH.s 			page 35
+
+
+ 1605 0296 5350495F 		.ascii	"SPI_Interface_ReadByte_LIS3DH\000"
+ 1605      496E7465 
+ 1605      72666163 
+ 1605      655F5265 
+ 1605      61644279 
+ 1606              	.LASF41:
+ 1607 02b4 4C495333 		.ascii	"LIS3DH.c\000"
+ 1607      44482E63 
+ 1607      00
+ 1608              	.LASF2:
+ 1609 02bd 73686F72 		.ascii	"short int\000"
+ 1609      7420696E 
+ 1609      7400
+ 1610              	.LASF32:
+ 1611 02c7 4C495333 		.ascii	"LIS3DH_readPage\000"
+ 1611      44485F72 
+ 1611      65616450 
+ 1611      61676500 
+ 1612              	.LASF11:
+ 1613 02d7 75696E74 		.ascii	"uint8\000"
+ 1613      3800
+ 1614              	.LASF26:
+ 1615 02dd 4C495333 		.ascii	"LIS3DH_writeByte\000"
+ 1615      44485F77 
+ 1615      72697465 
+ 1615      42797465 
+ 1615      00
+ 1616              	.LASF4:
+ 1617 02ee 6C6F6E67 		.ascii	"long int\000"
+ 1617      20696E74 
+ 1617      00
+ 1618              	.LASF14:
+ 1619 02f7 63686172 		.ascii	"char\000"
+ 1619      00
+ 1620              	.LASF15:
+ 1621 02fc 6C6F6E67 		.ascii	"long double\000"
+ 1621      20646F75 
+ 1621      626C6500 
+ 1622              	.LASF0:
+ 1623 0308 7369676E 		.ascii	"signed char\000"
+ 1623      65642063 
+ 1623      68617200 
+ 1624              	.LASF24:
+ 1625 0314 64617461 		.ascii	"dataTX\000"
+ 1625      545800
+ 1626              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

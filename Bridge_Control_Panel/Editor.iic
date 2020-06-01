@@ -1,0 +1,9 @@
+;---------------------------- RX8 packet structure ---------------------------------------------------------------------------
+; Header = {0xA0};
+; Data = { 2 bytes Xaxis int16, 2 bytes Yaxis int16, 2 bytes Zaxis int16, 2 bytes ADC_V int16 }
+; Tail = {0xC0};
+; UART settings: 115200bps
+; Standard: LSB first
+; Scaling: 1/100 (axes) or 1/1000 (ADC)
+; y-axis range: [-20 20] m/s^2 or V (ADC) but needs to be manually adjusted according to FSR
+rx8 [h=A0] @0Xaxis @1Xaxis @0Yaxis @1Yaxis @0Zaxis @1Zaxis @0ADC_V @1ADC_V [t=C0]

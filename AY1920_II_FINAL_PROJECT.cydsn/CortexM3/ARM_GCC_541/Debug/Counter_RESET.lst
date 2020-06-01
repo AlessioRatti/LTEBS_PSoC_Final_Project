@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
   28:Generated_Source\PSoC5/Counter_RESET.c **** *     Initialize to the schematic state
   29:Generated_Source\PSoC5/Counter_RESET.c **** * 
   30:Generated_Source\PSoC5/Counter_RESET.c **** * Parameters:  
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 2
 
 
   31:Generated_Source\PSoC5/Counter_RESET.c **** *  void  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
   85:Generated_Source\PSoC5/Counter_RESET.c ****             #if( 0 != Counter_RESET_CAPTURE_MODE_CONF)
   86:Generated_Source\PSoC5/Counter_RESET.c ****                 Counter_RESET_CONTROL = ctrl | Counter_RESET_DEFAULT_CAPTURE_MODE;
   87:Generated_Source\PSoC5/Counter_RESET.c ****             #else
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 3
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 3
 
 
   88:Generated_Source\PSoC5/Counter_RESET.c ****                 Counter_RESET_CONTROL = ctrl;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  142:Generated_Source\PSoC5/Counter_RESET.c **** *******************************************************************************/
  143:Generated_Source\PSoC5/Counter_RESET.c **** void Counter_RESET_Enable(void) 
  144:Generated_Source\PSoC5/Counter_RESET.c **** {
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 4
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 4
 
 
   28              		.loc 1 144 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  163:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
  164:Generated_Source\PSoC5/Counter_RESET.c **** * Summary:
  165:Generated_Source\PSoC5/Counter_RESET.c **** *  Enables the counter for operation 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 5
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 5
 
 
  166:Generated_Source\PSoC5/Counter_RESET.c **** *
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
   71 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
   72 0004 03F0FE03 		and	r3, r3, #254
   73 0008 1370     		strb	r3, [r2]
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 6
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 6
 
 
  213:Generated_Source\PSoC5/Counter_RESET.c ****     #endif /* (!Counter_RESET_ControlRegRemoved || Counter_RESET_UsingFixedFunction) */
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  102              		@ args = 0, pretend = 0, frame = 0
  103              		@ frame_needed = 0, uses_anonymous_args = 0
  104              		@ link register save eliminated.
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 7
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 7
 
 
  105              	.LVL0:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  133              		.loc 1 264 0
  134 0004 7047     		bx	lr
  135              	.L12:
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 8
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 8
 
 
  136 0006 00BF     		.align	2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  168              		.align	2
  169              		.global	Counter_RESET_WriteControlRegister
  170              		.thumb
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 9
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 9
 
 
  171              		.thumb_func
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  312:Generated_Source\PSoC5/Counter_RESET.c **** #if (!(Counter_RESET_UsingFixedFunction && (CY_PSOC5A)))
  313:Generated_Source\PSoC5/Counter_RESET.c **** /*******************************************************************************
  314:Generated_Source\PSoC5/Counter_RESET.c **** * Function Name: Counter_RESET_WriteCounter
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 10
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 10
 
 
  315:Generated_Source\PSoC5/Counter_RESET.c **** ********************************************************************************
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  233 002a 10BD     		pop	{r4, pc}
  234              	.L23:
  235              		.align	2
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 11
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 11
 
 
  236              	.L22:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  368:Generated_Source\PSoC5/Counter_RESET.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
  369:Generated_Source\PSoC5/Counter_RESET.c ****     #if(Counter_RESET_UsingFixedFunction)
  370:Generated_Source\PSoC5/Counter_RESET.c ****         return ((uint16)CY_GET_REG16(Counter_RESET_STATICCOUNT_LSB_PTR));
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 12
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 12
 
 
  258              		.loc 1 370 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  395:Generated_Source\PSoC5/Counter_RESET.c ****         return (CY_GET_REG16(Counter_RESET_STATICCOUNT_LSB_PTR));
  396:Generated_Source\PSoC5/Counter_RESET.c ****     #endif /* (Counter_RESET_UsingFixedFunction) */
  397:Generated_Source\PSoC5/Counter_RESET.c **** }
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 13
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 13
 
 
  288              		.loc 1 397 0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  321              	.LFE11:
  322              		.size	Counter_RESET_WritePeriod, .-Counter_RESET_WritePeriod
  323              		.section	.text.Counter_RESET_Init,"ax",%progbits
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 14
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 14
 
 
  324              		.align	2
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  370 0040 1A70     		strb	r2, [r3]
   74:Generated_Source\PSoC5/Counter_RESET.c **** 
  371              		.loc 1 74 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 15
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 15
 
 
  372 0042 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  420              	.LVL9:
  184:Generated_Source\PSoC5/Counter_RESET.c ****     }
  421              		.loc 1 184 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 16
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 16
 
 
  422 000c 0122     		movs	r2, #1
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  452 0002 1888     		ldrh	r0, [r3]
  442:Generated_Source\PSoC5/Counter_RESET.c ****     #else
  443:Generated_Source\PSoC5/Counter_RESET.c ****         return (CY_GET_REG16(Counter_RESET_PERIOD_LSB_PTR));
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 17
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 17
 
 
  444:Generated_Source\PSoC5/Counter_RESET.c ****     #endif /* (Counter_RESET_UsingFixedFunction) */
@@ -991,48 +991,48 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  478 0006 00000000 		.4byte	.Ldebug_abbrev0
  479 000a 04       		.byte	0x4
  480 000b 01       		.uleb128 0x1
- 481 000c 1B010000 		.4byte	.LASF35
+ 481 000c B4000000 		.4byte	.LASF35
  482 0010 0C       		.byte	0xc
- 483 0011 3D030000 		.4byte	.LASF36
- 484 0015 36000000 		.4byte	.LASF37
+ 483 0011 3E030000 		.4byte	.LASF36
+ 484 0015 45020000 		.4byte	.LASF37
  485 0019 00000000 		.4byte	.Ldebug_ranges0+0
  486 001d 00000000 		.4byte	0
  487 0021 00000000 		.4byte	.Ldebug_line0
  488 0025 02       		.uleb128 0x2
  489 0026 01       		.byte	0x1
  490 0027 06       		.byte	0x6
- 491 0028 31030000 		.4byte	.LASF0
+ 491 0028 32030000 		.4byte	.LASF0
  492 002c 02       		.uleb128 0x2
  493 002d 01       		.byte	0x1
  494 002e 08       		.byte	0x8
- 495 002f 0D010000 		.4byte	.LASF1
+ 495 002f A6000000 		.4byte	.LASF1
  496 0033 02       		.uleb128 0x2
  497 0034 02       		.byte	0x2
  498 0035 05       		.byte	0x5
- 499 0036 C6020000 		.4byte	.LASF2
+ 499 0036 C2020000 		.4byte	.LASF2
  500 003a 02       		.uleb128 0x2
  501 003b 02       		.byte	0x2
  502 003c 07       		.byte	0x7
- 503 003d A4000000 		.4byte	.LASF3
+ 503 003d 3D000000 		.4byte	.LASF3
  504 0041 02       		.uleb128 0x2
  505 0042 04       		.byte	0x4
  506 0043 05       		.byte	0x5
- 507 0044 FD020000 		.4byte	.LASF4
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 18
+ 507 0044 F9020000 		.4byte	.LASF4
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 18
 
 
  508 0048 02       		.uleb128 0x2
  509 0049 04       		.byte	0x4
  510 004a 07       		.byte	0x7
- 511 004b AE010000 		.4byte	.LASF5
+ 511 004b 47010000 		.4byte	.LASF5
  512 004f 02       		.uleb128 0x2
  513 0050 08       		.byte	0x8
  514 0051 05       		.byte	0x5
- 515 0052 9E020000 		.4byte	.LASF6
+ 515 0052 37020000 		.4byte	.LASF6
  516 0056 02       		.uleb128 0x2
  517 0057 08       		.byte	0x8
  518 0058 07       		.byte	0x7
- 519 0059 54020000 		.4byte	.LASF7
+ 519 0059 ED010000 		.4byte	.LASF7
  520 005d 03       		.uleb128 0x3
  521 005e 04       		.byte	0x4
  522 005f 05       		.byte	0x5
@@ -1040,31 +1040,31 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  524 0064 02       		.uleb128 0x2
  525 0065 04       		.byte	0x4
  526 0066 07       		.byte	0x7
- 527 0067 B7000000 		.4byte	.LASF8
+ 527 0067 50000000 		.4byte	.LASF8
  528 006b 04       		.uleb128 0x4
- 529 006c C0010000 		.4byte	.LASF9
+ 529 006c 59010000 		.4byte	.LASF9
  530 0070 02       		.byte	0x2
  531 0071 E401     		.2byte	0x1e4
  532 0073 2C000000 		.4byte	0x2c
  533 0077 04       		.uleb128 0x4
- 534 0078 18020000 		.4byte	.LASF10
+ 534 0078 B1010000 		.4byte	.LASF10
  535 007c 02       		.byte	0x2
  536 007d E501     		.2byte	0x1e5
  537 007f 3A000000 		.4byte	0x3a
  538 0083 02       		.uleb128 0x2
  539 0084 04       		.byte	0x4
  540 0085 04       		.byte	0x4
- 541 0086 FF000000 		.4byte	.LASF11
+ 541 0086 98000000 		.4byte	.LASF11
  542 008a 02       		.uleb128 0x2
  543 008b 08       		.byte	0x8
  544 008c 04       		.byte	0x4
- 545 008d DD010000 		.4byte	.LASF12
+ 545 008d 76010000 		.4byte	.LASF12
  546 0091 02       		.uleb128 0x2
  547 0092 01       		.byte	0x1
  548 0093 08       		.byte	0x8
- 549 0094 AC020000 		.4byte	.LASF13
+ 549 0094 02030000 		.4byte	.LASF13
  550 0098 04       		.uleb128 0x4
- 551 0099 A9010000 		.4byte	.LASF14
+ 551 0099 42010000 		.4byte	.LASF14
  552 009d 02       		.byte	0x2
  553 009e 8E02     		.2byte	0x28e
  554 00a0 A4000000 		.4byte	0xa4
@@ -1078,18 +1078,18 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  562 00b5 05       		.uleb128 0x5
  563 00b6 77000000 		.4byte	0x77
  564 00ba 02       		.uleb128 0x2
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 19
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 19
 
 
  565 00bb 08       		.byte	0x8
  566 00bc 04       		.byte	0x4
- 567 00bd 25030000 		.4byte	.LASF16
+ 567 00bd 26030000 		.4byte	.LASF16
  568 00c1 02       		.uleb128 0x2
  569 00c2 04       		.byte	0x4
  570 00c3 07       		.byte	0x7
- 571 00c4 72020000 		.4byte	.LASF17
+ 571 00c4 0B020000 		.4byte	.LASF17
  572 00c8 06       		.uleb128 0x6
- 573 00c9 B1020000 		.4byte	.LASF18
+ 573 00c9 AD020000 		.4byte	.LASF18
  574 00cd 01       		.byte	0x1
  575 00ce 8F       		.byte	0x8f
  576 00cf 00000000 		.4byte	.LFB1
@@ -1097,7 +1097,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  578 00d7 01       		.uleb128 0x1
  579 00d8 9C       		.byte	0x9c
  580 00d9 06       		.uleb128 0x6
- 581 00da D0020000 		.4byte	.LASF19
+ 581 00da CC020000 		.4byte	.LASF19
  582 00de 01       		.byte	0x1
  583 00df D0       		.byte	0xd0
  584 00e0 00000000 		.4byte	.LFB3
@@ -1105,7 +1105,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  586 00e8 01       		.uleb128 0x1
  587 00e9 9C       		.byte	0x9c
  588 00ea 07       		.uleb128 0x7
- 589 00eb 06030000 		.4byte	.LASF22
+ 589 00eb 07030000 		.4byte	.LASF22
  590 00ef 01       		.byte	0x1
  591 00f0 ED       		.byte	0xed
  592 00f1 00000000 		.4byte	.LFB4
@@ -1114,7 +1114,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  595 00fa 9C       		.byte	0x9c
  596 00fb 0D010000 		.4byte	0x10d
  597 00ff 08       		.uleb128 0x8
- 598 0100 CE010000 		.4byte	.LASF24
+ 598 0100 67010000 		.4byte	.LASF24
  599 0104 01       		.byte	0x1
  600 0105 ED       		.byte	0xed
  601 0106 6B000000 		.4byte	0x6b
@@ -1122,7 +1122,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  603 010b 50       		.byte	0x50
  604 010c 00       		.byte	0
  605 010d 09       		.uleb128 0x9
- 606 010e E4010000 		.4byte	.LASF20
+ 606 010e 7D010000 		.4byte	.LASF20
  607 0112 01       		.byte	0x1
  608 0113 0501     		.2byte	0x105
  609 0115 6B000000 		.4byte	0x6b
@@ -1131,19 +1131,19 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  612 0121 01       		.uleb128 0x1
  613 0122 9C       		.byte	0x9c
  614 0123 09       		.uleb128 0x9
- 615 0124 C4000000 		.4byte	.LASF21
+ 615 0124 5D000000 		.4byte	.LASF21
  616 0128 01       		.byte	0x1
  617 0129 1B01     		.2byte	0x11b
  618 012b 6B000000 		.4byte	0x6b
  619 012f 00000000 		.4byte	.LFB6
  620 0133 0C000000 		.4byte	.LFE6-.LFB6
  621 0137 01       		.uleb128 0x1
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 20
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 20
 
 
  622 0138 9C       		.byte	0x9c
  623 0139 0A       		.uleb128 0xa
- 624 013a 7B020000 		.4byte	.LASF23
+ 624 013a 14020000 		.4byte	.LASF23
  625 013e 01       		.byte	0x1
  626 013f 3001     		.2byte	0x130
  627 0141 00000000 		.4byte	.LFB7
@@ -1152,7 +1152,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  630 014a 9C       		.byte	0x9c
  631 014b 5E010000 		.4byte	0x15e
  632 014f 0B       		.uleb128 0xb
- 633 0150 C6010000 		.4byte	.LASF25
+ 633 0150 5F010000 		.4byte	.LASF25
  634 0154 01       		.byte	0x1
  635 0155 3001     		.2byte	0x130
  636 0157 6B000000 		.4byte	0x6b
@@ -1160,7 +1160,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  638 015c 50       		.byte	0x50
  639 015d 00       		.byte	0
  640 015e 0A       		.uleb128 0xa
- 641 015f 1F020000 		.4byte	.LASF26
+ 641 015f B8010000 		.4byte	.LASF26
  642 0163 01       		.byte	0x1
  643 0164 4601     		.2byte	0x146
  644 0166 00000000 		.4byte	.LFB8
@@ -1169,7 +1169,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  647 016f 9C       		.byte	0x9c
  648 0170 94010000 		.4byte	0x194
  649 0174 0C       		.uleb128 0xc
- 650 0175 05010000 		.4byte	.LASF27
+ 650 0175 9E000000 		.4byte	.LASF27
  651 0179 01       		.byte	0x1
  652 017a 4601     		.2byte	0x146
  653 017c 77000000 		.4byte	0x77
@@ -1185,7 +1185,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  663 0192 00       		.byte	0
  664 0193 00       		.byte	0
  665 0194 09       		.uleb128 0x9
- 666 0195 E3020000 		.4byte	.LASF28
+ 666 0195 DF020000 		.4byte	.LASF28
  667 0199 01       		.byte	0x1
  668 019a 6501     		.2byte	0x165
  669 019c 77000000 		.4byte	0x77
@@ -1194,11 +1194,11 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  672 01a8 01       		.uleb128 0x1
  673 01a9 9C       		.byte	0x9c
  674 01aa 09       		.uleb128 0x9
- 675 01ab 3A020000 		.4byte	.LASF29
+ 675 01ab D3010000 		.4byte	.LASF29
  676 01af 01       		.byte	0x1
  677 01b0 8601     		.2byte	0x186
  678 01b2 77000000 		.4byte	0x77
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 21
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 21
 
 
  679 01b6 00000000 		.4byte	.LFB10
@@ -1215,7 +1215,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  690 01d1 9C       		.byte	0x9c
  691 01d2 E5010000 		.4byte	0x1e5
  692 01d6 0B       		.uleb128 0xb
- 693 01d7 9D000000 		.4byte	.LASF31
+ 693 01d7 36000000 		.4byte	.LASF31
  694 01db 01       		.byte	0x1
  695 01dc 9F01     		.2byte	0x19f
  696 01de 77000000 		.4byte	0x77
@@ -1223,7 +1223,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  698 01e3 50       		.byte	0x50
  699 01e4 00       		.byte	0
  700 01e5 07       		.uleb128 0x7
- 701 01e6 05020000 		.4byte	.LASF32
+ 701 01e6 9E010000 		.4byte	.LASF32
  702 01ea 01       		.byte	0x1
  703 01eb 25       		.byte	0x25
  704 01ec 00000000 		.4byte	.LFB0
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  733 022b 0E       		.uleb128 0xe
  734 022c 01       		.uleb128 0x1
  735 022d 50       		.byte	0x50
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 22
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 22
 
 
  736 022e 01       		.uleb128 0x1
@@ -1266,7 +1266,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  738 0230 00       		.byte	0
  739 0231 00       		.byte	0
  740 0232 07       		.uleb128 0x7
- 741 0233 64030000 		.4byte	.LASF33
+ 741 0233 65030000 		.4byte	.LASF33
  742 0237 01       		.byte	0x1
  743 0238 B2       		.byte	0xb2
  744 0239 00000000 		.4byte	.LFB2
@@ -1282,7 +1282,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  754 0255 C8000000 		.4byte	0xc8
  755 0259 00       		.byte	0
  756 025a 09       		.uleb128 0x9
- 757 025b E6000000 		.4byte	.LASF34
+ 757 025b 7F000000 		.4byte	.LASF34
  758 025f 01       		.byte	0x1
  759 0260 B601     		.2byte	0x1b6
  760 0262 77000000 		.4byte	0x77
@@ -1299,8 +1299,8 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  771 027c 03       		.byte	0x3
  772 027d 00000000 		.4byte	Counter_RESET_initVar
  773 0281 12       		.uleb128 0x12
- 774 0282 6B020000 		.4byte	.LASF39
- 775 0286 6B020000 		.4byte	.LASF39
+ 774 0282 04020000 		.4byte	.LASF39
+ 775 0286 04020000 		.4byte	.LASF39
  776 028a 03       		.byte	0x3
  777 028b 7F       		.byte	0x7f
  778 028c 00       		.byte	0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  790 0009 1B       		.uleb128 0x1b
  791 000a 0E       		.uleb128 0xe
  792 000b 55       		.uleb128 0x55
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 23
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 23
 
 
  793 000c 17       		.uleb128 0x17
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  847 0042 03       		.uleb128 0x3
  848 0043 0E       		.uleb128 0xe
  849 0044 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 24
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 24
 
 
  850 0045 0B       		.uleb128 0xb
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  904 007d 00       		.byte	0
  905 007e 09       		.uleb128 0x9
  906 007f 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 25
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 25
 
 
  907 0080 00       		.byte	0
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  961 00b8 0B       		.uleb128 0xb
  962 00b9 3B       		.uleb128 0x3b
  963 00ba 05       		.uleb128 0x5
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 26
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 26
 
 
  964 00bb 49       		.uleb128 0x49
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  1018 00fa 01       		.uleb128 0x1
  1019 00fb 31       		.uleb128 0x31
  1020 00fc 13       		.uleb128 0x13
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 27
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 27
 
 
  1021 00fd 00       		.byte	0
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  1075 0000 7C000000 		.4byte	0x7c
  1076 0004 0200     		.2byte	0x2
  1077 0006 00000000 		.4byte	.Ldebug_info0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 28
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 28
 
 
  1078 000a 04       		.byte	0x4
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  1132 0050 00000000 		.4byte	.LFB0
  1133 0054 70000000 		.4byte	.LFE0
  1134 0058 00000000 		.4byte	.LFB2
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 29
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 29
 
 
  1135 005c 1C000000 		.4byte	.LFE2
@@ -1708,206 +1708,206 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 1
  1148      52455345 
  1148      545F696E 
  1148      69745661 
- 1149              	.LASF37:
- 1150 0036 433A5C55 		.ascii	"C:\\Users\\Mattia40\\Desktop\\AY1920_II_FINAL_PROJE"
- 1150      73657273 
- 1150      5C4D6174 
- 1150      74696134 
- 1150      305C4465 
- 1151 0065 43545C47 		.ascii	"CT\\Group_02_Final_Project\\AY1920_II_FINAL_PROJECT"
- 1151      726F7570 
- 1151      5F30325F 
- 1151      46696E61 
- 1151      6C5F5072 
- 1152 0096 2E637964 		.ascii	".cydsn\000"
- 1152      736E00
- 1153              	.LASF31:
- 1154 009d 70657269 		.ascii	"period\000"
- 1154      6F6400
- 1155              	.LASF3:
- 1156 00a4 73686F72 		.ascii	"short unsigned int\000"
- 1156      7420756E 
- 1156      7369676E 
- 1156      65642069 
- 1156      6E7400
- 1157              	.LASF8:
- 1158 00b7 756E7369 		.ascii	"unsigned int\000"
- 1158      676E6564 
- 1158      20696E74 
- 1158      00
- 1159              	.LASF21:
- 1160 00c4 436F756E 		.ascii	"Counter_RESET_ReadControlRegister\000"
- 1160      7465725F 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 30
+ 1149              	.LASF31:
+ 1150 0036 70657269 		.ascii	"period\000"
+ 1150      6F6400
+ 1151              	.LASF3:
+ 1152 003d 73686F72 		.ascii	"short unsigned int\000"
+ 1152      7420756E 
+ 1152      7369676E 
+ 1152      65642069 
+ 1152      6E7400
+ 1153              	.LASF8:
+ 1154 0050 756E7369 		.ascii	"unsigned int\000"
+ 1154      676E6564 
+ 1154      20696E74 
+ 1154      00
+ 1155              	.LASF21:
+ 1156 005d 436F756E 		.ascii	"Counter_RESET_ReadControlRegister\000"
+ 1156      7465725F 
+ 1156      52455345 
+ 1156      545F5265 
+ 1156      6164436F 
+ 1157              	.LASF34:
+ 1158 007f 436F756E 		.ascii	"Counter_RESET_ReadPeriod\000"
+ 1158      7465725F 
+ 1158      52455345 
+ 1158      545F5265 
+ 1158      61645065 
+ 1159              	.LASF11:
+ 1160 0098 666C6F61 		.ascii	"float\000"
+ 1160      7400
+ 1161              	.LASF27:
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 30
 
 
- 1160      52455345 
- 1160      545F5265 
- 1160      6164436F 
- 1161              	.LASF34:
- 1162 00e6 436F756E 		.ascii	"Counter_RESET_ReadPeriod\000"
- 1162      7465725F 
- 1162      52455345 
- 1162      545F5265 
- 1162      61645065 
- 1163              	.LASF11:
- 1164 00ff 666C6F61 		.ascii	"float\000"
- 1164      7400
- 1165              	.LASF27:
- 1166 0105 636F756E 		.ascii	"counter\000"
- 1166      74657200 
- 1167              	.LASF1:
- 1168 010d 756E7369 		.ascii	"unsigned char\000"
- 1168      676E6564 
- 1168      20636861 
- 1168      7200
- 1169              	.LASF35:
- 1170 011b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1170      43313120 
- 1170      352E342E 
- 1170      31203230 
- 1170      31363036 
- 1171 014e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1171      20726576 
- 1171      6973696F 
- 1171      6E203233 
- 1171      37373135 
- 1172 0181 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1172      66756E63 
- 1172      74696F6E 
- 1172      2D736563 
- 1172      74696F6E 
- 1173              	.LASF14:
- 1174 01a9 72656738 		.ascii	"reg8\000"
- 1174      00
- 1175              	.LASF5:
- 1176 01ae 6C6F6E67 		.ascii	"long unsigned int\000"
- 1176      20756E73 
- 1176      69676E65 
- 1176      6420696E 
- 1176      7400
- 1177              	.LASF9:
- 1178 01c0 75696E74 		.ascii	"uint8\000"
- 1178      3800
- 1179              	.LASF25:
- 1180 01c6 636F6E74 		.ascii	"control\000"
- 1180      726F6C00 
- 1181              	.LASF24:
- 1182 01ce 696E7465 		.ascii	"interruptsMask\000"
- 1182      72727570 
- 1182      74734D61 
- 1182      736B00
- 1183              	.LASF12:
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 31
+ 1162 009e 636F756E 		.ascii	"counter\000"
+ 1162      74657200 
+ 1163              	.LASF1:
+ 1164 00a6 756E7369 		.ascii	"unsigned char\000"
+ 1164      676E6564 
+ 1164      20636861 
+ 1164      7200
+ 1165              	.LASF35:
+ 1166 00b4 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1166      43313120 
+ 1166      352E342E 
+ 1166      31203230 
+ 1166      31363036 
+ 1167 00e7 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1167      20726576 
+ 1167      6973696F 
+ 1167      6E203233 
+ 1167      37373135 
+ 1168 011a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1168      66756E63 
+ 1168      74696F6E 
+ 1168      2D736563 
+ 1168      74696F6E 
+ 1169              	.LASF14:
+ 1170 0142 72656738 		.ascii	"reg8\000"
+ 1170      00
+ 1171              	.LASF5:
+ 1172 0147 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1172      20756E73 
+ 1172      69676E65 
+ 1172      6420696E 
+ 1172      7400
+ 1173              	.LASF9:
+ 1174 0159 75696E74 		.ascii	"uint8\000"
+ 1174      3800
+ 1175              	.LASF25:
+ 1176 015f 636F6E74 		.ascii	"control\000"
+ 1176      726F6C00 
+ 1177              	.LASF24:
+ 1178 0167 696E7465 		.ascii	"interruptsMask\000"
+ 1178      72727570 
+ 1178      74734D61 
+ 1178      736B00
+ 1179              	.LASF12:
+ 1180 0176 646F7562 		.ascii	"double\000"
+ 1180      6C6500
+ 1181              	.LASF20:
+ 1182 017d 436F756E 		.ascii	"Counter_RESET_ReadStatusRegister\000"
+ 1182      7465725F 
+ 1182      52455345 
+ 1182      545F5265 
+ 1182      61645374 
+ 1183              	.LASF32:
+ 1184 019e 436F756E 		.ascii	"Counter_RESET_Init\000"
+ 1184      7465725F 
+ 1184      52455345 
+ 1184      545F496E 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 31
 
 
- 1184 01dd 646F7562 		.ascii	"double\000"
- 1184      6C6500
- 1185              	.LASF20:
- 1186 01e4 436F756E 		.ascii	"Counter_RESET_ReadStatusRegister\000"
- 1186      7465725F 
- 1186      52455345 
- 1186      545F5265 
- 1186      61645374 
- 1187              	.LASF32:
- 1188 0205 436F756E 		.ascii	"Counter_RESET_Init\000"
+ 1184      697400
+ 1185              	.LASF10:
+ 1186 01b1 75696E74 		.ascii	"uint16\000"
+ 1186      313600
+ 1187              	.LASF26:
+ 1188 01b8 436F756E 		.ascii	"Counter_RESET_WriteCounter\000"
  1188      7465725F 
  1188      52455345 
- 1188      545F496E 
- 1188      697400
- 1189              	.LASF10:
- 1190 0218 75696E74 		.ascii	"uint16\000"
- 1190      313600
- 1191              	.LASF26:
- 1192 021f 436F756E 		.ascii	"Counter_RESET_WriteCounter\000"
- 1192      7465725F 
- 1192      52455345 
- 1192      545F5772 
- 1192      69746543 
- 1193              	.LASF29:
- 1194 023a 436F756E 		.ascii	"Counter_RESET_ReadCapture\000"
- 1194      7465725F 
- 1194      52455345 
- 1194      545F5265 
- 1194      61644361 
- 1195              	.LASF7:
- 1196 0254 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1196      206C6F6E 
- 1196      6720756E 
- 1196      7369676E 
- 1196      65642069 
- 1197              	.LASF39:
- 1198 026b 43794861 		.ascii	"CyHalt\000"
- 1198      6C7400
- 1199              	.LASF17:
- 1200 0272 73697A65 		.ascii	"sizetype\000"
- 1200      74797065 
- 1200      00
- 1201              	.LASF23:
- 1202 027b 436F756E 		.ascii	"Counter_RESET_WriteControlRegister\000"
- 1202      7465725F 
- 1202      52455345 
- 1202      545F5772 
- 1202      69746543 
- 1203              	.LASF6:
- 1204 029e 6C6F6E67 		.ascii	"long long int\000"
- 1204      206C6F6E 
- 1204      6720696E 
- 1204      7400
- 1205              	.LASF13:
- 1206 02ac 63686172 		.ascii	"char\000"
- 1206      00
- 1207              	.LASF18:
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\cc95mTY1.s 			page 32
+ 1188      545F5772 
+ 1188      69746543 
+ 1189              	.LASF29:
+ 1190 01d3 436F756E 		.ascii	"Counter_RESET_ReadCapture\000"
+ 1190      7465725F 
+ 1190      52455345 
+ 1190      545F5265 
+ 1190      61644361 
+ 1191              	.LASF7:
+ 1192 01ed 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1192      206C6F6E 
+ 1192      6720756E 
+ 1192      7369676E 
+ 1192      65642069 
+ 1193              	.LASF39:
+ 1194 0204 43794861 		.ascii	"CyHalt\000"
+ 1194      6C7400
+ 1195              	.LASF17:
+ 1196 020b 73697A65 		.ascii	"sizetype\000"
+ 1196      74797065 
+ 1196      00
+ 1197              	.LASF23:
+ 1198 0214 436F756E 		.ascii	"Counter_RESET_WriteControlRegister\000"
+ 1198      7465725F 
+ 1198      52455345 
+ 1198      545F5772 
+ 1198      69746543 
+ 1199              	.LASF6:
+ 1200 0237 6C6F6E67 		.ascii	"long long int\000"
+ 1200      206C6F6E 
+ 1200      6720696E 
+ 1200      7400
+ 1201              	.LASF37:
+ 1202 0245 433A5C55 		.ascii	"C:\\Users\\aless\\Documents\\PSoC_Creator\\AY1920_I"
+ 1202      73657273 
+ 1202      5C616C65 
+ 1202      73735C44 
+ 1202      6F63756D 
+ 1203 0273 495F3032 		.ascii	"I_02_RATTI_SINATRA_QUARANTA\\AY1920_II_FINAL_PROJEC"
+ 1203      5F524154 
+ 1203      54495F53 
+ 1203      494E4154 
+ 1203      52415F51 
+ 1204 02a5 542E6379 		.ascii	"T.cydsn\000"
+ 1204      64736E00 
+ 1205              	.LASF18:
+ 1206 02ad 436F756E 		.ascii	"Counter_RESET_Enable\000"
+ 1206      7465725F 
+ 1206      52455345 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\ccl8QVpt.s 			page 32
 
 
- 1208 02b1 436F756E 		.ascii	"Counter_RESET_Enable\000"
- 1208      7465725F 
- 1208      52455345 
- 1208      545F456E 
- 1208      61626C65 
- 1209              	.LASF2:
- 1210 02c6 73686F72 		.ascii	"short int\000"
- 1210      7420696E 
- 1210      7400
- 1211              	.LASF19:
- 1212 02d0 436F756E 		.ascii	"Counter_RESET_Stop\000"
+ 1206      545F456E 
+ 1206      61626C65 
+ 1207              	.LASF2:
+ 1208 02c2 73686F72 		.ascii	"short int\000"
+ 1208      7420696E 
+ 1208      7400
+ 1209              	.LASF19:
+ 1210 02cc 436F756E 		.ascii	"Counter_RESET_Stop\000"
+ 1210      7465725F 
+ 1210      52455345 
+ 1210      545F5374 
+ 1210      6F7000
+ 1211              	.LASF28:
+ 1212 02df 436F756E 		.ascii	"Counter_RESET_ReadCounter\000"
  1212      7465725F 
  1212      52455345 
- 1212      545F5374 
- 1212      6F7000
- 1213              	.LASF28:
- 1214 02e3 436F756E 		.ascii	"Counter_RESET_ReadCounter\000"
- 1214      7465725F 
- 1214      52455345 
- 1214      545F5265 
- 1214      6164436F 
- 1215              	.LASF4:
- 1216 02fd 6C6F6E67 		.ascii	"long int\000"
- 1216      20696E74 
+ 1212      545F5265 
+ 1212      6164436F 
+ 1213              	.LASF4:
+ 1214 02f9 6C6F6E67 		.ascii	"long int\000"
+ 1214      20696E74 
+ 1214      00
+ 1215              	.LASF13:
+ 1216 0302 63686172 		.ascii	"char\000"
  1216      00
  1217              	.LASF22:
- 1218 0306 436F756E 		.ascii	"Counter_RESET_SetInterruptMode\000"
+ 1218 0307 436F756E 		.ascii	"Counter_RESET_SetInterruptMode\000"
  1218      7465725F 
  1218      52455345 
  1218      545F5365 
  1218      74496E74 
  1219              	.LASF16:
- 1220 0325 6C6F6E67 		.ascii	"long double\000"
+ 1220 0326 6C6F6E67 		.ascii	"long double\000"
  1220      20646F75 
  1220      626C6500 
  1221              	.LASF0:
- 1222 0331 7369676E 		.ascii	"signed char\000"
+ 1222 0332 7369676E 		.ascii	"signed char\000"
  1222      65642063 
  1222      68617200 
  1223              	.LASF36:
- 1224 033d 47656E65 		.ascii	"Generated_Source\\PSoC5\\Counter_RESET.c\000"
+ 1224 033e 47656E65 		.ascii	"Generated_Source\\PSoC5\\Counter_RESET.c\000"
  1224      72617465 
  1224      645F536F 
  1224      75726365 
  1224      5C50536F 
  1225              	.LASF33:
- 1226 0364 436F756E 		.ascii	"Counter_RESET_Start\000"
+ 1226 0365 436F756E 		.ascii	"Counter_RESET_Start\000"
  1226      7465725F 
  1226      52455345 
  1226      545F5374 

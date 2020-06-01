@@ -33,7 +33,7 @@
 * @brief Full-Duplex, Single-Operation 1-Byte Trade on the LIS3DH
 */
 uint8_t SPI_Interface_tradeByte_LIS3DH(uint8_t byte) {
-	
+    
 	/* Enable the Slave */
 	SLAVE_CS_1_Write(0);
 	
@@ -57,7 +57,7 @@ uint8_t SPI_Interface_tradeByte_LIS3DH(uint8_t byte) {
 * @brief Full-Duplex, Single-Operation 1-Byte Trade on the EEPROM
 */
 uint8_t SPI_Interface_tradeByte_EEPROM(uint8_t byte) {
-	
+    
 	/* Enable the Slave */
 	SLAVE_CS_2_Write(0);
 	
@@ -133,43 +133,6 @@ uint8_t SPI_Interface_ReadByte_EEPROM(uint8_t byteTX) {
     return byteRX;
 }
 
-
-/*
-* @brief Full-Duplex, Multi-Byte Trade (RX/TX)
-*/
-/*
-void SPI_Interface_Multi_Trade(uint8_t* dataTX, uint8_t* dataRX, uint8_t nBytes) {
-    
-    
-}
-*/
-
-
-
-void SPI_Interface_WriteByte_LIS3DH(uint8_t* byteTX) {
-    
-	// Enable the Slave
-    SLAVE_CS_1_Write(0);
-    
-    // Load the TX Buffer
-    SPIM_LIS3DH_WriteTxData(byteTX[0]);     // first: instruction byte
-    
-    // SPI Dummy Byte
-    SPIM_LIS3DH_WriteTxData(byteTX[1]);     // second: data byte
-    
-    // Wait for TX/RX
-    while(!(SPIM_LIS3DH_ReadTxStatus() & SPIM_LIS3DH_STS_SPI_DONE));
-    
-    // Disable the Slave
-    SLAVE_CS_1_Write(1);
-    
-    /* Clear */
-    SPIM_LIS3DH_ClearFIFO();
-    SPIM_LIS3DH_ClearRxBuffer();
-    SPIM_LIS3DH_ClearTxBuffer();
-    
-}
-
 /*
 * @brief RX-only, Dual-Operation Multi-Byte READ/WRITE for the LIS3DH
 */
@@ -177,8 +140,6 @@ void SPI_Interface_Multi_RW_LIS3DH(uint8_t* dataTX, uint8_t bytesTX, uint8_t* da
     
     /* Enable the Slave */
     SLAVE_CS_1_Write(0);
-    
-    /* --------------- WRITE --------------- */
     
     int8_t count = bytesTX, index = 0;
     	
@@ -197,8 +158,6 @@ void SPI_Interface_Multi_RW_LIS3DH(uint8_t* dataTX, uint8_t bytesTX, uint8_t* da
     /* Clear the RX Buffer */
     SPIM_LIS3DH_ClearFIFO();
     SPIM_LIS3DH_ClearRxBuffer();
-    
-    /* --------------- READ --------------- */
     
     /* Init the Dummy TX Buffer */
     uint8_t dummyTX[SPI_RxBufferSize];

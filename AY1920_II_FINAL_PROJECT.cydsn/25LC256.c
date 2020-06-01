@@ -14,7 +14,7 @@
 
 uint8_t eeprom_Status;
 
-void EEPROM_loadSettings(uint8_t* config_reg, uint16_t* index_eeprom) {
+void EEPROM_loadSettings(volatile uint8_t* config_reg, uint16_t* index_eeprom) {
     
     *config_reg = EEPROM_readByte(0x0002);
     EEPROM_readPage(0x0000, (uint8_t*) index_eeprom, 2);
@@ -24,17 +24,23 @@ void EEPROM_loadSettings(uint8_t* config_reg, uint16_t* index_eeprom) {
 /** ====== Helper Functions ====== **/
 
 uint8_t EEPROM_readStatus() {
+    
 	return SPI_Interface_ReadByte_EEPROM(SPI_EEPROM_RDSR);
+    
 }
 
 void EEPROM_writeEnable() {
+    
 	/* Send 1-byte Instruction */
 	SPI_Interface_tradeByte_EEPROM(SPI_EEPROM_WREN);
+    
 }
 
 void EEPROM_writeDisable() {
+    
 	/* Send 1-byte Instruction */
 	SPI_Interface_tradeByte_EEPROM(SPI_EEPROM_WRDI);
+    
 }
 
 /** ====== User-level Functions ====== **/
@@ -54,8 +60,11 @@ uint8_t EEPROM_readByte(uint16_t addr) {
 }
 
 void EEPROM_writeByte(uint16_t addr, uint8_t dataByte) {
+    
     /* Enable WRITE operations */
     EEPROM_writeEnable();
+    
+    CyDelayUs(1);
 	
 	/* Prepare the TX packet */
     uint8_t dataTX[4] = {SPI_EEPROM_WRITE, ((addr & 0xFF00) >> 8), (addr & 0x00FF), dataByte};
@@ -64,34 +73,24 @@ void EEPROM_writeByte(uint16_t addr, uint8_t dataByte) {
 	
 	/* Write 1 byte to addr */
 	SPI_Interface_Multi_RW_EEPROM(dataTX, 4, &temp, 0);
-    
-    /* Disable WRITE operations */
-    //EEPROM_writeDisable();
-    
-    // Wait for write complete
-    //EEPROM_waitForWriteComplete();
 	
 }
 
 void EEPROM_readPage(uint16_t addr, uint8_t* dataRX, uint8_t nBytes) {
     
-    //CyGlobalIntDisable;
 	/* Prepare the TX data packet: instruction + address */
 	uint8_t dataTX[3] = {SPI_EEPROM_READ, ((addr & 0xFF00) >> 8), (addr & 0x00FF)};
 	
 	/* Read the nBytes */
 	SPI_Interface_Multi_RW_EEPROM(dataTX, 3, dataRX, nBytes);
     
-    //CyGlobalIntEnable;
 }
 
-
 void EEPROM_writePage(uint16_t addr, uint8_t* data, uint8_t nBytes) {
-	
-    //CyGlobalIntDisable;
     
     /* Save current global interrupt enable and disable it */
-    uint8 interruptState = CyEnterCriticalSection();
+    uint8 interruptState;
+    interruptState = CyEnterCriticalSection();
     
     /* Enable WRITE operations */
     EEPROM_writeEnable();
@@ -114,11 +113,8 @@ void EEPROM_writePage(uint16_t addr, uint8_t* data, uint8_t nBytes) {
 	
 	SPI_Interface_Multi_RW_EEPROM(dataTX, 3+nBytes, &temp, 0);
     
-    //CyGlobalIntEnable;
-    
     /* Restore global interrupt enable state */
     CyExitCriticalSection(interruptState);
-	
 	
 }
 

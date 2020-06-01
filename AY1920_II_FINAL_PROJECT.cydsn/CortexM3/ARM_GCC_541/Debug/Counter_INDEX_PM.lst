@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
   28:Generated_Source\PSoC5/Counter_INDEX_PM.c **** *     Save the current user configuration
   29:Generated_Source\PSoC5/Counter_INDEX_PM.c **** *
   30:Generated_Source\PSoC5/Counter_INDEX_PM.c **** * Parameters:  
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 2
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 2
 
 
   31:Generated_Source\PSoC5/Counter_INDEX_PM.c **** *  void
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
   68:Generated_Source\PSoC5/Counter_INDEX_PM.c **** *
   69:Generated_Source\PSoC5/Counter_INDEX_PM.c **** * Global variables:
   70:Generated_Source\PSoC5/Counter_INDEX_PM.c **** *  Counter_INDEX_backup:  Variables of this global structure are used to 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 3
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 3
 
 
   71:Generated_Source\PSoC5/Counter_INDEX_PM.c **** *  restore the values of non retention registers on wakeup from sleep mode.
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
   63              		.cfi_startproc
   64              		@ args = 0, pretend = 0, frame = 0
   65              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 4
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 4
 
 
   66              		.loc 1 106 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
   99              		.section	.text.Counter_INDEX_Wakeup,"ax",%progbits
  100              		.align	2
  101              		.global	Counter_INDEX_Wakeup
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 5
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 5
 
 
  102              		.thumb
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  126              		.align	2
  127              	.L12:
  128 0010 00000000 		.word	.LANCHOR0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 6
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 6
 
 
  129              		.cfi_endproc
@@ -323,48 +323,48 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  147 0006 00000000 		.4byte	.Ldebug_abbrev0
  148 000a 04       		.byte	0x4
  149 000b 01       		.uleb128 0x1
- 150 000c C9000000 		.4byte	.LASF27
+ 150 000c 62000000 		.4byte	.LASF27
  151 0010 0C       		.byte	0xc
- 152 0011 AB010000 		.4byte	.LASF28
- 153 0015 19000000 		.4byte	.LASF29
+ 152 0011 44010000 		.4byte	.LASF28
+ 153 0015 D6010000 		.4byte	.LASF29
  154 0019 00000000 		.4byte	.Ldebug_ranges0+0
  155 001d 00000000 		.4byte	0
  156 0021 00000000 		.4byte	.Ldebug_line0
  157 0025 02       		.uleb128 0x2
  158 0026 01       		.byte	0x1
  159 0027 06       		.byte	0x6
- 160 0028 BB020000 		.4byte	.LASF0
+ 160 0028 BC020000 		.4byte	.LASF0
  161 002c 02       		.uleb128 0x2
  162 002d 01       		.byte	0x1
  163 002e 08       		.byte	0x8
- 164 002f BB000000 		.4byte	.LASF1
+ 164 002f 54000000 		.4byte	.LASF1
  165 0033 02       		.uleb128 0x2
  166 0034 02       		.byte	0x2
  167 0035 05       		.byte	0x5
- 168 0036 57020000 		.4byte	.LASF2
+ 168 0036 53020000 		.4byte	.LASF2
  169 003a 02       		.uleb128 0x2
  170 003b 02       		.byte	0x2
  171 003c 07       		.byte	0x7
- 172 003d 80000000 		.4byte	.LASF3
+ 172 003d 19000000 		.4byte	.LASF3
  173 0041 02       		.uleb128 0x2
  174 0042 04       		.byte	0x4
  175 0043 05       		.byte	0x5
- 176 0044 A6020000 		.4byte	.LASF4
+ 176 0044 A2020000 		.4byte	.LASF4
  177 0048 02       		.uleb128 0x2
  178 0049 04       		.byte	0x4
  179 004a 07       		.byte	0x7
- 180 004b 5C010000 		.4byte	.LASF5
+ 180 004b F5000000 		.4byte	.LASF5
  181 004f 02       		.uleb128 0x2
  182 0050 08       		.byte	0x8
  183 0051 05       		.byte	0x5
- 184 0052 2F020000 		.4byte	.LASF6
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 7
+ 184 0052 C8010000 		.4byte	.LASF6
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 7
 
 
  185 0056 02       		.uleb128 0x2
  186 0057 08       		.byte	0x8
  187 0058 07       		.byte	0x7
- 188 0059 FC010000 		.4byte	.LASF7
+ 188 0059 95010000 		.4byte	.LASF7
  189 005d 03       		.uleb128 0x3
  190 005e 04       		.byte	0x4
  191 005f 05       		.byte	0x5
@@ -372,31 +372,31 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  193 0064 02       		.uleb128 0x2
  194 0065 04       		.byte	0x4
  195 0066 07       		.byte	0x7
- 196 0067 EF010000 		.4byte	.LASF8
+ 196 0067 88010000 		.4byte	.LASF8
  197 006b 04       		.uleb128 0x4
- 198 006c 89010000 		.4byte	.LASF9
+ 198 006c 22010000 		.4byte	.LASF9
  199 0070 02       		.byte	0x2
  200 0071 E401     		.2byte	0x1e4
  201 0073 2C000000 		.4byte	0x2c
  202 0077 04       		.uleb128 0x4
- 203 0078 D5010000 		.4byte	.LASF10
+ 203 0078 6E010000 		.4byte	.LASF10
  204 007c 02       		.byte	0x2
  205 007d E501     		.2byte	0x1e5
  206 007f 3A000000 		.4byte	0x3a
  207 0083 02       		.uleb128 0x2
  208 0084 04       		.byte	0x4
  209 0085 04       		.byte	0x4
- 210 0086 B5000000 		.4byte	.LASF11
+ 210 0086 4E000000 		.4byte	.LASF11
  211 008a 02       		.uleb128 0x2
  212 008b 08       		.byte	0x8
  213 008c 04       		.byte	0x4
- 214 008d A4010000 		.4byte	.LASF12
+ 214 008d 3D010000 		.4byte	.LASF12
  215 0091 02       		.uleb128 0x2
  216 0092 01       		.byte	0x1
  217 0093 08       		.byte	0x8
- 218 0094 3D020000 		.4byte	.LASF13
+ 218 0094 AB020000 		.4byte	.LASF13
  219 0098 04       		.uleb128 0x4
- 220 0099 57010000 		.4byte	.LASF14
+ 220 0099 F0000000 		.4byte	.LASF14
  221 009d 02       		.byte	0x2
  222 009e 8E02     		.2byte	0x28e
  223 00a0 A4000000 		.4byte	0xa4
@@ -405,40 +405,40 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  226 00a9 02       		.uleb128 0x2
  227 00aa 08       		.byte	0x8
  228 00ab 04       		.byte	0x4
- 229 00ac AF020000 		.4byte	.LASF15
+ 229 00ac B0020000 		.4byte	.LASF15
  230 00b0 02       		.uleb128 0x2
  231 00b1 04       		.byte	0x4
  232 00b2 07       		.byte	0x7
- 233 00b3 13020000 		.4byte	.LASF16
+ 233 00b3 AC010000 		.4byte	.LASF16
  234 00b7 06       		.uleb128 0x6
  235 00b8 06       		.byte	0x6
  236 00b9 03       		.byte	0x3
  237 00ba 40       		.byte	0x40
  238 00bb E4000000 		.4byte	0xe4
  239 00bf 07       		.uleb128 0x7
- 240 00c0 1C020000 		.4byte	.LASF17
+ 240 00c0 B5010000 		.4byte	.LASF17
  241 00c4 03       		.byte	0x3
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 8
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 8
 
 
  242 00c5 42       		.byte	0x42
  243 00c6 6B000000 		.4byte	0x6b
  244 00ca 00       		.byte	0
  245 00cb 07       		.uleb128 0x7
- 246 00cc 93000000 		.4byte	.LASF18
+ 246 00cc 2C000000 		.4byte	.LASF18
  247 00d0 03       		.byte	0x3
  248 00d1 43       		.byte	0x43
  249 00d2 77000000 		.4byte	0x77
  250 00d6 02       		.byte	0x2
  251 00d7 07       		.uleb128 0x7
- 252 00d8 9E000000 		.4byte	.LASF19
+ 252 00d8 37000000 		.4byte	.LASF19
  253 00dc 03       		.byte	0x3
  254 00dd 46       		.byte	0x46
  255 00de 6B000000 		.4byte	0x6b
  256 00e2 04       		.byte	0x4
  257 00e3 00       		.byte	0
  258 00e4 08       		.uleb128 0x8
- 259 00e5 6E010000 		.4byte	.LASF20
+ 259 00e5 07010000 		.4byte	.LASF20
  260 00e9 03       		.byte	0x3
  261 00ea 49       		.byte	0x49
  262 00eb B7000000 		.4byte	0xb7
@@ -451,7 +451,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  269 00fe 01       		.uleb128 0x1
  270 00ff 9C       		.byte	0x9c
  271 0100 09       		.uleb128 0x9
- 272 0101 75020000 		.4byte	.LASF22
+ 272 0101 71020000 		.4byte	.LASF22
  273 0105 01       		.byte	0x1
  274 0106 4A       		.byte	0x4a
  275 0107 00000000 		.4byte	.LFB1
@@ -459,7 +459,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  277 010f 01       		.uleb128 0x1
  278 0110 9C       		.byte	0x9c
  279 0111 0A       		.uleb128 0xa
- 280 0112 61020000 		.4byte	.LASF23
+ 280 0112 5D020000 		.4byte	.LASF23
  281 0116 01       		.byte	0x1
  282 0117 69       		.byte	0x69
  283 0118 00000000 		.4byte	.LFB2
@@ -472,13 +472,13 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  290 012b 60010000 		.4byte	0x160
  291 012f 00       		.byte	0
  292 0130 0A       		.uleb128 0xa
- 293 0131 91020000 		.4byte	.LASF24
+ 293 0131 8D020000 		.4byte	.LASF24
  294 0135 01       		.byte	0x1
  295 0136 96       		.byte	0x96
  296 0137 00000000 		.4byte	.LFB3
  297 013b 14000000 		.4byte	.LFE3-.LFB3
  298 013f 01       		.uleb128 0x1
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 9
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 9
 
 
  299 0140 9C       		.byte	0x9c
@@ -488,7 +488,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  303 014a 6B010000 		.4byte	0x16b
  304 014e 00       		.byte	0
  305 014f 0C       		.uleb128 0xc
- 306 0150 42020000 		.4byte	.LASF30
+ 306 0150 3E020000 		.4byte	.LASF30
  307 0154 01       		.byte	0x1
  308 0155 15       		.byte	0x15
  309 0156 E4000000 		.4byte	0xe4
@@ -496,13 +496,13 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  311 015b 03       		.byte	0x3
  312 015c 00000000 		.4byte	Counter_INDEX_backup
  313 0160 0D       		.uleb128 0xd
- 314 0161 DC010000 		.4byte	.LASF25
- 315 0165 DC010000 		.4byte	.LASF25
+ 314 0161 75010000 		.4byte	.LASF25
+ 315 0165 75010000 		.4byte	.LASF25
  316 0169 03       		.byte	0x3
  317 016a 50       		.byte	0x50
  318 016b 0D       		.uleb128 0xd
- 319 016c 8F010000 		.4byte	.LASF26
- 320 0170 8F010000 		.4byte	.LASF26
+ 319 016c 28010000 		.4byte	.LASF26
+ 320 0170 28010000 		.4byte	.LASF26
  321 0174 03       		.byte	0x3
  322 0175 71       		.byte	0x71
  323 0176 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  353 001b 0E       		.uleb128 0xe
  354 001c 00       		.byte	0
  355 001d 00       		.byte	0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 10
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 10
 
 
  356 001e 03       		.uleb128 0x3
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  410 0054 13       		.uleb128 0x13
  411 0055 38       		.uleb128 0x38
  412 0056 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 11
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 11
 
 
  413 0057 00       		.byte	0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  467 008e 06       		.uleb128 0x6
  468 008f 40       		.uleb128 0x40
  469 0090 18       		.uleb128 0x18
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 12
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 12
 
 
  470 0091 9742     		.uleb128 0x2117
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  524 000c 0000     		.2byte	0
  525 000e 0000     		.2byte	0
  526 0010 00000000 		.4byte	.LFB0
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 13
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 13
 
 
  527 0014 02000000 		.4byte	.LFE0-.LFB0
@@ -755,177 +755,177 @@ ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 1
  552      494E4445 
  552      585F5361 
  552      7665436F 
- 553              	.LASF29:
- 554 0019 433A5C55 		.ascii	"C:\\Users\\Mattia40\\Desktop\\AY1920_II_FINAL_PROJE"
- 554      73657273 
- 554      5C4D6174 
- 554      74696134 
- 554      305C4465 
- 555 0048 43545C47 		.ascii	"CT\\Group_02_Final_Project\\AY1920_II_FINAL_PROJECT"
- 555      726F7570 
- 555      5F30325F 
- 555      46696E61 
- 555      6C5F5072 
- 556 0079 2E637964 		.ascii	".cydsn\000"
- 556      736E00
- 557              	.LASF3:
- 558 0080 73686F72 		.ascii	"short unsigned int\000"
- 558      7420756E 
- 558      7369676E 
- 558      65642069 
- 558      6E7400
- 559              	.LASF18:
- 560 0093 436F756E 		.ascii	"CounterUdb\000"
- 560      74657255 
- 560      646200
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 14
+ 553              	.LASF3:
+ 554 0019 73686F72 		.ascii	"short unsigned int\000"
+ 554      7420756E 
+ 554      7369676E 
+ 554      65642069 
+ 554      6E7400
+ 555              	.LASF18:
+ 556 002c 436F756E 		.ascii	"CounterUdb\000"
+ 556      74657255 
+ 556      646200
+ 557              	.LASF19:
+ 558 0037 436F756E 		.ascii	"CounterControlRegister\000"
+ 558      74657243 
+ 558      6F6E7472 
+ 558      6F6C5265 
+ 558      67697374 
+ 559              	.LASF11:
+ 560 004e 666C6F61 		.ascii	"float\000"
+ 560      7400
+ 561              	.LASF1:
+ 562 0054 756E7369 		.ascii	"unsigned char\000"
+ 562      676E6564 
+ 562      20636861 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 14
 
 
- 561              	.LASF19:
- 562 009e 436F756E 		.ascii	"CounterControlRegister\000"
- 562      74657243 
- 562      6F6E7472 
- 562      6F6C5265 
- 562      67697374 
- 563              	.LASF11:
- 564 00b5 666C6F61 		.ascii	"float\000"
- 564      7400
- 565              	.LASF1:
- 566 00bb 756E7369 		.ascii	"unsigned char\000"
- 566      676E6564 
- 566      20636861 
- 566      7200
- 567              	.LASF27:
- 568 00c9 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 568      43313120 
- 568      352E342E 
- 568      31203230 
- 568      31363036 
- 569 00fc 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 569      20726576 
- 569      6973696F 
- 569      6E203233 
- 569      37373135 
- 570 012f 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 570      66756E63 
- 570      74696F6E 
- 570      2D736563 
- 570      74696F6E 
- 571              	.LASF14:
- 572 0157 72656738 		.ascii	"reg8\000"
- 572      00
- 573              	.LASF5:
- 574 015c 6C6F6E67 		.ascii	"long unsigned int\000"
- 574      20756E73 
- 574      69676E65 
- 574      6420696E 
- 574      7400
- 575              	.LASF20:
- 576 016e 436F756E 		.ascii	"Counter_INDEX_backupStruct\000"
+ 562      7200
+ 563              	.LASF27:
+ 564 0062 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 564      43313120 
+ 564      352E342E 
+ 564      31203230 
+ 564      31363036 
+ 565 0095 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 565      20726576 
+ 565      6973696F 
+ 565      6E203233 
+ 565      37373135 
+ 566 00c8 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 566      66756E63 
+ 566      74696F6E 
+ 566      2D736563 
+ 566      74696F6E 
+ 567              	.LASF14:
+ 568 00f0 72656738 		.ascii	"reg8\000"
+ 568      00
+ 569              	.LASF5:
+ 570 00f5 6C6F6E67 		.ascii	"long unsigned int\000"
+ 570      20756E73 
+ 570      69676E65 
+ 570      6420696E 
+ 570      7400
+ 571              	.LASF20:
+ 572 0107 436F756E 		.ascii	"Counter_INDEX_backupStruct\000"
+ 572      7465725F 
+ 572      494E4445 
+ 572      585F6261 
+ 572      636B7570 
+ 573              	.LASF9:
+ 574 0122 75696E74 		.ascii	"uint8\000"
+ 574      3800
+ 575              	.LASF26:
+ 576 0128 436F756E 		.ascii	"Counter_INDEX_Enable\000"
  576      7465725F 
  576      494E4445 
- 576      585F6261 
- 576      636B7570 
- 577              	.LASF9:
- 578 0189 75696E74 		.ascii	"uint8\000"
- 578      3800
- 579              	.LASF26:
- 580 018f 436F756E 		.ascii	"Counter_INDEX_Enable\000"
- 580      7465725F 
- 580      494E4445 
- 580      585F456E 
- 580      61626C65 
- 581              	.LASF12:
- 582 01a4 646F7562 		.ascii	"double\000"
- 582      6C6500
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 15
+ 576      585F456E 
+ 576      61626C65 
+ 577              	.LASF12:
+ 578 013d 646F7562 		.ascii	"double\000"
+ 578      6C6500
+ 579              	.LASF28:
+ 580 0144 47656E65 		.ascii	"Generated_Source\\PSoC5\\Counter_INDEX_PM.c\000"
+ 580      72617465 
+ 580      645F536F 
+ 580      75726365 
+ 580      5C50536F 
+ 581              	.LASF10:
+ 582 016e 75696E74 		.ascii	"uint16\000"
+ 582      313600
+ 583              	.LASF25:
+ 584 0175 436F756E 		.ascii	"Counter_INDEX_Stop\000"
+ 584      7465725F 
+ 584      494E4445 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 15
 
 
- 583              	.LASF28:
- 584 01ab 47656E65 		.ascii	"Generated_Source\\PSoC5\\Counter_INDEX_PM.c\000"
- 584      72617465 
- 584      645F536F 
- 584      75726365 
- 584      5C50536F 
- 585              	.LASF10:
- 586 01d5 75696E74 		.ascii	"uint16\000"
- 586      313600
- 587              	.LASF25:
- 588 01dc 436F756E 		.ascii	"Counter_INDEX_Stop\000"
- 588      7465725F 
- 588      494E4445 
- 588      585F5374 
- 588      6F7000
- 589              	.LASF8:
- 590 01ef 756E7369 		.ascii	"unsigned int\000"
- 590      676E6564 
- 590      20696E74 
+ 584      585F5374 
+ 584      6F7000
+ 585              	.LASF8:
+ 586 0188 756E7369 		.ascii	"unsigned int\000"
+ 586      676E6564 
+ 586      20696E74 
+ 586      00
+ 587              	.LASF7:
+ 588 0195 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 588      206C6F6E 
+ 588      6720756E 
+ 588      7369676E 
+ 588      65642069 
+ 589              	.LASF16:
+ 590 01ac 73697A65 		.ascii	"sizetype\000"
+ 590      74797065 
  590      00
- 591              	.LASF7:
- 592 01fc 6C6F6E67 		.ascii	"long long unsigned int\000"
- 592      206C6F6E 
- 592      6720756E 
- 592      7369676E 
- 592      65642069 
- 593              	.LASF16:
- 594 0213 73697A65 		.ascii	"sizetype\000"
- 594      74797065 
- 594      00
- 595              	.LASF17:
- 596 021c 436F756E 		.ascii	"CounterEnableState\000"
- 596      74657245 
- 596      6E61626C 
- 596      65537461 
- 596      746500
- 597              	.LASF6:
- 598 022f 6C6F6E67 		.ascii	"long long int\000"
- 598      206C6F6E 
- 598      6720696E 
- 598      7400
- 599              	.LASF13:
- 600 023d 63686172 		.ascii	"char\000"
- 600      00
- 601              	.LASF30:
- 602 0242 436F756E 		.ascii	"Counter_INDEX_backup\000"
- 602      7465725F 
- 602      494E4445 
- 602      585F6261 
- 602      636B7570 
- 603              	.LASF2:
- 604 0257 73686F72 		.ascii	"short int\000"
- 604      7420696E 
- 604      7400
- 605              	.LASF23:
- 606 0261 436F756E 		.ascii	"Counter_INDEX_Sleep\000"
+ 591              	.LASF17:
+ 592 01b5 436F756E 		.ascii	"CounterEnableState\000"
+ 592      74657245 
+ 592      6E61626C 
+ 592      65537461 
+ 592      746500
+ 593              	.LASF6:
+ 594 01c8 6C6F6E67 		.ascii	"long long int\000"
+ 594      206C6F6E 
+ 594      6720696E 
+ 594      7400
+ 595              	.LASF29:
+ 596 01d6 433A5C55 		.ascii	"C:\\Users\\aless\\Documents\\PSoC_Creator\\AY1920_I"
+ 596      73657273 
+ 596      5C616C65 
+ 596      73735C44 
+ 596      6F63756D 
+ 597 0204 495F3032 		.ascii	"I_02_RATTI_SINATRA_QUARANTA\\AY1920_II_FINAL_PROJEC"
+ 597      5F524154 
+ 597      54495F53 
+ 597      494E4154 
+ 597      52415F51 
+ 598 0236 542E6379 		.ascii	"T.cydsn\000"
+ 598      64736E00 
+ 599              	.LASF30:
+ 600 023e 436F756E 		.ascii	"Counter_INDEX_backup\000"
+ 600      7465725F 
+ 600      494E4445 
+ 600      585F6261 
+ 600      636B7570 
+ 601              	.LASF2:
+ 602 0253 73686F72 		.ascii	"short int\000"
+ 602      7420696E 
+ 602      7400
+ 603              	.LASF23:
+ 604 025d 436F756E 		.ascii	"Counter_INDEX_Sleep\000"
+ 604      7465725F 
+ 604      494E4445 
+ 604      585F536C 
+ 604      65657000 
+ARM GAS  C:\Users\aless\AppData\Local\Temp\cco4ARug.s 			page 16
+
+
+ 605              	.LASF22:
+ 606 0271 436F756E 		.ascii	"Counter_INDEX_RestoreConfig\000"
  606      7465725F 
-ARM GAS  C:\Users\Mattia40\AppData\Local\Temp\ccN6ybkx.s 			page 16
-
-
  606      494E4445 
- 606      585F536C 
- 606      65657000 
- 607              	.LASF22:
- 608 0275 436F756E 		.ascii	"Counter_INDEX_RestoreConfig\000"
+ 606      585F5265 
+ 606      73746F72 
+ 607              	.LASF24:
+ 608 028d 436F756E 		.ascii	"Counter_INDEX_Wakeup\000"
  608      7465725F 
  608      494E4445 
- 608      585F5265 
- 608      73746F72 
- 609              	.LASF24:
- 610 0291 436F756E 		.ascii	"Counter_INDEX_Wakeup\000"
- 610      7465725F 
- 610      494E4445 
- 610      585F5761 
- 610      6B657570 
- 611              	.LASF4:
- 612 02a6 6C6F6E67 		.ascii	"long int\000"
- 612      20696E74 
+ 608      585F5761 
+ 608      6B657570 
+ 609              	.LASF4:
+ 610 02a2 6C6F6E67 		.ascii	"long int\000"
+ 610      20696E74 
+ 610      00
+ 611              	.LASF13:
+ 612 02ab 63686172 		.ascii	"char\000"
  612      00
  613              	.LASF15:
- 614 02af 6C6F6E67 		.ascii	"long double\000"
+ 614 02b0 6C6F6E67 		.ascii	"long double\000"
  614      20646F75 
  614      626C6500 
  615              	.LASF0:
- 616 02bb 7369676E 		.ascii	"signed char\000"
+ 616 02bc 7369676E 		.ascii	"signed char\000"
  616      65642063 
  616      68617200 
  617              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

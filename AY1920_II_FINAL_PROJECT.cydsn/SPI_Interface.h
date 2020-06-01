@@ -42,7 +42,7 @@
 *
 * @param[in]: uint8_t byte > 1-byte word to TX
 *
-* @return: uint8_t > received 1-byte word 
+* @return: uint8_t > received 1-byte word
 */
 uint8_t SPI_Interface_tradeByte_EEPROM(uint8_t byte);
 uint8_t SPI_Interface_tradeByte_LIS3DH(uint8_t byte);
@@ -64,7 +64,6 @@ uint8_t SPI_Interface_tradeByte_LIS3DH(uint8_t byte);
 uint8_t SPI_Interface_ReadByte_LIS3DH(uint8_t addr);
 uint8_t SPI_Interface_ReadByte_EEPROM(uint8_t addr);
 
-void SPI_Interface_WriteByte_LIS3DH(uint8_t* byteTX);
 
 /*
 * @brief Full-Duplex, Multi-Byte Trade (RX/TX)
