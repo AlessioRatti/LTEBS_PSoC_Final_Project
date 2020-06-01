@@ -4,7 +4,7 @@ This project is about the development of a program able to store both accelerome
 
 In particular we used the [CY8CKIT-059](https://www.cypress.com/documentation/development-kitsboards/cy8ckit-059-psoc-5lp-prototyping-kit-onboard-programmer-and) development kit.
 
-<img src="https://raw.githubusercontent.com/AlessioRatti/Group_02_Final_Project/master/Imgs/board.jpeg?token=AOZ42ACAFXG7VGZKZJTSAX262TRQY"     width="281" height="500" title="Prototype" alt="Prototype">
+![board](https://user-images.githubusercontent.com/62112335/83408085-50c9f200-a412-11ea-8e34-597d6ac5b9d5.jpeg)
 
 ## Utilities:
 
@@ -21,28 +21,30 @@ In particular we used the [CY8CKIT-059](https://www.cypress.com/documentation/de
 - 5V fixed voltage regulator to be used in combination with 4 AA batteries
 -  <a href="http://www.ti.com/lit/ds/symlink/lm340.pdf">LM7805 datasheet</a>
 
-<img src="https://raw.githubusercontent.com/AlessioRatti/Group_02_Final_Project/master/Imgs/regulator.png?token=AOZ42AHBZEVS7RYL7SIWF6S62TP4E" width="146" height="273" title="Regulator" alt="Regulator">
+![regulator](https://user-images.githubusercontent.com/62112335/83408103-57586980-a412-11ea-8734-153e75dd9741.png)
 
 
 ## TopDesign
 1. KIT
-<img src="https://raw.githubusercontent.com/AlessioRatti/Group_02_Final_Project/master/Imgs/KIT.png?token=AOZ42ACWBABOIVCKMPMQLGC62TP36" width="525" height="407" title="Kit" alt="Kit">
+![KIT](https://user-images.githubusercontent.com/62112335/83408096-54f60f80-a412-11ea-8491-f088eac839c0.png)
 
 2. SPI
-<img src="https://raw.githubusercontent.com/AlessioRatti/Group_02_Final_Project/master/Imgs/SPI.png?token=AOZ42AFADWAZN24XN5SCWFS62TP4A" width="525" height="407" title="SPI" alt="SPI">
+![SPI](https://user-images.githubusercontent.com/62112335/83408119-5d4e4a80-a412-11ea-893e-629319bbb640.png)
 
 3. Analog
-<img src="https://raw.githubusercontent.com/AlessioRatti/Group_02_Final_Project/master/Imgs/ANALOG.png?token=AOZ42ADGI3RRUBXUJZE3MGK62TPI6" width="525" height="407" title="Analog" alt="Analog">
+![ANALOG](https://user-images.githubusercontent.com/62112335/83408041-3db72200-a412-11ea-94fc-b4e11261367e.png)
 
 4. Reset
-<img src="https://raw.githubusercontent.com/AlessioRatti/Group_02_Final_Project/master/Imgs/RESET.png?token=AOZ42AAZY2QA7LQIZJWX53262TP4A" width="525" height="407" title="Reset" alt="Reset">
+![RESET](https://user-images.githubusercontent.com/62112335/83408108-59bac380-a412-11ea-8cd5-01040fd04b2a.png)
 
 5. Bridge Control Panel
-<img src="https://raw.githubusercontent.com/AlessioRatti/Group_02_Final_Project/master/Imgs/BCP.png?token=AOZ42AB7A6YALNZ6DDJAUR262TP34" width="525" height="407" title="Bridge Control Panel" alt="Bridge Control Panel">
+![BCP](https://user-images.githubusercontent.com/62112335/83408073-4c053e00-a412-11ea-8f33-90f47490fff7.png)
+
 
 ## Authors:
 - Alessio Ratti
 - Mattia Quaranta
 - Marco Sinatra
 
-<img src="https://raw.githubusercontent.com/AlessioRatti/Group_02_Final_Project/master/Imgs/banner.png?token=AOZ42ADXN2MHWP3F3JP7MTC62TP4C" title="Banner" alt="Banner">
+![banner](https://user-images.githubusercontent.com/62112335/83408030-355ee700-a412-11ea-89e3-8feba66bd518.png)
+
